@@ -3,7 +3,7 @@ import './App.scss';
 function App() {
   return (
     <>
-      <h1>App</h1>
+      <h1>Далеко-далеко за словесными горами в стране.</h1>
     </>
   );
 }

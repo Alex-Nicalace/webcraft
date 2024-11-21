@@ -1,1 +1,23 @@
 /* шрифты */
+/*
+Названия шрифтов в макете и соотвествие font-weight 
+jura demibold - 600
+jura medium - 500
+jura book - 400
+jura semibold - 600
+
+avalon medium regular - 400
+
+ */
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Avalon Medium';
+  src:
+    url('../assets/fonts/Avalon-Medium.woff2') format('woff2'),
+    url('../assets/fonts/Avalon-Medium.woff') format('woff'),
+    url('../assets/fonts/Avalon-Medium.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
