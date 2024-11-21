@@ -17,4 +17,5 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  settings: { react: { version: '18.2' } },
 };

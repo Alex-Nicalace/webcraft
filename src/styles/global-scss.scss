@@ -1,0 +1,17 @@
+// * Подключение функций (SCSS переиспользуемый)
+@forward './common/functions';
+
+//* Подключение переменных (SCSS под этот проект)
+@forward './variables';
+
+//* Подключение миксинов (SCSS переиспользуемый)
+@forward './common/mixins';
+
+//* Подключение шаблонов универсальных (SCSS переиспользуемый)
+@forward './common/templates';
+
+//* Подключение шаблонов (SCSS под этот проект)
+@forward './templates';
+
+// * Подключение миксинов брейкпоинтов (SCSS переиспользуемый)
+@forward './common/breakpoints';
