@@ -1,0 +1,153 @@
+@use './global-scss.scss' as *;
+
+h1 {
+  &.header-additional {
+    font-family: $fontFamilySecond;
+    font-size: rem(180);
+    line-height: 1.2;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(116);
+    }
+
+    @include mobile-d {
+      font-size: rem(74);
+    }
+
+    @include mobileSmall {
+      font-size: rem(30);
+    }
+  }
+
+  &.header {
+    font-weight: 500;
+    font-size: rem(80);
+    line-height: 0.95;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(60);
+    }
+
+    @include mobile-d {
+      font-size: rem(40);
+    }
+
+    @include mobileSmall {
+      font-size: rem(18);
+    }
+  }
+}
+
+h2 {
+  &.header {
+    font-weight: 500;
+    font-size: rem(15);
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(14);
+    }
+  }
+}
+
+.text {
+  &.button {
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include mobileSmall {
+      font-size: rem(14);
+    }
+  }
+
+  &.typing {
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: 1.2;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(15);
+    }
+  }
+
+  &.competencies {
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include mobile-d {
+      font-size: rem(18);
+    }
+  }
+
+  &.credo {
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: 1.2;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(18);
+    }
+
+    @include mobileSmall {
+      font-size: rem(12);
+    }
+  }
+
+  &.explanation {
+    font-size: rem(16);
+    line-height: 1.2;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(15);
+    }
+  }
+
+  &.portfolio {
+    font-weight: 500;
+    font-size: rem(70);
+    line-height: 0.7;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(40);
+      line-height: 0.8;
+    }
+
+    @include mobileSmall {
+      font-size: rem(20);
+      line-height: 0.9;
+    }
+  }
+
+  &.fact-number {
+    font-weight: 600;
+    font-size: rem(80);
+    line-height: 1.2;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(50);
+      line-height: 1;
+    }
+
+    @include mobileSmall {
+      font-size: rem(40);
+    }
+  }
+
+  &.footer {
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  &.code-background {
+    font-weight: 600;
+    font-size: rem(6);
+    line-height: 1.3;
+  }
+}
