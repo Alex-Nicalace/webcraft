@@ -1,5 +1,6 @@
 import './App.scss';
 import Container from './components/Container';
+import Icon from './components/Icon';
 
 function App() {
   return (
@@ -27,6 +28,23 @@ function App() {
         <div className="text footer">Футер - 16_320</div>
         <br />
         <div className="text code-background">Код-фон - 6_320</div>
+        <br />
+        <div>{/* <Icon name="DarkTheme" /> */}</div>
+        <br />
+        <Icon name="ArrowRight" height={24} width={24} />
+        <br />
+        <Icon name="ArrowRight" height={32} width={32} />
+        <br />
+        <Icon
+          name="ArrowRight"
+          rotate={-90}
+          strokeWidth={3}
+          height={40}
+          width={40}
+        />
+        <br />
+        <Icon name="LightTheme" height={32} width={32} />
+        <Icon name="DarkTheme" height={32} width={32} />
       </Container>
     </>
   );
