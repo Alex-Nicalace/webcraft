@@ -1,5 +1,6 @@
 import './App.scss';
 import Container from './components/Container';
+import Logo from './components/Logo';
 import Icon from './components/ui/Icon';
 
 function App() {
@@ -45,6 +46,9 @@ function App() {
         <br />
         <Icon name="LightTheme" height={32} width={32} />
         <Icon name="DarkTheme" height={32} width={32} />
+        <br />
+        <Logo />
+        <Logo size="small" />
       </Container>
     </>
   );

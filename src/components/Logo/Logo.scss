@@ -1,0 +1,9 @@
+.logo {
+  font-family: $fontFamilySecond;
+  font-size: rem(52);
+  line-height: 1.2;
+
+  &_small {
+    font-size: rem(40);
+  }
+}
