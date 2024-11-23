@@ -1,42 +1,78 @@
-@mixin menu-item-state {
-  background-color: var(--color-menu-item-bg-hover-pressed);
-  &::before,
-  &::after {
-    color: transparent;
-  }
-  &::after {
-    transform: translateX(rem(10));
-  }
-  &::before {
-    transform: translateX(rem(-10));
-  }
-}
-.menu-item {
-  padding: 0 rem(10);
-  padding-bottom: rem(2);
+.button {
   display: inline-flex;
-  column-gap: rem(20);
-  border-radius: rem(50);
+  border-radius: rem(100);
+  padding: rem(15) rem(40);
+  background-color: var(--siniy);
+  overflow: hidden;
   $transition: all 0.4s ease 0s;
   transition: $transition;
-  &::before,
-  &::after {
+
+  // .button__wrapper относительно оболочки удобнее позиционировать элементы элементы по бокам рядом
+  &__wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  // .button__dot
+  &__dot {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: rem(6);
+    aspect-ratio: 1 / 1;
+    background-color: currentColor;
+    border-radius: 50%;
     transition: $transition;
   }
-  &::before {
-    content: '[';
+  // .button__text
+  &__text {
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      transition: $transition;
+    }
+    &::before {
+      width: rem(16);
+    }
   }
-  &::after {
-    content: ']';
+  // .button__arrow
+  &__arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(200%, -50%);
+    opacity: 0;
+    transition: $transition;
   }
 
   @media (pointer: fine) {
     &:hover {
-      @include menu-item-state;
+      padding: rem(15) rem(31);
+      .button {
+        &__text {
+          &::after {
+            width: rem(34);
+          }
+          &::before {
+            width: 0;
+          }
+        }
+        &__arrow {
+          transform: translate(0, -50%);
+          opacity: 1;
+        }
+        &__dot {
+          width: percent(298, 98);
+          // height: percent(298, 19);
+          transform: translate(-50%, -50%);
+          background-color: var(--sredniy-siniy);
+        }
+      }
     }
-  }
-
-  &:active {
-    @include menu-item-state;
   }
 }

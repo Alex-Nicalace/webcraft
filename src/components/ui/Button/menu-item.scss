@@ -1,0 +1,42 @@
+@mixin menu-item-state {
+  background-color: var(--color-menu-item-bg-hover-pressed);
+  &::before,
+  &::after {
+    color: transparent;
+  }
+  &::after {
+    transform: translateX(rem(10));
+  }
+  &::before {
+    transform: translateX(rem(-10));
+  }
+}
+.menu-item {
+  padding: 0 rem(10);
+  padding-bottom: rem(2);
+  display: inline-flex;
+  column-gap: rem(20);
+  border-radius: rem(50);
+  $transition: all 0.4s ease 0s;
+  transition: $transition;
+  &::before,
+  &::after {
+    transition: $transition;
+  }
+  &::before {
+    content: '[';
+  }
+  &::after {
+    content: ']';
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      @include menu-item-state;
+    }
+  }
+
+  &:active {
+    @include menu-item-state;
+  }
+}

@@ -54,6 +54,14 @@ function App() {
         <Button href="#" variant="menu-item">
           Пункт меню
         </Button>
+        <br />
+        <br />
+        <Button href="#">Button</Button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </Container>
     </>
   );
