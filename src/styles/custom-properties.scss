@@ -3,9 +3,26 @@
   --color-white: #fff;
   --color-bg-dark: #131921;
   --color-bg-light: #e6eaf2;
+  --color-blue: #1e3070;
+  --color-blue-soft-grey: #8ba2d0;
+  --color-blue-dark-slate: #2b343f;
 
-  --color: var(--color-white);
-  --color-bg: var(--color-bg-dark);
+  &,
+  &.dark-mode {
+    --color: var(--color-white);
+    --color-bg: var(--color-bg-dark);
+
+    --color-menu-item: var(--color-white);
+    --color-menu-item-bg-hover-pressed: var(--color-blue-dark-slate);
+  }
+
+  &.light-mode {
+    --color: var(--color-blue);
+    --color-bg: var(--color-bg-light);
+
+    --color-menu-item: var(--color-blue);
+    --color-menu-item-bg-hover-pressed: var(--color-blue-soft-grey);
+  }
 }
 
 /* 
@@ -14,7 +31,7 @@
 	  --white: #fff; --color-white
 	--siniy: #4900e0;
 	--sredniy-siniy: #2a008a;
-	--vspomogatelnyy-2: #2b343f;
+		--vspomogatelnyy-2: #2b343f; --color-blue-dark-slate
 	--disabled-1: #26313f;
 	--disabled-2: #5c6979;
 	--bg-pod-tekst: rgba(255, 255, 255, 0.06);
@@ -27,8 +44,8 @@
 	--blur-1,2,3,8: #1a2b42;
 	--bg-header: rgba(255, 255, 255, 0.04);
 	  --bg-light: #e6eaf2; --color-bg-light
-	--teksty,-ikonki-light: #1e3070;
-	--vspomogatelnyy-light: #8ba2d0;
+		--teksty,-ikonki-light: #1e3070; --color-blue
+		--vspomogatelnyy-light: #8ba2d0; --color-blue-soft-grey
 	--zagolovki-h2-light: #6984b5;
 	--vspomogatelnyy-1-light: #a9bbdb;
 	--bg-proekta-light: rgba(121, 143, 189, 0.3);

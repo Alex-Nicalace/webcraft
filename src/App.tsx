@@ -1,6 +1,7 @@
 import './App.scss';
 import Container from './components/Container';
 import Logo from './components/Logo';
+import Button from './components/ui/Button';
 import Icon from './components/ui/Icon';
 
 function App() {
@@ -10,25 +11,25 @@ function App() {
         <h1 className="header-additional">Привет</h1>
         <h1 className="header">H1 (доп.) - 180</h1>
         <br />
-        <h2 className="header">H2, пункты меню - 15</h2>
+        <div className="text-menu-item">H2, пункты меню - 15</div>
         <br />
-        <div className="text button">текст в кнопках</div>
+        <div className="text-button">текст в кнопках</div>
         <br />
-        <div className="text typing">Наборный 1 - 16</div>
+        <div className="text-typing">Наборный 1 - 16</div>
         <br />
-        <div className="text competencies">Компетенции, футер - 20</div>
+        <div className="text-competencies">Компетенции, футер - 20</div>
         <br />
-        <div className="text credo">Кредо - 20</div>
+        <div className="text-credo">Кредо - 20</div>
         <br />
-        <div className="text explanation">
+        <div className="text-explanation">
           Пояснение к интерактиву с пазлами - 16
         </div>
         <br />
-        <div className="text portfolio">Портфолио - 70</div>
+        <div className="text-portfolio">Портфолио - 70</div>
         <br />
-        <div className="text footer">Футер - 16_320</div>
+        <div className="text-footer">Футер - 16_320</div>
         <br />
-        <div className="text code-background">Код-фон - 6_320</div>
+        <div className="text-code-background">Код-фон - 6_320</div>
         <br />
         <div>{/* <Icon name="DarkTheme" /> */}</div>
         <br />
@@ -49,6 +50,10 @@ function App() {
         <br />
         <Logo />
         <Logo size="small" />
+        <br />
+        <Button href="#" variant="menu-item">
+          Пункт меню
+        </Button>
       </Container>
     </>
   );

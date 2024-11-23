@@ -38,21 +38,8 @@ h1 {
   }
 }
 
-h2 {
-  &.header {
-    font-weight: 500;
-    font-size: rem(15);
-    line-height: 1.2;
-    text-transform: uppercase;
-
-    @include mdQuery(0, 1260) {
-      font-size: rem(14);
-    }
-  }
-}
-
 .text {
-  &.button {
+  &-button {
     font-weight: 600;
     font-size: rem(16);
     line-height: 1.2;
@@ -63,7 +50,7 @@ h2 {
     }
   }
 
-  &.typing {
+  &-typing {
     font-weight: 600;
     font-size: rem(16);
     line-height: 1.2;
@@ -73,7 +60,7 @@ h2 {
     }
   }
 
-  &.competencies {
+  &-competencies {
     font-weight: 600;
     font-size: rem(20);
     line-height: 1.2;
@@ -84,7 +71,7 @@ h2 {
     }
   }
 
-  &.credo {
+  &-credo {
     font-weight: 600;
     font-size: rem(20);
     line-height: 1.2;
@@ -98,7 +85,7 @@ h2 {
     }
   }
 
-  &.explanation {
+  &-explanation {
     font-size: rem(16);
     line-height: 1.2;
 
@@ -107,7 +94,7 @@ h2 {
     }
   }
 
-  &.portfolio {
+  &-portfolio {
     font-weight: 500;
     font-size: rem(70);
     line-height: 0.7;
@@ -123,7 +110,7 @@ h2 {
     }
   }
 
-  &.fact-number {
+  &-fact-number {
     font-weight: 600;
     font-size: rem(80);
     line-height: 1.2;
@@ -138,16 +125,27 @@ h2 {
     }
   }
 
-  &.footer {
+  &-footer {
     font-weight: 600;
     font-size: rem(16);
     line-height: 1.2;
     text-transform: uppercase;
   }
 
-  &.code-background {
+  &-code-background {
     font-weight: 600;
     font-size: rem(6);
     line-height: 1.3;
+  }
+
+  &-menu-item {
+    font-weight: 500;
+    font-size: rem(15);
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include mdQuery(0, 1260) {
+      font-size: rem(14);
+    }
   }
 }
