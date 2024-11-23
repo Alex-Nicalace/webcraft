@@ -1,6 +1,6 @@
 import './App.scss';
 import Container from './components/Container';
-import Icon from './components/Icon';
+import Icon from './components/ui/Icon';
 
 function App() {
   return (
