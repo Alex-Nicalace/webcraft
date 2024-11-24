@@ -6,7 +6,9 @@ import Icon from '../Icon';
 function Button({ className, variant, ...props }: TButtonProps): JSX.Element {
   const classes = [
     className,
-    variant ? `${variant} text-menu-item` : 'button text-button',
+    variant === 'menu-item' && 'menu-item text-menu-item',
+    variant !== 'menu-item' && 'button text-button',
+    variant === 'button-secondary' && 'button_secondary',
   ]
     .filter(Boolean)
     .join(' ');

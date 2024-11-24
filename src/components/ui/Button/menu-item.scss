@@ -11,13 +11,14 @@
     transform: translateX(rem(-10));
   }
 }
+$transition: all 0.4s ease 0s;
+
 .menu-item {
   padding: 0 rem(10);
   padding-bottom: rem(2);
   display: inline-flex;
   column-gap: rem(20);
   border-radius: rem(50);
-  $transition: all 0.4s ease 0s;
   transition: $transition;
   &::before,
   &::after {

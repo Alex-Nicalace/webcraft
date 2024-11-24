@@ -1,41 +1,63 @@
 // кастомные свойства
 :root {
-  --color-white: #fff;
+  // палитра цветов
+  --white: #fff;
   --color-bg-dark: #131921;
   --color-bg-light: #e6eaf2;
-  --color-blue: #1e3070;
-  --color-blue-soft-grey: #8ba2d0;
-  --color-blue-dark-slate: #2b343f;
+  --blue: #1e3070;
+  --blue-soft-grey: #8ba2d0;
+  --blue-dark-slate: #2b343f;
   --siniy: #4900e0;
   --sredniy-siniy: #2a008a;
+  --disabled-1: #26313f;
+  --disabled-light: #b1bad0;
+  --disabled-2: #5c6979;
+
+  // цвета компонентов
+  --color-button-bg: var(--siniy);
+  --color-button-text: var(--white);
+  --color-button-dot: var(--white);
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-border: var(--siniy);
+  --color-button-secondary-text: var(--siniy);
+  --color-button-secondary-dot: var(--siniy);
+  --color-button-secondary-text-hover: var(--white);
 
   &,
   &.dark-mode {
-    --color: var(--color-white);
-    --color-bg: var(--color-bg-dark);
+    --color-main-text: var(--white);
+    --color-main-bg: var(--color-bg-dark);
 
-    --color-menu-item: var(--color-white);
-    --color-menu-item-bg-hover-pressed: var(--color-blue-dark-slate);
+    --color-menu-item: var(--white);
+    --color-menu-item-bg-hover-pressed: var(--blue-dark-slate);
+
+    --color-button-bg-disabled: var(--disabled-1);
+    --color-button-text-disabled: var(--disabled-2);
+    --color-button-secondary-border-dot-text-disabled: var(--disabled-1);
   }
 
   &.light-mode {
-    --color: var(--color-blue);
-    --color-bg: var(--color-bg-light);
+    --color-main-text: var(--blue);
+    --color-main-bg: var(--color-bg-light);
 
-    --color-menu-item: var(--color-blue);
-    --color-menu-item-bg-hover-pressed: var(--color-blue-soft-grey);
+    --color-menu-item: var(--blue);
+    --color-menu-item-bg-hover-pressed: var(--blue-soft-grey);
+
+    --color-button-bg-disabled: var(--disabled-light);
+    --color-button-text-disabled: var(--color-bg-light);
+    --color-button-secondary-border-dot-text-disabled: var(--disabled-light);
   }
 }
 
 /* 
 :root {
 	  --bg: #131921; --color-bg-dark
-	  --white: #fff; --color-white
+	  --white: #fff; --white
 	--siniy: #4900e0;
 	--sredniy-siniy: #2a008a;
-		--vspomogatelnyy-2: #2b343f; --color-blue-dark-slate
-	--disabled-1: #26313f;
-	--disabled-2: #5c6979;
+		--vspomogatelnyy-2: #2b343f; --blue-dark-slate
+		--disabled-1: #26313f;
+		--disabled-2: #5c6979;
 	--bg-pod-tekst: rgba(255, 255, 255, 0.06);
 	--zagolovki-h2: #748398;
 	--sero-siniy: #252d38;
@@ -46,8 +68,8 @@
 	--blur-1,2,3,8: #1a2b42;
 	--bg-header: rgba(255, 255, 255, 0.04);
 	  --bg-light: #e6eaf2; --color-bg-light
-		--teksty,-ikonki-light: #1e3070; --color-blue
-		--vspomogatelnyy-light: #8ba2d0; --color-blue-soft-grey
+		--teksty,-ikonki-light: #1e3070; --blue
+		--vspomogatelnyy-light: #8ba2d0; --blue-soft-grey
 	--zagolovki-h2-light: #6984b5;
 	--vspomogatelnyy-1-light: #a9bbdb;
 	--bg-proekta-light: rgba(121, 143, 189, 0.3);
@@ -58,7 +80,7 @@
 	--blur-light-8: #d4e0f9;
 	--bg-header-light: rgba(220, 227, 241, 0.5);
 	--kod-fon: #5766c7;
-	--disabled-light: #b1bad0;
+		--disabled-light: #b1bad0;
 	--cvet-poverh-kartinki-na-glavnom-ekrane-v-temnoy-teme: rgba(43, 40, 141, 0.2);
 }
  */

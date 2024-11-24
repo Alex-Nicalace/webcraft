@@ -1,11 +1,37 @@
+@mixin button-hover-active {
+  padding: rem(15) rem(31);
+  .button {
+    &__text {
+      &::after {
+        width: rem(34);
+      }
+      &::before {
+        width: 0;
+      }
+    }
+    &__arrow {
+      transform: translate(0, -50%);
+      opacity: 1;
+    }
+    &__dot {
+      width: percent(298, 98);
+      // height: percent(298, 19);
+      transform: translate(-50%, -50%);
+      background-color: var(--color-button-bg);
+    }
+  }
+}
+
+$transition: all 0.4s ease 0s;
+
 .button {
   display: inline-flex;
   border-radius: rem(100);
   padding: rem(15) rem(40);
-  background-color: var(--siniy);
+  background-color: var(--color-button-bg);
   overflow: hidden;
-  $transition: all 0.4s ease 0s;
   transition: $transition;
+  color: var(--color-button-text);
 
   // .button__wrapper относительно оболочки удобнее позиционировать элементы элементы по бокам рядом
   &__wrapper {
@@ -22,7 +48,7 @@
     transform: translate(0, -50%);
     width: rem(6);
     aspect-ratio: 1 / 1;
-    background-color: currentColor;
+    background-color: var(--color-button-dot);
     border-radius: 50%;
     transition: $transition;
   }
@@ -48,29 +74,60 @@
     transform: translate(200%, -50%);
     opacity: 0;
     transition: $transition;
+    color: var(--white);
   }
 
   @media (pointer: fine) {
-    &:hover {
-      padding: rem(15) rem(31);
+    &:hover:not(:disabled) {
+      @include button-hover-active;
+    }
+  }
+
+  &:active:not(:disabled) {
+    @include button-hover-active;
+  }
+
+  &:disabled {
+    background-color: var(--color-button-bg-disabled);
+    color: var(--color-button-text-disabled);
+    .button {
+      &__dot {
+        background-color: var(--color-button-text-disabled);
+      }
+    }
+  }
+
+  &_secondary {
+    background-color: var(--color-button-secondary-bg);
+    border: rem(2) solid var(--color-button-secondary-border);
+    color: var(--color-button-secondary-text);
+
+    .button {
+      &__dot {
+        background-color: var(--color-button-secondary-dot);
+      }
+    }
+
+    @media (pointer: fine) {
+      &:hover:not(:disabled) {
+        color: var(--color-button-secondary-text-hover);
+      }
+    }
+
+    &:active:not(:disabled) {
+      color: var(--color-button-secondary-text-hover);
+    }
+
+    &:disabled {
+      border-color: var(--color-button-secondary-border-dot-text-disabled);
+      background-color: var(--color-button-secondary-bg);
+      color: var(--color-button-secondary-border-dot-text-disabled);
+
       .button {
-        &__text {
-          &::after {
-            width: rem(34);
-          }
-          &::before {
-            width: 0;
-          }
-        }
-        &__arrow {
-          transform: translate(0, -50%);
-          opacity: 1;
-        }
         &__dot {
-          width: percent(298, 98);
-          // height: percent(298, 19);
-          transform: translate(-50%, -50%);
-          background-color: var(--sredniy-siniy);
+          background-color: var(
+            --color-button-secondary-border-dot-text-disabled
+          );
         }
       }
     }

@@ -59,6 +59,22 @@ function App() {
         <Button href="#">Button</Button>
         <br />
         <br />
+        <Button disabled>Button</Button>
+        <br />
+        <br />
+        <Button href="#" variant="button-secondary">
+          Button
+        </Button>
+        <br />
+        <br />
+        <Button variant="button-secondary" disabled>
+          Button
+        </Button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <br />
