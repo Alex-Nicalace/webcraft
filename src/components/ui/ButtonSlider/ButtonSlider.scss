@@ -1,0 +1,18 @@
+.button-slider {
+  color: var(--color-button-slider-icon);
+  // .button-slider__icon
+  &__icon {
+  }
+
+  &:active {
+    color: var(--color-button-slider-icon-pressed);
+  }
+
+  &:disabled {
+    color: var(--color-button-slider-icon-disabled);
+  }
+
+  &_left {
+    transform: scaleX(-1);
+  }
+}

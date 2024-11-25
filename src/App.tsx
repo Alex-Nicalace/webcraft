@@ -3,6 +3,7 @@ import Container from './components/Container';
 import Logo from './components/Logo';
 import ScrollUp from './components/ScrollUp';
 import Button from './components/ui/Button';
+import ButtonSlider from './components/ui/ButtonSlider';
 import Icon from './components/ui/Icon';
 
 function App() {
@@ -79,6 +80,11 @@ function App() {
         <ScrollUp />
         <br />
         <br />
+        <ButtonSlider />
+        <br />
+        <ButtonSlider direction="left" />
+        <br />
+        <ButtonSlider disabled />
         <br />
         <br />
         <br />
