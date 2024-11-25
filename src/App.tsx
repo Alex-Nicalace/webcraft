@@ -1,6 +1,7 @@
 import './App.scss';
 import Container from './components/Container';
 import Logo from './components/Logo';
+import ScrollUp from './components/ScrollUp';
 import Button from './components/ui/Button';
 import Icon from './components/ui/Icon';
 
@@ -59,6 +60,9 @@ function App() {
         <Button href="#">Button</Button>
         <br />
         <br />
+        <Button href="#">Button</Button>
+        <br />
+        <br />
         <Button disabled>Button</Button>
         <br />
         <br />
@@ -72,6 +76,7 @@ function App() {
         </Button>
         <br />
         <br />
+        <ScrollUp />
         <br />
         <br />
         <br />

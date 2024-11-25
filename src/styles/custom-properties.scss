@@ -12,6 +12,8 @@
   --disabled-1: #26313f;
   --disabled-light: #b1bad0;
   --disabled-2: #5c6979;
+  --gray-deep-space: rgba(17, 21, 26, 0.4);
+  --color-fade-blue: rgba(103, 121, 153, 0.36);
 
   // цвета компонентов
   --color-button-bg: var(--siniy);
@@ -22,6 +24,9 @@
   --color-button-secondary-text: var(--siniy);
   --color-button-secondary-dot: var(--siniy);
   --color-button-secondary-text-hover: var(--white);
+
+  --color-scrollup-bracket: var(--siniy);
+  --color-scrollup-hover-bg: var(--siniy);
 
   &,
   &.dark-mode {
@@ -34,6 +39,9 @@
     --color-button-bg-disabled: var(--disabled-1);
     --color-button-text-disabled: var(--disabled-2);
     --color-button-secondary-border-dot-text-disabled: var(--disabled-1);
+
+    --color-scrollup-bg: var(--blue-dark-slate);
+    --color-scrollup-box-shadow: var(--gray-deep-space);
   }
 
   &.light-mode {
@@ -46,6 +54,9 @@
     --color-button-bg-disabled: var(--disabled-light);
     --color-button-text-disabled: var(--color-bg-light);
     --color-button-secondary-border-dot-text-disabled: var(--disabled-light);
+
+    --color-scrollup-bg: var(--blue-soft-grey);
+    --color-scrollup-box-shadow: var(--color-fade-blue);
   }
 }
 
