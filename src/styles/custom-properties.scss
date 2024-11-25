@@ -31,6 +31,8 @@
   --color-button-slider-icon: var(--siniy);
   --color-button-slider-icon-pressed: var(--sredniy-siniy);
 
+  --color-toggler-theme-icon-hover: var(--siniy);
+
   &,
   &.dark-mode {
     --color-main-text: var(--white);
@@ -47,6 +49,8 @@
     --color-scrollup-box-shadow: var(--gray-deep-space);
 
     --color-button-slider-icon-disabled: var(--disabled-1);
+
+    --color-toggler-theme-icon: var(--white);
   }
 
   &.light-mode {
@@ -64,6 +68,8 @@
     --color-scrollup-box-shadow: var(--color-fade-blue);
 
     --color-button-slider-icon-disabled: var(--disabled-light);
+
+    --color-toggler-theme-icon: var(--blue);
   }
 }
 

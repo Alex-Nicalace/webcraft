@@ -1,0 +1,13 @@
+.toggler-theme {
+  color: var(--color-toggler-theme-icon);
+  transition: color 0.3s ease-out 0s;
+  // .toggler-theme__icon
+  &__icon {
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      color: var(--color-toggler-theme-icon-hover);
+    }
+  }
+}

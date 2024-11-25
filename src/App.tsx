@@ -5,6 +5,7 @@ import ScrollUp from './components/ScrollUp';
 import Button from './components/ui/Button';
 import ButtonSlider from './components/ui/ButtonSlider';
 import Icon from './components/ui/Icon';
+import TogglerTheme from './components/ui/TogglerTheme';
 
 function App() {
   return (
@@ -87,6 +88,7 @@ function App() {
         <ButtonSlider disabled />
         <br />
         <br />
+        <TogglerTheme currentTheme="dark" />
         <br />
         <br />
       </Container>
