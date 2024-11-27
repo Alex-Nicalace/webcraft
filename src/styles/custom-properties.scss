@@ -6,7 +6,7 @@
   --color-bg-light: #e6eaf2;
   --blue: #1e3070;
   --blue-soft-grey: #8ba2d0;
-  --blue-dark-slate: #2b343f;
+  --sero-siniy: #2b343f;
   --siniy: #4900e0;
   --sredniy-siniy: #2a008a;
   --disabled-1: #26313f;
@@ -14,6 +14,32 @@
   --disabled-2: #5c6979;
   --gray-deep-space: rgba(17, 21, 26, 0.4);
   --color-fade-blue: rgba(103, 121, 153, 0.36);
+  --sero-goluboy-light: #c2d0e9;
+  --sredniy-siniy: #2a008a;
+  --bg-pod-tekst: rgba(255, 255, 255, 0.06);
+  --zagolovki-h2: #748398;
+  --sero-siniy: #252d38;
+  --vspomogatelnyy-1: #353f4e;
+  --bg-proekta: rgba(37, 45, 56, 0.6);
+  --blur-7: #171c4d;
+  --blur-4-5-6: #16263a;
+  --blur-1-2-3-8: #1a2b42;
+  --bg-header: rgba(255, 255, 255, 0.04);
+  --zagolovki-h2-light: #6984b5;
+  --vspomogatelnyy-1-light: #a9bbdb;
+  --bg-proekta-light: rgba(121, 143, 189, 0.3);
+  --blur-light-1-2-3: #d4dff6;
+  --blur-light-4-5-6: #b7cbf3;
+  --blur-light-7: #bccff8;
+  --blur-light-8: #d4e0f9;
+  --bg-header-light: rgba(220, 227, 241, 0.5);
+  --kod-fon: #5766c7;
+  --cvet-poverh-kartinki-na-glavnom-ekrane-v-temnoy-teme: rgba(
+    43,
+    40,
+    141,
+    0.2
+  );
 
   // цвета компонентов
   --color-button-bg: var(--siniy);
@@ -39,18 +65,21 @@
     --color-main-bg: var(--color-bg-dark);
 
     --color-menu-item: var(--white);
-    --color-menu-item-bg-hover-pressed: var(--blue-dark-slate);
+    --color-menu-item-bg-hover-pressed: var(--sero-siniy);
 
     --color-button-bg-disabled: var(--disabled-1);
     --color-button-text-disabled: var(--disabled-2);
     --color-button-secondary-border-dot-text-disabled: var(--disabled-1);
 
-    --color-scrollup-bg: var(--blue-dark-slate);
+    --color-scrollup-bg: var(--sero-siniy);
     --color-scrollup-box-shadow: var(--gray-deep-space);
 
     --color-button-slider-icon-disabled: var(--disabled-1);
 
     --color-toggler-theme-icon: var(--white);
+
+    --color-puzzle-inner-bg: var(--sero-siniy);
+    --color-puzzle-dekor: var(--vspomogatelnyy-1);
   }
 
   &.light-mode {
@@ -70,41 +99,8 @@
     --color-button-slider-icon-disabled: var(--disabled-light);
 
     --color-toggler-theme-icon: var(--blue);
+
+    --color-puzzle-inner-bg: var(--sero-goluboy-light);
+    --color-puzzle-dekor: var(--vspomogatelnyy-1-light);
   }
 }
-
-/* 
-:root {
-	  --bg: #131921; --color-bg-dark
-	  --white: #fff; --white
-	--siniy: #4900e0;
-	--sredniy-siniy: #2a008a;
-		--vspomogatelnyy-2: #2b343f; --blue-dark-slate
-		--disabled-1: #26313f;
-		--disabled-2: #5c6979;
-	--bg-pod-tekst: rgba(255, 255, 255, 0.06);
-	--zagolovki-h2: #748398;
-	--sero-siniy: #252d38;
-	--vspomogatelnyy-1: #353f4e;
-	--bg-proekta: rgba(37, 45, 56, 0.6);
-	--blur-7: #171c4d;
-	--blur-4,5,6: #16263a;
-	--blur-1,2,3,8: #1a2b42;
-	--bg-header: rgba(255, 255, 255, 0.04);
-	  --bg-light: #e6eaf2; --color-bg-light
-		--teksty,-ikonki-light: #1e3070; --blue
-		--vspomogatelnyy-light: #8ba2d0; --blue-soft-grey
-	--zagolovki-h2-light: #6984b5;
-	--vspomogatelnyy-1-light: #a9bbdb;
-	--bg-proekta-light: rgba(121, 143, 189, 0.3);
-	--sero-goluboy-light: #c2d0e9;
-	--blur-light-1,2,3: #d4dff6;
-	--blur-light-4,5,6: #b7cbf3;
-	--blur-light-7: #bccff8;
-	--blur-light-8: #d4e0f9;
-	--bg-header-light: rgba(220, 227, 241, 0.5);
-	--kod-fon: #5766c7;
-		--disabled-light: #b1bad0;
-	--cvet-poverh-kartinki-na-glavnom-ekrane-v-temnoy-teme: rgba(43, 40, 141, 0.2);
-}
- */

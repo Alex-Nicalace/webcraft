@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.scss';
 import Container from './components/Container';
 import Logo from './components/Logo';
@@ -5,9 +6,12 @@ import ScrollUp from './components/ScrollUp';
 import Button from './components/ui/Button';
 import ButtonSlider from './components/ui/ButtonSlider';
 import Icon from './components/ui/Icon';
+import Puzzle from './components/ui/Puzzle';
 import TogglerTheme from './components/ui/TogglerTheme';
 
 function App() {
+  const [isOpenPuzzle, setOpenPuzzle] = useState(false);
+
   return (
     <>
       <Container tag="div" className="tst">
@@ -89,6 +93,21 @@ function App() {
         <br />
         <br />
         <TogglerTheme currentTheme="dark" />
+        <br />
+        <button
+          style={{ position: 'fixed', bottom: '20px', right: '20px' }}
+          onClick={() => setOpenPuzzle((prev) => !prev)}
+        >
+          Открыть/закрыть пазлы
+        </button>
+        <br />
+        <Puzzle variant={3} text="Каждая строчка кода," isOpen={isOpenPuzzle} />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
       </Container>

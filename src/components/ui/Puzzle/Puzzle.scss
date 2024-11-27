@@ -1,0 +1,113 @@
+$transition: all 0.6s ease-out 0s;
+
+.puzzle {
+  position: relative;
+  overflow: hidden;
+
+  // .puzzle__bg-img
+  &__bg {
+    position: absolute;
+    z-index: -1;
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: rem(16);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background-color: var(--color-puzzle-inner-bg);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: $transition;
+    }
+  }
+
+  &__dekor {
+    position: absolute;
+    color: var(--color-puzzle-dekor);
+    opacity: 0;
+    transition: $transition;
+  }
+
+  &__text {
+    position: relative;
+    padding: 0 rem(10);
+    opacity: 0;
+    transition: $transition;
+  }
+
+  &__mask {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  &_3 {
+    aspect-ratio: 587 / 580;
+    clip-path: url(#puzzle-outer-3);
+    @include adaptiveValue('width', 587, 140);
+    @include mdQuery(0, 1280) {
+      aspect-ratio: 140/142;
+    }
+
+    .puzzle {
+      &__bg {
+        left: rem(-442);
+        top: rem(-237);
+
+        @include mdQuery(0, 1280) {
+          width: percent(584, 140);
+          height: percent(584, 142);
+          left: percent(-183, 140);
+          top: percent(-93, 142);
+        }
+      }
+
+      &__content {
+        padding-bottom: percent(130, 587);
+        padding-right: percent(140, 587);
+        clip-path: url(#puzzle-inner-3);
+
+        &::before {
+          top: percent(227, 580);
+          left: percent(241, 587);
+        }
+      }
+
+      &__dekor {
+        left: percent(-319, 587);
+        top: percent(-394, 580);
+        width: percent(854, 587);
+        height: percent(854, 580);
+      }
+
+      &__text {
+      }
+    }
+  }
+
+  &_opened {
+    .puzzle {
+      &__content {
+        &::before {
+          opacity: 1;
+          width: percent(835, 587);
+        }
+      }
+      &__dekor {
+        opacity: 1;
+      }
+
+      &__text {
+        opacity: 1;
+      }
+    }
+  }
+}
