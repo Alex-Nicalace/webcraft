@@ -11,6 +11,17 @@ import TogglerTheme from './components/ui/TogglerTheme';
 
 function App() {
   const [isOpenPuzzle, setOpenPuzzle] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<'dark-mode' | 'light-mode'>(
+    'dark-mode'
+  );
+
+  function handleToggleTheme() {
+    const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+    setCurrentTheme(newTheme);
+    document.documentElement.classList.remove('dark-mode');
+    document.documentElement.classList.remove('light-mode');
+    document.documentElement.classList.add(newTheme);
+  }
 
   return (
     <>
@@ -92,7 +103,7 @@ function App() {
         <ButtonSlider disabled />
         <br />
         <br />
-        <TogglerTheme currentTheme="dark" />
+        <TogglerTheme currentTheme={currentTheme} onClick={handleToggleTheme} />
         <br />
         <button
           style={{ position: 'fixed', bottom: '20px', right: '20px' }}

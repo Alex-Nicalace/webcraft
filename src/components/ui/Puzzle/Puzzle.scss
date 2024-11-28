@@ -4,12 +4,6 @@ $transition: all 0.6s ease-out 0s;
   position: relative;
   overflow: hidden;
 
-  // .puzzle__bg-img
-  &__bg {
-    position: absolute;
-    z-index: -1;
-  }
-
   &__content {
     height: 100%;
     display: flex;
@@ -52,24 +46,28 @@ $transition: all 0.6s ease-out 0s;
   &_3 {
     aspect-ratio: 587 / 580;
     clip-path: url(#puzzle-outer-3);
+
     @include adaptiveValue('width', 587, 140);
     @include mdQuery(0, 1280) {
       aspect-ratio: 140/142;
     }
 
-    .puzzle {
-      &__bg {
-        left: rem(-442);
-        top: rem(-237);
+    &,
+    .dark-mode & {
+      background: url('../../../assets/img/puzzles/puzzle_bg_3.jpg') rem(-442)
+        rem(-237) no-repeat;
 
-        @include mdQuery(0, 1280) {
-          width: percent(584, 140);
-          height: percent(584, 142);
-          left: percent(-183, 140);
-          top: percent(-93, 142);
-        }
+      @include mdQuery(0, 1280) {
+        background-size: percent(584, 140) percent(584, 142);
+        background-position: percent(-183, 140 - 584) percent(-93, 142 - 584);
       }
+    }
 
+    .light-mode & {
+      background: linear-gradient(135deg, #4a67cf 0%, #373180 100%);
+    }
+
+    .puzzle {
       &__content {
         padding-bottom: percent(130, 587);
         padding-right: percent(140, 587);

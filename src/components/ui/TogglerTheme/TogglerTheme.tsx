@@ -12,7 +12,7 @@ function TogglerTheme({
       className={['toggler-theme', className].filter(Boolean).join(' ')}
       {...props}
     >
-      {currentTheme === 'dark' ? (
+      {currentTheme === 'dark-mode' ? (
         <Icon
           className="toggler-theme__icon"
           name="LightTheme"

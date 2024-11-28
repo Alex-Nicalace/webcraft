@@ -14,7 +14,7 @@ function Puzzle({
   variant,
   isOpen,
 }: TPuzzleProps): JSX.Element {
-  const { bgImg, SvgMaskOuter, SvgMaskInner } = VARIANTS_PUZZLE[variant];
+  const { SvgMaskOuter, SvgMaskInner } = VARIANTS_PUZZLE[variant];
 
   return (
     <div
@@ -27,11 +27,6 @@ function Puzzle({
         .filter(Boolean)
         .join(' ')}
     >
-      <img
-        className="puzzle__bg"
-        src={bgImg}
-        alt={`фон пазла №${variant} - абстракция`}
-      />
       <div className="puzzle__content">
         <SvgDekor className="puzzle__dekor" />
         <div className="puzzle__text text-credo">{text}</div>

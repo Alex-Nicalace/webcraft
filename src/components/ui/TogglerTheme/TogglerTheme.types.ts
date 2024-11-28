@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
 
 export type TTogglerThemeProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  currentTheme: 'light' | 'dark';
+  currentTheme: 'light-mode' | 'dark-mode';
 };
