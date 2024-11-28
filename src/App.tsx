@@ -115,6 +115,7 @@ function App() {
         <Puzzle variant={3} text="Каждая строчка кода," isOpen={isOpenPuzzle} />
         <br />
         <br />
+        <Puzzle variant={4} text="как деталь пазла," isOpen={isOpenPuzzle} />
         <br />
         <br />
         <br />

@@ -1,6 +1,99 @@
-$transition: all 0.6s ease-out 0s;
+@mixin puzzle(
+  $width-pazzle,
+  $height-pazzle,
+  $clip-path-oter,
+  $clip-path-inner,
+  $bg-gradient,
+  $width-pazzle-md,
+  $height-pazzle-md,
+  $width-pazzle-sm,
+  $height-pazzle-sm,
+  $bg-src,
+  $bg-pos-x,
+  $bg-pos-y,
+  $bg-width-sm,
+  $bg-height-sm,
+  $bg-pos-x-sm,
+  $bg-pos-y-sm,
+  $padding-top,
+  $padding-right,
+  $padding-bottom,
+  $padding-left,
+  $circle-pos-x,
+  $circle-pos-y,
+  $dekor-pos-x,
+  $dekor-pos-y,
+  $dekor-width,
+  $dekor-height
+) {
+  aspect-ratio: #{$width-pazzle} / #{$height-pazzle};
+  clip-path: url($clip-path-oter);
+
+  // @include adaptiveValue('width', $width-pazzle, $width-pazzle-sm);
+  @include adaptiveValue(
+    'width',
+    $width-pazzle,
+    $width-pazzle-md,
+    $containerWidth,
+    1280,
+    1
+  );
+  @include mdQuery(0, 1280) {
+    aspect-ratio: #{$width-pazzle-md}/#{$height-pazzle-md};
+  }
+
+  @include mobile-d {
+    aspect-ratio: #{$width-pazzle-sm}/#{$height-pazzle-sm};
+    @include adaptiveValue('width', $width-pazzle-md, $width-pazzle-sm, 768);
+  }
+
+  &,
+  .dark-mode & {
+    background: $bg-src rem($bg-pos-x) rem($bg-pos-y) no-repeat;
+
+    @include mdQuery(0, 1280) {
+      background-size: percent($bg-width-sm, $width-pazzle-sm)
+        percent($bg-height-sm, $height-pazzle-sm);
+      background-position: percent(
+          $bg-pos-x-sm,
+          $width-pazzle-sm - $bg-width-sm
+        )
+        percent($bg-pos-y-sm, $height-pazzle-sm - $bg-height-sm);
+    }
+  }
+
+  .light-mode & {
+    background: $bg-gradient;
+  }
+
+  .puzzle {
+    &__content {
+      padding-top: percent($padding-top, $width-pazzle);
+      padding-left: percent($padding-left, $width-pazzle);
+      padding-bottom: percent($padding-bottom, $width-pazzle);
+      padding-right: percent($padding-right, $width-pazzle);
+      clip-path: url($clip-path-inner);
+
+      &::before {
+        top: percent($circle-pos-y, $height-pazzle);
+        left: percent($circle-pos-x, $width-pazzle);
+      }
+    }
+
+    &__dekor {
+      left: percent($dekor-pos-x, $width-pazzle);
+      top: percent($dekor-pos-y, $height-pazzle);
+      width: percent($dekor-width, $width-pazzle);
+      height: percent($dekor-height, $height-pazzle);
+    }
+
+    &__text {
+    }
+  }
+}
 
 .puzzle {
+  $transition: all 0.6s ease-out 0s;
   position: relative;
   overflow: hidden;
 
@@ -32,7 +125,7 @@ $transition: all 0.6s ease-out 0s;
 
   &__text {
     position: relative;
-    padding: 0 rem(10);
+    padding: 0 rem(5);
     opacity: 0;
     transition: $transition;
   }
@@ -44,51 +137,77 @@ $transition: all 0.6s ease-out 0s;
   }
 
   &_3 {
-    aspect-ratio: 587 / 580;
-    clip-path: url(#puzzle-outer-3);
+    @include puzzle(
+      $width-pazzle: 587,
+      $height-pazzle: 580,
 
-    @include adaptiveValue('width', 587, 140);
-    @include mdQuery(0, 1280) {
-      aspect-ratio: 140/142;
-    }
+      $clip-path-oter: '#puzzle-outer-3',
+      $clip-path-inner: '#puzzle-inner-3',
 
-    &,
-    .dark-mode & {
-      background: url('../../../assets/img/puzzles/puzzle_bg_3.jpg') rem(-442)
-        rem(-237) no-repeat;
+      $bg-gradient: linear-gradient(135deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 387,
+      $height-pazzle-md: 382,
+      $width-pazzle-sm: 140,
+      $height-pazzle-sm: 142,
 
-      @include mdQuery(0, 1280) {
-        background-size: percent(584, 140) percent(584, 142);
-        background-position: percent(-183, 140 - 584) percent(-93, 142 - 584);
-      }
-    }
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      $bg-pos-x: -442,
+      $bg-pos-y: -237,
+      $bg-width-sm: 584,
+      $bg-height-sm: 584,
+      $bg-pos-x-sm: -183,
+      $bg-pos-y-sm: -93,
 
-    .light-mode & {
-      background: linear-gradient(135deg, #4a67cf 0%, #373180 100%);
-    }
+      $padding-top: 0,
+      $padding-right: 140,
+      $padding-bottom: 130,
+      $padding-left: 0,
 
-    .puzzle {
-      &__content {
-        padding-bottom: percent(130, 587);
-        padding-right: percent(140, 587);
-        clip-path: url(#puzzle-inner-3);
+      $circle-pos-x: 241,
+      $circle-pos-y: 227,
 
-        &::before {
-          top: percent(227, 580);
-          left: percent(241, 587);
-        }
-      }
+      $dekor-pos-x: -319,
+      $dekor-pos-y: -394,
+      $dekor-width: 854,
+      $dekor-height: 854
+    );
+  }
 
-      &__dekor {
-        left: percent(-319, 587);
-        top: percent(-394, 580);
-        width: percent(854, 587);
-        height: percent(854, 580);
-      }
+  &_4 {
+    @include puzzle(
+      $width-pazzle: 586,
+      $height-pazzle: 450,
 
-      &__text {
-      }
-    }
+      $clip-path-oter: '#puzzle-outer-4',
+      $clip-path-inner: '#puzzle-inner-4',
+
+      $bg-gradient: linear-gradient(147deg, #4a67cf 0%, #373180 66.93%),
+      $width-pazzle-md: 386,
+      $height-pazzle-md: 296,
+      $width-pazzle-sm: 140,
+      $height-pazzle-sm: 114,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_4.jpg'),
+      $bg-pos-x: -293,
+      $bg-pos-y: -295,
+      $bg-width-sm: 584,
+      $bg-height-sm: 584,
+      $bg-pos-x-sm: -164,
+      $bg-pos-y-sm: -189,
+
+      $padding-top: 115,
+      $padding-right: 120,
+      $padding-bottom: 120,
+      $padding-left: 140,
+
+      $circle-pos-x: 285,
+      $circle-pos-y: 232,
+
+      $dekor-pos-x: -134,
+      $dekor-pos-y: -202,
+      $dekor-width: 854,
+      $dekor-height: 854
+    );
   }
 
   &_opened {

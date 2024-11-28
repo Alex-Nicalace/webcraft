@@ -4,7 +4,7 @@ import { VARIANTS_PUZZLE } from './variantsPuzzleConfig';
 
 type TPuzzleProps = {
   className?: string;
-  variant: 3;
+  variant: 3 | 4;
   text?: string;
   isOpen?: boolean;
 };
