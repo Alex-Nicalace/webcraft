@@ -118,6 +118,11 @@ function App() {
         <Puzzle variant={4} text="как деталь пазла," isOpen={isOpenPuzzle} />
         <br />
         <br />
+        <Puzzle
+          variant={5}
+          text="должна быть на своём месте,"
+          isOpen={isOpenPuzzle}
+        />
         <br />
         <br />
         <br />

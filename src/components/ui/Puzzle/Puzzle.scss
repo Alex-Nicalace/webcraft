@@ -210,6 +210,43 @@
     );
   }
 
+  &_5 {
+    @include puzzle(
+      $width-pazzle: 580,
+      $height-pazzle: 727,
+
+      $clip-path-oter: '#puzzle-outer-5',
+      $clip-path-inner: '#puzzle-inner-5',
+
+      $bg-gradient: linear-gradient(153deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 387,
+      $height-pazzle-md: 485,
+      $width-pazzle-sm: 140,
+      $height-pazzle-sm: 178,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_5.jpg'),
+      $bg-pos-x: -479,
+      $bg-pos-y: -447,
+      $bg-width-sm: 582,
+      $bg-height-sm: 582,
+      $bg-pos-x-sm: -137,
+      $bg-pos-y-sm: -105,
+
+      $padding-top: 140,
+      $padding-right: 0,
+      $padding-bottom: 140,
+      $padding-left: 125,
+
+      $circle-pos-x: 282,
+      $circle-pos-y: 371,
+
+      $dekor-pos-x: -176,
+      $dekor-pos-y: -35,
+      $dekor-width: 854,
+      $dekor-height: 854
+    );
+  }
+
   &_opened {
     .puzzle {
       &__content {
