@@ -1,13 +1,8 @@
 import './Puzzle.scss';
 import SvgDekor from '../../../assets/img/puzzles/dekor.svg?react';
 import { VARIANTS_PUZZLE } from './variantsPuzzleConfig';
+import { TPuzzleProps } from './Puzzle.types';
 
-type TPuzzleProps = {
-  className?: string;
-  variant: 3 | 4 | 5 | 6;
-  text?: string;
-  isOpen?: boolean;
-};
 function Puzzle({
   className,
   text,
