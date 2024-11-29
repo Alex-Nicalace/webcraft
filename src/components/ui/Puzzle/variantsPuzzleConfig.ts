@@ -4,6 +4,8 @@ import SvgMaskOuter4 from '../../../assets/img/puzzles/puzzle-outer-4.svg?react'
 import SvgMaskInner4 from '../../../assets/img/puzzles/puzzle-inner-4.svg?react';
 import SvgMaskOuter5 from '../../../assets/img/puzzles/puzzle-outer-5.svg?react';
 import SvgMaskInner5 from '../../../assets/img/puzzles/puzzle-inner-5.svg?react';
+import SvgMaskOuter6 from '../../../assets/img/puzzles/puzzle-outer-6.svg?react';
+import SvgMaskInner6 from '../../../assets/img/puzzles/puzzle-inner-6.svg?react';
 
 export const VARIANTS_PUZZLE = {
   3: {
@@ -17,5 +19,9 @@ export const VARIANTS_PUZZLE = {
   5: {
     SvgMaskOuter: SvgMaskOuter5,
     SvgMaskInner: SvgMaskInner5,
+  },
+  6: {
+    SvgMaskOuter: SvgMaskOuter6,
+    SvgMaskInner: SvgMaskInner6,
   },
 };

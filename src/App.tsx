@@ -125,6 +125,7 @@ function App() {
         />
         <br />
         <br />
+        <Puzzle variant={6} text="чтобы получился" isOpen={isOpenPuzzle} />
         <br />
         <br />
       </Container>
