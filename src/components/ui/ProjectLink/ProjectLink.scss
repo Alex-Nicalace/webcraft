@@ -1,0 +1,70 @@
+@use '../../../styles/typography.scss' as *;
+
+@mixin hover-active {
+  &::before {
+    padding-left: rem(20);
+  }
+  .project-link {
+    &__icon {
+      svg {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.project-link {
+  padding: var(--padding-block) 0;
+  display: flex;
+  align-items: center;
+  column-gap: rem(20);
+  border-bottom: rem(1) solid var(--color-project-link-border);
+  color: var(--color-project-link-text);
+
+  @include adaptiveValue('--padding-block', 40, 30, $containerWidth, 1280, 1);
+
+  @include mobile-d {
+    column-gap: rem(10);
+    @include adaptiveValue('--padding-block', 30, 15, 768);
+  }
+
+  &::before {
+    @extend .text-menu-item;
+    content: counter(project, decimal-leading-zero);
+    align-self: flex-start;
+    transition: padding-left 0.6s ease;
+  }
+
+  // .project-link__text
+  &__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+
+    @include adaptiveValue('max-width', 918, 609, $containerWidth, 1280, 1);
+    @include adaptiveValue('font-size', 70, 40, $containerWidth, 1280, 1);
+    @include mobile-d {
+      @include adaptiveValue('font-size', 40, 20, 768);
+    }
+  }
+  // .project-link__icon
+  &__icon {
+    flex-grow: 1;
+    text-align: right;
+
+    svg {
+      transition: transform 0.6s ease;
+    }
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      @include hover-active;
+    }
+  }
+
+  &:active {
+    @include hover-active;
+  }
+}

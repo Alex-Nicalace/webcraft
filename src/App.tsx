@@ -8,6 +8,7 @@ import ButtonSlider from './components/ui/ButtonSlider';
 import Icon from './components/ui/Icon';
 import Puzzle from './components/ui/Puzzle';
 import TogglerTheme from './components/ui/TogglerTheme';
+import ProjectLink from './components/ui/ProjectLink';
 
 function App() {
   const [isOpenPuzzle, setOpenPuzzle] = useState(false);
@@ -131,6 +132,10 @@ function App() {
         <Puzzle variant={7} text="ожидаемый результат." isOpen={isOpenPuzzle} />
         <br />
         <br />
+        <ProjectLink href="#">
+          Очень длинное название проекта в две строки и не влазит чень длинное
+          название проекта в две строки и не влазит
+        </ProjectLink>
         <br />
         <br />
         <br />

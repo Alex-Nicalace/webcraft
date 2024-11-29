@@ -80,6 +80,9 @@
 
     --color-puzzle-inner-bg: var(--sero-siniy);
     --color-puzzle-dekor: var(--vspomogatelnyy-1);
+
+    --color-project-link-text: var(--white);
+    --color-project-link-border: var(--sero-siniy);
   }
 
   &.light-mode {
@@ -102,5 +105,8 @@
 
     --color-puzzle-inner-bg: var(--sero-goluboy-light);
     --color-puzzle-dekor: var(--vspomogatelnyy-1-light);
+
+    --color-project-link-text: var(--blue);
+    --color-project-link-border: var(--vspomogatelnyy-1-light);
   }
 }
