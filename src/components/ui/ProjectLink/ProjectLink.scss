@@ -14,25 +14,45 @@
 }
 
 .project-link {
-  padding: var(--padding-block) 0;
-  display: flex;
-  align-items: center;
-  column-gap: rem(20);
-  border-bottom: rem(1) solid var(--color-project-link-border);
-  color: var(--color-project-link-text);
+  $transition: 0.6s ease;
+  position: relative;
 
-  @include adaptiveValue('--padding-block', 40, 30, $containerWidth, 1280, 1);
+  &__link {
+    padding: var(--padding-block) 0;
+    display: flex;
+    align-items: center;
+    column-gap: rem(20);
+    border-bottom: rem(1) solid var(--color-project-link-border);
+    color: var(--color-project-link-text);
 
-  @include mobile-d {
-    column-gap: rem(10);
-    @include adaptiveValue('--padding-block', 30, 15, 768);
-  }
+    @include adaptiveValue('--padding-block', 40, 30, $containerWidth, 1280, 1);
 
-  &::before {
-    @extend .text-menu-item;
-    content: counter(project, decimal-leading-zero);
-    align-self: flex-start;
-    transition: padding-left 0.6s ease;
+    @include mobile-d {
+      column-gap: rem(10);
+      @include adaptiveValue('--padding-block', 30, 15, 768);
+    }
+
+    &::before {
+      @extend .text-menu-item;
+      content: counter(project, decimal-leading-zero);
+      align-self: flex-start;
+      transition: padding-left $transition;
+    }
+
+    @media (pointer: fine) {
+      &:hover {
+        & + .project-link__popup-wrapper {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        @include hover-active;
+      }
+    }
+
+    &:active {
+      @include hover-active;
+    }
   }
 
   // .project-link__text
@@ -54,17 +74,45 @@
     text-align: right;
 
     svg {
-      transition: transform 0.6s ease;
+      transition: transform $transition;
     }
   }
+  &__popup-wrapper {
+    position: absolute;
+    aspect-ratio: 570 / 449;
+    right: percent(82, 1800);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity $transition,
+      visibility $transition;
 
-  @media (pointer: fine) {
-    &:hover {
-      @include hover-active;
-    }
+    @include adaptiveValue('width', 570, 410, $containerWidth, 1280);
+    @include adaptiveValue('width', 410, 300, 1280, 768, 1);
   }
-
-  &:active {
-    @include hover-active;
+  // .project-link__popup
+  &__popup {
+    height: 100%;
+    padding: percent(60, 570) percent(70, 570);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-project-bg-popup);
+  }
+  // .project-link__project-img
+  &__project-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    flex-grow: 1;
+  }
+  // .project-link__title
+  &__title {
+    text-align: center;
+    &:not(:first-child) {
+      margin-top: percent(30, 430);
+    }
   }
 }
