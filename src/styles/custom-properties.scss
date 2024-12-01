@@ -84,6 +84,8 @@
     --color-project-link-text: var(--white);
     --color-project-link-border: var(--sero-siniy);
     --color-project-bg-popup: var(--bg-proekta);
+
+    --color-project-list-hover-text: var(--sero-siniy);
   }
 
   &.light-mode {
@@ -110,5 +112,7 @@
     --color-project-link-text: var(--blue);
     --color-project-link-border: var(--vspomogatelnyy-1-light);
     --color-project-bg-popup: var(--bg-proekta-light);
+
+    --color-project-list-hover-text: var(--vspomogatelnyy-1-light);
   }
 }

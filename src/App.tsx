@@ -10,6 +10,7 @@ import Puzzle from './components/ui/Puzzle';
 import TogglerTheme from './components/ui/TogglerTheme';
 import ProjectLink from './components/ui/ProjectLink';
 import projectImg from './assets/img/projects/Снимок экрана 2024-11-30 150026.jpg';
+import ProjectList from './components/ui/ProjectList';
 
 function App() {
   const [isOpenPuzzle, setOpenPuzzle] = useState(false);
@@ -133,16 +134,48 @@ function App() {
         <Puzzle variant={7} text="ожидаемый результат." isOpen={isOpenPuzzle} />
         <br />
         <br />
-        <ProjectLink
-          href="#"
-          projectData={{
-            title: 'Название организации',
-            imageUrl: projectImg,
-          }}
-        >
-          Очень длинное название проекта в две строки и не влазит чень длинное
-          название проекта в две строки и не влазит
-        </ProjectLink>
+        <ProjectList>
+          <ProjectLink
+            href="#"
+            projectData={{
+              title: 'Название организации',
+              imageUrl: projectImg,
+            }}
+          >
+            Очень длинное название проекта в две строки и не влазит чень длинное
+            название проекта в две строки и не влазит
+          </ProjectLink>
+          <ProjectLink
+            href="#"
+            projectData={{
+              title: 'Название организации',
+              imageUrl: projectImg,
+            }}
+          >
+            Очень длинное название проекта в две строки и не влазит чень длинное
+            название проекта в две строки и не влазит
+          </ProjectLink>
+          <ProjectLink
+            href="#"
+            projectData={{
+              title: 'Название организации',
+              imageUrl: projectImg,
+            }}
+          >
+            Очень длинное название проекта в две строки и не влазит чень длинное
+            название проекта в две строки и не влазит
+          </ProjectLink>
+          <ProjectLink
+            href="#"
+            projectData={{
+              title: 'Название организации',
+              imageUrl: projectImg,
+            }}
+          >
+            Очень длинное название проекта в две строки и не влазит чень длинное
+            название проекта в две строки и не влазит
+          </ProjectLink>
+        </ProjectList>
         <br />
         <br />
         <br />

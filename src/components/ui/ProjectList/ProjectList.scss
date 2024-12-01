@@ -1,0 +1,10 @@
+.project-list {
+  list-style-type: none;
+  counter-reset: project 0;
+
+  @media (pointer: fine) {
+    &:hover > li {
+      color: var(--color-project-list-hover-text);
+    }
+  }
+}

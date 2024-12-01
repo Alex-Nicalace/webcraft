@@ -11,7 +11,7 @@ function ProjectLink({
   const { title, imageUrl } = projectData || {};
 
   return (
-    <div className={['project-link', className].filter(Boolean).join(' ')}>
+    <li className={['project-link', className].filter(Boolean).join(' ')}>
       <a className="project-link__link" {...props}>
         <span className="project-link__text text-portfolio">{children}</span>
         <span className="project-link__icon">
@@ -36,7 +36,7 @@ function ProjectLink({
           </figure>
         </div>
       )}
-    </div>
+    </li>
   );
 }
 
