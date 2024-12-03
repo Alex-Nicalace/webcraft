@@ -225,6 +225,11 @@ function App() {
             text="Я самокритичен, поэтому всегда обучаюсь новому."
             isOpen={isOpenPuzzle}
           />
+          <Puzzle
+            variant="fact-8"
+            text="Люблю бег и плаванье. И регулярно этим занимаюсь."
+            isOpen={isOpenPuzzle}
+          />
         </div>
         <br />
         <br />

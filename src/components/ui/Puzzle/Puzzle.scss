@@ -11,6 +11,8 @@
   $width-pazzle-sm,
   $height-pazzle-sm,
   $bg-src,
+  $bg-width: null,
+  $bg-height: null,
   $bg-pos-x,
   $bg-pos-y,
   $bg-width-sm,
@@ -75,6 +77,10 @@
   &,
   .dark-mode & {
     background: $bg-src rem($bg-pos-x) rem($bg-pos-y) no-repeat;
+
+    @if $bg-width and $bg-height {
+      background-size: rem($bg-width) rem($bg-height);
+    }
 
     @include mdQuery(0, 1280) {
       background-size: percent($bg-width-sm, $width-pazzle-sm)
@@ -301,7 +307,9 @@
       $width-pazzle-sm: 140,
       $height-pazzle-sm: 178,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_5.jpg'),
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      $bg-width: 1818,
+      $bg-height: 1818,
       $bg-pos-x: -479,
       $bg-pos-y: -447,
       $bg-width-sm: 582,
@@ -412,7 +420,9 @@
       $width-pazzle-sm: 190,
       $height-pazzle-sm: 116,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_1.jpg'),
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_6.jpg'),
+      $bg-width: 672,
+      $bg-height: 672,
       $bg-pos-x: -139,
       $bg-pos-y: -274,
       $bg-width-sm: 531,
@@ -447,7 +457,9 @@
       $width-pazzle-sm: 189,
       $height-pazzle-sm: 116,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_2.jpg'),
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_4.jpg'),
+      $bg-width: 939,
+      $bg-height: 939,
       $bg-pos-x: -318,
       $bg-pos-y: -416,
       $bg-width-sm: 389,
@@ -552,7 +564,9 @@
       $width-pazzle-sm: 194,
       $height-pazzle-sm: 134,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_5.jpg'),
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      $bg-width: 783,
+      $bg-height: 783,
       $bg-pos-x: -155,
       $bg-pos-y: -229,
       $bg-width-sm: 580,
@@ -622,7 +636,9 @@
       $width-pazzle-sm: 224,
       $height-pazzle-sm: 118,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_7.jpg'),
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_4.jpg'),
+      $bg-width: 1327,
+      $bg-height: 1327,
       $bg-pos-x: -436,
       $bg-pos-y: -626,
       $bg-width-sm: 579,
@@ -640,6 +656,43 @@
 
       $num-puzzle-x: 172,
       $num-puzzle-y: 56
+    );
+  }
+
+  &_fact-8 {
+    @include puzzle(
+      $width-pazzle: 369,
+      $height-pazzle: 428,
+
+      $clip-path-oter: '#puzzle-fact-outer-8',
+      $clip-path-inner: '#puzzle-fact-inner-8',
+
+      $bg-gradient: linear-gradient(209deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 251,
+      $height-pazzle-md: 291,
+      $width-pazzle-sm: 164,
+      $height-pazzle-sm: 190,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      $bg-width: 1305,
+      $bg-height: 1305,
+      $bg-pos-x: -502,
+      $bg-pos-y: -314,
+      $bg-width-sm: 829,
+      $bg-height-sm: 829,
+      $bg-pos-x-sm: -312,
+      $bg-pos-y-sm: -200,
+
+      $padding-top: 80,
+      $padding-right: 77,
+      $padding-bottom: 85,
+      $padding-left: 0,
+
+      $circle-pos-x: 170,
+      $circle-pos-y: 212,
+
+      $num-puzzle-x: 62,
+      $num-puzzle-y: 156
     );
   }
 
