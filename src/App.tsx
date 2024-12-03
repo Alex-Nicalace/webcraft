@@ -182,7 +182,14 @@ function App() {
         </ProjectList>
         <br />
         <br />
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '10px',
+            alignItems: 'center',
+          }}
+        >
           <Puzzle
             variant="fact-1"
             text="Обожаю компьютеры и всё, что с ними связано, с детства."
@@ -191,6 +198,11 @@ function App() {
           <Puzzle
             variant="fact-2"
             text="Люблю то, чем занимаюсь."
+            isOpen={isOpenPuzzle}
+          />
+          <Puzzle
+            variant="fact-3"
+            text="Всегда ищу решения. Даже, если что-то не знаю."
             isOpen={isOpenPuzzle}
           />
         </div>

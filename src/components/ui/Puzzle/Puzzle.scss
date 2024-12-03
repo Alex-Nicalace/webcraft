@@ -55,6 +55,20 @@
     &::before {
       left: percent($num-puzzle-x, $width-pazzle);
       top: percent($num-puzzle-y, $height-pazzle);
+      width: percent(173, $width-pazzle);
+      height: percent(116, $height-pazzle);
+
+      @include mdQuery(0, 1280) {
+        width: percent(98, $width-pazzle-md);
+        height: percent(70, $height-pazzle-md);
+        border-radius: rem(6);
+      }
+
+      @include mobileSmall {
+        width: percent(79, $width-pazzle-sm);
+        height: percent(56, $height-pazzle-sm);
+        border-radius: rem(3);
+      }
     }
   }
 
@@ -155,8 +169,6 @@
     &::before {
       content: counter(fact);
       position: absolute;
-      width: percent(173, 435);
-      height: percent(116, 272);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -174,18 +186,6 @@
 
       @include mobile-d {
         @include adaptiveValue('font-size', 50, 40, 767);
-      }
-
-      @include mdQuery(0, 1280) {
-        width: percent(98, 285);
-        height: percent(70, 178);
-        border-radius: rem(6);
-      }
-
-      @include mobileSmall {
-        width: percent(79, 190);
-        height: percent(56, 116);
-        border-radius: rem(3);
       }
     }
     .puzzle {
@@ -465,6 +465,41 @@
 
       $num-puzzle-x: 93,
       $num-puzzle-y: 37
+    );
+  }
+
+  &_fact-3 {
+    @include puzzle(
+      $width-pazzle: 435,
+      $height-pazzle: 428,
+
+      $clip-path-oter: '#puzzle-fact-outer-3',
+      $clip-path-inner: '#puzzle-fact-inner-3',
+
+      $bg-gradient: linear-gradient(152deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 295,
+      $height-pazzle-md: 290,
+      $width-pazzle-sm: 191,
+      $height-pazzle-sm: 187,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_3.jpg'),
+      $bg-pos-x: -266,
+      $bg-pos-y: -501,
+      $bg-width-sm: 574,
+      $bg-height-sm: 574,
+      $bg-pos-x-sm: -102,
+      $bg-pos-y-sm: -230,
+
+      $padding-top: 80,
+      $padding-right: 80,
+      $padding-bottom: 80,
+      $padding-left: 80,
+
+      $circle-pos-x: 194,
+      $circle-pos-y: 208,
+
+      $num-puzzle-x: 127,
+      $num-puzzle-y: 156
     );
   }
 
