@@ -215,6 +215,11 @@ function App() {
             text="Я вдумчивый и детальный."
             isOpen={isOpenPuzzle}
           />
+          <Puzzle
+            variant="fact-6"
+            text="Я сообразительный и с чувством юмора ))"
+            isOpen={isOpenPuzzle}
+          />
         </div>
         <br />
         <br />
