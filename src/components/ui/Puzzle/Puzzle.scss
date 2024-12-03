@@ -538,6 +538,41 @@
     );
   }
 
+  &_fact-5 {
+    @include puzzle(
+      $width-pazzle: 435,
+      $height-pazzle: 266,
+
+      $clip-path-oter: '#puzzle-fact-outer-5',
+      $clip-path-inner: '#puzzle-fact-inner-5',
+
+      $bg-gradient: linear-gradient(157deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 293,
+      $height-pazzle-md: 179,
+      $width-pazzle-sm: 194,
+      $height-pazzle-sm: 134,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_5.jpg'),
+      $bg-pos-x: -155,
+      $bg-pos-y: -229,
+      $bg-width-sm: 580,
+      $bg-height-sm: 580,
+      $bg-pos-x-sm: -155,
+      $bg-pos-y-sm: -159,
+
+      $padding-top: 70,
+      $padding-right: 90,
+      $padding-bottom: 70,
+      $padding-left: 100,
+
+      $circle-pos-x: 202,
+      $circle-pos-y: 126,
+
+      $num-puzzle-x: 139,
+      $num-puzzle-y: 75
+    );
+  }
+
   &_opened {
     .puzzle {
       &__content {
