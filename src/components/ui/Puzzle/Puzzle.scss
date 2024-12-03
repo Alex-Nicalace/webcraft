@@ -1,3 +1,5 @@
+@use '../../../styles/typography.scss' as *;
+
 @mixin puzzle(
   $width-pazzle,
   $height-pazzle,
@@ -24,7 +26,9 @@
   $dekor-pos-x,
   $dekor-pos-y,
   $dekor-width,
-  $dekor-height
+  $dekor-height,
+  $num-puzzle-x: null,
+  $num-puzzle-y: null
 ) {
   aspect-ratio: #{$width-pazzle} / #{$height-pazzle};
   clip-path: url($clip-path-oter);
@@ -45,6 +49,13 @@
   @include mobile-d {
     aspect-ratio: #{$width-pazzle-sm}/#{$height-pazzle-sm};
     @include adaptiveValue('width', $width-pazzle-md, $width-pazzle-sm, 768);
+  }
+
+  @if $num-puzzle-x and $num-puzzle-y {
+    &::before {
+      left: percent($num-puzzle-x, $width-pazzle);
+      top: percent($num-puzzle-y, $height-pazzle);
+    }
   }
 
   &,
@@ -134,6 +145,64 @@
     position: absolute;
     width: 0;
     height: 0;
+  }
+
+  &[class*='fact'] {
+    counter-increment: fact 1;
+
+    &::before {
+      content: counter(fact);
+      position: absolute;
+      // left: percent(166, 435);
+      // top: percent(40, 272);
+      width: percent(173, 435);
+      height: percent(116, 272);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: rem(10);
+      backdrop-filter: blur(rem(40));
+      box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
+      background-color: var(--bg-pod-tekst);
+      color: var(--white);
+      transition: $transition;
+      @extend .text-fact-number;
+
+      @include mdQuery(0, 1280) {
+        width: percent(98, 285);
+        height: percent(70, 178);
+        border-radius: rem(6);
+      }
+
+      @include mobileSmall {
+        width: percent(79, 190);
+        height: percent(56, 116);
+        border-radius: rem(3);
+      }
+    }
+    .puzzle {
+      &__text {
+        display: flex;
+        column-gap: rem(20);
+        padding: rem(5) percent(20, 345);
+
+        @include mdQuery(0, 1280) {
+          column-gap: rem(15);
+        }
+
+        @include mdQuery(0, 700) {
+          column-gap: rem(8);
+          font-size: rem(12);
+          line-height: 1;
+        }
+
+        svg {
+          align-self: center;
+          flex-shrink: 0;
+          @include adaptiveValue('width', 18, 12);
+        }
+      }
+    }
   }
 
   &_3 {
@@ -321,6 +390,46 @@
     );
   }
 
+  &_fact-1 {
+    @include puzzle(
+      $width-pazzle: 435,
+      $height-pazzle: 272,
+
+      $clip-path-oter: '#puzzle-fact-outer-1',
+      $clip-path-inner: '#puzzle-fact-inner-1',
+
+      $bg-gradient: linear-gradient(180deg /* 360 */, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 285,
+      $height-pazzle-md: 178,
+      $width-pazzle-sm: 190,
+      $height-pazzle-sm: 116,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_1.jpg'),
+      $bg-pos-x: -139,
+      $bg-pos-y: -274,
+      $bg-width-sm: 531,
+      $bg-height-sm: 531,
+      $bg-pos-x-sm: -94,
+      $bg-pos-y-sm: -203,
+
+      $padding-top: 0,
+      $padding-right: 0,
+      $padding-bottom: 85,
+      $padding-left: 90,
+
+      $circle-pos-x: 241,
+      $circle-pos-y: 96,
+
+      $dekor-pos-x: -9,
+      $dekor-pos-y: -81,
+      $dekor-width: 853,
+      $dekor-height: 853,
+
+      $num-puzzle-x: 166,
+      $num-puzzle-y: 40
+    );
+  }
+
   &_opened {
     .puzzle {
       &__content {
@@ -335,6 +444,13 @@
 
       &__text {
         opacity: 1;
+      }
+    }
+
+    &[class*='fact'] {
+      &::before {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }

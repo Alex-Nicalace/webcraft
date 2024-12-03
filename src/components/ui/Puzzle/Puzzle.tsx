@@ -2,6 +2,7 @@ import './Puzzle.scss';
 import SvgDekor from '../../../assets/img/puzzles/dekor.svg?react';
 import { VARIANTS_PUZZLE } from './variantsPuzzleConfig';
 import { TPuzzleProps } from './Puzzle.types';
+import Icon from '../Icon';
 
 function Puzzle({
   className,
@@ -10,6 +11,9 @@ function Puzzle({
   isOpen,
 }: TPuzzleProps): JSX.Element {
   const { SvgMaskOuter, SvgMaskInner } = VARIANTS_PUZZLE[variant];
+  const isPuzzleCredo =
+    typeof variant === 'number' && variant >= 3 && variant <= 7;
+  const isPuzzleFact = typeof variant === 'string' && variant.includes('fact');
 
   return (
     <div
@@ -23,8 +27,27 @@ function Puzzle({
         .join(' ')}
     >
       <div className="puzzle__content">
-        <SvgDekor className="puzzle__dekor" />
-        <div className="puzzle__text text-credo">{text}</div>
+        {!isPuzzleFact && <SvgDekor className="puzzle__dekor" />}
+        <div
+          className={[
+            'puzzle__text',
+            isPuzzleCredo && 'text-credo',
+            isPuzzleFact && 'text-typing',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          {isPuzzleFact && (
+            <Icon
+              className="puzzle__icon-text"
+              name="Dawn"
+              width={18}
+              height={18}
+            />
+          )}
+          {isPuzzleCredo && text}
+          {isPuzzleFact && <span>{text}</span>}
+        </div>
       </div>
       <SvgMaskOuter className="puzzle__mask" />
       <SvgMaskInner className="puzzle__mask" />

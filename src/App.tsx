@@ -106,7 +106,11 @@ function App() {
         <ButtonSlider disabled />
         <br />
         <br />
-        <TogglerTheme currentTheme={currentTheme} onClick={handleToggleTheme} />
+        <TogglerTheme
+          style={{ position: 'fixed', bottom: '40px', right: '20px' }}
+          currentTheme={currentTheme}
+          onClick={handleToggleTheme}
+        />
         <br />
         <button
           style={{ position: 'fixed', bottom: '20px', right: '20px' }}
@@ -178,6 +182,13 @@ function App() {
         </ProjectList>
         <br />
         <br />
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          <Puzzle
+            variant="fact-1"
+            text="Обожаю компьютеры и всё, что с ними связано, с детства."
+            isOpen={isOpenPuzzle}
+          />
+        </div>
         <br />
         <br />
         <br />
