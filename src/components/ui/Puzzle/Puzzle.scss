@@ -23,10 +23,10 @@
   $padding-left,
   $circle-pos-x,
   $circle-pos-y,
-  $dekor-pos-x,
-  $dekor-pos-y,
-  $dekor-width,
-  $dekor-height,
+  $dekor-pos-x: null,
+  $dekor-pos-y: null,
+  $dekor-width: null,
+  $dekor-height: null,
   $num-puzzle-x: null,
   $num-puzzle-y: null
 ) {
@@ -91,11 +91,13 @@
       }
     }
 
-    &__dekor {
-      left: percent($dekor-pos-x, $width-pazzle);
-      top: percent($dekor-pos-y, $height-pazzle);
-      width: percent($dekor-width, $width-pazzle);
-      height: percent($dekor-height, $height-pazzle);
+    @if ($dekor-pos-x and $dekor-pos-y and $dekor-width and $dekor-height) {
+      &__dekor {
+        left: percent($dekor-pos-x, $width-pazzle);
+        top: percent($dekor-pos-y, $height-pazzle);
+        width: percent($dekor-width, $width-pazzle);
+        height: percent($dekor-height, $height-pazzle);
+      }
     }
 
     &__text {
@@ -153,8 +155,6 @@
     &::before {
       content: counter(fact);
       position: absolute;
-      // left: percent(166, 435);
-      // top: percent(40, 272);
       width: percent(173, 435);
       height: percent(116, 272);
       display: flex;
@@ -167,6 +167,14 @@
       color: var(--white);
       transition: $transition;
       @extend .text-fact-number;
+
+      @include mdQuery(1281, 0) {
+        @include adaptiveValue('font-size', 80, 50, $containerWidth, 1280);
+      }
+
+      @include mobile-d {
+        @include adaptiveValue('font-size', 50, 40, 767);
+      }
 
       @include mdQuery(0, 1280) {
         width: percent(98, 285);
@@ -420,13 +428,43 @@
       $circle-pos-x: 241,
       $circle-pos-y: 96,
 
-      $dekor-pos-x: -9,
-      $dekor-pos-y: -81,
-      $dekor-width: 853,
-      $dekor-height: 853,
-
       $num-puzzle-x: 166,
       $num-puzzle-y: 40
+    );
+  }
+
+  &_fact-2 {
+    @include puzzle(
+      $width-pazzle: 435,
+      $height-pazzle: 266,
+
+      $clip-path-oter: '#puzzle-fact-outer-2',
+      $clip-path-inner: '#puzzle-fact-inner-2',
+
+      $bg-gradient: linear-gradient(45deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 291,
+      $height-pazzle-md: 178,
+      $width-pazzle-sm: 189,
+      $height-pazzle-sm: 116,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_2.jpg'),
+      $bg-pos-x: -318,
+      $bg-pos-y: -416,
+      $bg-width-sm: 389,
+      $bg-height-sm: 389,
+      $bg-pos-x-sm: -100,
+      $bg-pos-y-sm: -151,
+
+      $padding-top: 0,
+      $padding-right: 80,
+      $padding-bottom: 85,
+      $padding-left: 0,
+
+      $circle-pos-x: 190,
+      $circle-pos-y: 117,
+
+      $num-puzzle-x: 93,
+      $num-puzzle-y: 37
     );
   }
 
