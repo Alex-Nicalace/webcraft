@@ -230,6 +230,16 @@ function App() {
             text="Люблю бег и плаванье. И регулярно этим занимаюсь."
             isOpen={isOpenPuzzle}
           />
+          <Puzzle
+            variant="fact-9"
+            text="Моя сестра — веб-дизайнер. Дизайн этого сайта выполнила она. Оживил макет я."
+            isOpen={isOpenPuzzle}
+          />
+          <Puzzle
+            variant="fact-10"
+            text="Мечтаю поплавать с косатками :) и научиться танцевать шафл ))"
+            isOpen={isOpenPuzzle}
+          />
         </div>
         <br />
         <br />

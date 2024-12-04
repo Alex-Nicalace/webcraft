@@ -179,9 +179,7 @@
       justify-content: center;
       align-items: center;
       border-radius: rem(10);
-      // backdrop-filter: blur(rem(40)); в хроме есть артефакты
-      // background-color: var(--bg-pod-tekst);
-      background-color: rgba(73, 0, 224, 0.8); // или rgba(30, 48, 112, 0.9)
+      background-color: var(--color-puzzle-number-bg);
       box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
       color: var(--white);
       transition: $transition;
@@ -706,38 +704,75 @@
 
   &_fact-9 {
     @include puzzle(
-      $width-pazzle: 369,
-      $height-pazzle: 428,
+      $width-pazzle: 535,
+      $height-pazzle: 343,
 
-      $clip-path-oter: '#puzzle-fact-outer-8',
-      $clip-path-inner: '#puzzle-fact-inner-8',
+      $clip-path-oter: '#puzzle-fact-outer-9',
+      $clip-path-inner: '#puzzle-fact-inner-9',
 
-      $bg-gradient: linear-gradient(209deg, #4a67cf 0%, #373180 100%),
-      $width-pazzle-md: 251,
-      $height-pazzle-md: 291,
-      $width-pazzle-sm: 164,
-      $height-pazzle-sm: 190,
+      $bg-gradient: linear-gradient(45deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 351,
+      $height-pazzle-md: 225,
+      $width-pazzle-sm: 230,
+      $height-pazzle-sm: 148,
 
       $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_4.jpg'),
-      $bg-width: 1305,
-      $bg-height: 1305,
-      $bg-pos-x: -502,
-      $bg-pos-y: -314,
-      $bg-width-sm: 829,
-      $bg-height-sm: 829,
-      $bg-pos-x-sm: -312,
-      $bg-pos-y-sm: -200,
+      $bg-width: 1345,
+      $bg-height: 1345,
+      $bg-pos-x: -544,
+      $bg-pos-y: -648,
+      $bg-width-sm: 716,
+      $bg-height-sm: 716,
+      $bg-pos-x-sm: -256,
+      $bg-pos-y-sm: -315,
 
-      $padding-top: 80,
-      $padding-right: 77,
-      $padding-bottom: 85,
-      $padding-left: 0,
+      $padding-top: 60,
+      $padding-right: 95,
+      $padding-bottom: 65,
+      $padding-left: 100,
 
-      $circle-pos-x: 170,
-      $circle-pos-y: 212,
+      $circle-pos-x: 260,
+      $circle-pos-y: 153,
 
-      $num-puzzle-x: 62,
-      $num-puzzle-y: 156
+      $num-puzzle-x: 181,
+      $num-puzzle-y: 111
+    );
+  }
+
+  &_fact-10 {
+    @include puzzle(
+      $width-pazzle: 396,
+      $height-pazzle: 342,
+
+      $clip-path-oter: '#puzzle-fact-outer-10',
+      $clip-path-inner: '#puzzle-fact-inner-10',
+
+      $bg-gradient: linear-gradient(45deg, #373180 0%, #4a67cf 100%),
+      $width-pazzle-md: 265,
+      $height-pazzle-md: 229,
+      $width-pazzle-sm: 170,
+      $height-pazzle-sm: 148,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_6.jpg'),
+      $bg-width: 1936,
+      $bg-height: 1936,
+      $bg-pos-x: -724,
+      $bg-pos-y: -691,
+      $bg-width-sm: 790,
+      $bg-height-sm: 790,
+      $bg-pos-x-sm: -263,
+      $bg-pos-y-sm: -234,
+
+      $padding-top: 0,
+      $padding-right: 0,
+      $padding-bottom: 75,
+      $padding-left: 95,
+
+      $circle-pos-x: 197,
+      $circle-pos-y: 131,
+
+      $num-puzzle-x: 155,
+      $num-puzzle-y: 72
     );
   }
 
