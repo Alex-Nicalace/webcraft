@@ -1,7 +1,7 @@
 import { AnchorHTMLAttributes } from 'react';
 
 export type TProjectLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  projectData?: {
+  popupData?: {
     title?: string;
     imageUrl: string;
   };

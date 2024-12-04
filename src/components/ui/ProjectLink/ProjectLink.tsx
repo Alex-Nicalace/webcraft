@@ -5,10 +5,10 @@ import { TProjectLinkProps } from './ProjectLink.types';
 function ProjectLink({
   className,
   children,
-  projectData,
+  popupData,
   ...props
 }: TProjectLinkProps): JSX.Element {
-  const { title, imageUrl } = projectData || {};
+  const { title, imageUrl } = popupData || {};
 
   return (
     <li className={['project-link', className].filter(Boolean).join(' ')}>
@@ -18,7 +18,7 @@ function ProjectLink({
           <Icon name="ArrowRight" width={32} height={32} />
         </span>
       </a>
-      {projectData && (
+      {popupData && (
         <div className="project-link__popup-wrapper">
           <figure className="project-link__popup">
             <img
