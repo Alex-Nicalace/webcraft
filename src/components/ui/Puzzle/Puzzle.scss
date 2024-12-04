@@ -179,11 +179,19 @@
       justify-content: center;
       align-items: center;
       border-radius: rem(10);
-      backdrop-filter: blur(rem(40));
+      // backdrop-filter: blur(rem(40)); в хроме есть артефакты
+      // background-color: var(--bg-pod-tekst);
+      background-color: rgba(73, 0, 224, 0.8); // или rgba(30, 48, 112, 0.9)
       box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
-      background-color: var(--bg-pod-tekst);
       color: var(--white);
       transition: $transition;
+
+      /* Только для Firefox. в фокск не наблюдаются артефакты */
+      @-moz-document url-prefix() {
+        backdrop-filter: blur(rem(40));
+        background-color: var(--bg-pod-tekst);
+      }
+
       @extend .text-fact-number;
 
       @include mdQuery(1281, 0) {
@@ -674,6 +682,43 @@
       $height-pazzle-sm: 190,
 
       $bg-src: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      $bg-width: 1305,
+      $bg-height: 1305,
+      $bg-pos-x: -502,
+      $bg-pos-y: -314,
+      $bg-width-sm: 829,
+      $bg-height-sm: 829,
+      $bg-pos-x-sm: -312,
+      $bg-pos-y-sm: -200,
+
+      $padding-top: 80,
+      $padding-right: 77,
+      $padding-bottom: 85,
+      $padding-left: 0,
+
+      $circle-pos-x: 170,
+      $circle-pos-y: 212,
+
+      $num-puzzle-x: 62,
+      $num-puzzle-y: 156
+    );
+  }
+
+  &_fact-9 {
+    @include puzzle(
+      $width-pazzle: 369,
+      $height-pazzle: 428,
+
+      $clip-path-oter: '#puzzle-fact-outer-8',
+      $clip-path-inner: '#puzzle-fact-inner-8',
+
+      $bg-gradient: linear-gradient(209deg, #4a67cf 0%, #373180 100%),
+      $width-pazzle-md: 251,
+      $height-pazzle-md: 291,
+      $width-pazzle-sm: 164,
+      $height-pazzle-sm: 190,
+
+      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_4.jpg'),
       $bg-width: 1305,
       $bg-height: 1305,
       $bg-pos-x: -502,
