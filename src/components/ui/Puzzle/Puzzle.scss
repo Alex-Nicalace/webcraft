@@ -197,7 +197,7 @@
       }
 
       @include mobile-d {
-        @include adaptiveValue('font-size', 50, 40, 767);
+        @include adaptiveValue('font-size', 50, 40, 767.98);
       }
     }
     .puzzle {

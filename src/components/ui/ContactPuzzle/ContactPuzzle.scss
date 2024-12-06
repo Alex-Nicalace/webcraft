@@ -1,0 +1,83 @@
+@mixin puzzle(
+  $widthPuzzle,
+  $heightPuzzle,
+  $clipPathOter,
+  $clipPathInner,
+  $marginLeft,
+  $marginRight
+) {
+  width: percent($widthPuzzle, 1800);
+  aspect-ratio: #{$widthPuzzle} / #{$heightPuzzle};
+  min-height: rem(74);
+  clip-path: url($clipPathOter);
+
+  &::before {
+    clip-path: url($clipPathInner);
+  }
+
+  .contact-puzzle {
+    // .contact-puzzle__text
+    &__text {
+      margin-left: percent($marginLeft, $widthPuzzle);
+    }
+    // .contact-puzzle__arrow
+    &__arrow {
+      margin-right: percent($marginRight, $widthPuzzle);
+    }
+  }
+}
+
+.contact-puzzle {
+  $transition: 0.3s ease-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-contact-puzzle-border);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-contact-puzzle-bg);
+    z-index: -1;
+    transition: background-color $transition;
+  }
+
+  // .contact-puzzle__text
+  &__text {
+  }
+  // .contact-puzzle__arrow
+  &__arrow {
+    transition: transform $transition;
+  }
+  // .contact-puzzle__mask
+  &__mask {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      &::before {
+        background-color: var(--color-contact-puzzle-bg-hover);
+      }
+
+      .contact-puzzle__arrow {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &_1 {
+    @include puzzle(
+      $widthPuzzle: 935,
+      $heightPuzzle: 159,
+      $clipPathOter: '#puzzle-footer-outer-1',
+      $clipPathInner: '#puzzle-footer-inner-1',
+      $marginLeft: 35,
+      $marginRight: 132
+    );
+  }
+}

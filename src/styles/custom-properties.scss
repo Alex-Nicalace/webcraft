@@ -87,6 +87,10 @@
     --color-project-bg-popup: var(--bg-proekta);
 
     --color-project-list-hover-text: var(--sero-siniy);
+
+    --color-contact-puzzle-border: var(--vspomogatelnyy-1);
+    --color-contact-puzzle-bg: var(--sero-siniy);
+    --color-contact-puzzle-hover-bg: var(--vspomogatelnyy-1);
   }
 
   &.light-mode {
@@ -116,5 +120,9 @@
     --color-project-bg-popup: var(--bg-proekta-light);
 
     --color-project-list-hover-text: var(--vspomogatelnyy-1-light);
+
+    --color-contact-puzzle-border: var(--sero-goluboy-light);
+    --color-contact-puzzle-bg: var(--vspomogatelnyy-1-light);
+    --color-contact-puzzle-hover-bg: var(--sero-goluboy-light);
   }
 }

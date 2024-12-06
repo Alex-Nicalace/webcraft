@@ -10,6 +10,7 @@ import Puzzle from './components/ui/Puzzle';
 import TogglerTheme from './components/ui/TogglerTheme';
 import projectImg from './assets/img/projects/Снимок экрана 2024-11-30 150026.jpg';
 import ProjectList from './components/ui/ProjectList';
+import ContactPuzzle from './components/ui/ContactPuzzle/ContactPuzzle';
 
 const PROJECTS = [
   {
@@ -240,6 +241,12 @@ function App() {
         </div>
         <br />
         <br />
+        <ContactPuzzle href="#" variant={1}>
+          Telegram
+        </ContactPuzzle>
+        <ContactPuzzle href="mailto:name@domain.com" variant={2}>
+          name@domain.com
+        </ContactPuzzle>
         <br />
         <br />
         <br />
