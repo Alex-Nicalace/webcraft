@@ -241,12 +241,14 @@ function App() {
         </div>
         <br />
         <br />
-        <ContactPuzzle href="#" variant={1}>
-          Telegram
-        </ContactPuzzle>
-        <ContactPuzzle href="mailto:name@domain.com" variant={2}>
-          name@domain.com
-        </ContactPuzzle>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <ContactPuzzle href="#" variant={1}>
+            Telegram
+          </ContactPuzzle>
+          <ContactPuzzle href="mailto:name@domain.com" variant={2}>
+            name@domain.com
+          </ContactPuzzle>
+        </div>
         <br />
         <br />
         <br />

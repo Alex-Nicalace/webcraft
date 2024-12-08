@@ -1,28 +1,57 @@
 @mixin puzzle(
+  $widthContainer: 1800,
   $widthPuzzle,
   $heightPuzzle,
   $clipPathOter,
   $clipPathInner,
-  $marginLeft,
-  $marginRight
+  $paddingTop: null,
+  $paddingRight: null,
+  $paddingBottom: null,
+  $paddingLeft: null,
+  $marginTop: null,
+  $marginRight: null,
+  $marginBottom: null,
+  $marginLeft: null
 ) {
-  width: percent($widthPuzzle, 1800);
+  width: percent($widthPuzzle, $widthContainer);
   aspect-ratio: #{$widthPuzzle} / #{$heightPuzzle};
   min-height: rem(74);
   clip-path: url($clipPathOter);
 
-  &::before {
-    clip-path: url($clipPathInner);
+  @if $marginTop != null {
+    margin-top: percent($marginTop, $widthContainer);
+  }
+  @if $marginRight != null {
+    margin-right: percent($marginRight, $widthContainer);
+  }
+  @if $marginBottom != null {
+    margin-bottom: percent($marginBottom, $widthContainer);
+  }
+  @if $marginLeft != null {
+    margin-left: percent($marginLeft, $widthContainer);
   }
 
   .contact-puzzle {
+    &__content {
+      @if $paddingTop != null {
+        padding-top: percent($paddingTop, $widthPuzzle);
+      }
+      @if $paddingRight != null {
+        padding-right: percent($paddingRight, $widthPuzzle);
+      }
+      @if $paddingBottom != null {
+        padding-bottom: percent($paddingBottom, $widthPuzzle);
+      }
+      @if $paddingLeft != null {
+        padding-left: percent($paddingLeft, $widthPuzzle);
+      }
+      clip-path: url($clipPathInner);
+    }
     // .contact-puzzle__text
     &__text {
-      margin-left: percent($marginLeft, $widthPuzzle);
     }
     // .contact-puzzle__arrow
     &__arrow {
-      margin-right: percent($marginRight, $widthPuzzle);
     }
   }
 }
@@ -30,17 +59,16 @@
 .contact-puzzle {
   $transition: 0.3s ease-out;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: inline-flex;
   background-color: var(--color-contact-puzzle-border);
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+  // .contact-puzzle__content
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--color-contact-puzzle-bg);
-    z-index: -1;
     transition: background-color $transition;
   }
 
@@ -49,6 +77,7 @@
   }
   // .contact-puzzle__arrow
   &__arrow {
+    flex: 0 0 auto;
     transition: transform $transition;
   }
   // .contact-puzzle__mask
@@ -60,12 +89,14 @@
 
   @media (pointer: fine) {
     &:hover {
-      &::before {
-        background-color: var(--color-contact-puzzle-bg-hover);
-      }
+      .contact-puzzle {
+        &__content {
+          background-color: var(--color-contact-puzzle-bg-hover);
+        }
 
-      .contact-puzzle__arrow {
-        transform: rotate(-45deg);
+        &__arrow {
+          transform: rotate(-45deg);
+        }
       }
     }
   }
@@ -76,8 +107,21 @@
       $heightPuzzle: 159,
       $clipPathOter: '#puzzle-footer-outer-1',
       $clipPathInner: '#puzzle-footer-inner-1',
-      $marginLeft: 35,
-      $marginRight: 132
+      $paddingLeft: 35,
+      $paddingRight: 132
+    );
+  }
+
+  &_2 {
+    @include puzzle(
+      $widthPuzzle: 914,
+      $heightPuzzle: 217,
+      $clipPathOter: '#puzzle-footer-outer-2',
+      $clipPathInner: '#puzzle-footer-inner-2',
+      $paddingLeft: 85,
+      $paddingRight: 35,
+      $paddingBottom: 60,
+      $marginLeft: 0
     );
   }
 }

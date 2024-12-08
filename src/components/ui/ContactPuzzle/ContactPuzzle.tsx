@@ -1,8 +1,7 @@
 import Icon from '../Icon';
 import './ContactPuzzle.scss';
 import { TContactPuzzleProps } from './ContactPuzzle.types';
-import SvgMaskOuter from '../../../assets/img/puzzles/puzzle-footer-inner-1.svg?react';
-import SvgMaskInner from '../../../assets/img/puzzles/puzzle-footer-outer-1.svg?react';
+import { VARIANTS_PUZZLE } from './variantsPuzzleConfig';
 
 function ContactPuzzle({
   className,
@@ -10,6 +9,8 @@ function ContactPuzzle({
   children,
   ...props
 }: TContactPuzzleProps): JSX.Element {
+  const { SvgMaskOuter, SvgMaskInner } = VARIANTS_PUZZLE[variant];
+
   return (
     <a
       className={['contact-puzzle', `contact-puzzle_${variant}`, className]
@@ -17,13 +18,17 @@ function ContactPuzzle({
         .join(' ')}
       {...props}
     >
-      <span className="contact-puzzle__text text-competencies">{children}</span>
-      <Icon
-        className="contact-puzzle__arrow"
-        name="ArrowRight"
-        width={32}
-        height={32}
-      />
+      <span className="contact-puzzle__content">
+        <span className="contact-puzzle__text text-competencies">
+          {children}
+        </span>
+        <Icon
+          className="contact-puzzle__arrow"
+          name="ArrowRight"
+          width={32}
+          height={32}
+        />
+      </span>
       <SvgMaskOuter className="contact-puzzle__mask" />
       <SvgMaskInner className="contact-puzzle__mask" />
     </a>
