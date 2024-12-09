@@ -121,7 +121,22 @@
       $paddingLeft: 85,
       $paddingRight: 35,
       $paddingBottom: 60,
-      $marginLeft: -57
+      $marginLeft: -57,
+      $marginBottom: -60
+    );
+  }
+
+  &_3 {
+    @include puzzle(
+      $widthPuzzle: 888,
+      $heightPuzzle: 277,
+      $clipPathOter: '#puzzle-footer-outer-3',
+      $clipPathInner: '#puzzle-footer-inner-3',
+      $paddingTop: 60,
+      $paddingLeft: 35,
+      $paddingRight: 85,
+      $paddingBottom: 60,
+      $marginTop: -62
     );
   }
 }

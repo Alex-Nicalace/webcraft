@@ -241,12 +241,21 @@ function App() {
         </div>
         <br />
         <br />
-        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+          }}
+        >
           <ContactPuzzle href="#" variant={1}>
             Telegram
           </ContactPuzzle>
           <ContactPuzzle href="mailto:name@domain.com" variant={2}>
             name@domain.com
+          </ContactPuzzle>
+          <ContactPuzzle href="#" variant={3}>
+            Instagram
           </ContactPuzzle>
         </div>
         <br />
