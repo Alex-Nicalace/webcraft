@@ -136,7 +136,21 @@
       $paddingLeft: 35,
       $paddingRight: 85,
       $paddingBottom: 60,
-      $marginTop: -62
+      $marginTop: -62,
+      $marginRight: -49,
+      $marginBottom: -62
+    );
+  }
+
+  &_4 {
+    @include puzzle(
+      $widthPuzzle: 953,
+      $heightPuzzle: 159,
+      $clipPathOter: '#puzzle-footer-outer-4',
+      $clipPathInner: '#puzzle-footer-inner-4',
+      $paddingRight: 35,
+      $paddingLeft: 124,
+      $marginTop: -3
     );
   }
 }

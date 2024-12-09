@@ -257,6 +257,9 @@ function App() {
           <ContactPuzzle href="#" variant={3}>
             Instagram
           </ContactPuzzle>
+          <ContactPuzzle href="#" variant={4}>
+            github
+          </ContactPuzzle>
         </div>
         <br />
         <br />
