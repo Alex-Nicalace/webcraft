@@ -260,6 +260,9 @@ function App() {
           <ContactPuzzle href="#" variant={4}>
             github
           </ContactPuzzle>
+          <ContactPuzzle href="#" variant={5}>
+            +373 (777) 3 55 37
+          </ContactPuzzle>
         </div>
         <br />
         <br />
