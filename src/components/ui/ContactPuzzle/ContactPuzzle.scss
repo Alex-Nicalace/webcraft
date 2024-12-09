@@ -162,7 +162,21 @@
       $clipPathInner: '#puzzle-footer-inner-5',
       $paddingRight: 85,
       $paddingLeft: 35,
-      $marginTop: -3
+      $marginTop: -3,
+      $marginRight: -62
+    );
+  }
+
+  &_6 {
+    @include puzzle(
+      $widthPuzzle: 966,
+      $heightPuzzle: 218,
+      $clipPathOter: '#puzzle-footer-outer-6',
+      $clipPathInner: '#puzzle-footer-inner-6',
+      $paddingTop: 60,
+      $paddingRight: 35,
+      $paddingLeft: 35,
+      $marginTop: -62
     );
   }
 }
