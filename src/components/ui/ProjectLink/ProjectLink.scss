@@ -28,11 +28,11 @@
     counter-increment: project 1;
     transition: color $transition;
 
-    @include adaptiveValue('--padding-block', 40, 30, $containerWidth, 1280, 1);
+    @include adaptiveValue('--padding-block', 40, 30, $containerWidth, $pc, 1);
 
     @include mobile-d {
       column-gap: rem(10);
-      @include adaptiveValue('--padding-block', 30, 15, 768);
+      @include adaptiveValue('--padding-block', 30, 15, $mobile);
     }
 
     &::before {
@@ -70,10 +70,10 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
 
-    @include adaptiveValue('max-width', 918, 609, $containerWidth, 1280, 1);
-    @include adaptiveValue('font-size', 70, 40, $containerWidth, 1280, 1);
+    @include adaptiveValue('max-width', 918, 609, $containerWidth, $pc, 1);
+    @include adaptiveValue('font-size', 70, 40, $containerWidth, $pc, 1);
     @include mobile-d {
-      @include adaptiveValue('font-size', 40, 20, 768);
+      @include adaptiveValue('font-size', 40, 20, $mobile);
     }
   }
   // .project-link__icon
@@ -98,8 +98,8 @@
       opacity $transition,
       visibility $transition;
 
-    @include adaptiveValue('width', 570, 410, $containerWidth, 1280);
-    @include adaptiveValue('width', 410, 300, 1280, 768, 1);
+    @include adaptiveValue('width', 570, 410, $containerWidth, $pc);
+    @include adaptiveValue('width', 410, 300, $pc, $mobile, 1);
   }
   // .project-link__popup
   &__popup {

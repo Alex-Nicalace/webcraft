@@ -6,7 +6,7 @@ h1 {
     font-size: rem(180);
     line-height: 1.2;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(116);
     }
 
@@ -24,7 +24,7 @@ h1 {
     font-size: rem(80);
     line-height: 0.95;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(60);
     }
 
@@ -55,7 +55,7 @@ h1 {
     font-size: rem(16);
     line-height: 1.2;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(15);
     }
   }
@@ -76,7 +76,7 @@ h1 {
     font-size: rem(20);
     line-height: 1.2;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(18);
     }
 
@@ -89,7 +89,7 @@ h1 {
     font-size: rem(16);
     line-height: 1.2;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(15);
     }
   }
@@ -99,7 +99,7 @@ h1 {
     font-size: rem(70);
     line-height: 0.9; // по макету 0.7
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(40);
       line-height: 0.8;
     }
@@ -115,7 +115,7 @@ h1 {
     font-size: rem(80);
     line-height: 1.2;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(50);
       line-height: 1;
     }
@@ -144,7 +144,7 @@ h1 {
     line-height: 1.2;
     text-transform: uppercase;
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       font-size: rem(14);
     }
   }

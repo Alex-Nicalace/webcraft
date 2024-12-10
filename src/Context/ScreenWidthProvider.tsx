@@ -4,7 +4,7 @@ import { ScreenWidthContext } from './ScreenWidthContext';
 const MEDIAQUERIES = [
   '(max-width: 1280px )',
   '(max-width: 991.98px )',
-  '(max-width: 767.98px )',
+  '(max-width: 768.98px )',
   '(max-width: 479.98px )',
 ];
 

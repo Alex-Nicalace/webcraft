@@ -77,6 +77,13 @@
 
   // .contact-puzzle__text
   &__text {
+    @include tablet-d {
+      font-size: rem(18);
+    }
+
+    @include mdQuery(0, $mobile - 1) {
+      font-size: rem(16);
+    }
   }
   // .contact-puzzle__arrow
   &__arrow {
@@ -85,7 +92,7 @@
     height: var(--icon-size);
     transition: transform $transition;
 
-    @include adaptiveValue('--icon-size', 32, 24, $containerWidth, 768, 1);
+    @include adaptiveValue('--icon-size', 32, 24, $containerWidth, $mobile, 1);
   }
   // .contact-puzzle__mask
   &__mask {

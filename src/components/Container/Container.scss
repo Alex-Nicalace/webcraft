@@ -3,7 +3,7 @@
 .container {
   padding: 0 rem(math.div($containerPadding, 2));
 
-  @include mdQuery(0, 1280) {
+  @include mdQuery(0, $pc) {
     padding: 0 rem(40);
   }
 

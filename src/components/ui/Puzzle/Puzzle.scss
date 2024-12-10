@@ -41,16 +41,21 @@
     $width-pazzle,
     $width-pazzle-md,
     $containerWidth,
-    1280,
+    $pc,
     1
   );
-  @include mdQuery(0, 1280) {
+  @include mdQuery(0, $pc) {
     aspect-ratio: #{$width-pazzle-md}/#{$height-pazzle-md};
   }
 
   @include mobile-d {
     aspect-ratio: #{$width-pazzle-sm}/#{$height-pazzle-sm};
-    @include adaptiveValue('width', $width-pazzle-md, $width-pazzle-sm, 768);
+    @include adaptiveValue(
+      'width',
+      $width-pazzle-md,
+      $width-pazzle-sm,
+      $mobile
+    );
   }
 
   @if $num-puzzle-x and $num-puzzle-y {
@@ -60,7 +65,7 @@
       width: percent(173, $width-pazzle);
       height: percent(116, $height-pazzle);
 
-      @include mdQuery(0, 1280) {
+      @include mdQuery(0, $pc) {
         width: percent(98, $width-pazzle-md);
         height: percent(70, $height-pazzle-md);
         border-radius: rem(6);
@@ -82,7 +87,7 @@
       background-size: rem($bg-width) rem($bg-height);
     }
 
-    @include mdQuery(0, 1280) {
+    @include mdQuery(0, $pc) {
       background-size: percent($bg-width-sm, $width-pazzle-sm)
         percent($bg-height-sm, $height-pazzle-sm);
       background-position: percent(
@@ -192,12 +197,12 @@
 
       @extend .text-fact-number;
 
-      @include mdQuery(1281, 0) {
-        @include adaptiveValue('font-size', 80, 50, $containerWidth, 1280);
+      @include mdQuery($pc + 0.02, 0) {
+        @include adaptiveValue('font-size', 80, 50, $containerWidth, $pc);
       }
 
       @include mobile-d {
-        @include adaptiveValue('font-size', 50, 40, 767.98);
+        @include adaptiveValue('font-size', 50, 40, $mobile);
       }
     }
     .puzzle {
@@ -206,7 +211,7 @@
         column-gap: rem(20);
         padding: rem(5) percent(20, 345);
 
-        @include mdQuery(0, 1280) {
+        @include mdQuery(0, $pc) {
           column-gap: rem(15);
         }
 
