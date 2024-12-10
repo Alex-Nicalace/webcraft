@@ -11,6 +11,7 @@ import TogglerTheme from './components/ui/TogglerTheme';
 import projectImg from './assets/img/projects/Снимок экрана 2024-11-30 150026.jpg';
 import ProjectList from './components/ui/ProjectList';
 import ContactPuzzle from './components/ui/ContactPuzzle/ContactPuzzle';
+import ScreenWidthProvider from './Context/ScreenWidthProvider';
 
 const PROJECTS = [
   {
@@ -66,7 +67,7 @@ function App() {
   }
 
   return (
-    <>
+    <ScreenWidthProvider>
       <Container tag="div" className="tst">
         <h1 className="header-additional">Привет</h1>
         <h1 className="header">H1 (доп.) - 180</h1>
@@ -281,7 +282,7 @@ function App() {
         <br />
         <br />
       </Container>
-    </>
+    </ScreenWidthProvider>
   );
 }
 
