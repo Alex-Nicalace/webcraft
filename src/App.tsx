@@ -263,10 +263,14 @@ function App() {
           <ContactPuzzle href="#" variant={5}>
             +373 (777) 3 55 37
           </ContactPuzzle>
-          <ContactPuzzle href="#" variant={6}>
+          <ContactPuzzle
+            href="https://www.behance.net/anna_privalova_10"
+            variant={6}
+          >
             Design by Anna Privalova
           </ContactPuzzle>
         </div>
+
         <br />
         <br />
         <br />

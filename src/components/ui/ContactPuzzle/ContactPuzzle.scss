@@ -3,7 +3,7 @@
   $widthPuzzle,
   $heightPuzzle,
   $clipPathOter,
-  $clipPathInner,
+  $clipPathInner: null,
   $paddingTop: null,
   $paddingRight: null,
   $paddingBottom: null,
@@ -45,7 +45,9 @@
       @if $paddingLeft != null {
         padding-left: percent($paddingLeft, $widthPuzzle);
       }
-      clip-path: url($clipPathInner);
+      @if $clipPathInner != null {
+        clip-path: url($clipPathInner);
+      }
     }
     // .contact-puzzle__text
     &__text {
@@ -85,6 +87,23 @@
     position: absolute;
     width: 0;
     height: 0;
+  }
+
+  &__link {
+    padding-bottom: rem(5);
+    color: var(--color-contact-puzzle-design);
+    border-bottom: rem(1) solid currentColor;
+    transition: color 0.3s ease-out;
+
+    @media (pointer: fine) {
+      &:hover {
+        color: var(--color-contact-puzzle-design-hover);
+      }
+    }
+
+    &:active {
+      color: var(---color-contact-puzzle-design-hover);
+    }
   }
 
   @media (pointer: fine) {
@@ -168,14 +187,35 @@
   }
 
   &_6 {
+    background-color: transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--color-contact-puzzle-border);
+      clip-path: url(#puzzle-footer-inner-6);
+    }
+
+    .contact-puzzle {
+      &__content {
+        justify-content: flex-end;
+        align-items: flex-end;
+        background-color: transparent;
+      }
+    }
+
     @include puzzle(
       $widthPuzzle: 966,
       $heightPuzzle: 218,
       $clipPathOter: '#puzzle-footer-outer-6',
-      $clipPathInner: '#puzzle-footer-inner-6',
       $paddingTop: 60,
       $paddingRight: 35,
-      $paddingLeft: 35,
+      $paddingBottom: 35,
+      $paddingLeft: 70,
       $marginTop: -62
     );
   }
