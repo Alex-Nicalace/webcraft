@@ -34,7 +34,7 @@ function ContactPuzzle({
           />
         </>
       ) : (
-        <a className="contact-puzzle__link" {...props}>
+        <a className="contact-puzzle__link text-typing" {...props}>
           {children}
         </a>
       )}

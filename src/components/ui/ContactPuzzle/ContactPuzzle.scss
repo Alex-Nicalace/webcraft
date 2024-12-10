@@ -2,7 +2,7 @@
   $widthContainer: 1800,
   $widthPuzzle,
   $heightPuzzle,
-  $clipPathOter,
+  $clipPathOter: null,
   $clipPathInner: null,
   $paddingTop: null,
   $paddingRight: null,
@@ -15,8 +15,9 @@
 ) {
   width: percent($widthPuzzle, $widthContainer);
   aspect-ratio: #{$widthPuzzle} / #{$heightPuzzle};
-  min-height: rem(74);
-  clip-path: url($clipPathOter);
+  @if $clipPathOter != null {
+    clip-path: url($clipPathOter);
+  }
 
   @if $marginTop != null {
     margin-top: percent($marginTop, $widthContainer);
@@ -79,8 +80,12 @@
   }
   // .contact-puzzle__arrow
   &__arrow {
-    flex: 0 0 auto;
+    flex-shrink: 0;
+    flex-basis: var(--icon-size);
+    height: var(--icon-size);
     transition: transform $transition;
+
+    @include adaptiveValue('--icon-size', 32, 24, $containerWidth, 768, 1);
   }
   // .contact-puzzle__mask
   &__mask {
@@ -130,6 +135,17 @@
       $paddingRight: 132,
       $marginRight: -57
     );
+
+    @include tablet-d {
+      @include puzzle(
+        $widthContainer: 728,
+        $widthPuzzle: 376,
+        $heightPuzzle: 74,
+        $paddingLeft: 20,
+        $paddingRight: 52,
+        $marginRight: -24
+      );
+    }
   }
 
   &_2 {
@@ -143,6 +159,17 @@
       $paddingBottom: 60,
       $marginBottom: -60
     );
+
+    @include tablet-d {
+      @include puzzle(
+        $widthContainer: 728,
+        $widthPuzzle: 376,
+        $heightPuzzle: 101,
+        $paddingLeft: 40,
+        $paddingRight: 20,
+        $marginBottom: -27
+      );
+    }
   }
 
   &_3 {
@@ -158,6 +185,18 @@
       $marginTop: -62,
       $marginBottom: -62
     );
+
+    @include tablet-d {
+      @include puzzle(
+        $widthContainer: 728,
+        $widthPuzzle: 357,
+        $heightPuzzle: 132,
+        $paddingLeft: 20,
+        $paddingRight: 33,
+        $marginTop: -30,
+        $marginBottom: -30
+      );
+    }
   }
 
   &_4 {
@@ -171,6 +210,18 @@
       $marginTop: -4,
       $marginLeft: -49
     );
+
+    @include tablet-d {
+      @include puzzle(
+        $widthContainer: 728,
+        $widthPuzzle: 391,
+        $heightPuzzle: 74,
+        $paddingLeft: 55,
+        $paddingRight: 20,
+        $marginTop: -1,
+        $marginLeft: -20
+      );
+    }
   }
 
   &_5 {
@@ -183,6 +234,16 @@
       $paddingLeft: 35,
       $marginTop: -3
     );
+
+    @include tablet-d {
+      @include puzzle(
+        $widthContainer: 728,
+        $widthPuzzle: 357,
+        $heightPuzzle: 74,
+        $paddingLeft: 20,
+        $paddingRight: 33
+      );
+    }
   }
 
   &_6 {
@@ -218,5 +279,17 @@
       $marginTop: -62,
       $marginLeft: -62
     );
+
+    @include tablet-d {
+      @include puzzle(
+        $widthContainer: 728,
+        $widthPuzzle: 397,
+        $heightPuzzle: 101,
+        $paddingLeft: 55,
+        $paddingRight: 20,
+        $marginTop: -28,
+        $marginLeft: -26
+      );
+    }
   }
 }
