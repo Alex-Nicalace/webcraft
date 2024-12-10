@@ -127,7 +127,8 @@
       $clipPathOter: '#puzzle-footer-outer-1',
       $clipPathInner: '#puzzle-footer-inner-1',
       $paddingLeft: 35,
-      $paddingRight: 132
+      $paddingRight: 132,
+      $marginRight: -57
     );
   }
 
@@ -140,7 +141,6 @@
       $paddingLeft: 85,
       $paddingRight: 35,
       $paddingBottom: 60,
-      $marginLeft: -57,
       $marginBottom: -60
     );
   }
@@ -156,7 +156,6 @@
       $paddingRight: 85,
       $paddingBottom: 60,
       $marginTop: -62,
-      $marginRight: -49,
       $marginBottom: -62
     );
   }
@@ -169,7 +168,8 @@
       $clipPathInner: '#puzzle-footer-inner-4',
       $paddingRight: 35,
       $paddingLeft: 124,
-      $marginTop: -3
+      $marginTop: -4,
+      $marginLeft: -49
     );
   }
 
@@ -181,8 +181,7 @@
       $clipPathInner: '#puzzle-footer-inner-5',
       $paddingRight: 85,
       $paddingLeft: 35,
-      $marginTop: -3,
-      $marginRight: -62
+      $marginTop: -3
     );
   }
 
@@ -216,7 +215,8 @@
       $paddingRight: 35,
       $paddingBottom: 35,
       $paddingLeft: 70,
-      $marginTop: -62
+      $marginTop: -62,
+      $marginLeft: -62
     );
   }
 }
