@@ -1,7 +1,8 @@
 @mixin puzzle(
   $widthContainer: 1800,
   $widthPuzzle,
-  $heightPuzzle,
+  $heightPuzzle: null,
+  $absHeightPuzzle: null,
   $clipPathOter: null,
   $clipPathInner: null,
   $paddingTop: null,
@@ -11,25 +12,72 @@
   $marginTop: null,
   $marginRight: null,
   $marginBottom: null,
-  $marginLeft: null
+  $marginLeft: null,
+  $isTransparent: false
 ) {
   width: percent($widthPuzzle, $widthContainer);
-  aspect-ratio: #{$widthPuzzle} / #{$heightPuzzle};
+
+  @if $isTransparent == true {
+    background-color: transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--color-contact-puzzle-border);
+      clip-path: url($clipPathInner);
+    }
+
+    .contact-puzzle {
+      &__content {
+        justify-content: flex-end;
+        align-items: flex-end;
+        background-color: transparent;
+      }
+    }
+  }
+
+  @if $heightPuzzle != null {
+    aspect-ratio: #{$widthPuzzle} / #{$heightPuzzle};
+  }
+  @if $absHeightPuzzle != null {
+    height: rem($absHeightPuzzle);
+  }
+
   @if $clipPathOter != null {
     clip-path: url($clipPathOter);
   }
 
   @if $marginTop != null {
-    margin-top: percent($marginTop, $widthContainer);
+    @if $absHeightPuzzle != null {
+      margin-top: rem($marginTop);
+    } @else {
+      margin-top: percent($marginTop, $widthContainer);
+    }
   }
   @if $marginRight != null {
-    margin-right: percent($marginRight, $widthContainer);
+    @if $absHeightPuzzle != null {
+      margin-right: rem($marginRight);
+    } @else {
+      margin-right: percent($marginRight, $widthContainer);
+    }
   }
   @if $marginBottom != null {
-    margin-bottom: percent($marginBottom, $widthContainer);
+    @if $absHeightPuzzle != null {
+      margin-bottom: rem($marginBottom);
+    } @else {
+      margin-bottom: percent($marginBottom, $widthContainer);
+    }
   }
   @if $marginLeft != null {
-    margin-left: percent($marginLeft, $widthContainer);
+    @if $absHeightPuzzle != null {
+      margin-left: rem($marginLeft);
+    } @else {
+      margin-left: percent($marginLeft, $widthContainer);
+    }
   }
 
   .contact-puzzle {
@@ -46,7 +94,8 @@
       @if $paddingLeft != null {
         padding-left: percent($paddingLeft, $widthPuzzle);
       }
-      @if $clipPathInner != null {
+
+      @if $clipPathInner != null and $isTransparent == false {
         clip-path: url($clipPathInner);
       }
     }
@@ -118,7 +167,7 @@
     }
   }
 
-  @media (pointer: fine) {
+  @mixin stateHoverActive {
     &:hover {
       .contact-puzzle {
         &__content {
@@ -130,6 +179,14 @@
         }
       }
     }
+  }
+
+  @media (pointer: fine) {
+    @include stateHoverActive;
+  }
+
+  &:active {
+    @include stateHoverActive;
   }
 
   &_1 {
@@ -247,6 +304,7 @@
         $widthContainer: 728,
         $widthPuzzle: 357,
         $heightPuzzle: 74,
+        // $paddingTop: 15,
         $paddingLeft: 20,
         $paddingRight: 33
       );
@@ -254,37 +312,18 @@
   }
 
   &_6 {
-    background-color: transparent;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      background-color: var(--color-contact-puzzle-border);
-      clip-path: url(#puzzle-footer-inner-6);
-    }
-
-    .contact-puzzle {
-      &__content {
-        justify-content: flex-end;
-        align-items: flex-end;
-        background-color: transparent;
-      }
-    }
-
     @include puzzle(
       $widthPuzzle: 966,
       $heightPuzzle: 218,
       $clipPathOter: '#puzzle-footer-outer-6',
+      $clipPathInner: '#puzzle-footer-inner-6',
       $paddingTop: 60,
       $paddingRight: 35,
       $paddingBottom: 35,
       $paddingLeft: 70,
       $marginTop: -62,
-      $marginLeft: -62
+      $marginLeft: -62,
+      $isTransparent: true
     );
 
     @include tablet-d {
@@ -296,6 +335,92 @@
         $paddingRight: 20,
         $marginTop: -28,
         $marginLeft: -26
+      );
+    }
+  }
+
+  &_single-row {
+    &_1 {
+      @include puzzle(
+        $widthContainer: 290,
+        $widthPuzzle: 290,
+        $absHeightPuzzle: 66,
+        // $heightPuzzle: 66,
+        $clipPathOter: '#puzzle-footer-outer-1-sr',
+        $clipPathInner: '#puzzle-footer-inner-1-sr',
+        $paddingLeft: 18,
+        $paddingRight: 18,
+        $marginBottom: -21
+      );
+    }
+
+    &_2 {
+      @include puzzle(
+        $widthContainer: 290,
+        $widthPuzzle: 290,
+        $absHeightPuzzle: 106,
+        // $heightPuzzle: 106,
+        $clipPathOter: '#puzzle-footer-outer-2-sr',
+        $clipPathInner: '#puzzle-footer-inner-2-sr',
+        $paddingLeft: 18,
+        $paddingRight: 18
+      );
+    }
+
+    &_3 {
+      @include puzzle(
+        $widthContainer: 290,
+        $widthPuzzle: 290,
+        $absHeightPuzzle: 66,
+        // $heightPuzzle: 66,
+        $clipPathOter: '#puzzle-footer-outer-3-sr',
+        $clipPathInner: '#puzzle-footer-inner-3-sr',
+        $paddingLeft: 18,
+        $paddingRight: 18,
+        $marginTop: -19,
+        $marginBottom: -23
+      );
+    }
+
+    &_4 {
+      @include puzzle(
+        $widthContainer: 290,
+        $widthPuzzle: 290,
+        $absHeightPuzzle: 111,
+        // $heightPuzzle: 111,
+        $clipPathOter: '#puzzle-footer-outer-4-sr',
+        $clipPathInner: '#puzzle-footer-inner-4-sr',
+        $paddingLeft: 18,
+        $paddingRight: 18
+      );
+    }
+
+    &_5 {
+      @include puzzle(
+        $widthContainer: 290,
+        $widthPuzzle: 290,
+        $absHeightPuzzle: 66,
+        // $heightPuzzle: 66,
+        $clipPathOter: '#puzzle-footer-outer-5-sr',
+        $clipPathInner: '#puzzle-footer-inner-5-sr',
+        $paddingLeft: 18,
+        $paddingRight: 18,
+        $marginTop: -22,
+        $marginBottom: -30
+      );
+    }
+
+    &_6 {
+      @include puzzle(
+        $widthContainer: 290,
+        $widthPuzzle: 290,
+        $absHeightPuzzle: 94,
+        // $heightPuzzle: 94,
+        $clipPathOter: '#puzzle-footer-outer-6-sr',
+        $clipPathInner: '#puzzle-footer-inner-6-sr',
+        $paddingLeft: 18,
+        $paddingRight: 18,
+        $isTransparent: true
       );
     }
   }

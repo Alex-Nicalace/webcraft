@@ -253,7 +253,7 @@ function App() {
             Telegram
           </ContactPuzzle>
           <ContactPuzzle href="mailto:name@domain.com" variant={2}>
-            name@domain.com
+            anicalace@gmail.com
           </ContactPuzzle>
           <ContactPuzzle href="#" variant={3}>
             Instagram
@@ -274,6 +274,35 @@ function App() {
 
         <br />
         <br />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <ContactPuzzle href="#" variant={1} isSingleRow>
+            Telegram
+          </ContactPuzzle>
+          <ContactPuzzle href="mailto:name@domain.com" variant={2} isSingleRow>
+            anicalace@gmail.com
+          </ContactPuzzle>
+          <ContactPuzzle href="#" variant={3} isSingleRow>
+            Instagram
+          </ContactPuzzle>
+          <ContactPuzzle href="#" variant={4} isSingleRow>
+            github
+          </ContactPuzzle>
+          <ContactPuzzle href="#" variant={5} isSingleRow>
+            +373 (777) 3 55 37
+          </ContactPuzzle>
+          <ContactPuzzle
+            href="https://www.behance.net/anna_privalova_10"
+            variant={6}
+            isSingleRow
+          >
+            Design by Anna Privalova
+          </ContactPuzzle>
+        </div>
         <br />
         <br />
         <br />

@@ -1,0 +1,9 @@
+<svg >
+  <clipPath
+    id="puzzle-footer-inner-1-sr"
+    clipPathUnits="objectBoundingBox"
+    transform="scale(0.003448275862069 0.0151515151515152)"
+  >
+    <path d="M289 1H1V65H128.852C129.774 65 130.21 63.8378 129.556 63.1893C112.532 46.3349 141.521 44 156.5 44C171.394 44 197.83 48.1551 180.798 63.12C180.08 63.7506 180.49 65 181.446 65H289V1Z" />
+  </clipPath>
+</svg>

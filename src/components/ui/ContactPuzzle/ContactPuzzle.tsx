@@ -3,16 +3,25 @@ import Icon from '../Icon';
 import './ContactPuzzle.scss';
 import { TContactPuzzleProps } from './ContactPuzzle.types';
 import { VARIANTS_PUZZLE } from './variantsPuzzleConfig';
+import { VARIANTS_PUZZLE_SINGLEROW } from './variantsPuzzleSingleRowConfig';
 
 function ContactPuzzle({
   className,
   variant,
   children,
+  isSingleRow,
   ...props
 }: TContactPuzzleProps): JSX.Element {
-  const { SvgMaskOuter, SvgMaskInner } = VARIANTS_PUZZLE[variant];
+  const variantsPuzzle = isSingleRow
+    ? VARIANTS_PUZZLE_SINGLEROW
+    : VARIANTS_PUZZLE;
+  const { SvgMaskOuter, SvgMaskInner } = variantsPuzzle[variant];
   const isContactDesigner = variant === 6;
-  const classes = ['contact-puzzle', `contact-puzzle_${variant}`, className]
+  const classes = [
+    'contact-puzzle',
+    `contact-puzzle_${isSingleRow ? 'single-row_' : ''}${variant}`,
+    className,
+  ]
     .filter(Boolean)
     .join(' ');
   const tag = isContactDesigner ? 'span' : 'a';
