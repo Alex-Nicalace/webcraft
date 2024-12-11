@@ -1,17 +1,19 @@
 @use 'sass:math';
 
 .container {
-  padding: 0 rem(math.div($containerPadding, 2));
+  padding: 0 var(--padding-inline);
+
+  @include adaptiveValue('--padding-inline', 60, 40, $containerWidth, $pc);
 
   @include mdQuery(0, $pc) {
-    padding: 0 rem(40);
+    @include adaptiveValue('--padding-inline', 40, 20, $pc, $mobile);
   }
 
   @include mobile {
-    padding: 0 rem(20);
+    @include adaptiveValue('--padding-inline', 20, 15, $mobile, $mobileSmall);
   }
 
   @include mobileSmall {
-    padding: 0 rem(15);
+    --padding-inline: #{rem(15)};
   }
 }
