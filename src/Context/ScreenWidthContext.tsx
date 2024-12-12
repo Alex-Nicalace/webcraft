@@ -4,6 +4,7 @@ export const ScreenWidthContext = createContext({
   isLessPC: false,
   isLessTablet: false,
   isLessMobile: false,
+  isLessMobileMd: false,
   isLessMobileSmall: false,
 });
 
