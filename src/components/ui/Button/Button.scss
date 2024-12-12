@@ -1,5 +1,5 @@
 @mixin button-hover-active {
-  padding: rem(15) rem(31);
+  padding: rem(17.5) rem(31);
   .button {
     &__text {
       &::after {
@@ -27,7 +27,7 @@ $transition: all 0.4s ease 0s;
 .button {
   display: inline-flex;
   border-radius: rem(100);
-  padding: rem(15) rem(40);
+  padding: rem(17.5) rem(40);
   background-color: var(--color-button-bg);
   overflow: hidden;
   transition: $transition;
@@ -98,6 +98,7 @@ $transition: all 0.4s ease 0s;
   }
 
   &_secondary {
+    padding: rem(15.5) rem(38);
     background-color: var(--color-button-secondary-bg);
     border: rem(2) solid var(--color-button-secondary-border);
     color: var(--color-button-secondary-text);
@@ -110,11 +111,13 @@ $transition: all 0.4s ease 0s;
 
     @media (pointer: fine) {
       &:hover:not(:disabled) {
+        padding: rem(15.5) rem(29);
         color: var(--color-button-secondary-text-hover);
       }
     }
 
     &:active:not(:disabled) {
+      padding: rem(15.5) rem(29);
       color: var(--color-button-secondary-text-hover);
     }
 
