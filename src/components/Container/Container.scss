@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 .container {
-  padding: 0 var(--padding-inline);
+  padding-inline: var(--padding-inline);
 
   @include adaptiveValue('--padding-inline', 60, 40, $containerWidth, $pc);
 
