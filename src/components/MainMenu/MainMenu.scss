@@ -7,4 +7,68 @@
   // .main-menu__item
   &__item {
   }
+
+  &__dekor {
+    position: absolute;
+    left: rem(-413);
+    top: rem(-485);
+    width: rem(1227);
+    height: rem(1227);
+    // left: percent(-413, 768);
+    // top: percent(-485, 240);
+    // width: percent(1227, 768);
+    // height: percent(1227, 240);
+    pointer-events: none;
+    stroke: var(--vspomogatelnyy-1);
+  }
+}
+
+.wrap-main-menu {
+  position: absolute;
+  padding-block: rem(60);
+  // padding: rem(60) rem(20);
+  background-color: var(--sero-siniy);
+  top: 100%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 rem(14) rem(20) 0 rgba(17, 21, 26, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease-out,
+    visibility 0.5s ease-out;
+
+  .main-menu {
+    &__list {
+      position: relative;
+      flex-direction: column;
+      gap: rem(30);
+      z-index: 1;
+    }
+
+    &__item {
+      &:nth-child(1) {
+        transform: translateX(rem(-50));
+      }
+      &:nth-child(2) {
+        transform: translateX(rem(-100));
+      }
+      transform: translateX(rem(-150));
+      transition: transform 0.5s ease-out;
+    }
+  }
+
+  &_open {
+    opacity: 1;
+    visibility: visible;
+
+    .main-menu {
+      &__item {
+        &:nth-child(1n) {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
 }

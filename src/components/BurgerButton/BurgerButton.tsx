@@ -3,11 +3,14 @@ import { TBurgerButtonProps } from './BurgerButton.types';
 
 function BurgerButton({
   className,
+  pressed,
   ...props
 }: TBurgerButtonProps): JSX.Element {
   return (
     <button
-      className={['burger', className].filter(Boolean).join(' ')}
+      className={['burger', pressed && 'burger_pressed', className]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
     >
       <span className="burger__icon">

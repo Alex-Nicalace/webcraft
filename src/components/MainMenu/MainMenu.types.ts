@@ -6,4 +6,6 @@ export type MenuItem = {
 export type TMainMenuProps = {
   className?: string;
   items: MenuItem[];
+  isSwitchable?: boolean;
+  isOpen?: boolean;
 };
