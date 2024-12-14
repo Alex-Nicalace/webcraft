@@ -1,4 +1,4 @@
-import useMatchMedia from '../hooks/useMatchMedia';
+import useMatchMedia from '../../hooks/useMatchMedia';
 import { ScreenWidthContext } from './ScreenWidthContext';
 
 const MEDIAQUERIES = [
