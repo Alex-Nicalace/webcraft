@@ -7,6 +7,7 @@ import Button from '../ui/Button';
 import TogglerTheme from '../ui/TogglerTheme';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import BurgerButton from '../BurgerButton';
+import { useDarkMode } from '../../Context/DarkModeContext';
 
 const MENU_ITEMS = [
   { label: 'Обо мне', href: '#section1' },
@@ -18,6 +19,7 @@ const MENU_ITEMS = [
 function Header(/*{ }: THeaderProps*/): JSX.Element {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { isLessTablet, isLessMobileMd, isLessMobileSmall } = useScreenWidth();
+  const { isDarkMode, toggleMode } = useDarkMode();
   const isMobileMenu = isLessTablet;
 
   return (
@@ -39,7 +41,12 @@ function Header(/*{ }: THeaderProps*/): JSX.Element {
           isSwitchable={isMobileMenu}
           isOpen={isMenuOpen}
           slotTop={
-            isLessMobileSmall && <TogglerTheme currentTheme="dark-mode" />
+            isLessMobileSmall && (
+              <TogglerTheme
+                isDarkMode={isDarkMode}
+                onClick={() => toggleMode()}
+              />
+            )
           }
         />
       </div>
@@ -47,7 +54,8 @@ function Header(/*{ }: THeaderProps*/): JSX.Element {
         {!isLessMobileSmall && (
           <TogglerTheme
             className="header__toggler-theme"
-            currentTheme="dark-mode"
+            isDarkMode={isDarkMode}
+            onClick={() => toggleMode()}
           />
         )}
         <Button className="header__button" href="#my-contacts">

@@ -3,7 +3,7 @@ import './TogglerTheme.scss';
 import { TTogglerThemeProps } from './TogglerTheme.types';
 
 function TogglerTheme({
-  currentTheme,
+  isDarkMode,
   className,
   ...props
 }: TTogglerThemeProps): JSX.Element {
@@ -12,7 +12,7 @@ function TogglerTheme({
       className={['toggler-theme', className].filter(Boolean).join(' ')}
       {...props}
     >
-      {currentTheme === 'dark-mode' ? (
+      {isDarkMode ? (
         <Icon
           className="toggler-theme__icon"
           name="LightTheme"
