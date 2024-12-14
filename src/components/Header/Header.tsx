@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Header.scss';
 import Container from '../Container';
 import Logo from '../Logo';
@@ -15,22 +16,33 @@ const MENU_ITEMS = [
 
 // type THeaderProps = { }
 function Header(/*{ }: THeaderProps*/): JSX.Element {
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const { isLessTablet, isLessMobileMd, isLessMobileSmall } = useScreenWidth();
+  const isMobileMenu = isLessTablet;
 
   return (
     <Container tag="header" className="header">
       <div className="header__logo-wrapper">
         <Logo className="header__logo" isSizeSmall={isLessMobileSmall} />
       </div>
-      {!isLessTablet ? (
-        <div className="header__menu-wrapper">
-          <MainMenu className="header__menu" items={MENU_ITEMS} />
-        </div>
-      ) : (
-        <div className="header__burger-wrapper">
-          <BurgerButton className="header__burger" />
-        </div>
-      )}
+      <div className="header__menu-wrapper">
+        {isMobileMenu && (
+          <BurgerButton
+            className="header__burger"
+            pressed={isMenuOpen}
+            onClick={() => setMenuOpen(!isMenuOpen)}
+          />
+        )}
+        <MainMenu
+          className={!isMobileMenu ? 'header__menu' : ''}
+          items={MENU_ITEMS}
+          isSwitchable={isMobileMenu}
+          isOpen={isMenuOpen}
+          slotTop={
+            isLessMobileSmall && <TogglerTheme currentTheme="dark-mode" />
+          }
+        />
+      </div>
       <div className="header__buttons">
         {!isLessMobileSmall && (
           <TogglerTheme

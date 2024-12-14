@@ -18,6 +18,7 @@ function MainMenu({
   items,
   isSwitchable,
   isOpen,
+  slotTop,
 }: TMainMenuProps): JSX.Element {
   const navElem = (
     <nav className={['main-menu', className].filter(Boolean).join(' ')}>
@@ -41,8 +42,9 @@ function MainMenu({
           .filter(Boolean)
           .join(' ')}
       >
+        {slotTop && <div className="wrap-main-menu__top">{slotTop}</div>}
         {navElem}
-        {isSwitchable && <DekorSvg className="main-menu__dekor" />}
+        <DekorSvg className="wrap-main-menu__dekor" />
       </Container>
     );
 

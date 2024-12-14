@@ -8,4 +8,5 @@ export type TMainMenuProps = {
   items: MenuItem[];
   isSwitchable?: boolean;
   isOpen?: boolean;
+  slotTop?: React.ReactNode;
 };

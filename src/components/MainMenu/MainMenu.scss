@@ -7,20 +7,6 @@
   // .main-menu__item
   &__item {
   }
-
-  &__dekor {
-    position: absolute;
-    left: rem(-413);
-    top: rem(-485);
-    width: rem(1227);
-    height: rem(1227);
-    // left: percent(-413, 768);
-    // top: percent(-485, 240);
-    // width: percent(1227, 768);
-    // height: percent(1227, 240);
-    pointer-events: none;
-    stroke: var(--vspomogatelnyy-1);
-  }
 }
 
 .wrap-main-menu {
@@ -39,12 +25,18 @@
     opacity 0.5s ease-out,
     visibility 0.5s ease-out;
 
+  @include adaptiveValue('padding-block', 60, 40, $mobile, $minWidth, 1);
+
   .main-menu {
     &__list {
       position: relative;
       flex-direction: column;
       gap: rem(30);
       z-index: 1;
+
+      @include mobileSmall {
+        gap: rem(20);
+      }
     }
 
     &__item {
@@ -56,6 +48,32 @@
       }
       transform: translateX(rem(-150));
       transition: transform 0.5s ease-out;
+    }
+  }
+
+  &__top {
+    &:not(:last-child) {
+      margin-bottom: rem(30);
+    }
+  }
+
+  &__dekor {
+    position: absolute;
+    // т.к. процентные значения привязаны к геометрии позиционированного родителя
+    // то в данном случае больше подходит значения в vw чтобы относительные величины были относительно ширины экрана
+    left: vw(-413, $mobile);
+    top: vw(-485, $mobile);
+    width: vw(1227, $mobile);
+    height: vw(1227, $mobile);
+    pointer-events: none;
+    stroke: var(--vspomogatelnyy-1);
+
+    @include mobileSmall {
+      $widthScreen: 320;
+      left: vw(-295, $minWidth);
+      top: vw(-266, $minWidth);
+      width: vw(800, $minWidth);
+      height: vw(789, $minWidth);
     }
   }
 
