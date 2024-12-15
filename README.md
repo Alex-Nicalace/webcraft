@@ -1,5 +1,9 @@
 # WebCraft
 
+## IntersectionObserver
+
+Данный АПИ использовал в компоненте Header. У хэдера меняется подложка как только появляется скролл. Можно было для этой задачи использовать window.addEventListener('scroll', ...) в колбэке отслеживал значение window.scrollY и колбэк обернул в throttle.ts Но решил попрактиковаться с IntersectionObserver
+
 ## Контекст
 
 - [ScreenWidthContext](./src/Context/ScreenWidthContext)

@@ -97,6 +97,7 @@
     --color-main-menu-mobile-bg: var(--sero-siniy);
     --box-shadow-main-menu-mobile: 0 rem(14) rem(20) 0 rgba(17, 21, 26, 0.4);
     --color-main-menu-mobile-dekor: var(--vspomogatelnyy-1);
+    --color-header-bg: var(--bg-header);
   }
 
   &.light-mode {
@@ -136,5 +137,6 @@
     --color-main-menu-mobile-bg: var(--sero-goluboy-light);
     --box-shadow-main-menu-mobile: 0 rem(4) rem(10) 0 rgba(103, 121, 153, 0.36);
     --color-main-menu-mobile-dekor: var(--vspomogatelnyy-1-light);
+    --color-header-bg: var(--bg-header-light);
   }
 }

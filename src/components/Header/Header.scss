@@ -1,5 +1,8 @@
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding-block: rem(19);
   display: flex;
   align-items: center;
@@ -52,5 +55,10 @@
   }
   // .header__button
   &__button {
+  }
+
+  &_scrolled {
+    background-color: var(--color-header-bg);
+    backdrop-filter: blur(rem(50));
   }
 }
