@@ -13,12 +13,12 @@
   position: absolute;
   padding-block: rem(60);
   // padding: rem(60) rem(20);
-  background-color: var(--sero-siniy);
+  background-color: var(--color-main-menu-mobile-bg);
   top: 100%;
   left: 0;
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 rem(14) rem(20) 0 rgba(17, 21, 26, 0.4);
+  box-shadow: var(--box-shadow-main-menu-mobile);
   opacity: 0;
   visibility: hidden;
   transition:
@@ -66,7 +66,7 @@
     width: vw(1227, $mobile);
     height: vw(1227, $mobile);
     pointer-events: none;
-    stroke: var(--vspomogatelnyy-1);
+    stroke: var(--color-main-menu-mobile-dekor);
 
     @include mobileSmall {
       $widthScreen: 320;
