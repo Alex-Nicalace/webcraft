@@ -9,4 +9,5 @@ export type TMainMenuProps = {
   isSwitchable?: boolean;
   isOpen?: boolean;
   slotTop?: React.ReactNode;
+  closeMenu?: () => void;
 };

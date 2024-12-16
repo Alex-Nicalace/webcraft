@@ -55,6 +55,7 @@ function Header(/*{ }: THeaderProps*/): JSX.Element {
               />
             )
           }
+          closeMenu={() => setMenuOpen(false)}
         />
       </div>
       <div className="header__buttons">
