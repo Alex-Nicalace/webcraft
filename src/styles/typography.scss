@@ -1,7 +1,7 @@
 @use './global-scss.scss' as *;
 
 h1 {
-  &.header-additional {
+  &.heading-additional {
     font-family: $fontFamilySecond;
     font-size: rem(180);
     line-height: 1.2;
@@ -19,7 +19,7 @@ h1 {
     }
   }
 
-  &.header {
+  &.heading {
     font-weight: 500;
     font-size: rem(80);
     line-height: 0.95;
@@ -34,6 +34,21 @@ h1 {
 
     @include mobileSmall {
       font-size: rem(18);
+    }
+  }
+
+  &.heading-liquid {
+    font-weight: 500;
+    line-height: 0.95;
+
+    @include adaptiveValue('font-size', 80, 60, $containerWidth, $pc);
+
+    @include mdQuery(0, $pc) {
+      @include adaptiveValue('font-size', 60, 40, $pc, $mobile, 1);
+    }
+
+    @include mobile-d {
+      @include adaptiveValue('font-size', 40, 18, $mobile);
     }
   }
 }

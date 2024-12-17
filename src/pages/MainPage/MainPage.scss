@@ -1,11 +1,2 @@
 .main-page {
-  padding-top: rem(100.4);
-
-  @include mdQuery(0, $pc) {
-    padding-top: rem(80.39);
-  }
-
-  @include mobileSmall {
-    padding-top: rem(69.8);
-  }
 }
