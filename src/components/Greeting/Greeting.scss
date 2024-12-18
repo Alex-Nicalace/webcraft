@@ -1,11 +1,25 @@
 @use 'sass:math';
 
+$aspect-ratio: '16/7.3';
+$aspect-ratio-1280: '16/8.8';
+$aspect-ratio-768: '16/9';
+
+@mixin conditionPortrait {
+  @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
+    (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
+    (max-width: em($mobile)) {
+    @content;
+  }
+}
+
 .greeting {
+  position: relative;
   min-height: 100vh;
   padding-top: rem(100.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: rem(20);
 
   @include mdQuery(0, $pc) {
     padding-top: rem(80.39);
@@ -15,13 +29,7 @@
     padding-top: rem(69.8);
   }
 
-  $aspect-ratio: '16/7.3';
-  $aspect-ratio-1280: '16/8.8';
-  $aspect-ratio-768: '16/9';
-
-  @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
-    (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
-    (max-width: em($mobile)) and (min-aspect-ratio: $aspect-ratio-768) {
+  @include conditionPortrait {
     min-height: auto;
     padding-top: rem(100.4 + 70);
 
@@ -38,9 +46,7 @@
     position: relative;
     flex: 0 0 vh(860, 1080);
 
-    @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
-      (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
-      (max-width: em($mobile)) and (min-aspect-ratio: $aspect-ratio-768) {
+    @include conditionPortrait {
       flex: 1 0 auto;
       aspect-ratio: 1800 / 861;
 
@@ -121,9 +127,7 @@
         align-self: flex-end;
       }
     }
-    @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
-      (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
-      (max-width: em($mobile)) and (min-aspect-ratio: $aspect-ratio-768) {
+    @include conditionPortrait {
       padding: percent(10, 728) percent(20, 728);
 
       @include mobileSmall {
@@ -135,6 +139,17 @@
   &__text {
     position: absolute;
     left: percent(455, 1800);
-    top: percent(-35, 753);
+    top: percent(-35, 860);
+  }
+  // .greeting__button
+  &__button {
+    position: absolute;
+    right: percent(1144, 1800);
+    top: percent(735, 860);
+
+    @include conditionPortrait {
+      position: static;
+      align-self: center;
+    }
   }
 }
