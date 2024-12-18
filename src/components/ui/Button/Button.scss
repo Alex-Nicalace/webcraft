@@ -1,5 +1,10 @@
+@use './menu-item.scss' as *;
+
 @mixin button-hover-active {
-  padding: rem(17.5) rem(31);
+  padding-inline: rem(31);
+  @include mobileSmall {
+    padding-inline: rem(24);
+  }
   .button {
     &__text {
       &::after {
@@ -32,6 +37,10 @@ $transition: all 0.4s ease 0s;
   overflow: hidden;
   transition: $transition;
   color: var(--color-button-text);
+
+  @include mobileSmall {
+    padding: rem(13.5) rem(33);
+  }
 
   // .button__wrapper относительно оболочки удобнее позиционировать элементы элементы по бокам рядом
   &__wrapper {
@@ -103,22 +112,33 @@ $transition: all 0.4s ease 0s;
     border: rem(2) solid var(--color-button-secondary-border);
     color: var(--color-button-secondary-text);
 
+    @include mobileSmall {
+      padding: rem(11.5) rem(30.5);
+    }
+
     .button {
       &__dot {
         background-color: var(--color-button-secondary-dot);
       }
     }
 
+    @mixin button-hover-active {
+      padding-inline: rem(29);
+      color: var(--color-button-secondary-text-hover);
+
+      @include mobileSmall {
+        padding-inline: rem(21.5);
+      }
+    }
+
     @media (pointer: fine) {
       &:hover:not(:disabled) {
-        padding: rem(15.5) rem(29);
-        color: var(--color-button-secondary-text-hover);
+        @include button-hover-active;
       }
     }
 
     &:active:not(:disabled) {
-      padding: rem(15.5) rem(29);
-      color: var(--color-button-secondary-text-hover);
+      @include button-hover-active;
     }
 
     &:disabled {

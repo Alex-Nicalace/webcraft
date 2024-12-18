@@ -1,7 +1,6 @@
 import { TButtonProps } from './Button.types';
-import './Button.scss';
-import './menu-item.scss';
 import Icon from '../Icon';
+import './Button.scss';
 
 function Button({ className, variant, ...props }: TButtonProps): JSX.Element {
   const classes = [

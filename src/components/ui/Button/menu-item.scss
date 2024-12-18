@@ -1,3 +1,5 @@
+@use '../../../styles/global-scss.scss' as *;
+
 @mixin menu-item-state {
   background-color: var(--color-menu-item-bg-hover-pressed);
   &::before,
