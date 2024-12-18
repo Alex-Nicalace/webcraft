@@ -1,24 +1,6 @@
 @use './global-scss.scss' as *;
 
 h1 {
-  &.heading-additional {
-    font-family: $fontFamilySecond;
-    font-size: rem(180);
-    line-height: 1.2;
-
-    @include mdQuery(0, $pc) {
-      font-size: rem(116);
-    }
-
-    @include mobile-d {
-      font-size: rem(74);
-    }
-
-    @include mobileSmall {
-      font-size: rem(30);
-    }
-  }
-
   &.heading {
     font-weight: 500;
     font-size: rem(80);
@@ -35,20 +17,52 @@ h1 {
     @include mobileSmall {
       font-size: rem(18);
     }
+
+    &-liquid {
+      font-weight: 500;
+      line-height: 0.95;
+
+      @include adaptiveValue('font-size', 80, 60, $containerWidth, $pc);
+
+      @include mdQuery(0, $pc) {
+        @include adaptiveValue('font-size', 60, 40, $pc, $mobile, 1);
+      }
+
+      @include mobile-d {
+        @include adaptiveValue('font-size', 40, 18, $mobile);
+      }
+    }
+  }
+}
+
+.heading-additional {
+  font-family: $fontFamilySecond;
+  font-size: rem(180);
+  line-height: 1.2;
+
+  @include mdQuery(0, $pc) {
+    font-size: rem(116);
   }
 
-  &.heading-liquid {
-    font-weight: 500;
-    line-height: 0.95;
+  @include mobile-d {
+    font-size: rem(74);
+  }
 
-    @include adaptiveValue('font-size', 80, 60, $containerWidth, $pc);
+  @include mobileSmall {
+    font-size: rem(30);
+  }
+
+  &-liquid {
+    font-family: $fontFamilySecond;
+    line-height: 1.2;
+    @include adaptiveValue('font-size', 180, 116, $containerWidth, $pc);
 
     @include mdQuery(0, $pc) {
-      @include adaptiveValue('font-size', 60, 40, $pc, $mobile, 1);
+      @include adaptiveValue('font-size', 116, 74, $pc, $mobile);
     }
 
     @include mobile-d {
-      @include adaptiveValue('font-size', 40, 18, $mobile);
+      @include adaptiveValue('font-size', 74, 30, $mobile);
     }
   }
 }

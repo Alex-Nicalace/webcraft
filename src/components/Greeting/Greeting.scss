@@ -78,7 +78,7 @@
     width: 0;
     height: 0;
   }
-
+  // .greeting__heading
   &__heading {
     position: absolute;
     padding-inline: percent(50, 1800);
@@ -130,5 +130,11 @@
         padding: percent(4, 290);
       }
     }
+  }
+  // .greeting__text
+  &__text {
+    position: absolute;
+    left: percent(455, 1800);
+    top: percent(-35, 753);
   }
 }

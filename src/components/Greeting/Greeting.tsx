@@ -16,6 +16,7 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
           <span>Меня зовут Александр.</span>
           <span>И это моё портфолио.</span>
         </h1>
+        <p className="greeting__text heading-additional-liquid">Привет!</p>
         <div className="greeting__puzzle">
           <PuzzleSvg className="greeting__mask" />
           <HeadingSvg className="greeting__mask" />
