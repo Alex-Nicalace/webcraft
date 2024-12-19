@@ -6,6 +6,8 @@ import HeadingSvg from '../../assets/img/puzzles/puzzle-main-screen-text-bg.svg?
 import Button from '../ui/Button';
 
 function Greeting({ className }: TGreetingProps): JSX.Element {
+  const BallCount = 3;
+
   return (
     <Container
       tag="section"
@@ -19,6 +21,14 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
         </h1>
         <p className="greeting__text heading-additional-liquid">Привет!</p>
         <div className="greeting__puzzle">
+          {Array(BallCount)
+            .fill(null)
+            .map((_, index) => (
+              <span
+                key={index}
+                className={`greeting__ball greeting__ball_${index + 1}`}
+              ></span>
+            ))}
           <PuzzleSvg className="greeting__mask" />
           <HeadingSvg className="greeting__mask" />
         </div>

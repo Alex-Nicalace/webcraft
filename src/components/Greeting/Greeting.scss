@@ -152,4 +152,118 @@ $aspect-ratio-768: '16/9';
       align-self: center;
     }
   }
+  &__ball {
+    position: absolute;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 100%;
+      border-radius: 100%;
+      mix-blend-mode: color-burn;
+
+      box-shadow:
+          // эту строку убрать - исчезает проблема
+        rem(35) rem(25) rem(50) 0 rgba(0, 0, 0, 0.5),
+        inset rem(35) rem(25) rem(55) 0 rgba(0, 0, 0, 0.5),
+        inset rem(-35) rem(-25) rem(55) 0 rgba(255, 255, 255, 0.5);
+      opacity: 0.8;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 100%;
+      transform: rotate(-45deg);
+      background-color: var(--white);
+      filter: blur(rem(80));
+    }
+
+    @mixin ball(
+      $widthParent: 1800,
+      $heightParent: 860,
+      $size: null,
+      $left: null,
+      $top: null,
+      $background: null,
+      $widthGlare: null,
+      $heightGlare: null,
+      $leftGlare: null,
+      $topGlare: null
+    ) {
+      @if $size == null {
+        width: rem($size);
+        height: rem($size);
+      }
+
+      @if $left != null {
+        left: percent($left, $widthParent);
+      }
+      @if $top != null {
+        top: percent($top, $heightParent);
+      }
+
+      @if $background != null {
+        &::before {
+          background: $background;
+        }
+      }
+
+      @if $widthGlare !=
+        null and
+        $heightGlare !=
+        null and
+        $leftGlare !=
+        null and
+        $topGlare !=
+        null
+      {
+        &::after {
+          width: rem($widthGlare);
+          height: rem($heightGlare);
+          left: percent($leftGlare, $size);
+          top: percent($topGlare, $size);
+        }
+      }
+    }
+
+    &_1 {
+      @include ball(
+        $size: 313,
+        $left: 1661,
+        $top: -313 - 24,
+        $background: linear-gradient(148deg, #8796d2 0%, rgba(0, 0, 0, 0) 100%),
+        $widthGlare: 139,
+        $heightGlare: 41,
+        $leftGlare: 23,
+        $topGlare: 70
+      );
+    }
+
+    &_2 {
+      @include ball(
+        $size: 275,
+        $left: 1010,
+        $top: 60 + 860,
+        $background: linear-gradient(133deg, #d9d9d9 0%, rgba(0, 0, 0, 0) 100%),
+        $widthGlare: 122,
+        $heightGlare: 36,
+        $leftGlare: 20,
+        $topGlare: 61
+      );
+    }
+
+    &_3 {
+      @include ball(
+        $size: 363,
+        $left: -192,
+        $top: 710,
+        $background: linear-gradient(133deg, #d9d9d9 0%, rgba(0, 0, 0, 0) 100%),
+        $widthGlare: 162,
+        $heightGlare: 48,
+        $leftGlare: 27,
+        $topGlare: 80
+      );
+    }
+  }
 }
