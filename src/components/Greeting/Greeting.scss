@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:list';
 
 $aspect-ratio: '16/7.3';
 $aspect-ratio-1280: '16/8.8';
@@ -160,7 +161,7 @@ $aspect-ratio-768: '16/9';
       display: block;
       height: 100%;
       border-radius: 100%;
-      mix-blend-mode: color-burn;
+      mix-blend-mode: multiply; // color, darken, multiply по макету color-burn
 
       box-shadow:
           // эту строку убрать - исчезает проблема
@@ -176,7 +177,8 @@ $aspect-ratio-768: '16/9';
       border-radius: 100%;
       transform: rotate(-45deg);
       background-color: var(--white);
-      filter: blur(rem(80));
+      filter: blur(rem(30)); // по макету 80
+      opacity: 0.8;
     }
 
     @mixin ball(
@@ -189,11 +191,13 @@ $aspect-ratio-768: '16/9';
       $widthGlare: null,
       $heightGlare: null,
       $leftGlare: null,
-      $topGlare: null
+      $topGlare: null,
+      $animationName,
+      $keyframes
     ) {
-      @if $size == null {
-        width: rem($size);
-        height: rem($size);
+      @if $size != null {
+        width: percent($size, $widthParent);
+        aspect-ratio: 1;
       }
 
       @if $left != null {
@@ -201,6 +205,18 @@ $aspect-ratio-768: '16/9';
       }
       @if $top != null {
         top: percent($top, $heightParent);
+      }
+
+      animation: $animationName 28s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+        infinite;
+
+      @keyframes #{$animationName} {
+        @each $progress, $position in $keyframes {
+          #{$progress} {
+            left: percent(list.nth($position, 1), $widthParent);
+            top: percent(list.nth($position, 2), $heightParent);
+          }
+        }
       }
 
       @if $background != null {
@@ -230,13 +246,21 @@ $aspect-ratio-768: '16/9';
     &_1 {
       @include ball(
         $size: 313,
-        $left: 1661,
-        $top: -313 - 24,
+        $left: 1372,
+        $top: -58,
         $background: linear-gradient(148deg, #8796d2 0%, rgba(0, 0, 0, 0) 100%),
         $widthGlare: 139,
         $heightGlare: 41,
         $leftGlare: 23,
-        $topGlare: 70
+        $topGlare: 70,
+        $animationName: ball-1,
+        $keyframes: (
+          0%: 1372 -58,
+          29%: 277 591,
+          54%: 175 46,
+          79%: 1264 469,
+          100%: 1372 -58,
+        )
       );
     }
 
@@ -249,7 +273,15 @@ $aspect-ratio-768: '16/9';
         $widthGlare: 122,
         $heightGlare: 36,
         $leftGlare: 20,
-        $topGlare: 61
+        $topGlare: 61,
+        $animationName: ball-2,
+        $keyframes: (
+          0%: 1010 540,
+          29%: 1598 213,
+          54%: 262 502,
+          79%: 548 749,
+          100%: 1010 540,
+        )
       );
     }
 
@@ -262,7 +294,15 @@ $aspect-ratio-768: '16/9';
         $widthGlare: 162,
         $heightGlare: 48,
         $leftGlare: 27,
-        $topGlare: 80
+        $topGlare: 80,
+        $animationName: ball-3,
+        $keyframes: (
+          0%: 140 431,
+          29%: 464 -387,
+          54%: 1304 -387,
+          79%: 1224 -44,
+          100%: 140 431,
+        )
       );
     }
   }
