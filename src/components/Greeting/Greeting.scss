@@ -185,33 +185,46 @@ $aspect-ratio-768: '16/9';
       $widthParent: 1800,
       $heightParent: 860,
       $size: null,
-      $left: null,
-      $top: null,
+      // на данный момнет не нужны эти параметры, но пока оставлю в комментах
+      //$left: null,
+      // $top: null,
       $background: null,
       $widthGlare: null,
       $heightGlare: null,
       $leftGlare: null,
       $topGlare: null,
       $animationName,
-      $keyframes
+      $keyframesIntro: null,
+      $keyframesBase
     ) {
       @if $size != null {
         width: percent($size, $widthParent);
         aspect-ratio: 1;
       }
 
-      @if $left != null {
-        left: percent($left, $widthParent);
-      }
-      @if $top != null {
-        top: percent($top, $heightParent);
+      // @if $left != null {
+      //   left: percent($left, $widthParent);
+      // }
+      // @if $top != null {
+      //   top: percent($top, $heightParent);
+      // }
+
+      animation:
+        #{$animationName}-base 28s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
+          #{1.6 + 1.2}s,
+        #{$animationName}-intro 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 1.6s backwards;
+
+      @keyframes #{$animationName}-intro {
+        @each $progress, $position in $keyframesIntro {
+          #{$progress} {
+            left: percent(list.nth($position, 1), $widthParent);
+            top: percent(list.nth($position, 2), $heightParent);
+          }
+        }
       }
 
-      animation: $animationName 28s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-        infinite;
-
-      @keyframes #{$animationName} {
-        @each $progress, $position in $keyframes {
+      @keyframes #{$animationName}-base {
+        @each $progress, $position in $keyframesBase {
           #{$progress} {
             left: percent(list.nth($position, 1), $widthParent);
             top: percent(list.nth($position, 2), $heightParent);
@@ -246,15 +259,17 @@ $aspect-ratio-768: '16/9';
     &_1 {
       @include ball(
         $size: 313,
-        $left: 1372,
-        $top: -58,
         $background: linear-gradient(148deg, #8796d2 0%, rgba(0, 0, 0, 0) 100%),
         $widthGlare: 139,
         $heightGlare: 41,
         $leftGlare: 23,
         $topGlare: 70,
         $animationName: ball-1,
-        $keyframes: (
+        $keyframesIntro: (
+          0%: 1661 -337,
+          100%: 1372 -58,
+        ),
+        $keyframesBase: (
           0%: 1372 -58,
           29%: 277 591,
           54%: 175 46,
@@ -267,15 +282,17 @@ $aspect-ratio-768: '16/9';
     &_2 {
       @include ball(
         $size: 275,
-        $left: 1010,
-        $top: 60 + 860,
         $background: linear-gradient(133deg, #d9d9d9 0%, rgba(0, 0, 0, 0) 100%),
         $widthGlare: 122,
         $heightGlare: 36,
         $leftGlare: 20,
         $topGlare: 61,
         $animationName: ball-2,
-        $keyframes: (
+        $keyframesIntro: (
+          0%: 1010 860+60,
+          100%: 1010 540,
+        ),
+        $keyframesBase: (
           0%: 1010 540,
           29%: 1598 213,
           54%: 262 502,
@@ -288,15 +305,17 @@ $aspect-ratio-768: '16/9';
     &_3 {
       @include ball(
         $size: 363,
-        $left: -192,
-        $top: 710,
         $background: linear-gradient(133deg, #d9d9d9 0%, rgba(0, 0, 0, 0) 100%),
         $widthGlare: 162,
         $heightGlare: 48,
         $leftGlare: 27,
         $topGlare: 80,
         $animationName: ball-3,
-        $keyframes: (
+        $keyframesIntro: (
+          0%: -192 710,
+          100%: 140 431,
+        ),
+        $keyframesBase: (
           0%: 140 431,
           29%: 464 -387,
           54%: 1304 -387,
