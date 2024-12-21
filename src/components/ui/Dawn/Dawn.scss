@@ -1,0 +1,26 @@
+.dawn {
+  width: var(--size-dawn);
+  height: var(--size-dawn);
+  stroke-width: 0.2;
+  stroke: var(--color-dawn);
+  animation: rotateCircle 6s linear infinite;
+
+  @include adaptiveValue('--size-dawn', 92, 64, $containerWidth, $pc, 1);
+
+  @include mobile-d {
+    @include adaptiveValue('--size-dawn', 64, 35, $mobile);
+  }
+
+  @keyframes rotateCircle {
+    0% {
+      rotate: 0deg;
+    }
+    100% {
+      rotate: 360deg;
+    }
+  }
+
+  &_big {
+    @include adaptiveValue('--size-dawn', 120, 80, $containerWidth, $mobile, 1);
+  }
+}
