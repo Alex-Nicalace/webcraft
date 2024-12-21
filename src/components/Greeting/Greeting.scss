@@ -188,11 +188,18 @@ $aspect-ratio-768: '16/9';
   }
   // .greeting__text
   &__text {
+    padding-left: percent(5, 1800);
+    padding-right: percent(14, 1800);
     position: absolute;
     left: percent(455, 1800);
     top: percent(-35, 860);
-    transform-origin: left bottom;
-    animation: greetingText $animStep-1;
+    overflow: hidden;
+
+    & > * {
+      display: inline-block;
+      transform-origin: left bottom;
+      animation: greetingText $animStep-1;
+    }
 
     @keyframes greetingText {
       0% {

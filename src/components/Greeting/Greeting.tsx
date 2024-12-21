@@ -19,7 +19,9 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
           <span>Меня зовут Александр.</span>
           <span>И это моё портфолио.</span>
         </h1>
-        <p className="greeting__text heading-additional-liquid">Привет!</p>
+        <p className="greeting__text heading-additional-liquid">
+          <span>Привет!</span>
+        </p>
         <div className="greeting__puzzle">
           {Array(BallCount)
             .fill(null)
