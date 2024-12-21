@@ -61,6 +61,8 @@
 
   &,
   &.dark-mode {
+    --body-bg: url('../assets/img/bg/bg-noise-dark-theme.png');
+
     --color-main-text: var(--white);
     --color-main-bg: var(--color-bg-dark);
 
@@ -101,6 +103,8 @@
   }
 
   &.light-mode {
+    --body-bg: url('../assets/img/bg/bg-noise-light-theme.png');
+
     --color-main-text: var(--blue);
     --color-main-bg: var(--color-bg-light);
 

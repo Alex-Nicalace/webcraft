@@ -16,3 +16,7 @@
 
 //* Подключение глобальных анимаций
 @use './global-animations';
+
+body {
+  background-image: var(--body-bg);
+}
