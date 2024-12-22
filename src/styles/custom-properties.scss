@@ -104,6 +104,11 @@
     --color-dawn: var(--vspomogatelnyy-1);
 
     --color-greeting-code: var(--sero-siniy);
+
+    --color-blur-decor-1-2-3: var(--blur-1-2-3-8);
+    --color-blur-decor-4-5-6: var(--blur-4-5-6);
+    --color-blur-decor-7: var(--blur-7);
+    --color-blur-decor-8: var(--blur-1-2-3-8);
   }
 
   &.light-mode {
@@ -150,5 +155,10 @@
     --color-dawn: var(--vspomogatelnyy-1-light);
 
     --color-greeting-code: var(--vspomogatelnyy-light);
+
+    --color-blur-decor-1-2-3: var(--blur-light-1-2-3);
+    --color-blur-decor-4-5-6: var(--blur-light-4-5-6);
+    --color-blur-decor-7: var(--blur-light-7);
+    --color-blur-decor-8: var(--blur-light-8);
   }
 }

@@ -14,6 +14,39 @@ $aspect-ratio-768: '16/9';
 }
 
 .greeting {
+  :root.dark-mode &,
+  :root & {
+    $puzzle-width: 1800;
+    $puzzle-height: 860;
+    $bg-width: 2383;
+    $bg-height: 2384;
+    $bg-pos-x: -292;
+    $bg-pos-y: -861;
+
+    --greeting-puzzle-bg: linear-gradient(
+        rgba(43, 40, 141, 0.2),
+        rgba(43, 40, 141, 0.2)
+      ),
+      url(../../assets/img/puzzles/puzzle_bg_3.jpg) #{percent(
+          $bg-pos-x,
+          $puzzle-width - $bg-width
+        )
+        percent($bg-pos-y, $puzzle-height - $bg-height)} / #{percent(
+          $bg-width,
+          $puzzle-width
+        ) percent($bg-height, $puzzle-height)} no-repeat;
+    --greeting-heading-bg: var(--bg-pod-tekst);
+    --greeting-heading-text-color: inherit;
+  }
+
+  :root.light-mode & {
+    --greeting-puzzle-bg: linear-gradient(140deg, #4a67cf 0%, #373180 100%)
+      no-repeat;
+    --greeting-heading-bg: linear-gradient(139deg, #4a67cf 0%, #373180 100%);
+
+    --greeting-heading-text-color: var(--white);
+  }
+
   $durationAnimStep-1: 1s;
   $delayAnimStep-1: 1s;
   $animStep-1: $durationAnimStep-1 ease-in-out $delayAnimStep-1 backwards;
@@ -44,14 +77,10 @@ $aspect-ratio-768: '16/9';
   gap: rem(20);
 
   &::before {
-    left: percent(1452, 1920);
-    top: percent(129, 1080);
     @include adaptiveValue('left', 1452, 207);
     @include adaptiveValue('top', 129, 34);
   }
   &::after {
-    left: percent(-127, 1920);
-    top: percent(276, 1080);
     @include adaptiveValue('left', -127, -151);
     @include adaptiveValue('top', 276, 107);
   }
@@ -92,30 +121,13 @@ $aspect-ratio-768: '16/9';
   }
   // .greeting__puzzle
   &__puzzle {
-    $puzzle-width: 1800;
-    $puzzle-height: 860;
-    $bg-width: 2383;
-    $bg-height: 2384;
-    $bg-pos-x: -292;
-    $bg-pos-y: -861;
-
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(
-        rgba(43, 40, 141, 0.2),
-        rgba(43, 40, 141, 0.2)
-      ),
-      url(../../assets/img/puzzles/puzzle_bg_3.jpg);
-    background-repeat: no-repeat;
-    background-size: percent($bg-width, $puzzle-width)
-      percent($bg-height, $puzzle-height);
-    background-position: percent($bg-pos-x, $puzzle-width - $bg-width)
-      percent($bg-pos-y, $puzzle-height - $bg-height);
+    background: var(--greeting-puzzle-bg);
     clip-path: url(#puzzle-main-screen);
-    // z-index: -1;
     animation: puzzleMainScreen $animStep-1;
 
     @keyframes puzzleMainScreen {
@@ -143,10 +155,11 @@ $aspect-ratio-768: '16/9';
     left: percent(53, 1800);
     top: percent(218, 860);
     clip-path: url(#puzzle-main-screen-text-bg);
-    background-color: var(--bg-pod-tekst);
+    background: var(--greeting-heading-bg);
     backdrop-filter: blur(rem(40));
     box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
     z-index: 1;
+    color: var(--greeting-heading-text-color);
 
     display: flex;
     flex-direction: column;
@@ -266,11 +279,11 @@ $aspect-ratio-768: '16/9';
       height: 100%;
       border-radius: 100%;
       mix-blend-mode: multiply; // color, darken, multiply по макету color-burn
-
       box-shadow:
-          // эту строку убрать - исчезает проблема
         rem(35) rem(25) rem(50) 0 rgba(0, 0, 0, 0.5),
-        inset rem(35) rem(25) rem(55) 0 rgba(0, 0, 0, 0.5),
+        inset calc(vw(35, 1920)) calc(vw(25, 1920)) calc(vw(55, 1920)) 0
+          rgba(0, 0, 0, 0.5),
+        // inset rem(35) rem(25) rem(55) 0 rgba(0, 0, 0, 0.5),
         inset rem(-35) rem(-25) rem(55) 0 rgba(255, 255, 255, 0.5);
       opacity: 0.8;
     }
@@ -351,8 +364,8 @@ $aspect-ratio-768: '16/9';
         null
       {
         &::after {
-          width: rem($widthGlare);
-          height: rem($heightGlare);
+          width: percent($widthGlare, $size);
+          height: percent($heightGlare, $size);
           left: percent($leftGlare, $size);
           top: percent($topGlare, $size);
         }

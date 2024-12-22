@@ -29,7 +29,7 @@ body {
     aspect-ratio: 1 / 1;
     border-radius: 100%;
     filter: blur(rem(300));
-    background-color: var(--blur-1-2-3-8);
+    background-color: var(--color-blur-decor-1-2-3);
     z-index: -1;
   }
 
@@ -48,25 +48,26 @@ body {
       @include adaptiveValue('width', 473, 323);
     }
     &::after {
-      background-color: var(--blur-4-5-6);
+      background-color: var(--color-blur-decor-4-5-6);
       @include adaptiveValue('width', 807, 353);
     }
   }
   &_3 {
     &::before {
-      background-color: var(--blur-4-5-6);
+      background-color: var(--color-blur-decor-4-5-6);
       @include adaptiveValue('width', 807, 431);
     }
     &::after {
-      background-color: var(--blur-4-5-6);
+      background-color: var(--color-blur-decor-4-5-6);
       @include adaptiveValue('width', 807, 267);
     }
     &_4 {
       &::before {
-        background-color: var(--blur-7);
+        background-color: var(--color-blur-decor-7);
         @include adaptiveValue('width', 675, 340);
       }
       &::after {
+        background-color: var(--color-blur-decor-8);
         @include adaptiveValue('width', 541, 312);
       }
     }
