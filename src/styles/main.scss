@@ -20,3 +20,55 @@
 body {
   background-image: var(--body-bg);
 }
+
+.decor-blured {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    filter: blur(rem(300));
+    background-color: var(--blur-1-2-3-8);
+    z-index: -1;
+  }
+
+  &_1 {
+    &::before {
+      filter: blur(rem(250));
+      @include adaptiveValue('width', 612, 200);
+    }
+
+    &::after {
+      @include adaptiveValue('width', 850, 306);
+    }
+  }
+  &_2 {
+    &::before {
+      @include adaptiveValue('width', 473, 323);
+    }
+    &::after {
+      background-color: var(--blur-4-5-6);
+      @include adaptiveValue('width', 807, 353);
+    }
+  }
+  &_3 {
+    &::before {
+      background-color: var(--blur-4-5-6);
+      @include adaptiveValue('width', 807, 431);
+    }
+    &::after {
+      background-color: var(--blur-4-5-6);
+      @include adaptiveValue('width', 807, 267);
+    }
+    &_4 {
+      &::before {
+        background-color: var(--blur-7);
+        @include adaptiveValue('width', 675, 340);
+      }
+      &::after {
+        @include adaptiveValue('width', 541, 312);
+      }
+    }
+  }
+}

@@ -39,7 +39,8 @@ body {
 }
 input,
 button,
-textarea {
+textarea,
+code {
   font-family: $fontFamily;
   font-size: inherit;
 }

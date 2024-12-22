@@ -5,7 +5,6 @@
   --color-bg-dark: #131921;
   --color-bg-light: #e6eaf2;
   --blue: #1e3070;
-  --blue-soft-grey: #8ba2d0;
   --sero-siniy: #2b343f;
   --siniy: #4900e0;
   --sredniy-siniy: #2a008a;
@@ -26,6 +25,7 @@
   --blur-1-2-3-8: #1a2b42;
   --bg-header: rgba(255, 255, 255, 0.04);
   --zagolovki-h2-light: #6984b5;
+  --vspomogatelnyy-light: #8ba2d0;
   --vspomogatelnyy-1-light: #a9bbdb;
   --bg-proekta-light: rgba(121, 143, 189, 0.3);
   --blur-light-1-2-3: #d4dff6;
@@ -100,6 +100,10 @@
     --box-shadow-main-menu-mobile: 0 rem(14) rem(20) 0 rgba(17, 21, 26, 0.4);
     --color-main-menu-mobile-dekor: var(--vspomogatelnyy-1);
     --color-header-bg: var(--bg-header);
+
+    --color-dawn: var(--vspomogatelnyy-1);
+
+    --color-greeting-code: var(--sero-siniy);
   }
 
   &.light-mode {
@@ -109,13 +113,13 @@
     --color-main-bg: var(--color-bg-light);
 
     --color-menu-item: var(--blue);
-    --color-menu-item-bg-hover-pressed: var(--blue-soft-grey);
+    --color-menu-item-bg-hover-pressed: var(--vspomogatelnyy-light);
 
     --color-button-bg-disabled: var(--disabled-light);
     --color-button-text-disabled: var(--color-bg-light);
     --color-button-secondary-border-dot-text-disabled: var(--disabled-light);
 
-    --color-scrollup-bg: var(--blue-soft-grey);
+    --color-scrollup-bg: var(--vspomogatelnyy-light);
     --color-scrollup-box-shadow: var(--color-fade-blue);
 
     --color-button-slider-icon-disabled: var(--disabled-light);
@@ -142,5 +146,9 @@
     --box-shadow-main-menu-mobile: 0 rem(4) rem(10) 0 rgba(103, 121, 153, 0.36);
     --color-main-menu-mobile-dekor: var(--vspomogatelnyy-1-light);
     --color-header-bg: var(--bg-header-light);
+
+    --color-dawn: var(--vspomogatelnyy-1-light);
+
+    --color-greeting-code: var(--vspomogatelnyy-light);
   }
 }

@@ -14,10 +14,26 @@ $aspect-ratio-768: '16/9';
 }
 
 .greeting {
-  $animStep-1: 1s ease-in-out backwards;
-  $animStep-2: 0.6s ease-out 1s backwards;
-  $animStep-3: 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 1.6s backwards;
-  $animStep-4: 28s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite #{1.6 + 1.2}s;
+  $durationAnimStep-1: 1s;
+  $delayAnimStep-1: 1s;
+  $animStep-1: $durationAnimStep-1 ease-in-out $delayAnimStep-1 backwards;
+  $totalAnimStep-1: $durationAnimStep-1 + $delayAnimStep-1;
+
+  $durationAnimStep-2: 0.6s;
+  $delayAnimStep-2: $totalAnimStep-1;
+  $animStep-2: $durationAnimStep-2 ease-out $delayAnimStep-2 backwards;
+  $totalAnimStep-2: $durationAnimStep-2 + $delayAnimStep-2;
+
+  $durationAnimStep-3: 1.2s;
+  $delayAnimStep-3: $totalAnimStep-2;
+  $animStep-3: $durationAnimStep-3 cubic-bezier(0.25, 0.1, 0.25, 1)
+    $delayAnimStep-3 backwards;
+  $totalAnimStep-3: $durationAnimStep-3 + $delayAnimStep-3;
+
+  $durationAnimStep-4: 28s;
+  $delayAnimStep-4: $totalAnimStep-3;
+  $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55)
+    infinite $delayAnimStep-4;
 
   position: relative;
   min-height: 100vh;
@@ -26,6 +42,19 @@ $aspect-ratio-768: '16/9';
   flex-direction: column;
   justify-content: center;
   gap: rem(20);
+
+  &::before {
+    left: percent(1452, 1920);
+    top: percent(129, 1080);
+    @include adaptiveValue('left', 1452, 207);
+    @include adaptiveValue('top', 129, 34);
+  }
+  &::after {
+    left: percent(-127, 1920);
+    top: percent(276, 1080);
+    @include adaptiveValue('left', -127, -151);
+    @include adaptiveValue('top', 276, 107);
+  }
 
   @include mdQuery(0, $pc) {
     padding-top: rem(80.39);
@@ -75,14 +104,18 @@ $aspect-ratio-768: '16/9';
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../../assets/img/puzzles/puzzle_bg_3.jpg);
+    background-image: linear-gradient(
+        rgba(43, 40, 141, 0.2),
+        rgba(43, 40, 141, 0.2)
+      ),
+      url(../../assets/img/puzzles/puzzle_bg_3.jpg);
     background-repeat: no-repeat;
     background-size: percent($bg-width, $puzzle-width)
       percent($bg-height, $puzzle-height);
     background-position: percent($bg-pos-x, $puzzle-width - $bg-width)
       percent($bg-pos-y, $puzzle-height - $bg-height);
     clip-path: url(#puzzle-main-screen);
-    z-index: -1;
+    // z-index: -1;
     animation: puzzleMainScreen $animStep-1;
 
     @keyframes puzzleMainScreen {
@@ -113,6 +146,7 @@ $aspect-ratio-768: '16/9';
     background-color: var(--bg-pod-tekst);
     backdrop-filter: blur(rem(40));
     box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
+    z-index: 1;
 
     display: flex;
     flex-direction: column;
@@ -194,6 +228,7 @@ $aspect-ratio-768: '16/9';
     left: percent(455, 1800);
     top: percent(-35, 860);
     overflow: hidden;
+    z-index: 1;
 
     & > * {
       display: inline-block;
@@ -391,6 +426,51 @@ $aspect-ratio-768: '16/9';
           100%: 140 431,
         )
       );
+    }
+
+    &_stoped {
+      animation-play-state: paused;
+    }
+  }
+  // .greeting__dekor
+  &__decor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    animation: fadeOut $animStep-1;
+  }
+  // .greeting__icon-dawn
+  &__icon-dawn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+  }
+  // .greeting__code
+  &__code {
+    position: absolute;
+    color: var(--color-greeting-code);
+
+    // .greeting__code_1
+    &_1 {
+      left: percent(1062, 1800);
+      top: percent(70, 860);
+    }
+    // .greeting__code_2
+    &_2 {
+      left: percent(455, 1800);
+      bottom: 0;
+
+      @include tablet-d {
+        left: 0;
+      }
+
+      @include mobileSmall {
+        bottom: auto;
+        top: percent(184, 164);
+      }
     }
   }
 }
