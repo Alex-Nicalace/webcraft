@@ -42,7 +42,11 @@ $aspect-ratio-768: '16/9';
   :root.light-mode & {
     --greeting-puzzle-bg: linear-gradient(140deg, #4a67cf 0%, #373180 100%)
       no-repeat;
-    --greeting-heading-bg: linear-gradient(139deg, #4a67cf 0%, #373180 100%);
+    --greeting-heading-bg: linear-gradient(
+      139deg,
+      rgba(74, 103, 207, 0.2) 0%,
+      rgba(55, 49, 128, 0.2) 100%
+    );
 
     --greeting-heading-text-color: var(--white);
   }
@@ -128,6 +132,7 @@ $aspect-ratio-768: '16/9';
     height: 100%;
     background: var(--greeting-puzzle-bg);
     clip-path: url(#puzzle-main-screen);
+    overflow: hidden; // без этого в FF пазл растягивается
     animation: puzzleMainScreen $animStep-1;
 
     @keyframes puzzleMainScreen {
@@ -157,7 +162,6 @@ $aspect-ratio-768: '16/9';
     clip-path: url(#puzzle-main-screen-text-bg);
     background: var(--greeting-heading-bg);
     backdrop-filter: blur(rem(40));
-    box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
     z-index: 1;
     color: var(--greeting-heading-text-color);
 
@@ -165,11 +169,6 @@ $aspect-ratio-768: '16/9';
     flex-direction: column;
     align-items: flex-start;
     animation: fadeIn $animStep-2;
-
-    /* Только для Firefox. в фокск не обрезается фигура должным образом */
-    @-moz-document url-prefix() {
-      box-shadow: none;
-    }
 
     @include adaptiveValue('width', 1306, 956, $containerWidth, $pc, 1);
 
