@@ -25,10 +25,13 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
         .join(' ')}
     >
       <div className="greeting__wrapper">
-        <h1 className="greeting__heading heading-liquid">
-          <span>Я — frontend-разработчик.</span>
-          <span>Меня зовут Александр.</span>
-          <span>И это моё портфолио.</span>
+        <h1 className="greeting__heading heading-greeting heading-liquid">
+          <span className="heading-greeting__shadow"></span>
+          <span className="heading-greeting__text">
+            <span>Я — frontend-разработчик.</span>
+            <span>Меня зовут Александр.</span>
+            <span>И это моё портфолио.</span>
+          </span>
         </h1>
         <p className="greeting__text heading-additional-liquid">
           <span>Привет!</span>

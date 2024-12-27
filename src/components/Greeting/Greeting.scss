@@ -5,6 +5,27 @@ $aspect-ratio: '16/7.3';
 $aspect-ratio-1280: '16/8.8';
 $aspect-ratio-768: '16/9';
 
+$durationAnimStep-1: 1s;
+$delayAnimStep-1: 1s;
+$animStep-1: $durationAnimStep-1 ease-in-out $delayAnimStep-1 backwards;
+$totalAnimStep-1: $durationAnimStep-1 + $delayAnimStep-1;
+
+$durationAnimStep-2: 0.6s;
+$delayAnimStep-2: $totalAnimStep-1;
+$animStep-2: $durationAnimStep-2 ease-out $delayAnimStep-2 backwards;
+$totalAnimStep-2: $durationAnimStep-2 + $delayAnimStep-2;
+
+$durationAnimStep-3: 1.2s;
+$delayAnimStep-3: $totalAnimStep-2;
+$animStep-3: $durationAnimStep-3 cubic-bezier(0.25, 0.1, 0.25, 1)
+  $delayAnimStep-3 backwards;
+$totalAnimStep-3: $durationAnimStep-3 + $delayAnimStep-3;
+
+$durationAnimStep-4: 28s;
+$delayAnimStep-4: $totalAnimStep-3;
+$animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
+  $delayAnimStep-4;
+
 @mixin conditionPortrait {
   @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
     (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
@@ -44,34 +65,12 @@ $aspect-ratio-768: '16/9';
       no-repeat;
     --greeting-heading-bg: linear-gradient(
       139deg,
-      rgba(74, 103, 207, 0.2) 0%,
-      rgba(55, 49, 128, 0.2) 100%
+      rgba(74, 103, 207, 0.15) 0%,
+      rgba(55, 49, 128, 0.15) 100%
     );
 
     --greeting-heading-text-color: var(--white);
   }
-
-  $durationAnimStep-1: 1s;
-  $delayAnimStep-1: 1s;
-  $animStep-1: $durationAnimStep-1 ease-in-out $delayAnimStep-1 backwards;
-  $totalAnimStep-1: $durationAnimStep-1 + $delayAnimStep-1;
-
-  $durationAnimStep-2: 0.6s;
-  $delayAnimStep-2: $totalAnimStep-1;
-  $animStep-2: $durationAnimStep-2 ease-out $delayAnimStep-2 backwards;
-  $totalAnimStep-2: $durationAnimStep-2 + $delayAnimStep-2;
-
-  $durationAnimStep-3: 1.2s;
-  $delayAnimStep-3: $totalAnimStep-2;
-  $animStep-3: $durationAnimStep-3 cubic-bezier(0.25, 0.1, 0.25, 1)
-    $delayAnimStep-3 backwards;
-  $totalAnimStep-3: $durationAnimStep-3 + $delayAnimStep-3;
-
-  $durationAnimStep-4: 28s;
-  $delayAnimStep-4: $totalAnimStep-3;
-  $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55)
-    infinite $delayAnimStep-4;
-
   position: relative;
   min-height: 100vh;
   padding-top: rem(100.4);
@@ -155,81 +154,18 @@ $aspect-ratio-768: '16/9';
   // .greeting__heading
   &__heading {
     position: absolute;
-    padding-inline: percent(50, 1800);
-    padding-block: vh(35, 1080); // по макету 50
     left: percent(53, 1800);
     top: percent(218, 860);
-    clip-path: url(#puzzle-main-screen-text-bg);
-    background: var(--greeting-heading-bg);
-    backdrop-filter: blur(rem(40));
     z-index: 1;
-    color: var(--greeting-heading-text-color);
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    animation: fadeIn $animStep-2;
 
     @include adaptiveValue('width', 1306, 956, $containerWidth, $pc, 1);
 
     @include mdQuery(0, $pc) {
-      padding-inline: percent(35, 1200);
-      padding-block: vh(25, 720);
       @include adaptiveValue('width', 956, 614, $pc, $mobile, 1);
-      @media (orientation: portrait) {
-        padding-block: percent(25, 720);
-      }
     }
 
     @include mobile-d {
       @include adaptiveValue('width', 614, 268, $mobile);
-    }
-
-    span {
-      &:first-child {
-        animation: headingString1 $animStep-2;
-        @keyframes headingString1 {
-          0% {
-            transform: translateX(percent(-160, 1066));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      }
-      &:nth-child(2) {
-        animation: headingString2 $animStep-2;
-        @keyframes headingString2 {
-          0% {
-            transform: translateX(percent(-280, 918));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      }
-      &:last-child {
-        margin-top: em(25, 80);
-        flex-grow: 1;
-        align-self: flex-end;
-        animation: headingString3 $animStep-2;
-
-        @keyframes headingString3 {
-          0% {
-            transform: translateX(percent(-410, 861));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-      }
-    }
-    @include conditionPortrait {
-      padding: percent(10, 728) percent(20, 728);
-
-      @include mobileSmall {
-        padding: percent(4, 290);
-      }
     }
   }
   // .greeting__text
@@ -482,6 +418,97 @@ $aspect-ratio-768: '16/9';
       @include mobileSmall {
         bottom: auto;
         top: percent(184, 164);
+      }
+    }
+  }
+}
+
+.heading-greeting {
+  // .heading-greeting__shadow
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn $animStep-2;
+    filter: drop-shadow(0 rem(4) rem(10) rgba(31, 2, 150, 1));
+
+    &::before {
+      content: '';
+      display: block;
+      height: 100%;
+      clip-path: url(#puzzle-main-screen-text-bg);
+      background: var(--greeting-heading-bg);
+    }
+  }
+  // .heading-greeting__text
+  &__text {
+    padding-inline: percent(50, 1800);
+    padding-block: vh(35, 1080); // по макету 50
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: fadeIn $animStep-2;
+
+    clip-path: url(#puzzle-main-screen-text-bg);
+    backdrop-filter: blur(rem(40));
+    color: var(--greeting-heading-text-color);
+
+    @include mdQuery(0, $pc) {
+      padding-inline: percent(35, 1200);
+      padding-block: vh(25, 720);
+      @media (orientation: portrait) {
+        padding-block: percent(25, 720);
+      }
+    }
+
+    @include conditionPortrait {
+      padding: percent(10, 728) percent(20, 728);
+
+      @include mobileSmall {
+        padding: percent(4, 290);
+      }
+    }
+
+    span {
+      &:first-child {
+        animation: headingString1 $animStep-2;
+        @keyframes headingString1 {
+          0% {
+            transform: translateX(percent(-160, 1066));
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+      }
+      &:nth-child(2) {
+        animation: headingString2 $animStep-2;
+        @keyframes headingString2 {
+          0% {
+            transform: translateX(percent(-280, 918));
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+      }
+      &:last-child {
+        margin-top: em(25, 80);
+        flex-grow: 1;
+        align-self: flex-end;
+        animation: headingString3 $animStep-2;
+
+        @keyframes headingString3 {
+          0% {
+            transform: translateX(percent(-410, 861));
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
       }
     }
   }
