@@ -15,3 +15,16 @@
 
 // * Подключение миксинов брейкпоинтов (SCSS переиспользуемый)
 @forward './common/breakpoints';
+
+@mixin lightTheme {
+  :root.light-mode & {
+    @content;
+  }
+}
+
+@mixin darkTheme {
+  :root.dark-mode &,
+  :root & {
+    @content;
+  }
+}

@@ -15,7 +15,7 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
   const { isLessPC } = useScreenWidth();
   const [isAnimatedDecor, setIsAnimatedDecor] = useState(false);
   const [isStopedAnimatePuzzle, setIsStopedAnimatePuzzle] = useState(false);
-  const [animationType, setAnimationType] = useState<'ball' | 'code'>('code');
+  const [animationType, setAnimationType] = useState<'ball' | 'code'>('ball');
   const BallCount = 3;
   const codeAnimated = !isLessPC ? CODE_ANIMATED : CODE_ANIMATED.slice(0, 2);
 

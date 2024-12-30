@@ -40,8 +40,7 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
 }
 
 .greeting {
-  :root.dark-mode &,
-  :root & {
+  @include darkTheme {
     $puzzle-width: 1800;
     $puzzle-height: 860;
     $bg-width: 2383;
@@ -65,7 +64,7 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
     --greeting-heading-text-color: inherit;
   }
 
-  :root.light-mode & {
+  @include lightTheme {
     --greeting-puzzle-bg: linear-gradient(140deg, #4a67cf 0%, #373180 100%)
       no-repeat;
     --greeting-heading-bg: linear-gradient(
