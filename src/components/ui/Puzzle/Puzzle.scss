@@ -168,12 +168,6 @@
     transition: $transition;
   }
 
-  &__mask {
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
-
   &[class*='fact'] {
     counter-increment: fact 1;
 

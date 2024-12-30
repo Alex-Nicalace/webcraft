@@ -78,8 +78,8 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
                     onClick={handleToggleAnimatePuzzle}
                   ></span>
                 ))}
-          <PuzzleSvg className="greeting__mask" />
-          <HeadingSvg className="greeting__mask" />
+          <PuzzleSvg className="clip-path" />
+          <HeadingSvg className="clip-path" />
         </div>
         {!isAnimatedDecor && (
           <div

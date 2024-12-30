@@ -154,12 +154,6 @@
 
     @include adaptiveValue('--icon-size', 32, 24, $containerWidth, $mobile, 1);
   }
-  // .contact-puzzle__mask
-  &__mask {
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
 
   &__link {
     padding-bottom: rem(5);

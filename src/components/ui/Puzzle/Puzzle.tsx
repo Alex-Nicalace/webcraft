@@ -49,8 +49,8 @@ function Puzzle({
           {isPuzzleFact && <span>{text}</span>}
         </div>
       </div>
-      <SvgMaskOuter className="puzzle__mask" />
-      <SvgMaskInner className="puzzle__mask" />
+      <SvgMaskOuter className="clip-path" />
+      <SvgMaskInner className="clip-path" />
     </div>
   );
 }

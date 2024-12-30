@@ -47,8 +47,8 @@ function ContactPuzzle({
           {children}
         </a>
       )}
-      <SvgMaskOuter className="contact-puzzle__mask" />
-      <SvgMaskInner className="contact-puzzle__mask" />
+      <SvgMaskOuter className="clip-path" />
+      <SvgMaskInner className="clip-path" />
     </span>
   );
 }
