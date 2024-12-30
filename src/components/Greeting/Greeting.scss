@@ -26,6 +26,11 @@ $delayAnimStep-4: $totalAnimStep-3;
 $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
   $delayAnimStep-4;
 
+$durationAnimStep-4-2: 20s;
+$delayAnimStep-4-2: $totalAnimStep-3;
+$animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
+  infinite;
+
 @mixin conditionPortrait {
   @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
     (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
@@ -144,6 +149,13 @@ $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
         transform: scale(1) rotate(0deg);
       }
     }
+
+    &_stoped-animation {
+      .greeting__ball,
+      .greeting__animated-code {
+        animation-play-state: paused;
+      }
+    }
   }
   // .greeting__mask
   &__mask {
@@ -205,6 +217,7 @@ $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
       align-self: center;
     }
   }
+  // .greeting__ball
   &__ball {
     position: absolute;
 
@@ -375,10 +388,6 @@ $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
         )
       );
     }
-
-    &_stoped {
-      animation-play-state: paused;
-    }
   }
   // .greeting__dekor
   &__decor {
@@ -419,6 +428,88 @@ $animStep-4: $durationAnimStep-4 cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
         bottom: auto;
         top: percent(184, 164);
       }
+    }
+  }
+  // .greeting__animated-code
+  &__animated-code {
+    position: absolute;
+    color: var(--kod-fon);
+    cursor: default;
+
+    @include adaptiveValue('font-size', 16, 6);
+
+    @mixin code(
+      $widthParent: 1800,
+      $heightParent: 860,
+
+      $animationName,
+      $countSteps: 40,
+      $duration: 28s,
+      $delay: 0s,
+      $keyframesIntro: null,
+      $keyframesBase
+    ) {
+      animation: #{$animationName}-base $duration steps(#{$countSteps}) #{$delayAnimStep-4-2 +
+        $delay} backwards infinite;
+
+      @keyframes #{$animationName}-base {
+        @each $progress, $position in $keyframesBase {
+          #{$progress} {
+            left: percent(list.nth($position, 1), $widthParent);
+            top: percent(list.nth($position, 2), $heightParent);
+            opacity: list.nth($position, 3);
+          }
+        }
+      }
+    }
+
+    &_1 {
+      @include code(
+        $animationName: code-1,
+        $countSteps: 40,
+        $duration: 28s,
+        $delay: 0s,
+        $keyframesBase: (
+          0%: 240 680 1,
+          100%: 240 -285 1,
+        )
+      );
+    }
+    &_2 {
+      @include code(
+        $animationName: code-2,
+        $countSteps: 40,
+        $duration: 28s,
+        $delay: 0s,
+        $keyframesBase: (
+          0%: 973 -800 1,
+          100%: 973 790 1,
+        )
+      );
+
+      @include mdQuery(0, $pc) {
+        @include code(
+          $widthParent: 290,
+          $heightParent: 164,
+          $animationName: code-2,
+          $countSteps: 40,
+          $duration: 28s,
+          $delay: 0s,
+          $keyframesBase: (
+            0%: 185 -163 1,
+            100%: 185 164 1,
+          )
+        );
+      }
+    }
+    &_3 {
+      @include code(
+        $animationName: code-3,
+        $keyframesBase: (
+          0%: 1353 -367 1,
+          100%: 1353 680 1,
+        )
+      );
     }
   }
 }
