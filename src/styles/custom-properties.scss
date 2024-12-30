@@ -111,6 +111,8 @@
     --color-blur-decor-4-5-6: var(--blur-4-5-6);
     --color-blur-decor-7: var(--blur-7);
     --color-blur-decor-8: var(--blur-1-2-3-8);
+
+    --color-h2: var(--zagolovki-h2);
   }
 
   &.light-mode {
@@ -162,5 +164,7 @@
     --color-blur-decor-4-5-6: var(--blur-light-4-5-6);
     --color-blur-decor-7: var(--blur-light-7);
     --color-blur-decor-8: var(--blur-light-8);
+
+    --color-h2: var(--zagolovki-h2-light);
   }
 }
