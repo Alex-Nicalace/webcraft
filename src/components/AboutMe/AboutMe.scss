@@ -1,0 +1,67 @@
+.about-me {
+  position: relative;
+  --color-about-me-bg: var(--sero-siniy);
+  @include lightTheme {
+    --color-about-me-bg: var(--sero-goluboy-light);
+  }
+  // .about-me__wrapper
+  &__wrapper {
+    padding: rem(50) rem(100);
+    clip-path: url(#puzzle-second-screen);
+    background-color: var(--color-about-me-bg);
+    aspect-ratio: 1800/1060;
+  }
+  // &__box {
+
+  // }
+  // .about-me__heading
+  &__heading {
+    position: absolute;
+  }
+  &__content {
+    margin: 0 auto;
+    display: grid;
+    grid-template:
+      'i1 . .'
+      'i2 i3 i4' 1fr / 1fr 1fr 1fr;
+    gap: rem(20);
+
+    @include adaptiveValue('width', 890, 700, $containerWidth, $pc);
+  }
+
+  &__item-text {
+    // в Хроме без этой настройки обрезается контент
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    &:nth-child(1) {
+      grid-area: i1;
+      aspect-ratio: 283/268;
+    }
+    &:nth-child(2) {
+      grid-area: i2;
+    }
+    &:nth-child(3) {
+      grid-area: i3;
+    }
+    &:nth-child(4) {
+      grid-area: i4;
+    }
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: rem(20);
+      }
+    }
+  }
+  &__box-button {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(20);
+  }
+
+  &__button {
+    margin-top: rem(40);
+    grid-column: 3/4;
+  }
+}
