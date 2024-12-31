@@ -11,22 +11,20 @@
     background-color: var(--color-about-me-bg);
     aspect-ratio: 1800/1060;
   }
-  // &__box {
-
-  // }
+  &__box {
+    margin: 0 auto;
+    @include adaptiveValue('width', 890, 700, $containerWidth, $pc);
+  }
   // .about-me__heading
   &__heading {
     position: absolute;
   }
   &__content {
-    margin: 0 auto;
     display: grid;
     grid-template:
       'i1 . .'
       'i2 i3 i4' 1fr / 1fr 1fr 1fr;
     gap: rem(20);
-
-    @include adaptiveValue('width', 890, 700, $containerWidth, $pc);
   }
 
   &__item-text {
@@ -36,7 +34,7 @@
 
     &:nth-child(1) {
       grid-area: i1;
-      aspect-ratio: 283/268;
+      aspect-ratio: 283/310;
     }
     &:nth-child(2) {
       grid-area: i2;
@@ -62,6 +60,7 @@
 
   &__button {
     margin-top: rem(40);
+    min-width: max-content;
     grid-column: 3/4;
   }
 }
