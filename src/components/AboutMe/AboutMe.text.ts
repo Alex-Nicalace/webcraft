@@ -10,4 +10,5 @@ export const paragraphs = [
 export const paragraphsByScreenSize = {
   pc: [paragraphs[0], paragraphs[1], paragraphs[2], [paragraphs.slice(3)]],
   tablet: [paragraphs.slice(0, 2), paragraphs[2], paragraphs.slice(3)],
+  mobile: [paragraphs[0], paragraphs.slice(1, 5), paragraphs.slice(5)],
 };

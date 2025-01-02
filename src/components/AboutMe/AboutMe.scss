@@ -28,6 +28,13 @@
   // .about-me__heading
   &__heading {
     position: absolute;
+
+    @include tablet-d {
+      position: static;
+      &:not(:last-child) {
+        margin-bottom: rem(30);
+      }
+    }
   }
   &__content {
     display: grid;
@@ -40,6 +47,16 @@
       grid-template:
         'i1 . '
         'i2 i3' / 1fr 1fr;
+    }
+
+    @include tablet-d {
+      grid-template:
+        'i1' auto
+        'i2' auto
+        'i3';
+      justify-items: center;
+
+      row-gap: rem(30);
     }
   }
 
@@ -56,6 +73,15 @@
         aspect-ratio: 285/383;
       }
 
+      @include tablet-d {
+        aspect-ratio: auto;
+      }
+
+      @include tablet-d {
+        width: percent(294, 591);
+        justify-self: start;
+      }
+
       p {
         &:not(:last-child) {
           margin-bottom: percent(60, 285);
@@ -64,9 +90,18 @@
     }
     &:nth-child(2) {
       grid-area: i2;
+
+      @include tablet-d {
+        width: percent(370, 591);
+      }
     }
     &:nth-child(3) {
       grid-area: i3;
+
+      @include tablet-d {
+        width: percent(264, 591);
+        justify-self: end;
+      }
     }
     &:nth-child(4) {
       grid-area: i4;
@@ -86,6 +121,12 @@
     @include mdQuery(0, $pc) {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    @include tablet-d {
+      grid-template-columns: percent(264, 591);
+      justify-content: end;
+      gap: 0;
+    }
   }
 
   &__button {
@@ -96,6 +137,11 @@
     @include mdQuery(0, $pc) {
       grid-column: 2/3;
       margin-top: rem(35);
+    }
+
+    @include tablet-d {
+      grid-column: 1/2;
+      width: percent(260, 591);
     }
   }
 }

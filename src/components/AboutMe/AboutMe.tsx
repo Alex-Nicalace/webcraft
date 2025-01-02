@@ -3,16 +3,17 @@ import './AboutMe.scss';
 import { TAboutMeProps } from './AboutMe.types';
 import PuzzleSvgPC from '../../assets/img/puzzles/puzzle-second-screen.svg?react';
 import PuzzleSvgTablet from '../../assets/img/puzzles/puzzle-second-screen-tablet.svg?react';
+import PuzzleSvgMobile from '../../assets/img/puzzles/puzzle-second-screen-mobile.svg?react';
 import Button from '../ui/Button';
 import { paragraphsByScreenSize } from './AboutMe.text';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 
 function AboutMe({ className }: TAboutMeProps): JSX.Element {
-  const { isLessPC } = useScreenWidth();
+  const { isLessPC, isLessTablet } = useScreenWidth();
   const devices = Object.keys(
     paragraphsByScreenSize
   ) as (keyof typeof paragraphsByScreenSize)[];
-  const deviceIndex = Number(isLessPC);
+  const deviceIndex = Number(isLessPC) + Number(isLessTablet);
   const grupedParagraphs = paragraphsByScreenSize[devices[deviceIndex]];
   const grupedParagraphsModified = grupedParagraphs.map((item) =>
     Array.isArray(item) ? item : [item]
@@ -41,6 +42,7 @@ function AboutMe({ className }: TAboutMeProps): JSX.Element {
       </div>
       {deviceIndex === 0 && <PuzzleSvgPC className="clip-path" />}
       {deviceIndex === 1 && <PuzzleSvgTablet className="clip-path" />}
+      {deviceIndex === 2 && <PuzzleSvgMobile className="clip-path" />}
     </Container>
   );
 }
