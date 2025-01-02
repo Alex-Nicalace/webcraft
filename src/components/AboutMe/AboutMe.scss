@@ -10,10 +10,20 @@
     clip-path: url(#puzzle-second-screen);
     background-color: var(--color-about-me-bg);
     aspect-ratio: 1800/1060;
+
+    @include mdQuery(0, $pc) {
+      @include adaptiveValue('padding-inline', 100, 60, $pc, $tablet, 1);
+      @include adaptiveValue('padding-block', 50, 30, $pc, $tablet, 1);
+    }
   }
   &__box {
     margin: 0 auto;
     @include adaptiveValue('width', 890, 700, $containerWidth, $pc);
+
+    @include mdQuery(0, $pc) {
+      // width: rem(590);
+      @include adaptiveValue('width', 590, 530, $pc, $tablet);
+    }
   }
   // .about-me__heading
   &__heading {
@@ -25,6 +35,12 @@
       'i1 . .'
       'i2 i3 i4' 1fr / 1fr 1fr 1fr;
     gap: rem(20);
+
+    @include mdQuery(0, $pc) {
+      grid-template:
+        'i1 . '
+        'i2 i3' / 1fr 1fr;
+    }
   }
 
   &__item-text {
@@ -35,6 +51,16 @@
     &:nth-child(1) {
       grid-area: i1;
       aspect-ratio: 283/310;
+
+      @include mdQuery(0, $pc) {
+        aspect-ratio: 285/383;
+      }
+
+      p {
+        &:not(:last-child) {
+          margin-bottom: percent(60, 285);
+        }
+      }
     }
     &:nth-child(2) {
       grid-area: i2;
@@ -56,11 +82,20 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: rem(20);
+
+    @include mdQuery(0, $pc) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__button {
     margin-top: rem(40);
     min-width: max-content;
     grid-column: 3/4;
+
+    @include mdQuery(0, $pc) {
+      grid-column: 2/3;
+      margin-top: rem(35);
+    }
   }
 }
