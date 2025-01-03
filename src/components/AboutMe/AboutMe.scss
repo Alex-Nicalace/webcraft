@@ -15,6 +15,12 @@
       @include adaptiveValue('padding-inline', 100, 60, $pc, $tablet, 1);
       @include adaptiveValue('padding-block', 50, 30, $pc, $tablet, 1);
     }
+
+    @include mobile-d {
+      padding-bottom: rem(50);
+      @include adaptiveValue('padding-inline', 60, 15, $mobile, $minWidth);
+      @include adaptiveValue('padding-top', 30, 15, $mobile, $minWidth);
+    }
   }
   &__box {
     margin: 0 auto;
@@ -74,11 +80,8 @@
       }
 
       @include tablet-d {
-        aspect-ratio: auto;
-      }
-
-      @include tablet-d {
         width: percent(294, 591);
+        aspect-ratio: auto;
         justify-self: start;
       }
 
@@ -127,6 +130,11 @@
       justify-content: end;
       gap: 0;
     }
+
+    @include mobile-d {
+      grid-template-columns: none;
+      justify-content: center;
+    }
   }
 
   &__button {
@@ -142,6 +150,29 @@
     @include tablet-d {
       grid-column: 1/2;
       width: percent(260, 591);
+    }
+  }
+
+  &__slider {
+    position: relative;
+    overflow: hidden;
+  }
+  // .about-me__slide
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 101%;
+    width: 100%;
+    transition: all 0.4s ease-out;
+    // .about-me__slide_active
+    &_active {
+      position: relative;
+      left: 0;
+    }
+    // .about-me__slide_prev
+    &_prev {
+      left: 0;
+      opacity: 0;
     }
   }
 }
