@@ -9,11 +9,12 @@ import PuzzleSvgMobileSm from '../../assets/img/puzzles/puzzle-second-screen-mob
 import Button from '../ui/Button';
 import { paragraphsByScreenSize } from './AboutMe.text';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
+import ButtonSlider from '../ui/ButtonSlider';
 
 function AboutMe({ className }: TAboutMeProps): JSX.Element {
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
     useScreenWidth();
-  const [slideIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const devices = Object.keys(
     paragraphsByScreenSize
@@ -29,6 +30,12 @@ function AboutMe({ className }: TAboutMeProps): JSX.Element {
     Array.isArray(item) ? item : [item]
   );
   const useSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
+  const quantitySlides = grupedParagraphsModified.length;
+
+  function handleChangeSlide(index: number) {
+    if (index < 0 || index > quantitySlides - 1) return;
+    setSlideIndex(index);
+  }
 
   return (
     <Container tag="section" className={['about-me', className].join(' ')}>
@@ -66,6 +73,20 @@ function AboutMe({ className }: TAboutMeProps): JSX.Element {
           </div>
         </div>
       </div>
+      {useSlider && (
+        <div className="about-me__slider-buttons">
+          <ButtonSlider
+            direction="left"
+            onClick={() => handleChangeSlide(slideIndex - 1)}
+            disabled={slideIndex === 0}
+          />
+          <ButtonSlider
+            direction="right"
+            onClick={() => handleChangeSlide(slideIndex + 1)}
+            disabled={slideIndex === quantitySlides - 1}
+          />
+        </div>
+      )}
       {typeDevice === 'pc' && <PuzzleSvgPC className="clip-path" />}
       {typeDevice === 'tablet' && <PuzzleSvgTablet className="clip-path" />}
       {['mobile', 'mobileSmall'].includes(typeDevice) && (

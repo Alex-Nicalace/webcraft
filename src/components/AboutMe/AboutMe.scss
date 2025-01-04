@@ -175,4 +175,14 @@
       opacity: 0;
     }
   }
+  // .about-me__slider-buttons
+  &__slider-buttons {
+    position: absolute;
+    top: percent(9, 720);
+    left: percent(190, 320);
+    width: percent(74, 320);
+    display: flex;
+    justify-content: center;
+    gap: rem(10);
+  }
 }
