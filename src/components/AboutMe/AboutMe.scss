@@ -17,9 +17,13 @@
     }
 
     @include mobile-d {
-      padding-bottom: rem(50);
+      @include adaptiveValue('padding-bottom', 90, 120, $mobile, $mobileSmall);
       @include adaptiveValue('padding-inline', 60, 15, $mobile, $minWidth);
       @include adaptiveValue('padding-top', 30, 15, $mobile, $minWidth);
+    }
+
+    @include mobileSmall {
+      padding-bottom: rem(50);
     }
   }
   &__box {
@@ -38,7 +42,7 @@
     @include tablet-d {
       position: static;
       &:not(:last-child) {
-        margin-bottom: rem(30);
+        margin-bottom: percent(30, 260);
       }
     }
   }
@@ -173,6 +177,35 @@
     &_prev {
       left: 0;
       opacity: 0;
+    }
+
+    p {
+      width: percent(210, 260);
+      margin: 0 auto;
+
+      @include mobileSmall-u {
+        width: percent(270, 388);
+      }
+
+      &:nth-child(1) {
+        margin-right: 0;
+
+        @include mobileSmall-u {
+          margin-right: auto;
+        }
+      }
+
+      &:nth-child(2) {
+        margin-left: 0;
+
+        @include mobileSmall-u {
+          margin-left: auto;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: rem(20);
+      }
     }
   }
   // .about-me__slider-buttons
