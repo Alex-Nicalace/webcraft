@@ -24,6 +24,11 @@ function Header(/*{ }: THeaderProps*/): JSX.Element {
   const scrolledPage = usePageScrolled();
   const isMobileMenu = isLessTablet;
 
+  function handleToggleDarkModeOnMobile() {
+    toggleMode();
+    setMenuOpen((prev) => !prev);
+  }
+
   return (
     <Container
       tag="header"
@@ -51,7 +56,7 @@ function Header(/*{ }: THeaderProps*/): JSX.Element {
             isLessMobileSmall && (
               <TogglerTheme
                 isDarkMode={isDarkMode}
-                onClick={() => toggleMode()}
+                onClick={handleToggleDarkModeOnMobile}
               />
             )
           }
