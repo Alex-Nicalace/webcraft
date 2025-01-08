@@ -1,11 +1,14 @@
 .about-me {
   position: relative;
   --color-about-me-bg: var(--sero-siniy);
+  --color-about-me-code: var(--vspomogatelnyy-1);
   @include lightTheme {
     --color-about-me-bg: var(--sero-goluboy-light);
+    --color-about-me-code: var(--vspomogatelnyy-1-light);
   }
   // .about-me__wrapper
   &__wrapper {
+    position: relative;
     padding: rem(50) rem(100);
     clip-path: url(#puzzle-second-screen);
     background-color: var(--color-about-me-bg);
@@ -217,5 +220,95 @@
     display: flex;
     justify-content: center;
     gap: rem(10);
+  }
+  &__decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  &__code {
+    position: absolute;
+    color: var(--color-about-me-code);
+
+    &_1 {
+      left: percent(1469, 1800);
+      top: percent(847, 1060);
+    }
+    &_2 {
+      left: 0;
+      top: percent(610, 1060);
+    }
+    &_3 {
+      left: percent(1439, 1800);
+      top: percent(-47, 1060);
+    }
+    &_4 {
+      left: percent(94, 1800);
+      top: percent(128, 1060);
+    }
+    &_5 {
+      left: percent(651, 1800);
+      top: percent(723, 1060);
+    }
+
+    @include mdQuery(0, $pc) {
+      &_2 {
+        left: percent(35, 1200);
+        top: percent(741, 1127);
+      }
+      &_3 {
+        left: percent(687, 1200);
+        top: percent(-41, 1127);
+      }
+      &_4 {
+        left: percent(1004, 1200);
+        top: percent(17, 1127);
+      }
+      &_5 {
+        left: percent(-8, 1200);
+        top: percent(150, 1127);
+      }
+    }
+
+    @include tablet-d {
+      &_1 {
+        left: percent(626, 728);
+        top: percent(780, 1128);
+      }
+      &_2 {
+        left: percent(-215, 728);
+        top: percent(797, 1128);
+      }
+      &_3 {
+        left: percent(682, 728);
+        top: percent(89, 1128);
+      }
+      &_4 {
+        left: percent(-132, 728);
+        top: percent(400, 1128);
+      }
+      &_5 {
+        left: percent(243, 728);
+        top: percent(-440, 1128);
+      }
+    }
+
+    @include mobile-d {
+      &_1 {
+        left: percent(237, 290);
+        top: percent(697, 720);
+      }
+      &_2 {
+        left: percent(-24, 290);
+        top: percent(680, 720);
+      }
+      &_3 {
+        left: percent(-105, 290);
+        top: percent(-105, 720);
+      }
+    }
   }
 }

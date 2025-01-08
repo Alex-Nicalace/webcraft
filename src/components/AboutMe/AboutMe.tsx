@@ -10,6 +10,7 @@ import Button from '../ui/Button';
 import { paragraphsByScreenSize } from './AboutMe.text';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import ButtonSlider from '../ui/ButtonSlider';
+import { CODE } from './codeDecor';
 
 function AboutMe({ className }: TAboutMeProps): JSX.Element {
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
@@ -31,6 +32,7 @@ function AboutMe({ className }: TAboutMeProps): JSX.Element {
   );
   const useSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
   const quantitySlides = grupedParagraphsModified.length;
+  const code = !isLessMobile ? CODE : CODE.slice(1, 4);
 
   function handleChangeSlide(index: number) {
     if (index < 0 || index > quantitySlides - 1) return;
@@ -71,6 +73,16 @@ function AboutMe({ className }: TAboutMeProps): JSX.Element {
               Смотреть портфолио
             </Button>
           </div>
+        </div>
+        <div className="about-me__decor">
+          {code.map((code, i) => (
+            <pre
+              key={i}
+              className={`about-me__code about-me__code_${i + 1} text-typing`}
+            >
+              <code>{code}</code>
+            </pre>
+          ))}
         </div>
       </div>
       {useSlider && (
