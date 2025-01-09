@@ -1,0 +1,100 @@
+.credo {
+  // .credo__wrapper
+  &__wrapper {
+    position: relative;
+    aspect-ratio: 1800 / 1570;
+
+    .puzzle {
+      position: absolute;
+
+      &_3 {
+        top: 0;
+        left: 0;
+      }
+      &_4 {
+        left: percent(607, 1800);
+        top: percent(80, 1570);
+      }
+      &_5 {
+        right: 0;
+        top: percent(160, 1570);
+      }
+      &_6 {
+        left: percent(607, 1800);
+        top: percent(600, 1570);
+      }
+      &_7 {
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    @include mdQuery(0, $pc) {
+      $width-box: 1200;
+      $height-box: 1500;
+      aspect-ratio: auto;
+      height: rem($height-box);
+      @include adaptiveValue('height', 1400, 1700, $pc, $mobile);
+
+      .puzzle {
+        position: absolute;
+
+        &_4 {
+          left: percent(550, $width-box);
+          top: rem(125);
+        }
+        &_5 {
+          right: auto;
+          top: rem(450);
+          @include adaptiveValue('left', 150, 0, $pc, $mobile);
+        }
+        &_6 {
+          left: auto;
+          right: 0;
+          @include adaptiveValue('top', 650, 900, $pc, $mobile);
+        }
+      }
+    }
+
+    @include mobile-d {
+      $width-box: 728;
+      $height-box: 1640;
+      @include adaptiveValue('height', $height-box, 543, $mobile);
+
+      .puzzle {
+        position: absolute;
+
+        &_4 {
+          left: auto;
+          right: 0;
+          top: percent(129, $height-box);
+        }
+        &_5 {
+          left: 0;
+          top: percent(412, $height-box);
+        }
+        &_6 {
+          top: percent(823, $height-box);
+        }
+      }
+    }
+
+    @include mobileSmall {
+      $width-box: 290;
+      $height-box: 543;
+
+      .puzzle {
+        position: absolute;
+
+        &_5 {
+          left: 0;
+          top: percent(145, $height-box);
+        }
+
+        &_6 {
+          top: percent(285, $height-box);
+        }
+      }
+    }
+  }
+}

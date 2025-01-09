@@ -1,5 +1,6 @@
 import AboutMe from '../../components/AboutMe';
 import Competencies from '../../components/Competencies';
+import Credo from '../../components/Credo/Credo';
 import Greeting from '../../components/Greeting';
 import './MainPage.scss';
 
@@ -10,6 +11,7 @@ function MainPage(/*{ }: TMainPageProps*/): JSX.Element {
       <Greeting className="main-page__greeting" />
       <AboutMe className="main-page__about-me" />
       <Competencies className="main-page__competencies" />
+      <Credo className="main-page__credo" />
     </main>
   );
 }
