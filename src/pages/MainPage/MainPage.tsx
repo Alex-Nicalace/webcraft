@@ -1,4 +1,5 @@
 import AboutMe from '../../components/AboutMe';
+import Competencies from '../../components/Competencies';
 import Greeting from '../../components/Greeting';
 import './MainPage.scss';
 
@@ -8,6 +9,7 @@ function MainPage(/*{ }: TMainPageProps*/): JSX.Element {
     <main className="main-page">
       <Greeting className="main-page__greeting" />
       <AboutMe className="main-page__about-me" />
+      <Competencies className="main-page__competencies" />
     </main>
   );
 }

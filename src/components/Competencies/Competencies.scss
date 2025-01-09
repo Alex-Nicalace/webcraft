@@ -1,0 +1,63 @@
+.competencies {
+  --color-competencies-border: var(--sero-siniy);
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet-d {
+    flex-direction: column;
+    row-gap: rem(30);
+  }
+
+  @include lightTheme {
+    --color-competencies-border: var(--sero-goluboy-light);
+  }
+
+  // .competencies__heading
+  &__heading {
+  }
+
+  // .competencies__list
+  &__list {
+    flex: 0 0 percent(1345, 1800);
+    display: flex;
+    flex-wrap: wrap;
+    @include adaptiveValue('column-gap', 30, 2);
+    @include adaptiveValue('row-gap', 30, 4);
+
+    @include tablet-d {
+      justify-content: center;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: inherit;
+
+    @include adaptiveValue('flex-basis', 310, 220, $containerWidth, $tablet);
+
+    @include tablet-d {
+      @include adaptiveValue('flex-basis', 290, 220, $tablet, $mobile);
+    }
+
+    @include mobile-d {
+      @include adaptiveValue('flex-basis', 220, 130, $mobile);
+    }
+
+    @include mobileSmall {
+      flex-grow: 1;
+    }
+
+    &:not(:last-child)::after {
+      content: '/';
+      color: var(--color-competencies-border);
+    }
+  }
+  // .competencies__competence
+  &__competence {
+    flex-grow: 1;
+    border: rem(2) solid var(--color-competencies-border);
+    border-radius: rem(100);
+    padding: rem(15) 0;
+    text-align: center;
+  }
+}
