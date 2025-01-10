@@ -1,6 +1,14 @@
 @use '../../../styles/global-scss.scss' as *;
 
 @mixin menu-item-state {
+  --color-menu-item: var(--white);
+  --color-menu-item-bg-hover-pressed: var(--sero-siniy);
+
+  @include lightTheme {
+    --color-menu-item: var(--blue);
+    --color-menu-item-bg-hover-pressed: var(--vspomogatelnyy-light);
+  }
+
   background-color: var(--color-menu-item-bg-hover-pressed);
   &::before,
   &::after {

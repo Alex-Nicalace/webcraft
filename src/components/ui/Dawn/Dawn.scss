@@ -1,4 +1,8 @@
 .dawn {
+  --color-dawn: var(--vspomogatelnyy-1);
+  @include lightTheme {
+    --color-dawn: var(--vspomogatelnyy-1-light);
+  }
   width: var(--size-dawn);
   height: var(--size-dawn);
   stroke-width: 0.2;

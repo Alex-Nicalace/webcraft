@@ -15,6 +15,16 @@
 }
 
 .project-link {
+  --color-project-link-text: var(--white);
+  --color-project-link-border: var(--sero-siniy);
+  --color-project-bg-popup: var(--bg-proekta);
+
+  @include lightTheme {
+    --color-project-link-text: var(--blue);
+    --color-project-link-border: var(--vspomogatelnyy-1-light);
+    --color-project-bg-popup: var(--bg-proekta-light);
+  }
+
   $transition: 0.6s ease-out;
   position: relative;
   color: var(--color-project-link-text);

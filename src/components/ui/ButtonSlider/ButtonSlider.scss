@@ -1,4 +1,12 @@
 .button-slider {
+  --color-button-slider-icon: var(--siniy);
+  --color-button-slider-icon-pressed: var(--sredniy-siniy);
+  --color-button-slider-icon-disabled: var(--disabled-1);
+
+  @include lightTheme {
+    --color-button-slider-icon-disabled: var(--disabled-light);
+  }
+
   color: var(--color-button-slider-icon);
   // .button-slider__icon
   &__icon {

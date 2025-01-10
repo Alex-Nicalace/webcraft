@@ -1,4 +1,15 @@
 .scroll-up {
+  --color-scrollup-bracket: var(--siniy);
+  --color-scrollup-hover-bg: var(--siniy);
+
+  --color-scrollup-bg: var(--sero-siniy);
+  --color-scrollup-box-shadow: var(--gray-deep-space);
+
+  @include lightTheme {
+    --color-scrollup-bg: var(--vspomogatelnyy-light);
+    --color-scrollup-box-shadow: var(--color-fade-blue);
+  }
+
   position: relative;
   width: rem(84);
   height: rem(60);

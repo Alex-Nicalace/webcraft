@@ -44,23 +44,6 @@
   );
 
   // цвета компонентов
-  --color-button-bg: var(--siniy);
-  --color-button-text: var(--white);
-  --color-button-dot: var(--white);
-  --color-button-secondary-bg: transparent;
-  --color-button-secondary-border: var(--siniy);
-  --color-button-secondary-text: var(--siniy);
-  --color-button-secondary-dot: var(--siniy);
-  --color-button-secondary-text-hover: var(--white);
-
-  --color-scrollup-bracket: var(--siniy);
-  --color-scrollup-hover-bg: var(--siniy);
-
-  --color-button-slider-icon: var(--siniy);
-  --color-button-slider-icon-pressed: var(--sredniy-siniy);
-
-  --color-toggler-theme-icon-hover: var(--siniy);
-
   &,
   &.dark-mode {
     --body-bg: url('../assets/img/bg/bg-noise-dark-theme.png');
@@ -68,42 +51,10 @@
     --color-main-text: var(--white);
     --color-main-bg: var(--color-bg-dark);
 
-    --color-menu-item: var(--white);
-    --color-menu-item-bg-hover-pressed: var(--sero-siniy);
-
-    --color-button-bg-disabled: var(--disabled-1);
-    --color-button-text-disabled: var(--disabled-2);
-    --color-button-secondary-border-dot-text-disabled: var(--disabled-1);
-
-    --color-scrollup-bg: var(--sero-siniy);
-    --color-scrollup-box-shadow: var(--gray-deep-space);
-
-    --color-button-slider-icon-disabled: var(--disabled-1);
-
-    --color-toggler-theme-icon: var(--white);
-
-    --color-puzzle-inner-bg: var(--sero-siniy);
-    --color-puzzle-dekor: var(--vspomogatelnyy-1);
-    --color-puzzle-number-bg: rgba(73, 0, 224, 0.9);
-
-    --color-project-link-text: var(--white);
-    --color-project-link-border: var(--sero-siniy);
-    --color-project-bg-popup: var(--bg-proekta);
-
-    --color-project-list-hover-text: var(--sero-siniy);
-
-    --color-contact-puzzle-border: var(--vspomogatelnyy-1);
-    --color-contact-puzzle-bg: var(--sero-siniy);
-    --color-contact-puzzle-hover-bg: var(--vspomogatelnyy-1);
-    --color-contact-puzzle-design: var(--vspomogatelnyy-1);
-    --color-contact-puzzle-design-hover: var(--white);
-
     --color-main-menu-mobile-bg: var(--sero-siniy);
     --box-shadow-main-menu-mobile: 0 #{rem(14) rem(20)} 0 rgba(17, 21, 26, 0.4);
     --color-main-menu-mobile-dekor: var(--vspomogatelnyy-1);
     --color-header-bg: var(--bg-header);
-
-    --color-dawn: var(--vspomogatelnyy-1);
 
     --color-greeting-code: var(--sero-siniy);
 
@@ -121,42 +72,10 @@
     --color-main-text: var(--blue);
     --color-main-bg: var(--color-bg-light);
 
-    --color-menu-item: var(--blue);
-    --color-menu-item-bg-hover-pressed: var(--vspomogatelnyy-light);
-
-    --color-button-bg-disabled: var(--disabled-light);
-    --color-button-text-disabled: var(--color-bg-light);
-    --color-button-secondary-border-dot-text-disabled: var(--disabled-light);
-
-    --color-scrollup-bg: var(--vspomogatelnyy-light);
-    --color-scrollup-box-shadow: var(--color-fade-blue);
-
-    --color-button-slider-icon-disabled: var(--disabled-light);
-
-    --color-toggler-theme-icon: var(--blue);
-
-    --color-puzzle-inner-bg: var(--sero-goluboy-light);
-    --color-puzzle-dekor: var(--vspomogatelnyy-1-light);
-    --color-puzzle-number-bg: transparent;
-
-    --color-project-link-text: var(--blue);
-    --color-project-link-border: var(--vspomogatelnyy-1-light);
-    --color-project-bg-popup: var(--bg-proekta-light);
-
-    --color-project-list-hover-text: var(--vspomogatelnyy-1-light);
-
-    --color-contact-puzzle-border: var(--sero-goluboy-light);
-    --color-contact-puzzle-bg: var(--vspomogatelnyy-1-light);
-    --color-contact-puzzle-hover-bg: var(--sero-goluboy-light);
-    --color-contact-puzzle-design: var(--vspomogatelnyy-1-light);
-    --color-contact-puzzle-design-hover: var(--vspomogatelnyy-light);
-
     --color-main-menu-mobile-bg: var(--sero-goluboy-light);
     --box-shadow-main-menu-mobile: 0 #{rem(4) rem(10)} 0 rgba(103, 121, 153, 0.36);
     --color-main-menu-mobile-dekor: var(--vspomogatelnyy-1-light);
     --color-header-bg: var(--bg-header-light);
-
-    --color-dawn: var(--vspomogatelnyy-1-light);
 
     --color-greeting-code: var(--vspomogatelnyy-light);
 

@@ -1,4 +1,11 @@
 .toggler-theme {
+  --color-toggler-theme-icon-hover: var(--siniy);
+  --color-toggler-theme-icon: var(--white);
+
+  @include lightTheme {
+    --color-toggler-theme-icon: var(--blue);
+  }
+
   color: var(--color-toggler-theme-icon);
   transition: color 0.3s ease-out 0s;
   // .toggler-theme__icon

@@ -1,4 +1,8 @@
 .project-list {
+  --color-project-list-hover-text: var(--sero-siniy);
+  @include lightTheme {
+    --color-project-list-hover-text: var(--vspomogatelnyy-1-light);
+  }
   list-style-type: none;
   counter-reset: project 0;
 
