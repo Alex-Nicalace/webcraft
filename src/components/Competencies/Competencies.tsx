@@ -11,9 +11,16 @@ const COMPETENCIES = [
   'scss',
 ];
 
-function Competencies({ className }: TCompetenciesProps): JSX.Element {
+function Competencies({
+  className,
+  ...props
+}: TCompetenciesProps): JSX.Element {
   return (
-    <Container tag="section" className={['competencies', className].join(' ')}>
+    <Container
+      tag="section"
+      className={['competencies', className].join(' ')}
+      {...props}
+    >
       <h2 className="competencies__heading heading">Мои компетенции</h2>
       <ul className="competencies__list">
         {COMPETENCIES.map((item, index) => (

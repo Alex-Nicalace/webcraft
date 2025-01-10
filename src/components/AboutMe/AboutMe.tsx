@@ -12,7 +12,7 @@ import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import ButtonSlider from '../ui/ButtonSlider';
 import { CODE } from './codeDecor';
 
-function AboutMe({ className }: TAboutMeProps): JSX.Element {
+function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
     useScreenWidth();
   const [slideIndex, setSlideIndex] = useState(0);
@@ -40,7 +40,11 @@ function AboutMe({ className }: TAboutMeProps): JSX.Element {
   }
 
   return (
-    <Container tag="section" className={['about-me', className].join(' ')}>
+    <Container
+      tag="section"
+      className={['about-me', className].join(' ')}
+      {...props}
+    >
       <div className="about-me__wrapper">
         <h2 className="about-me__heading heading">Обо мне</h2>
         <div className="about-me__box">

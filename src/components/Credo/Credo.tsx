@@ -11,11 +11,11 @@ const CREDO_PUZZLE: { text: string; variant: 3 | 4 | 5 | 6 | 7 }[] = [
   { text: 'ожидаемый результат.', variant: 7 },
 ];
 
-function Credo({ className }: TCredoProps): JSX.Element {
+function Credo({ className, ...props }: TCredoProps): JSX.Element {
   const isOpenPuzzle = false;
 
   return (
-    <Container tag="div" className={['credo', className].join(' ')}>
+    <Container tag="div" className={['credo', className].join(' ')} {...props}>
       <div className="credo__wrapper">
         {CREDO_PUZZLE.map(({ text, variant }, index) => (
           <Puzzle

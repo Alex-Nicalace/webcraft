@@ -1,3 +1,3 @@
 import { HTMLAttributes } from 'react';
 
-export type TCompetenciesProps = HTMLAttributes<HTMLDivElement>;
+export type TCompetenciesProps = HTMLAttributes<HTMLElement>;

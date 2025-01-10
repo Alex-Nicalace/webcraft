@@ -10,7 +10,7 @@ import Dawn from '../ui/Dawn';
 import { useDarkMode } from '../../Context/DarkModeContext';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 
-function Greeting({ className }: TGreetingProps): JSX.Element {
+function Greeting({ className, ...props }: TGreetingProps): JSX.Element {
   const { isDarkMode } = useDarkMode();
   const { isLessPC } = useScreenWidth();
   const [isAnimatedDecor, setIsAnimatedDecor] = useState(false);
@@ -37,6 +37,7 @@ function Greeting({ className }: TGreetingProps): JSX.Element {
       className={['greeting decor-blured decor-blured_1', className]
         .filter(Boolean)
         .join(' ')}
+      {...props}
     >
       <div className="greeting__wrapper">
         <h1 className="greeting__heading heading-greeting heading-liquid">
