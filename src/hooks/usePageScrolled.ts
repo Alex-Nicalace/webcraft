@@ -9,11 +9,11 @@ export function usePageScrolled() {
     // Но решил попрактиковаться с IntersectionObserver
     const options = {
       root: null, // Наблюдаем за viewport
-      threshold: 0.01, // Пересечение фиксируется мгновенно
+      threshold: 0, // Пересечение фиксируется мгновенно
       // Область наблюдения. Верхнюю границу поднял примерно на высоту хедера
       // а нижнюю поднял на всю высоту экрана вверх.
       // Т.о. получилась область наблюдения вне видимой части экрана сверху полосой в 60px
-      rootMargin: '60px 0px -100% 0px',
+      rootMargin: '100px 0px -100.1% 0px',
     };
 
     const callback = (entries: IntersectionObserverEntry[]) => {
