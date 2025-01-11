@@ -10,6 +10,7 @@ function Puzzle({
   variant,
   isOpen,
   num,
+  ...props
 }: TPuzzleProps): JSX.Element {
   const { SvgMaskOuter, SvgMaskInner } = VARIANTS_PUZZLE[variant];
   const isPuzzleCredo =
@@ -27,6 +28,7 @@ function Puzzle({
         .filter(Boolean)
         .join(' ')}
       data-num={num}
+      {...props}
     >
       <div className="puzzle__content">
         {!isPuzzleFact && <SvgDekor className="puzzle__dekor" />}

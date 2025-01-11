@@ -177,6 +177,7 @@
     padding: 0 rem(5);
     opacity: 0;
     transition: $transition;
+    pointer-events: none;
   }
 
   &[class*='fact'] {
@@ -193,6 +194,7 @@
       box-shadow: 0 rem(4) rem(35) 0 rgba(31, 2, 150, 0.35);
       color: var(--white);
       transition: $transition;
+      pointer-events: none;
 
       /* Только для Firefox. в фокск не наблюдаются артефакты */
       @-moz-document url-prefix() {

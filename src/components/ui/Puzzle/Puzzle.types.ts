@@ -1,5 +1,6 @@
-export type TPuzzleProps = {
-  className?: string;
+import { HTMLAttributes } from 'react';
+
+export type TPuzzleProps = HTMLAttributes<HTMLDivElement> & {
   variant:
     | 3
     | 4
