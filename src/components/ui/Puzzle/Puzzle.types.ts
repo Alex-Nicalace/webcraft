@@ -18,4 +18,5 @@ export type TPuzzleProps = {
     | 'fact-10';
   text?: string;
   isOpen?: boolean;
+  num?: number;
 };
