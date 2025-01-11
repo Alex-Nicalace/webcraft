@@ -1,0 +1,58 @@
+.facts {
+  // .facts__heading
+  &__heading {
+    &:not(:last-child) {
+      margin-bottom: rem(30);
+    }
+  }
+  // .facts__explain
+  &__explain {
+    display: flex;
+    gap: rem(15);
+
+    &::before,
+    &::after {
+      content: '/';
+    }
+    &:not(:last-child) {
+      margin-bottom: rem(60);
+    }
+  }
+  // .facts__list
+  &__list {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(40);
+    counter-reset: fact 0;
+    animation: scroll-left 20s linear infinite; /* Анимация */
+
+    @include mdQuery(0, $pc) {
+      gap: rem(30);
+    }
+
+    @include mobileSmall {
+      gap: rem(20);
+    }
+
+    @keyframes scroll-left {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+  }
+  // .facts__item
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: inherit;
+  }
+  // .facts__puzzle
+  &__puzzle {
+  }
+  // .facts__dawn
+  &__dawn {
+  }
+}
