@@ -24,7 +24,7 @@
     align-items: center;
     gap: rem(40);
     counter-reset: fact 0;
-    animation: scroll-left 20s linear infinite; /* Анимация */
+    animation: scroll-left 40s linear infinite; /* Анимация */
 
     @include mdQuery(0, $pc) {
       gap: rem(30);
@@ -41,6 +41,10 @@
       to {
         transform: translateX(-50%);
       }
+    }
+
+    &_opened {
+      animation-play-state: paused;
     }
   }
   // .facts__item
