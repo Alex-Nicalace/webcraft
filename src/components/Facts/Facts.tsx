@@ -35,7 +35,7 @@ function Facts({ className, ...props }: TFactsProps): JSX.Element {
       className={['facts', className].join(' ')}
       {...props}
     >
-      <h2 className="facts__heading heading">
+      <h2 className="facts__heading">
         {pluralize(quantityFacts, 'факт', 'факта', 'фактов')}
       </h2>
       <p className="facts__explain">
