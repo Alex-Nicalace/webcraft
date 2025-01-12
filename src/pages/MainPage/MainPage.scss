@@ -1,5 +1,6 @@
 .main-page {
-  & > * {
+  & > *,
+  & {
     &:not(:last-child) {
       @include adaptiveValue('margin-bottom', 200, 90);
     }
