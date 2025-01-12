@@ -1,0 +1,17 @@
+.footer {
+  // .footer__links
+  &__links {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    // .footer__links_column
+    &_column {
+      flex-direction: column;
+    }
+  }
+  // .footer__address
+  &__address {
+    display: contents;
+    font-style: inherit;
+  }
+}
