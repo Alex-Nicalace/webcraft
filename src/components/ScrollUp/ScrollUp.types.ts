@@ -1,1 +1,5 @@
-export type TScrollUpProps = { className?: string; isNotAnimated?: boolean };
+export type TScrollUpProps = {
+  className?: string;
+  isNotAnimated?: boolean;
+  triggerSelector?: string;
+};

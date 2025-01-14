@@ -10,13 +10,29 @@
     --color-scrollup-box-shadow: var(--color-fade-blue);
   }
 
-  position: relative;
+  position: fixed;
+  right: rem(80);
+  right: vw(80, 1920);
+  bottom: rem(70);
+  bottom: vw(70, 1920);
   width: rem(84);
   height: rem(60);
   background-color: var(--color-scrollup-bg);
   box-shadow: 0 rem(14) rem(20) 0 var(--color-scrollup-box-shadow);
   color: var(--white);
   transition: background-color 0.2s ease-out 0s;
+
+  @include mdQuery(0, $pc) {
+    bottom: vw(330, $pc);
+  }
+
+  @include tablet-d {
+    bottom: vw(300, $tablet);
+  }
+
+  @include mdQuery(0, $mobileMd) {
+    bottom: rem(410);
+  }
 
   &::before,
   &::after {
