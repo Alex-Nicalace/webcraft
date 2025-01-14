@@ -1,4 +1,14 @@
 .credo {
+  position: relative;
+  &::before {
+    @include adaptiveValue('left', 1470, 170);
+    @include adaptiveValue('top', -200, -250);
+  }
+  &::after {
+    @include adaptiveValue('left', 50, -80);
+    @include adaptiveValue('top', 400, 245);
+  }
+
   // .credo__wrapper
   &__wrapper {
     position: relative;

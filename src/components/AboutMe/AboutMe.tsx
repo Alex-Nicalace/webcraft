@@ -42,7 +42,7 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
   return (
     <Container
       tag="section"
-      className={['about-me', className].join(' ')}
+      className={['about-me decor-blured decor-blured_2', className].join(' ')}
       {...props}
     >
       <div className="about-me__wrapper">

@@ -15,7 +15,11 @@ function Credo({ className, ...props }: TCredoProps): JSX.Element {
   const isOpenPuzzle = false;
 
   return (
-    <Container tag="div" className={['credo', className].join(' ')} {...props}>
+    <Container
+      tag="div"
+      className={['credo decor-blured decor-blured_3', className].join(' ')}
+      {...props}
+    >
       <div className="credo__wrapper">
         {CREDO_PUZZLE.map(({ text, variant }, index) => (
           <Puzzle

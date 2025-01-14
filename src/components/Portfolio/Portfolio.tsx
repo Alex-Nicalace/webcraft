@@ -9,7 +9,7 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
   return (
     <Container
       tag="div"
-      className={['portfolio', className].join(' ')}
+      className={['portfolio decor-blured decor-blured_4', className].join(' ')}
       {...props}
     >
       <ProjectList className="portfolio__projects" data={PROJECTS} />

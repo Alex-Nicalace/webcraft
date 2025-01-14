@@ -2,6 +2,16 @@
   position: relative;
   --color-about-me-bg: var(--sero-siniy);
   --color-about-me-code: var(--vspomogatelnyy-1);
+
+  &::before {
+    @include adaptiveValue('left', 1623, 110);
+    @include adaptiveValue('top', -200, -48);
+  }
+  &::after {
+    @include adaptiveValue('left', 194, -115);
+    @include adaptiveValue('top', 126, 400);
+  }
+
   @include lightTheme {
     --color-about-me-bg: var(--sero-goluboy-light);
     --color-about-me-code: var(--vspomogatelnyy-1-light);
