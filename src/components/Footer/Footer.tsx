@@ -3,6 +3,7 @@ import ContactPuzzle, { TContactPuzzleProps } from '../ui/ContactPuzzle';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import { DESIGN_CONTACT, MY_CONTACTS } from './Footer.config';
 import './Footer.scss';
+import { TFooterProps } from './Footer.types';
 
 function getVariant(index: number): TContactPuzzleProps['variant'] {
   if (index >= 0 && index < 6) {
@@ -11,11 +12,15 @@ function getVariant(index: number): TContactPuzzleProps['variant'] {
   throw new Error('Index of puzzle out of bounds');
 }
 
-function Footer(): JSX.Element {
+function Footer({ className, ...props }: TFooterProps): JSX.Element {
   const { isLessMobileMd } = useScreenWidth();
 
   return (
-    <Container tag="footer" className="footer">
+    <Container
+      tag="footer"
+      className={['footer', className].filter(Boolean).join(' ')}
+      {...props}
+    >
       <div
         className={['footer__links', isLessMobileMd && 'footer__links_column']
           .filter(Boolean)
