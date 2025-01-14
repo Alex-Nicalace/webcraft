@@ -1,0 +1,24 @@
+.portfolio {
+  display: grid;
+  row-gap: rem(85);
+
+  @include mdQuery(0, $pc) {
+    row-gap: rem(75);
+  }
+
+  @include tablet-d {
+    row-gap: rem(60);
+  }
+
+  @include mobileSmall {
+    row-gap: rem(40);
+  }
+
+  &__projects {
+  }
+  // .portfolio__contact-me
+  &__contact-me {
+    // align-self: center;
+    justify-self: center;
+  }
+}
