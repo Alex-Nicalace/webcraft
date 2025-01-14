@@ -73,7 +73,11 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
             ))}
           </div>
           <div className="about-me__box-button">
-            <Button className="about-me__button" variant="button-secondary">
+            <Button
+              href="#portfolio"
+              className="about-me__button"
+              variant="button-secondary"
+            >
               Смотреть портфолио
             </Button>
           </div>

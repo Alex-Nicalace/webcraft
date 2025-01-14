@@ -11,9 +11,9 @@ import { useDarkMode } from '../../Context/DarkModeContext';
 import { usePageScrolled } from '../../hooks/usePageScrolled';
 
 const MENU_ITEMS = [
-  { label: 'Обо мне', href: '#section1' },
-  { label: 'Портфолио', href: '#section2' },
-  { label: '10 фактов', href: '#section3' },
+  { label: 'Обо мне', href: '#about-me' },
+  { label: 'Портфолио', href: '#portfolio' },
+  { label: '10 фактов', href: '#facts' },
 ];
 
 // type THeaderProps = { }

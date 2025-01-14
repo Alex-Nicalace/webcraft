@@ -8,7 +8,7 @@ function AppLayout(/*{ }: TAppLayoutProps*/): JSX.Element {
     <>
       <Header />
       <MainPage />
-      <Footer />
+      <Footer id="my-contacts" />
     </>
   );
 }

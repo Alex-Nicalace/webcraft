@@ -11,11 +11,11 @@ function MainPage(/*{ }: TMainPageProps*/): JSX.Element {
   return (
     <main className="main-page">
       <Greeting className="main-page__greeting" />
-      <AboutMe className="main-page__about-me" />
+      <AboutMe className="main-page__about-me" id="about-me" />
       <Competencies className="main-page__competencies" />
       <Credo className="main-page__credo" />
-      <Portfolio className="main-page__portfolio" />
-      <Facts className="main-page__facts" />
+      <Portfolio className="main-page__portfolio" id="portfolio" />
+      <Facts className="main-page__facts" id="facts" />
     </main>
   );
 }

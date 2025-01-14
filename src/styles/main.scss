@@ -21,6 +21,10 @@ body {
   background-image: var(--body-bg);
 }
 
+html {
+  scroll-padding-top: rem(110);
+}
+
 .decor-blured {
   &::before,
   &::after {
