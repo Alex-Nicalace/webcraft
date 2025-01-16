@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { TScrollUpProps } from './ScrollUp.types';
 import './ScrollUp.scss';
 import Icon from '../ui/Icon';
@@ -6,34 +5,9 @@ import Icon from '../ui/Icon';
 function ScrollUp({
   className,
   isNotAnimated = false,
-  triggerSelector,
+  isRender,
 }: TScrollUpProps) {
-  const [isNotRender, setIsNotRender] = useState(false);
-
-  useEffect(
-    function observeTriggerElem() {
-      if (!triggerSelector) return;
-
-      const elem = document.querySelector(triggerSelector);
-      if (!elem) return;
-
-      const callback = (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          setIsNotRender(entry.isIntersecting);
-        });
-      };
-
-      const observer = new IntersectionObserver(callback);
-      observer.observe(elem);
-
-      return () => {
-        if (elem) observer.unobserve(elem);
-      };
-    },
-    [triggerSelector]
-  );
-
-  if (isNotRender) return null;
+  if (!isRender) return null;
 
   function scrollToTop() {
     window.scrollTo({

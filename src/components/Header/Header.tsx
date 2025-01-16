@@ -8,7 +8,7 @@ import TogglerTheme from '../ui/TogglerTheme';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import BurgerButton from '../BurgerButton';
 import { useDarkMode } from '../../Context/DarkModeContext';
-import { usePageScrolled } from '../../hooks/usePageScrolled';
+import { THeaderProps } from './Header.types';
 
 const MENU_ITEMS = [
   { label: 'Обо мне', href: '#about-me' },
@@ -16,12 +16,14 @@ const MENU_ITEMS = [
   { label: '10 фактов', href: '#facts' },
 ];
 
-// type THeaderProps = { }
-function Header(/*{ }: THeaderProps*/): JSX.Element {
+function Header({
+  className,
+  isUseBlurBg,
+  ...props
+}: THeaderProps): JSX.Element {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { isLessTablet, isLessMobileMd, isLessMobileSmall } = useScreenWidth();
   const { isDarkMode, toggleMode } = useDarkMode();
-  const scrolledPage = usePageScrolled();
   const isMobileMenu = isLessTablet;
 
   function handleToggleDarkModeOnMobile() {
@@ -32,9 +34,10 @@ function Header(/*{ }: THeaderProps*/): JSX.Element {
   return (
     <Container
       tag="header"
-      className={['header', scrolledPage && 'header_scrolled']
+      className={['header', isUseBlurBg && 'header_scrolled', className]
         .filter(Boolean)
         .join(' ')}
+      {...props}
     >
       <div className="header__logo-wrapper">
         <Logo className="header__logo" isSizeSmall={isLessMobileSmall} />

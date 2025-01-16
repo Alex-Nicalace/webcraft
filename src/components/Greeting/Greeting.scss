@@ -75,7 +75,11 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
 
     --greeting-heading-text-color: var(--white);
   }
-  position: relative;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
   min-height: 100vh;
   padding-top: rem(100.4);
   display: flex;

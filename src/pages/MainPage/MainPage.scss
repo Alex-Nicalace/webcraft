@@ -1,8 +1,19 @@
 .main-page {
-  & > *,
+  &__box > *,
   & {
     &:not(:last-child) {
       @include adaptiveValue('margin-bottom', 200, 90);
+    }
+  }
+  &__box {
+    position: relative;
+    background-image: var(--body-bg);
+    background-color: var(--color-main-bg);
+    z-index: 0;
+  }
+  &__greeting {
+    &_hide {
+      visibility: hidden;
     }
   }
 }

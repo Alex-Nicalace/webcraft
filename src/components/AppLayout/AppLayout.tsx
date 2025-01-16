@@ -1,16 +1,20 @@
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import MainPage from '../../pages/MainPage';
 import Footer from '../Footer';
 import Header from '../Header';
 import ScrollUp from '../ScrollUp';
 
-// type TAppLayoutProps = { }
-function AppLayout(/*{ }: TAppLayoutProps*/): JSX.Element {
+function AppLayout(): JSX.Element {
+  const isVisibleFirstScreen = useIntersectionObserver('.greeting-spacer', {
+    rootMargin: '-120px 0px 0px 0px',
+  });
+
   return (
     <>
-      <Header />
-      <MainPage />
+      <Header isUseBlurBg={!isVisibleFirstScreen} />
+      <MainPage isVisableFirstSection={isVisibleFirstScreen} />
       <Footer id="my-contacts" />
-      <ScrollUp triggerSelector=".greeting" />
+      <ScrollUp isRender={!isVisibleFirstScreen} />
     </>
   );
 }
