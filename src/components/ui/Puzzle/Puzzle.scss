@@ -144,7 +144,6 @@
   $transition: all 0.6s ease-out 0s;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 
   &__content {
     height: 100%;
@@ -181,6 +180,7 @@
   }
 
   &[class*='fact'] {
+    cursor: pointer;
     counter-increment: fact 1;
 
     &::before {
