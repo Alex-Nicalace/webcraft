@@ -1,10 +1,6 @@
 @use 'sass:math';
 @use 'sass:list';
 
-$aspect-ratio: '16/7.3';
-$aspect-ratio-1280: '16/8.8';
-$aspect-ratio-768: '16/9';
-
 $durationAnimStep-1: 1s;
 $delayAnimStep-1: 1s;
 $animStep-1: $durationAnimStep-1 ease-in-out $delayAnimStep-1 backwards;
@@ -30,14 +26,6 @@ $durationAnimStep-4-2: 20s;
 $delayAnimStep-4-2: $totalAnimStep-3;
 $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
   infinite;
-
-@mixin conditionPortrait {
-  @media (orientation: portrait) or (min-aspect-ratio: $aspect-ratio),
-    (max-width: em($pc)) and (min-aspect-ratio: $aspect-ratio-1280),
-    (max-width: em($mobile)) {
-    @content;
-  }
-}
 
 .greeting {
   @include darkTheme {

@@ -1,0 +1,22 @@
+@use './variables' as *;
+
+@mixin lightTheme {
+  :root.light-mode & {
+    @content;
+  }
+}
+
+@mixin darkTheme {
+  :root.dark-mode &,
+  :root & {
+    @content;
+  }
+}
+
+@mixin conditionPortrait {
+  @media (orientation: portrait) or (min-aspect-ratio: 16/7.3),
+    (max-width: em($pc)) and (min-aspect-ratio: 16/8.8),
+    (max-width: em($mobile)) {
+    @content;
+  }
+}
