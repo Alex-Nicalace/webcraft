@@ -5,6 +5,11 @@
       @include adaptiveValue('margin-bottom', 200, 90);
     }
   }
+  .greeting-spacer {
+    @include conditionPortrait {
+      @include adaptiveValue('margin-bottom', 200, 90);
+    }
+  }
   &__box {
     position: relative;
     background-image: var(--body-bg);
@@ -12,8 +17,12 @@
     z-index: 0;
   }
   &__greeting {
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
     &_hide {
       visibility: hidden;
+      opacity: 0;
     }
   }
 }
