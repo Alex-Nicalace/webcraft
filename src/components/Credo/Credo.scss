@@ -47,8 +47,6 @@
       @include adaptiveValue('height', 1400, 1700, $pc, $mobile);
 
       .puzzle {
-        position: absolute;
-
         &_4 {
           left: percent(550, $width-box);
           top: rem(125);
@@ -72,8 +70,6 @@
       @include adaptiveValue('height', $height-box, 543, $mobile);
 
       .puzzle {
-        position: absolute;
-
         &_4 {
           left: auto;
           right: 0;
@@ -94,8 +90,6 @@
       $height-box: 543;
 
       .puzzle {
-        position: absolute;
-
         &_5 {
           left: 0;
           top: percent(145, $height-box);
@@ -104,6 +98,89 @@
         &_6 {
           top: percent(285, $height-box);
         }
+      }
+    }
+
+    &_animated {
+      .puzzle {
+        animation-duration: 0.5s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: backwards;
+        &_3 {
+          animation-name: fadeInPuuzzle3;
+          animation-delay: 0s;
+          @keyframes fadeInPuuzzle3 {
+            0% {
+              opacity: 0;
+              transform: translateY(percent(629, 580));
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+        &_4 {
+          animation-name: fadeInPuuzzle4;
+          animation-delay: 0.5s;
+          @keyframes fadeInPuuzzle4 {
+            0% {
+              opacity: 0;
+              transform: translateY(percent(1210, 450));
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+        &_5 {
+          animation-name: fadeInPuuzzle5;
+          animation-delay: 1s;
+          @keyframes fadeInPuuzzle5 {
+            0% {
+              opacity: 0;
+              transform: translateY(percent(1600, 727));
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+        &_6 {
+          animation-name: fadeInPuuzzle6;
+          animation-delay: 1.5s;
+          @keyframes fadeInPuuzzle6 {
+            0% {
+              opacity: 0;
+              transform: translateY(percent(1870, 726));
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+        &_7 {
+          animation-name: fadeInPuuzzle7;
+          animation-delay: 2s;
+          @keyframes fadeInPuuzzle7 {
+            0% {
+              opacity: 0;
+              transform: translateY(percent(2080, 450));
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+    }
+    &_animated_paused {
+      .puzzle {
+        animation-play-state: paused;
       }
     }
   }
