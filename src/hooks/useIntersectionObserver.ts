@@ -1,20 +1,25 @@
 import { RefObject, useEffect, useState } from 'react';
 
 type UseIntersectionObserverOptions = IntersectionObserverInit & {
-  once?: boolean;
+  once?: boolean; // Отменить после первого пересечения
+  cancelIfAbove?: boolean; // Отменить, если элемент выше вьюпорта на момент инициализации
 };
+
+type InitialPosition = 'above' | 'below' | 'inside';
 
 export function useIntersectionObserver(
   target: RefObject<HTMLElement> | string | null | undefined,
   options?: UseIntersectionObserverOptions
 ) {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const { once, ...rest } = options ?? {};
-  const ignore = once && isIntersecting;
+  const [initialPosition, setInitialPosition] = useState<InitialPosition>();
+  const ignore = options?.once && isIntersecting;
 
   useEffect(
     function manageStateIntersecting() {
       if (!target || ignore) return;
+
+      const { once, cancelIfAbove, ...rest } = options ?? {};
 
       const element =
         typeof target === 'string'
@@ -25,6 +30,22 @@ export function useIntersectionObserver(
         console.warn('Target element not found for useIntersectionObserver.');
         return;
       }
+
+      const targetRect = element.getBoundingClientRect();
+      const viewportHeight = document.documentElement.clientHeight;
+
+      const computedInitialPosition: InitialPosition =
+        targetRect.top < 0
+          ? 'above'
+          : targetRect.bottom > viewportHeight
+            ? 'below'
+            : 'inside';
+
+      setInitialPosition(
+        (prevInitialPosition) => prevInitialPosition || computedInitialPosition
+      );
+
+      if (cancelIfAbove && computedInitialPosition === 'above') return;
 
       const callback: IntersectionObserverCallback = (entries, observer) => {
         const [entry] = entries;
@@ -42,8 +63,8 @@ export function useIntersectionObserver(
         observer.unobserve(element);
       };
     },
-    [target, ignore, once, rest]
+    [target, options, ignore]
   );
 
-  return isIntersecting;
+  return { isIntersecting, initialPosition };
 }

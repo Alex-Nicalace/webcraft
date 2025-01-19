@@ -13,15 +13,21 @@ const CREDO_PUZZLE: { text: string; variant: 3 | 4 | 5 | 6 | 7 }[] = [
   { text: 'ожидаемый результат.', variant: 7 },
 ];
 
+const INTERSECTION_OPTIONS = {
+  rootMargin: '0px 0px -60% 0px',
+  once: true,
+};
+
 function Credo({ className, ...props }: TCredoProps): JSX.Element {
   const [completedAnimationPuzzles, setCompletedAnimationPuzzles] = useState<
     number[]
   >([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const isVisibleWrapper = useIntersectionObserver(wrapperRef, {
-    rootMargin: '0px 0px -60% 0px',
-    once: true,
-  });
+  const {
+    isIntersecting: isVisibleWrapper,
+    initialPosition: initialPositionWrapper,
+  } = useIntersectionObserver(wrapperRef, INTERSECTION_OPTIONS);
+  const isNeedAnimation = initialPositionWrapper !== 'above';
 
   const hundleAnimationEnd = (index: number) => () => {
     setCompletedAnimationPuzzles((prev) => [...prev, index]);
@@ -48,8 +54,11 @@ function Credo({ className, ...props }: TCredoProps): JSX.Element {
       <div
         ref={wrapperRef}
         className={[
-          'credo__wrapper credo__wrapper_animated',
-          !isVisibleWrapper && 'credo__wrapper_animated_paused',
+          'credo__wrapper',
+          isNeedAnimation && 'credo__wrapper_animated',
+          isNeedAnimation &&
+            !isVisibleWrapper &&
+            'credo__wrapper_animated_paused',
         ]
           .filter(Boolean)
           .join(' ')}
@@ -59,7 +68,9 @@ function Credo({ className, ...props }: TCredoProps): JSX.Element {
             key={index}
             variant={variant}
             text={text}
-            isOpen={completedAnimationPuzzles.includes(index)}
+            isOpen={
+              !isNeedAnimation || completedAnimationPuzzles.includes(index)
+            }
             onAnimationEnd={
               completedAnimationPuzzles.includes(index)
                 ? undefined

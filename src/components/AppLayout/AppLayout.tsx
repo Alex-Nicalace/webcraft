@@ -4,10 +4,15 @@ import Footer from '../Footer';
 import Header from '../Header';
 import ScrollUp from '../ScrollUp';
 
+const INTERSECTION_OPTIONS = {
+  rootMargin: '-120px 0px 0px 0px',
+};
+
 function AppLayout(): JSX.Element {
-  const isVisibleFirstScreen = useIntersectionObserver('.greeting-spacer', {
-    rootMargin: '-120px 0px 0px 0px',
-  });
+  const { isIntersecting: isVisibleFirstScreen } = useIntersectionObserver(
+    '.greeting-spacer',
+    INTERSECTION_OPTIONS
+  );
 
   return (
     <>
