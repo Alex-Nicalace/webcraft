@@ -18,6 +18,8 @@
   width: percent($widthPuzzle, $widthContainer);
 
   @if $clipPathOter != null {
+    // приходится ограничивать сам пазл чтобы
+    // ховер работал правильно у двух соседних пазлов
     clip-path: url($clipPathOter);
   }
   @if $heightPuzzle != null {
@@ -100,6 +102,9 @@
     &__arrow {
     }
     &__puzzle {
+      @if $clipPathOter != null {
+        clip-path: url($clipPathOter);
+      }
       @if $isTransparent == true {
         background-color: transparent;
 
@@ -140,7 +145,6 @@
     flex: 0 0 100%;
     height: 100%;
     background-color: var(--color-contact-puzzle-border);
-    clip-path: inherit;
 
     @mixin stateHoverActive {
       .contact-puzzle {
@@ -448,5 +452,11 @@
         $isTransparent: true
       );
     }
+  }
+  // .contact-puzzle__not-clip
+  // используется когда надо анимировать внутри контейнера
+  // чтобы контейнер имел прямоугольную форму, а не форму пазла
+  &_not-clip {
+    clip-path: none;
   }
 }

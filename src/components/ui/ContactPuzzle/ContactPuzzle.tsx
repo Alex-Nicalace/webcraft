@@ -10,6 +10,7 @@ function ContactPuzzle({
   variant,
   children,
   isSingleRow,
+  isNotUseClipContainer,
   ...props
 }: TContactPuzzleProps): JSX.Element {
   const variantsPuzzle = isSingleRow
@@ -20,6 +21,7 @@ function ContactPuzzle({
   const classes = [
     'contact-puzzle',
     `contact-puzzle_${isSingleRow ? 'single-row_' : ''}${variant}`,
+    isNotUseClipContainer && 'contact-puzzle_not-clip',
     className,
   ]
     .filter(Boolean)

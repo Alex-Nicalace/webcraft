@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Container from '../Container';
 import ContactPuzzle, { TContactPuzzleProps } from '../ui/ContactPuzzle';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
@@ -23,6 +23,29 @@ function Footer({ className, ...props }: TFooterProps): JSX.Element {
     footerRef,
     INTERSECTION_OPTIONS
   );
+  const [completedAnimationPuzzles, setCompletedAnimationPuzzles] =
+    useState(false);
+
+  function handleReplayAnimation() {
+    const footerEl = footerRef.current;
+    if (!footerEl) return;
+    footerEl.classList.remove('footer_animated');
+    setCompletedAnimationPuzzles(false);
+    // Ждём следующего кадра, чтобы применить анимацию снова
+    requestAnimationFrame(() => {
+      footerEl.classList.add('footer_animated');
+    });
+  }
+
+  function handleAnimationEnd() {
+    if (completedAnimationPuzzles) return;
+
+    return (e: React.AnimationEvent<HTMLDivElement>) => {
+      if (e.animationName.includes('rotateFooter')) {
+        setCompletedAnimationPuzzles(true);
+      }
+    };
+  }
 
   return (
     <Container
@@ -36,6 +59,8 @@ function Footer({ className, ...props }: TFooterProps): JSX.Element {
         .filter(Boolean)
         .join(' ')}
       {...props}
+      onDoubleClick={handleReplayAnimation}
+      onAnimationEnd={handleAnimationEnd()}
     >
       <div
         className={['footer__links', isLessMobileMd && 'footer__links_column']
@@ -53,6 +78,7 @@ function Footer({ className, ...props }: TFooterProps): JSX.Element {
               variant={getVariant(index)}
               isSingleRow={isLessMobileMd}
               aria-label={`Перейти на ${type || label}`}
+              isNotUseClipContainer={!completedAnimationPuzzles}
             >
               {label}
             </ContactPuzzle>
@@ -66,6 +92,7 @@ function Footer({ className, ...props }: TFooterProps): JSX.Element {
           variant={6}
           isSingleRow={isLessMobileMd}
           aria-label={`Перейти на ${DESIGN_CONTACT.type || DESIGN_CONTACT.label}`}
+          isNotUseClipContainer={!completedAnimationPuzzles}
         >
           {DESIGN_CONTACT.label}
         </ContactPuzzle>
