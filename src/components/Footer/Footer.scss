@@ -14,4 +14,59 @@
     display: contents;
     font-style: inherit;
   }
+  // .footer__con&__contact
+  &__contact {
+  }
+  // .footer_animated
+  &_animated {
+    .contact-puzzle {
+      &__puzzle {
+        animation-duration: 0.5s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+      }
+      &:nth-child(2n + 1) {
+        & > * {
+          transform-origin: left bottom;
+          animation-name: rotateFooterLeft;
+        }
+      }
+      &:nth-child(2n + 2) {
+        & > * {
+          transform-origin: right bottom;
+          animation-name: rotateFooterRight;
+        }
+      }
+    }
+
+    @keyframes rotateFooterLeft {
+      0% {
+        opacity: 0;
+        transform: rotate(-30deg);
+      }
+      100% {
+        opacity: 1;
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes rotateFooterRight {
+      0% {
+        opacity: 0;
+        transform: rotate(30deg);
+      }
+      100% {
+        opacity: 1;
+        transform: rotate(0deg);
+      }
+    }
+
+    &_paused {
+      .contact-puzzle {
+        &__puzzle {
+          animation-play-state: paused;
+        }
+      }
+    }
+  }
 }

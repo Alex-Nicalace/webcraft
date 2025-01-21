@@ -26,29 +26,36 @@ function ContactPuzzle({
     .join(' ');
   const tag = isContactDesigner ? 'span' : 'a';
 
-  return createElement(
-    tag,
-    { className: classes, ...(!isContactDesigner && props) },
-    <span className="contact-puzzle__content">
-      {!isContactDesigner ? (
-        <>
-          <span className="contact-puzzle__text text-competencies">
-            {children}
-          </span>
-          <Icon
-            className="contact-puzzle__arrow"
-            name="ArrowRight"
-            width={32}
-            height={32}
-          />
-        </>
-      ) : (
-        <a className="contact-puzzle__link text-typing" {...props}>
-          {children}
-        </a>
+  return (
+    <span className={classes}>
+      {createElement(
+        tag,
+        {
+          className: 'contact-puzzle__puzzle',
+          ...(!isContactDesigner && props),
+        },
+        <span className="contact-puzzle__content">
+          {!isContactDesigner ? (
+            <>
+              <span className="contact-puzzle__text text-competencies">
+                {children}
+              </span>
+              <Icon
+                className="contact-puzzle__arrow"
+                name="ArrowRight"
+                width={32}
+                height={32}
+              />
+            </>
+          ) : (
+            <a className="contact-puzzle__link text-typing" {...props}>
+              {children}
+            </a>
+          )}
+          <SvgMaskOuter className="clip-path" />
+          <SvgMaskInner className="clip-path" />
+        </span>
       )}
-      <SvgMaskOuter className="clip-path" />
-      <SvgMaskInner className="clip-path" />
     </span>
   );
 }

@@ -17,32 +17,15 @@
 ) {
   width: percent($widthPuzzle, $widthContainer);
 
-  @if $isTransparent == true {
-    background-color: transparent;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      background-color: var(--color-contact-puzzle-border);
-      clip-path: url($clipPathInner);
-    }
+  @if $clipPathOter != null {
+    clip-path: url($clipPathOter);
   }
-
   @if $heightPuzzle != null {
     aspect-ratio: #{$widthPuzzle} / #{$heightPuzzle};
   }
   @if $absHeightPuzzle != null {
     height: rem($absHeightPuzzle);
   }
-
-  @if $clipPathOter != null {
-    clip-path: url($clipPathOter);
-  }
-
   @if $marginTop != null {
     @if $absHeightPuzzle != null {
       margin-top: rem($marginTop);
@@ -116,6 +99,22 @@
     // .contact-puzzle__arrow
     &__arrow {
     }
+    &__puzzle {
+      @if $isTransparent == true {
+        background-color: transparent;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          background-color: var(--color-contact-puzzle-border);
+          clip-path: url($clipPathInner);
+        }
+      }
+    }
   }
 }
 
@@ -135,10 +134,40 @@
   $transition: 0.3s ease-out;
   position: relative;
   display: inline-flex;
-  background-color: var(--color-contact-puzzle-border);
+  overflow: hidden;
+
+  &__puzzle {
+    flex: 0 0 100%;
+    height: 100%;
+    background-color: var(--color-contact-puzzle-border);
+    clip-path: inherit;
+
+    @mixin stateHoverActive {
+      .contact-puzzle {
+        &__content {
+          background-color: var(--color-contact-puzzle-bg-hover);
+        }
+
+        &__arrow {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    @media (pointer: fine) {
+      &:hover {
+        @include stateHoverActive;
+      }
+    }
+
+    &:active {
+      @include stateHoverActive;
+    }
+  }
 
   // .contact-puzzle__content
   &__content {
+    height: 100%;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
@@ -182,28 +211,6 @@
     &:active {
       color: var(---color-contact-puzzle-design-hover);
     }
-  }
-
-  @mixin stateHoverActive {
-    &:hover {
-      .contact-puzzle {
-        &__content {
-          background-color: var(--color-contact-puzzle-bg-hover);
-        }
-
-        &__arrow {
-          transform: rotate(-45deg);
-        }
-      }
-    }
-  }
-
-  @media (pointer: fine) {
-    @include stateHoverActive;
-  }
-
-  &:active {
-    @include stateHoverActive;
   }
 
   &_1 {

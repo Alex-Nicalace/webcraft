@@ -48,11 +48,14 @@ export function useIntersectionObserver(
       if (cancelIfAbove && computedInitialPosition === 'above') return;
 
       const callback: IntersectionObserverCallback = (entries, observer) => {
-        const [entry] = entries;
-        setIsIntersecting(entry.isIntersecting);
+        // для 1-го наблюдаемого объекта может быть несколько записей,
+        // если он пересекает несколько порогов за короткое время => буру последнюю запись
+        const [entryLast] = entries.slice(-1);
+        setIsIntersecting(entryLast.isIntersecting);
 
-        if (once && entry.isIntersecting) {
+        if (once && entryLast.isIntersecting) {
           observer.unobserve(element);
+          observer.disconnect();
         }
       };
 
@@ -61,6 +64,7 @@ export function useIntersectionObserver(
 
       return () => {
         observer.unobserve(element);
+        observer.disconnect();
       };
     },
     [target, options, ignore]
