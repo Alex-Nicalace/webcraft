@@ -1,6 +1,7 @@
 import { TScrollUpProps } from './ScrollUp.types';
 import './ScrollUp.scss';
-import Icon from '../ui/Icon';
+import Container from '../Container';
+import ButtonUp from '../ui/ButtonUp';
 
 function ScrollUp({
   className,
@@ -17,20 +18,16 @@ function ScrollUp({
   }
 
   return (
-    <button
+    <Container
+      tag="div"
       className={['scroll-up', className].filter(Boolean).join(' ')}
-      onClick={scrollToTop}
-      aria-label="Прокрутить вверх"
     >
-      <Icon
-        className="scroll-up__icon"
-        name="ArrowRight"
-        width={40}
-        height={40}
-        rotate={-90}
-        strokeWidth={3}
+      <ButtonUp
+        className="scroll-up__button"
+        onClick={scrollToTop}
+        aria-label="Прокрутить вверх"
       />
-    </button>
+    </Container>
   );
 }
 

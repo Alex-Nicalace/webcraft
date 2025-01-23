@@ -18,8 +18,8 @@ function AppLayout(): JSX.Element {
     <>
       <Header isUseBlurBg={!isVisibleFirstScreen} />
       <MainPage isVisableFirstSection={isVisibleFirstScreen} />
-      <Footer id="my-contacts" />
       <ScrollUp isRender={!isVisibleFirstScreen} />
+      <Footer id="my-contacts" />
     </>
   );
 }
