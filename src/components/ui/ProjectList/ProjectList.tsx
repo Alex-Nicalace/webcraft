@@ -13,7 +13,13 @@ function ProjectList({
       {...props}
     >
       {data.map(({ url, title, popupData }) => (
-        <ProjectLink key={url} href={url} popupData={popupData}>
+        <ProjectLink
+          key={url}
+          href={url}
+          popupData={popupData}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {title}
         </ProjectLink>
       ))}
