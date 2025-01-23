@@ -1,3 +1,7 @@
 import { HTMLAttributes } from 'react';
 
-export type TGreetingProps = HTMLAttributes<HTMLElement>;
+export type TAnimateIntroFn = (state: 'start' | 'end') => void;
+
+export type TGreetingProps = HTMLAttributes<HTMLElement> & {
+  onAnimateIntro?: TAnimateIntroFn;
+};

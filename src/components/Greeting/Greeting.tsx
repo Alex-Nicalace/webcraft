@@ -11,7 +11,11 @@ import { useDarkMode } from '../../Context/DarkModeContext';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import { useResizeObserver } from '../../hooks/useResizeObserver';
 
-function Greeting({ className, ...props }: TGreetingProps): JSX.Element {
+function Greeting({
+  className,
+  onAnimateIntro,
+  ...props
+}: TGreetingProps): JSX.Element {
   const { isDarkMode } = useDarkMode();
   const { isLessPC } = useScreenWidth();
   const [isAnimatedDecor, setIsAnimatedDecor] = useState(false);
@@ -36,6 +40,26 @@ function Greeting({ className, ...props }: TGreetingProps): JSX.Element {
     setIsStopedAnimatePuzzle(false);
   }
 
+  function handleAnimationStart() {
+    if (!onAnimateIntro) return;
+
+    return (e: React.AnimationEvent<HTMLElement>) => {
+      if (e.animationName === 'puzzleMainScreen') {
+        onAnimateIntro?.('start');
+      }
+    };
+  }
+
+  function handleAnimationEnd() {
+    if (!onAnimateIntro) return;
+
+    return (e: React.AnimationEvent<HTMLElement>) => {
+      if (e.animationName === 'puzzleMainScreen') {
+        onAnimateIntro?.('end');
+      }
+    };
+  }
+
   return (
     <>
       <Container
@@ -44,6 +68,8 @@ function Greeting({ className, ...props }: TGreetingProps): JSX.Element {
         className={['greeting decor-blured decor-blured_1', className]
           .filter(Boolean)
           .join(' ')}
+        onAnimationStart={handleAnimationStart()}
+        onAnimationEnd={handleAnimationEnd()}
         {...props}
       >
         <div className="greeting__wrapper">
