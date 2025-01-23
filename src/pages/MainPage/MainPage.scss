@@ -15,12 +15,19 @@
     background-image: var(--body-bg);
     background-color: var(--color-main-bg);
     z-index: 0;
+    transition:
+      opacity 0.5s ease 0.2s,
+      visibility 0.3s ease 0.2s;
+    &_transparent {
+      visibility: hidden;
+      opacity: 0;
+    }
   }
   &__greeting {
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease;
-    &_hide {
+    &_transparent {
       visibility: hidden;
       opacity: 0;
     }
