@@ -8,10 +8,11 @@ import './Portfolio.scss';
 function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
   return (
     <Container
-      tag="div"
+      tag="section"
       className={['portfolio decor-blured decor-blured_4', className].join(' ')}
       {...props}
     >
+      <h2 className="portfolio__heading">Портфолио</h2>
       <ProjectList className="portfolio__projects" data={PROJECTS} />
       <Button className="portfolio__contact-me" href="#my-contacts">
         Связаться со мной

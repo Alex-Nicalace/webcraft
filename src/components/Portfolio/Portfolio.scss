@@ -1,7 +1,9 @@
+@use '../../styles/typography.scss' as *;
+
 .portfolio {
   position: relative;
   display: grid;
-  row-gap: rem(85);
+  // row-gap: rem(85);
 
   &::before {
     @include adaptiveValue('left', 1125, 140);
@@ -12,23 +14,42 @@
     @include adaptiveValue('top', 1155, 345);
   }
 
-  @include mdQuery(0, $pc) {
-    row-gap: rem(75);
-  }
-
-  @include tablet-d {
-    row-gap: rem(60);
-  }
-
-  @include mobileSmall {
-    row-gap: rem(40);
-  }
-
   &__projects {
+    &:not(:last-child) {
+      margin-bottom: rem(85);
+
+      @include mdQuery(0, $pc) {
+        margin-bottom: rem(75);
+      }
+
+      @include tablet-d {
+        margin-bottom: rem(60);
+      }
+
+      @include mobileSmall {
+        margin-bottom: rem(40);
+      }
+    }
   }
   // .portfolio__contact-me
   &__contact-me {
     // align-self: center;
     justify-self: center;
+  }
+
+  &__heading {
+    @extend .heading;
+
+    &:not(:last-child) {
+      margin-bottom: rem(60);
+
+      @include mdQuery(0, $pc) {
+        margin-bottom: rem(50);
+      }
+
+      @include mobile-d {
+        margin-bottom: rem(30);
+      }
+    }
   }
 }
