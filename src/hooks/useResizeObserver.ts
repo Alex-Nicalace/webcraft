@@ -10,18 +10,30 @@ type TSize =
       height: number;
     }
   | undefined;
+
+function getElementsFromRefs<T extends HTMLElement>(
+  refs: React.RefObject<T>[] | React.MutableRefObject<Map<React.Key, T>>
+) {
+  return Array.isArray(refs)
+    ? refs.map((ref) => ref.current)
+    : Array.from(refs.current?.values() || []);
+}
+
 /**
  * Хук React, возвращающий массив размеров для предоставленных React-объектов ref к элементам HTMLElement.
- * ! Для работы необходимо передать в качестве аргумента только меморизированный массив ref к элементам,
- * ! иначе будет зацикливание!
- * @param refs - Массив React-объектов ref к элементам HTMLElement.
+ * Результат сохраняет порядок элементов из входного массива refs
+ * ! Если в качестве аргумента предается массив, то необходимо мемоизировать
+ * @param refs - Массив React-объектов ref к элементам HTMLElement или React-объект ref, содержащий Map для доступа к элементам HTMLElement
  * @return Массив размеров для предоставленных ref. Если элемент не существует, возвращается undefined.
  */
-export function useResizeObserver(
-  refs: React.RefObject<HTMLElement>[]
-): TSize[] | undefined[] {
-  // Map для хранения размеров элементов. Ключом является ссылка на элемент, а значением - объект с шириной и высотой.
+export function useResizeObserver<T extends HTMLElement>(
+  refs: React.RefObject<T>[] | React.MutableRefObject<Map<React.Key, T>>
+) {
+  // Map для хранения размеров элементов.
+  // Ключом является ссылка на элемент, а значением - объект с шириной и высотой.
   const [sizes, setSizes] = useState<Map<Element, TSize>>(new Map());
+
+  const elements = getElementsFromRefs(refs);
 
   useEffect(() => {
     /**
@@ -63,27 +75,26 @@ export function useResizeObserver(
 
     // Создаем наблюдателя на изменения размеров элементов
     const resizeObserver = new ResizeObserver(handleResize);
-
     // Настройка наблюдателя на основе предоставленных ссылок
-    refs.forEach((ref) => {
-      if (!ref.current) return;
-      resizeObserver.observe(ref.current);
+    elements.forEach((element) => {
+      if (!element) return;
+      resizeObserver.observe(element);
     });
 
     // Очистка наблюдателя при размонтировании или изменении refs
     return () => {
-      refs.forEach((ref) => {
-        if (!ref.current) return;
-        resizeObserver.unobserve(ref.current);
+      elements.forEach((element) => {
+        if (!element) return;
+        resizeObserver.unobserve(element);
       });
       resizeObserver.disconnect();
     };
-  }, [refs]);
+  }, [elements]);
 
   // Возвращаем массив с размерами элементов. Если элемент не существует, то возвращаем undefined
   // это чтобы размер массива результатов соответствовал размеру массива аргументов
-  const sizesArray = refs.map((ref) =>
-    ref.current ? sizes.get(ref.current) : undefined
+  const sizesArray = elements.map((element) =>
+    element ? sizes.get(element) : undefined
   );
 
   return sizesArray;
