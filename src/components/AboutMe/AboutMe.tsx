@@ -11,6 +11,8 @@ import { paragraphsByScreenSize } from './AboutMe.text';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
 import ButtonSlider from '../ui/ButtonSlider';
 import { CODE } from './codeDecor';
+import { useRefs } from '../../hooks/useRefs';
+import { useResizeObserver } from '../../hooks/useResizeObserver';
 
 function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
@@ -31,6 +33,12 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
     Array.isArray(item) ? item : [item]
   );
   const useSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
+  const [slidesRef, setSlidesRef] = useRefs<HTMLDivElement>();
+  const sizeSlides = useResizeObserver(useSlider ? slidesRef : []);
+
+  const maxHeightSlide = Math.max(
+    ...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0)
+  );
   const quantitySlides = grupedParagraphsModified.length;
   const code = !isLessMobile ? CODE : CODE.slice(1, 4);
 
@@ -50,10 +58,12 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
         <div className="about-me__box">
           <div
             className={`${useSlider ? 'about-me__slider' : 'about-me__content'} text-typing`}
+            style={{ height: useSlider ? `${maxHeightSlide}px` : '' }}
           >
             {grupedParagraphsModified.map((paragraphs, index) => (
               <div
                 key={index}
+                ref={(node) => setSlidesRef(index, node)}
                 className={`${
                   useSlider
                     ? [
