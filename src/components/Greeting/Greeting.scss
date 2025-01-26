@@ -391,7 +391,32 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
     top: 50%;
     translate: -50% -50%;
   }
+  // .greeting__code
+  &__code {
+    @extend .text-typing;
+    position: absolute;
+    color: var(--color-greeting-code);
 
+    // .greeting__code_1
+    &_1 {
+      left: percent(1062, 1800);
+      top: percent(70, 860);
+    }
+    // .greeting__code_2
+    &_2 {
+      left: percent(455, 1800);
+      bottom: 0;
+
+      @include tablet-d {
+        left: 0;
+      }
+
+      @include mobileSmall {
+        bottom: auto;
+        top: percent(184, 164);
+      }
+    }
+  }
   // .greeting__animated-code
   &__animated-code {
     @extend .text-typing;

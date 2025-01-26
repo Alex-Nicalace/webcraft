@@ -123,7 +123,7 @@ function Greeting({
               {CODE_STATIC.map((code, i) => (
                 <pre
                   key={i}
-                  className={`greeting__code greeting__code_${i + 1} text-typing`}
+                  className={`greeting__code greeting__code_${i + 1}`}
                 >
                   <code>{code}</code>
                 </pre>
