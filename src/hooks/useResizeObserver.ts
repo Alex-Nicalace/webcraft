@@ -11,6 +11,11 @@ type TSize =
     }
   | undefined;
 
+/**
+ * Возвращает массив HTMLElement из React-объектов ref к элементам HTMLElement
+ * @param refs - Массив React-объектов ref к элементам HTMLElement или React-объект ref, содержащий Map для доступа к элементам HTMLElement
+ * @return Массив HTMLElement
+ */
 function getElementsFromRefs<T extends HTMLElement>(
   refs: React.RefObject<T>[] | React.MutableRefObject<Map<React.Key, T>>
 ) {
@@ -29,48 +34,46 @@ function getElementsFromRefs<T extends HTMLElement>(
 export function useResizeObserver<T extends HTMLElement>(
   refs: React.RefObject<T>[] | React.MutableRefObject<Map<React.Key, T>>
 ) {
-  // Map для хранения размеров элементов.
-  // Ключом является ссылка на элемент, а значением - объект с шириной и высотой.
-  const [sizes, setSizes] = useState<Map<Element, TSize>>(new Map());
-
-  const elements = getElementsFromRefs(refs);
+  // Массив размеров
+  const [sizes, setSizes] = useState<TSize[]>([]);
 
   useEffect(() => {
+    const elements = getElementsFromRefs(refs);
+    const elementsMap = new Map<Element | null, TSize>(
+      elements.map((element) => [element, undefined])
+    );
+
     /**
      * Функция, которая будет срабатывать при изменении размеров элементов.
      * Обновляет состояние размеров на основе предоставленного массива ResizeObserverEntry.
      * @param entries - Массив записей ResizeObserverEntry, представляющих элементы, размеры которых изменились.
      */
     const handleResize = (entries: ResizeObserverEntry[]) => {
-      setSizes((prevSizes) => {
-        // Создаем копию предыдущего состояния, чтобы не потерять значения из предыдущих обновлений.
-        const nextSizes = new Map(prevSizes);
-        entries.forEach(
-          ({
-            contentRect: { width: contentWidth, height: contentHeight },
-            borderBoxSize,
-            target,
-          }) => {
-            const scrollHeight = target.scrollHeight;
-            const scrollWidth = target.scrollWidth;
-            const size = borderBoxSize.reduce(
-              (acum, { blockSize, inlineSize }) => ({
-                height: acum.height + blockSize,
-                width: acum.width + inlineSize,
-              }),
-              { height: 0, width: 0 }
-            );
-            nextSizes.set(target, {
-              contentWidth,
-              contentHeight,
-              scrollHeight,
-              scrollWidth,
-              ...size,
-            });
-          }
-        );
-        return nextSizes;
-      });
+      entries.forEach(
+        ({
+          contentRect: { width: contentWidth, height: contentHeight },
+          borderBoxSize,
+          target,
+        }) => {
+          const scrollHeight = target.scrollHeight;
+          const scrollWidth = target.scrollWidth;
+          const size = borderBoxSize.reduce(
+            (acum, { blockSize, inlineSize }) => ({
+              height: acum.height + blockSize,
+              width: acum.width + inlineSize,
+            }),
+            { height: 0, width: 0 }
+          );
+          elementsMap.set(target, {
+            contentWidth,
+            contentHeight,
+            scrollHeight,
+            scrollWidth,
+            ...size,
+          });
+        }
+      );
+      setSizes(Array.from(elementsMap.values()));
     };
 
     // Создаем наблюдателя на изменения размеров элементов
@@ -89,13 +92,7 @@ export function useResizeObserver<T extends HTMLElement>(
       });
       resizeObserver.disconnect();
     };
-  }, [elements]);
+  }, [refs]);
 
-  // Возвращаем массив с размерами элементов. Если элемент не существует, то возвращаем undefined
-  // это чтобы размер массива результатов соответствовал размеру массива аргументов
-  const sizesArray = elements.map((element) =>
-    element ? sizes.get(element) : undefined
-  );
-
-  return sizesArray;
+  return sizes;
 }
