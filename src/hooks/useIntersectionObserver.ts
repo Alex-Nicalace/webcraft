@@ -3,10 +3,23 @@ import { RefObject, useEffect, useState } from 'react';
 type UseIntersectionObserverOptions = IntersectionObserverInit & {
   once?: boolean; // Отменить после первого пересечения
   cancelIfAbove?: boolean; // Отменить, если элемент выше вьюпорта на момент инициализации
+  onIntersecting?: (
+    entry: IntersectionObserverEntry,
+    observer: IntersectionObserver
+  ) => void;
 };
 
 type InitialPosition = 'above' | 'below' | 'inside';
 
+/**
+ * Hook React, возвращающий информацию о пересечении viewport и HTML-элемента.
+ * @param target - Ссылка на HTML-элемент или CSS-селектор к нему.
+ * @param options - Опции IntersectionObserver.
+ * @returns Объект, содержащий значения:
+ *  - isIntersecting: boolean - флаг, указывающий, находится ли элемент в зоне видимости.
+ *  - initialPosition: 'above' | 'below' | 'inside' - изначальное положение элемента
+ *    относительно viewport.
+ */
 export function useIntersectionObserver(
   target: RefObject<HTMLElement> | string | null | undefined,
   options?: UseIntersectionObserverOptions
@@ -19,7 +32,7 @@ export function useIntersectionObserver(
     function manageStateIntersecting() {
       if (!target || ignore) return;
 
-      const { once, cancelIfAbove, ...rest } = options ?? {};
+      const { once, cancelIfAbove, onIntersecting, ...rest } = options ?? {};
 
       const element =
         typeof target === 'string'
@@ -52,6 +65,7 @@ export function useIntersectionObserver(
         // если он пересекает несколько порогов за короткое время => буру последнюю запись
         const [entryLast] = entries.slice(-1);
         setIsIntersecting(entryLast.isIntersecting);
+        onIntersecting?.(entryLast, observer);
 
         if (once && entryLast.isIntersecting) {
           observer.unobserve(element);
