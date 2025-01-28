@@ -1,24 +1,20 @@
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import MainPage from '../../pages/MainPage';
+import { useState } from 'react';
+import MainPage, { TStateFirstSection } from '../../pages/MainPage';
 import Footer from '../Footer';
 import Header from '../Header';
 import ScrollUp from '../ScrollUp';
 
-const INTERSECTION_OPTIONS = {
-  rootMargin: '-120px 0px 0px 0px',
-};
-
 function AppLayout(): JSX.Element {
-  const { isIntersecting: isVisibleFirstScreen } = useIntersectionObserver(
-    '.greeting-spacer',
-    INTERSECTION_OPTIONS
-  );
+  const [stateFirstSection, onChangeStateFirstSection] =
+    useState<TStateFirstSection>('normal');
 
   return (
     <>
-      <Header isUseBlurBg={!isVisibleFirstScreen} />
-      <MainPage isVisableFirstSection={isVisibleFirstScreen} />
-      <ScrollUp isRender={!isVisibleFirstScreen} />
+      <Header
+        isUseBlurBg={['scrolled', 'invisible'].includes(stateFirstSection)}
+      />
+      <MainPage onChangeStateFirstSection={onChangeStateFirstSection} />
+      <ScrollUp isRender={stateFirstSection === 'invisible'} />
       <Footer id="my-contacts" />
     </>
   );
