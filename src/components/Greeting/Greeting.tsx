@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import './Greeting.scss';
 import Container from '../Container';
 import { TGreetingProps } from './Greeting.types';
@@ -9,63 +9,55 @@ import { CODE_ANIMATED, CODE_STATIC } from './codeDecor';
 import Dawn from '../ui/Dawn';
 import { useDarkMode } from '../../Context/DarkModeContext';
 import { useScreenWidth } from '../../Context/ScreenWidthContext';
-import { useResizeObserver } from '../../hooks/useResizeObserver';
 
-function Greeting({
-  className,
-  onAnimateIntro,
-  ...props
-}: TGreetingProps): JSX.Element {
-  const { isDarkMode } = useDarkMode();
-  const { isLessPC } = useScreenWidth();
-  const [isAnimatedDecor, setIsAnimatedDecor] = useState(false);
-  const [isStopedAnimatePuzzle, setIsStopedAnimatePuzzle] = useState(false);
-  const [animationType, setAnimationType] = useState<'ball' | 'code'>('ball');
-  const BallCount = 3;
-  const codeAnimated = !isLessPC ? CODE_ANIMATED : CODE_ANIMATED.slice(0, 2);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [containerSize] = useResizeObserver(
-    useMemo(() => [sectionRef], [sectionRef])
-  );
+const BALL_COUNT = 3;
 
-  function handleToggleAnimatePuzzle() {
-    setIsStopedAnimatePuzzle((prev) => !prev);
-  }
+const Greeting = forwardRef<HTMLDivElement, TGreetingProps>(
+  ({ className, onAnimateIntro, ...props }, ref) => {
+    const { isDarkMode } = useDarkMode();
+    const { isLessPC } = useScreenWidth();
+    const [isAnimatedDecor, setIsAnimatedDecor] = useState(false);
+    const [isStopedAnimatePuzzle, setIsStopedAnimatePuzzle] = useState(false);
+    const [animationType, setAnimationType] = useState<'ball' | 'code'>('ball');
+    const codeAnimated = !isLessPC ? CODE_ANIMATED : CODE_ANIMATED.slice(0, 2);
 
-  function handleToggleAnimationType(
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) {
-    if (e.target !== e.currentTarget || isDarkMode) return;
-    setAnimationType((prev) => (prev === 'ball' ? 'code' : 'ball'));
-    setIsStopedAnimatePuzzle(false);
-  }
+    function handleToggleAnimatePuzzle() {
+      setIsStopedAnimatePuzzle((prev) => !prev);
+    }
 
-  function handleAnimationStart() {
-    if (!onAnimateIntro) return;
+    function handleToggleAnimationType(
+      e: React.MouseEvent<HTMLDivElement, MouseEvent>
+    ) {
+      if (e.target !== e.currentTarget || isDarkMode) return;
+      setAnimationType((prev) => (prev === 'ball' ? 'code' : 'ball'));
+      setIsStopedAnimatePuzzle(false);
+    }
 
-    return (e: React.AnimationEvent<HTMLElement>) => {
-      if (e.animationName === 'puzzleMainScreen') {
-        onAnimateIntro?.('start');
-      }
-    };
-  }
+    function handleAnimationStart() {
+      if (!onAnimateIntro) return;
 
-  function handleAnimationEnd() {
-    if (!onAnimateIntro) return;
+      return (e: React.AnimationEvent<HTMLElement>) => {
+        if (e.animationName === 'puzzleMainScreen') {
+          onAnimateIntro?.('start');
+        }
+      };
+    }
 
-    return (e: React.AnimationEvent<HTMLElement>) => {
-      if (e.animationName === 'puzzleMainScreen') {
-        onAnimateIntro?.('end');
-      }
-    };
-  }
+    function handleAnimationEnd() {
+      if (!onAnimateIntro) return;
 
-  return (
-    <>
+      return (e: React.AnimationEvent<HTMLElement>) => {
+        if (e.animationName === 'puzzleMainScreen') {
+          onAnimateIntro?.('end');
+        }
+      };
+    }
+
+    return (
       <Container
-        ref={sectionRef}
+        ref={ref}
         tag="section"
-        className={['greeting decor-blured decor-blured_1', className]
+        className={['greeting', 'decor-blured decor-blured_1', className]
           .filter(Boolean)
           .join(' ')}
         onAnimationStart={handleAnimationStart()}
@@ -103,7 +95,7 @@ function Greeting({
                     <code>{code}</code>
                   </pre>
                 ))
-              : Array(BallCount)
+              : Array(BALL_COUNT)
                   .fill(null)
                   .map((_, index) => (
                     <span
@@ -140,12 +132,11 @@ function Greeting({
           Смотреть портфолио
         </Button>
       </Container>
-      <div
-        className="greeting-spacer"
-        style={{ height: `${containerSize?.height}px` }}
-      ></div>
-    </>
-  );
-}
+    );
+  }
+);
+// Устанавливаем displayName без этого ESLint ругается, т.к.
+// без этого во время отладки имя компонента станвится ForwardRef
+Greeting.displayName = 'Greeting';
 
 export default Greeting;
