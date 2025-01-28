@@ -1,15 +1,18 @@
 .main-page {
+  // .main-page__box
   &__box > *,
   & {
     &:not(:last-child) {
       @include adaptiveValue('margin-bottom', 200, 90);
     }
   }
-  .greeting-spacer {
+  // .main-page__spacer
+  &__spacer {
     @include conditionPortrait {
       @include adaptiveValue('margin-bottom', 200, 90);
     }
   }
+  // .main-page__box
   &__box {
     position: relative;
     background-image: var(--body-bg);
@@ -18,18 +21,36 @@
     transition:
       opacity 0.5s ease 0.2s,
       visibility 0.3s ease 0.2s;
+    // .main-page__box_transparent
     &_transparent {
       visibility: hidden;
       opacity: 0;
     }
   }
+  // .main-page__greeting
   &__greeting {
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease;
+    // .main-page__greeting_transparent
     &_transparent {
       visibility: hidden;
       opacity: 0;
+    }
+    // .main-page__greeting_relative
+    &_relative {
+      position: relative;
+    }
+  }
+
+  &_wide {
+    & > * {
+      &:not(:last-child) {
+        @include adaptiveValue('margin-bottom', 200, 90);
+      }
+    }
+    .main-page__greeting {
+      position: relative;
     }
   }
 }

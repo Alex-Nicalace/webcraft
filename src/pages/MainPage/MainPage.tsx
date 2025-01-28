@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import AboutMe from '../../components/AboutMe';
 import Competencies from '../../components/Competencies';
 import Credo from '../../components/Credo/Credo';
@@ -8,20 +8,60 @@ import Portfolio from '../../components/Portfolio';
 import './MainPage.scss';
 import { TMainPageProps } from './MainPage.types';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-
-const INTERSECTION_OPTIONS = { threshold: 0.00001 };
+import { useResizeObserver } from '../../hooks/useResizeObserver';
 
 function MainPage({
   className,
-  isVisableFirstSection = true,
+  onChangeStateFirstSection,
   ...props
 }: TMainPageProps): JSX.Element {
-  const boxRef = useRef<HTMLDivElement>(null);
-  const { isIntersecting: isVisibleBox } = useIntersectionObserver(
-    boxRef,
-    INTERSECTION_OPTIONS
-  );
   const [isAnimatedFirstSection, setIsAnimatedFirstSection] = useState(false);
+  const [isFirstScreenOverflow, setIsFirstScreenOverflow] = useState(false);
+
+  const firstScreenRef = useRef<HTMLDivElement>(null);
+  const [firstScreenSize] = useResizeObserver(
+    useMemo(() => [firstScreenRef], [firstScreenRef])
+  );
+  const { height: firstScreenHeight } = firstScreenSize || {};
+  const useParallax = !isFirstScreenOverflow;
+
+  useIntersectionObserver(!useParallax ? firstScreenRef : null, {
+    rootMargin: '10px 0px -100% 0px',
+    threshold: 0.00001,
+    onIntersecting: (entry) => {
+      onChangeStateFirstSection?.(
+        entry.isIntersecting
+          ? 'scrolled'
+          : entry.boundingClientRect.top < 0
+            ? 'invisible'
+            : 'normal'
+      );
+    },
+  });
+
+  const spacerRef = useRef<HTMLDivElement>(null);
+  const { isIntersecting: isIntersectingSpacer } = useIntersectionObserver(
+    useParallax ? spacerRef : null,
+    {
+      rootMargin: '-120px 0px 0px 0px',
+      onIntersecting: (entry) => {
+        onChangeStateFirstSection?.(
+          entry.isIntersecting ? 'normal' : 'invisible'
+        );
+      },
+    }
+  );
+
+  const boxRef = useRef<HTMLDivElement>(null);
+  const { isIntersecting: isIntersectingBox } = useIntersectionObserver(
+    useParallax ? boxRef : null,
+    { threshold: 0.00001 }
+  );
+
+  useEffect(() => {
+    if (!firstScreenHeight) return;
+    setIsFirstScreenOverflow(firstScreenHeight > window.innerHeight);
+  }, [firstScreenHeight]);
 
   function handleAnimateIntro(): TAnimateIntroFn | undefined {
     if (isAnimatedFirstSection) return;
@@ -30,40 +70,68 @@ function MainPage({
       setIsAnimatedFirstSection(state === 'end');
     };
   }
+
+  // Решает проблему когда виден 1-й и 2-экраны, чтобы 2-й экран стал виден после анимации 1-го
   const isShowBox =
-    (isVisableFirstSection && isVisibleBox && isAnimatedFirstSection) ||
-    (isVisableFirstSection && !isVisibleBox) ||
-    (!isVisableFirstSection && isVisibleBox);
+    (isIntersectingSpacer && isIntersectingBox && isAnimatedFirstSection) ||
+    (isIntersectingSpacer && !isIntersectingBox) ||
+    (!isIntersectingSpacer && isIntersectingBox);
+
+  const content = (
+    <>
+      <AboutMe className="main-page__about-me" id="about-me" />
+      <Competencies className="main-page__competencies" />
+      <Credo className="main-page__credo" />
+      <Portfolio className="main-page__portfolio" id="portfolio" />
+      <Facts className="main-page__facts" id="facts" />
+    </>
+  );
 
   return (
     <main
-      className={['main-page', className].filter(Boolean).join(' ')}
+      className={[
+        'main-page',
+        isFirstScreenOverflow && 'main-page_wide',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
     >
       <Greeting
+        ref={firstScreenRef}
         className={[
           'main-page__greeting',
-          !isVisableFirstSection && 'main-page__greeting_transparent',
+          !isFirstScreenOverflow &&
+            !isIntersectingSpacer &&
+            'main-page__greeting_transparent',
         ]
           .filter(Boolean)
           .join(' ')}
         onAnimateIntro={handleAnimateIntro()}
       />
-      <div
-        ref={boxRef}
-        className={[
-          'main-page__box',
-          !isShowBox && 'main-page__box_transparent',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        <AboutMe className="main-page__about-me" id="about-me" />
-        <Competencies className="main-page__competencies" />
-        <Credo className="main-page__credo" />
-        <Portfolio className="main-page__portfolio" id="portfolio" />
-        <Facts className="main-page__facts" id="facts" />
-      </div>
+      {useParallax ? (
+        <>
+          <div
+            ref={spacerRef}
+            className="main-page__spacer"
+            style={{ height: `${firstScreenSize?.height}px` }}
+          ></div>
+          <div
+            ref={boxRef}
+            className={[
+              'main-page__box',
+              !isShowBox && 'main-page__box_transparent',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+          >
+            {content}
+          </div>
+        </>
+      ) : (
+        content
+      )}
     </main>
   );
 }
