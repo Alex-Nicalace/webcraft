@@ -77,7 +77,7 @@
 
     @include mdQuery(0, $pc) {
       grid-template:
-        'i1 . '
+        'i1 . ' minmax(#{rem(200)}, auto)
         'i2 i3' / 1fr 1fr;
     }
 
