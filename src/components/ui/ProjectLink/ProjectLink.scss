@@ -109,7 +109,10 @@
       visibility $transition;
 
     @include adaptiveValue('width', 570, 410, $containerWidth, $pc);
-    @include adaptiveValue('width', 410, 300, $pc, $mobile, 1);
+
+    @include mdQuery(0, $pc) {
+      @include adaptiveValue('width', 410, 300, $pc, $mobile, 1);
+    }
   }
   // .project-link__popup
   &__popup {
