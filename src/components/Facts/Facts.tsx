@@ -58,7 +58,7 @@ function Facts({ className, ...props }: TFactsProps): JSX.Element {
               onPointerUp={handlePointerUpPuzzle(index)}
               onLostPointerCapture={handlePointerUpPuzzle(index)}
             />
-            <Dawn className="facts__dawn" />
+            <Dawn className="facts__dawn" stopAnimation={openedFact > -1} />
           </li>
         ))}
       </ul>
