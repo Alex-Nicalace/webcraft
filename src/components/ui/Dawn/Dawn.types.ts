@@ -3,4 +3,5 @@ export type TDawnProps = Omit<
   'name' | 'rotate'
 > & {
   isBig?: boolean;
+  stopAnimation?: boolean;
 };

@@ -27,4 +27,8 @@
   &_big {
     @include adaptiveValue('--size-dawn', 120, 80, $containerWidth, $mobile, 1);
   }
+
+  &_stop {
+    animation-play-state: paused;
+  }
 }

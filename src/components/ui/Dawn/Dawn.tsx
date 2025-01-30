@@ -2,10 +2,20 @@ import './Dawn.scss';
 import Icon from '../Icon';
 import { TDawnProps } from './Dawn.types';
 
-function Dawn({ className, isBig, ...props }: TDawnProps): JSX.Element {
+function Dawn({
+  className,
+  isBig,
+  stopAnimation,
+  ...props
+}: TDawnProps): JSX.Element {
   return (
     <Icon
-      className={['dawn', isBig && 'dawn_big', className]
+      className={[
+        'dawn',
+        isBig && 'dawn_big',
+        stopAnimation && 'dawn_stop',
+        className,
+      ]
         .filter(Boolean)
         .join(' ')}
       name="Dawn"
