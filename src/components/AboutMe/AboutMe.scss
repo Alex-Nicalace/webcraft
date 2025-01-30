@@ -1,3 +1,5 @@
+@use '../../styles/typography.scss' as *;
+
 .about-me {
   position: relative;
   --color-about-me-bg: var(--sero-siniy);
@@ -55,15 +57,22 @@
     @include tablet-d {
       position: static;
       &:not(:last-child) {
+        margin-bottom: rem(30);
+      }
+    }
+
+    @include mobile-d {
+      &:not(:last-child) {
         margin-bottom: percent(30, 260);
       }
     }
   }
   &__content {
+    @extend .text-typing;
     display: grid;
     grid-template:
-      'i1 . .'
-      'i2 i3 i4' 1fr / 1fr 1fr 1fr;
+      'i1 . .' minmax(#{rem(268)}, auto)
+      'i2 i3 i4' / 1fr 1fr 1fr;
     gap: rem(20);
 
     @include mdQuery(0, $pc) {
@@ -84,28 +93,12 @@
   }
 
   &__item-text {
-    // в Хроме без этой настройки обрезается контент
-    overflow-y: auto;
-    scrollbar-width: thin;
-
     &:nth-child(1) {
       grid-area: i1;
-      aspect-ratio: 283/310;
-
-      @include mdQuery(0, $pc) {
-        aspect-ratio: 285/383;
-      }
 
       @include tablet-d {
         width: percent(294, 591);
-        aspect-ratio: auto;
         justify-self: start;
-      }
-
-      p {
-        &:not(:last-child) {
-          margin-bottom: percent(60, 285);
-        }
       }
     }
     &:nth-child(2) {
@@ -171,6 +164,7 @@
   }
 
   &__slider {
+    @extend .text-typing;
     position: relative;
     overflow: hidden;
   }

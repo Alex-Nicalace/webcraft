@@ -19,6 +19,7 @@
 
     @include mdQuery(0, $pc) {
       font-size: rem(15);
+      line-height: 1.3;
     }
   }
 

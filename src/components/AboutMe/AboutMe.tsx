@@ -57,7 +57,7 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
         <h2 className="about-me__heading heading">Обо мне</h2>
         <div className="about-me__box">
           <div
-            className={`${useSlider ? 'about-me__slider' : 'about-me__content'} text-typing`}
+            className={`${useSlider ? 'about-me__slider' : 'about-me__content'}`}
             style={{ height: useSlider ? `${maxHeightSlide}px` : '' }}
           >
             {grupedParagraphsModified.map((paragraphs, index) => (
