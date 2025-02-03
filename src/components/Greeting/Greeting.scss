@@ -422,7 +422,6 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
     @extend .text-typing;
     position: absolute;
     color: var(--kod-fon);
-    cursor: default;
 
     @include adaptiveValue('font-size', 16, 6);
 
