@@ -30,25 +30,12 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
 
 .greeting {
   @include darkTheme {
-    $puzzle-width: 1800;
-    $puzzle-height: 860;
-    $bg-width: 2383;
-    $bg-height: 2384;
-    $bg-pos-x: -292;
-    $bg-pos-y: -861;
-
     --greeting-puzzle-bg: linear-gradient(
         rgba(43, 40, 141, 0.2),
         rgba(43, 40, 141, 0.2)
       ),
-      url(../../assets/img/puzzles/puzzle_bg_3.jpg) #{percent(
-          $bg-pos-x,
-          $puzzle-width - $bg-width
-        )
-        percent($bg-pos-y, $puzzle-height - $bg-height)} / #{percent(
-          $bg-width,
-          $puzzle-width
-        ) percent($bg-height, $puzzle-height)} no-repeat;
+      url(../../assets/img/puzzles/puzzle_bg_main.jpg) 0 0 / 100% 100% no-repeat;
+
     --greeting-heading-bg: var(--bg-pod-tekst);
     --greeting-heading-text-color: inherit;
   }
