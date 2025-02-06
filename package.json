@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write . --ignore-path .gitignore"
+    "format": "prettier --write . --ignore-path .gitignore",
+    "optimize-images": "node optimize-images.js"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "prettier": "^3.3.3",
     "sass": "^1.81.0",
+    "sharp": "^0.33.5",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
     "vite-plugin-checker": "^0.8.0"
