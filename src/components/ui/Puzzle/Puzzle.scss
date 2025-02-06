@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../../../styles/typography.scss' as *;
 
 @mixin puzzle(
@@ -73,7 +74,16 @@
 
   &,
   .dark-mode & {
-    background: $bg-src 0 0 / 100% 100% no-repeat;
+    // делаю из $bg-src тира map SCSS значение для image-set()
+    $bg-image-set: (); // начальное значение
+    // делаю перебор в цикле
+    @each $type, $url in $bg-src {
+      $bg-image-set:
+        $bg-image-set,
+        $url type('image/#{$type}');
+    }
+
+    background: image-set($bg-image-set) 0 0 / 100% 100% no-repeat;
   }
 
   .light-mode & {
@@ -236,7 +246,10 @@
       $width-pazzle-sm: 140,
       $height-pazzle-sm: 142,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_bg_3.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_bg_3.jpg'),
+      ),
       $padding-top: 0,
       $padding-right: 140,
       $padding-bottom: 130,
@@ -266,7 +279,10 @@
       $width-pazzle-sm: 140,
       $height-pazzle-sm: 114,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_4.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_bg_4.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_bg_4.jpg'),
+      ),
       $padding-top: 115,
       $padding-right: 120,
       $padding-bottom: 120,
@@ -296,7 +312,10 @@
       $width-pazzle-sm: 140,
       $height-pazzle-sm: 178,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_5.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_bg_5.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_bg_5.jpg'),
+      ),
       $padding-top: 140,
       $padding-right: 0,
       $padding-bottom: 140,
@@ -326,7 +345,10 @@
       $width-pazzle-sm: 172,
       $height-pazzle-sm: 172,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_6.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_bg_6.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_bg_6.jpg'),
+      ),
       $padding-top: 140,
       $padding-right: 150,
       $padding-bottom: 140,
@@ -356,7 +378,10 @@
       $width-pazzle-sm: 166,
       $height-pazzle-sm: 114,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_bg_7.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_bg_7.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_bg_7.jpg'),
+      ),
       $padding-top: 140,
       $padding-right: 140,
       $padding-bottom: 0,
@@ -386,7 +411,10 @@
       $width-pazzle-sm: 190,
       $height-pazzle-sm: 116,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_1.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_1.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_1.jpg'),
+      ),
       $padding-top: 0,
       $padding-right: 0,
       $padding-bottom: 85,
@@ -414,7 +442,10 @@
       $width-pazzle-sm: 189,
       $height-pazzle-sm: 116,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_2.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_2.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_2.jpg'),
+      ),
       $padding-top: 0,
       $padding-right: 80,
       $padding-bottom: 85,
@@ -442,7 +473,10 @@
       $width-pazzle-sm: 191,
       $height-pazzle-sm: 187,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_3.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_3.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_3.jpg'),
+      ),
       $padding-top: 80,
       $padding-right: 80,
       $padding-bottom: 80,
@@ -470,7 +504,10 @@
       $width-pazzle-sm: 190,
       $height-pazzle-sm: 115,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_4.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_4.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_4.jpg'),
+      ),
       $padding-top: 85,
       $padding-right: 85,
       $padding-bottom: 0,
@@ -498,7 +535,10 @@
       $width-pazzle-sm: 194,
       $height-pazzle-sm: 134,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_5.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_5.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_5.jpg'),
+      ),
       $padding-top: 70,
       $padding-right: 90,
       $padding-bottom: 70,
@@ -526,7 +566,10 @@
       $width-pazzle-sm: 188,
       $height-pazzle-sm: 188,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_6.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_6.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_6.jpg'),
+      ),
       $padding-top: 80,
       $padding-right: 80,
       $padding-bottom: 80,
@@ -554,7 +597,10 @@
       $width-pazzle-sm: 224,
       $height-pazzle-sm: 118,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_7.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_7.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_7.jpg'),
+      ),
       $padding-top: 0,
       $padding-right: 100,
       $padding-bottom: 60,
@@ -582,7 +628,10 @@
       $width-pazzle-sm: 164,
       $height-pazzle-sm: 190,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_8.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_8.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_8.jpg'),
+      ),
       $padding-top: 80,
       $padding-right: 77,
       $padding-bottom: 85,
@@ -610,7 +659,10 @@
       $width-pazzle-sm: 230,
       $height-pazzle-sm: 148,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_9.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_9.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_9.jpg'),
+      ),
       $padding-top: 60,
       $padding-right: 95,
       $padding-bottom: 65,
@@ -638,7 +690,10 @@
       $width-pazzle-sm: 170,
       $height-pazzle-sm: 148,
 
-      $bg-src: url('../../../assets/img/puzzles/puzzle_fact_bg_10.jpg'),
+      $bg-src: (
+        webp: url('../../../assets/img/puzzles/puzzle_fact_bg_10.webp'),
+        jpeg: url('../../../assets/img/puzzles/puzzle_fact_bg_10.jpg'),
+      ),
       $padding-top: 0,
       $padding-right: 0,
       $padding-bottom: 75,
