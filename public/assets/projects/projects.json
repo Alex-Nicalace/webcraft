@@ -1,0 +1,98 @@
+[
+  {
+    "url": "http://commerce.alex-webdev.ru/",
+    "title": "Интернет-магазин одежды",
+    "popupData": {
+      "title": "Название организации",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/01.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/01.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://build.alex-webdev.ru/",
+    "title": "Сайт для строительной компании",
+    "popupData": {
+      "title": "Название организации",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/02.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/02.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://stylish-image.alex-webdev.ru/",
+    "title": "Интернет-магазин одежды",
+    "popupData": {
+      "title": "Название организации",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/03.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/03.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://the-wild-oasis-mocha-gamma.vercel.app",
+    "title": "Дашборд по бронированию отеля",
+    "popupData": {
+      "title": "Название организации",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/04.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/04.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://consulting.alex-webdev.ru",
+    "title": "Сайт для консалтинговой компании в сфере фармацевтики",
+    "popupData": {
+      "title": "Название организации",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/05.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/05.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://sea-battle.alex-webdev.ru",
+    "title": "Игра",
+    "popupData": {
+      "title": "Название организации",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/06.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/06.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  }
+]

@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             alignItems: 'center',
           }}
         >
-          ⚠️ Во время отрисовки страницы произошла ошибка ‼️{' '}
+          ⚠️ Во время отрисовки страницы произошла ошибка ‼️
         </main>
       }
     >
