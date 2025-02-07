@@ -1,9 +1,15 @@
-import screenshot1 from '../../assets/img/projects/01.jpg';
-import screenshot2 from '../../assets/img/projects/02.jpg';
-import screenshot3 from '../../assets/img/projects/03.jpg';
-import screenshot4 from '../../assets/img/projects/04.jpg';
-import screenshot5 from '../../assets/img/projects/05.jpg';
-import screenshot6 from '../../assets/img/projects/06.jpg';
+import screenshotJpg1 from '../../assets/img/projects/01.jpg';
+import screenshotWebP1 from '../../assets/img/projects/01.webp';
+import screenshotJpg2 from '../../assets/img/projects/02.jpg';
+import screenshotWebP2 from '../../assets/img/projects/02.webp';
+import screenshotJpg3 from '../../assets/img/projects/03.jpg';
+import screenshotWebP3 from '../../assets/img/projects/03.webp';
+import screenshotJpg4 from '../../assets/img/projects/04.jpg';
+import screenshotWebP4 from '../../assets/img/projects/04.webp';
+import screenshotJpg5 from '../../assets/img/projects/05.jpg';
+import screenshotWebP5 from '../../assets/img/projects/05.webp';
+import screenshotJpg6 from '../../assets/img/projects/06.jpg';
+import screenshotWebP6 from '../../assets/img/projects/06.webp';
 
 export const PROJECTS = [
   {
@@ -11,7 +17,10 @@ export const PROJECTS = [
     title: 'Интернет-магазин одежды',
     popupData: {
       title: 'Название организации',
-      imageUrl: screenshot1,
+      imageUrl: {
+        src: screenshotJpg1,
+        sources: [{ srcset: screenshotWebP1, type: 'image/webp' }],
+      },
     },
   },
   {
@@ -19,7 +28,10 @@ export const PROJECTS = [
     title: 'Сайт для строительной компании',
     popupData: {
       title: 'Название организации',
-      imageUrl: screenshot2,
+      imageUrl: {
+        src: screenshotJpg2,
+        sources: [{ srcset: screenshotWebP2, type: 'image/webp' }],
+      },
     },
   },
   {
@@ -27,7 +39,10 @@ export const PROJECTS = [
     title: 'Интернет-магазин одежды',
     popupData: {
       title: 'Название организации',
-      imageUrl: screenshot3,
+      imageUrl: {
+        src: screenshotJpg3,
+        sources: [{ srcset: screenshotWebP3, type: 'image/webp' }],
+      },
     },
   },
   {
@@ -35,7 +50,10 @@ export const PROJECTS = [
     title: 'Дашборд по бронированию отеля',
     popupData: {
       title: 'Название организации',
-      imageUrl: screenshot4,
+      imageUrl: {
+        src: screenshotJpg4,
+        sources: [{ srcset: screenshotWebP4, type: 'image/webp' }],
+      },
     },
   },
   {
@@ -43,7 +61,10 @@ export const PROJECTS = [
     title: 'Сайт для консалтинговой компании в сфере фармацевтики',
     popupData: {
       title: 'Название организации',
-      imageUrl: screenshot5,
+      imageUrl: {
+        src: screenshotJpg5,
+        sources: [{ srcset: screenshotWebP5, type: 'image/webp' }],
+      },
     },
   },
   {
@@ -51,7 +72,10 @@ export const PROJECTS = [
     title: 'Игра',
     popupData: {
       title: 'Название организации',
-      imageUrl: screenshot6,
+      imageUrl: {
+        src: screenshotJpg6,
+        sources: [{ srcset: screenshotWebP6, type: 'image/webp' }],
+      },
     },
   },
 ];

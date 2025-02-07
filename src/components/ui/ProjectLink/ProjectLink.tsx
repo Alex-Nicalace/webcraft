@@ -1,6 +1,7 @@
 import './ProjectLink.scss';
 import Icon from '../Icon';
 import { TProjectLinkProps } from './ProjectLink.types';
+import Picture from '../../Picture';
 
 function ProjectLink({
   className,
@@ -21,9 +22,9 @@ function ProjectLink({
       {popupData && (
         <div className="project-link__popup-wrapper">
           <figure className="project-link__popup">
-            <img
+            <Picture
               className="project-link__project-img"
-              src={imageUrl}
+              {...imageUrl}
               alt={`Скриншот проекта - ${title}`}
               width={310}
               height={185}

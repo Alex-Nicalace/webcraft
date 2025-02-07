@@ -1,8 +1,9 @@
 import { AnchorHTMLAttributes } from 'react';
+import { TPictureProps } from '../../Picture';
 
 export type TProjectLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   popupData?: {
     title?: string;
-    imageUrl: string;
+    imageUrl: Pick<TPictureProps, 'src' | 'sources'>;
   };
 };
