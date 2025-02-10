@@ -1,17 +1,12 @@
 import { useRef, useState } from 'react';
 import Container from '../Container';
 import Puzzle from '../ui/Puzzle';
-import { TCredoProps } from './Credo.types';
+import { TCredoData, TCredoProps } from './Credo.types';
 import './Credo.scss';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-
-const CREDO_PUZZLE: { text: string; variant: 3 | 4 | 5 | 6 | 7 }[] = [
-  { text: 'Каждая строчка кода,', variant: 3 },
-  { text: 'как деталь пазла,', variant: 4 },
-  { text: 'должна быть на своём месте,', variant: 5 },
-  { text: 'чтобы получился', variant: 6 },
-  { text: 'ожидаемый результат.', variant: 7 },
-];
+import { useFetch } from '../../hooks/useFetch';
+import ErrorMessage from '../ui/ErrorMessage';
+import Loader from '../ui/Loader';
 
 const INTERSECTION_OPTIONS = {
   rootMargin: '0px 0px -60% 0px',
@@ -19,6 +14,9 @@ const INTERSECTION_OPTIONS = {
 };
 
 function Credo({ className, ...props }: TCredoProps): JSX.Element {
+  const [{ responseData: credoTexts, isLoading, errorMessage }] = useFetch<
+    TCredoData[]
+  >('/assets/credo/credo.json');
   const [completedAnimationPuzzles, setCompletedAnimationPuzzles] = useState<
     number[]
   >([]);
@@ -63,21 +61,27 @@ function Credo({ className, ...props }: TCredoProps): JSX.Element {
           .filter(Boolean)
           .join(' ')}
       >
-        {CREDO_PUZZLE.map(({ text, variant }, index) => (
-          <Puzzle
-            key={index}
-            variant={variant}
-            text={text}
-            isOpen={
-              !isNeedAnimation || completedAnimationPuzzles.includes(index)
-            }
-            onAnimationEnd={
-              completedAnimationPuzzles.includes(index)
-                ? undefined
-                : hundleAnimationEnd(index)
-            }
-          />
-        ))}
+        {isLoading && <Loader />}
+        {errorMessage && !isLoading && (
+          <ErrorMessage message="Кредо не загрузилось!" />
+        )}
+        {!errorMessage &&
+          !isLoading &&
+          (credoTexts ?? []).map(({ text, variant }, index) => (
+            <Puzzle
+              key={index}
+              variant={variant}
+              text={text}
+              isOpen={
+                !isNeedAnimation || completedAnimationPuzzles.includes(index)
+              }
+              onAnimationEnd={
+                completedAnimationPuzzles.includes(index)
+                  ? undefined
+                  : hundleAnimationEnd(index)
+              }
+            />
+          ))}
       </div>
     </Container>
   );
