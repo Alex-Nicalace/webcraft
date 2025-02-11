@@ -1,40 +1,72 @@
 import { useState } from 'react';
+
 import Container from '../Container';
-import './AboutMe.scss';
+import Button from '../ui/Button';
+import ButtonSlider from '../ui/ButtonSlider';
+
+import { useScreenWidth } from '../../Context/ScreenWidthContext';
+import { useRefs } from '../../hooks/useRefs';
+import { useResizeObserver } from '../../hooks/useResizeObserver';
+import { useFetch } from '../../hooks/useFetch';
+
 import { TAboutMeProps } from './AboutMe.types';
+import {
+  TResponsedData,
+  TParagraphsByScreenSize,
+  TDevice,
+} from './AboutMe.types';
+
+import { CODE } from './codeDecor';
+import { ResponsedDataManager } from './ResponsedDataManager';
+
 import PuzzleSvgPC from '../../assets/img/puzzles/puzzle-second-screen.svg?react';
 import PuzzleSvgTablet from '../../assets/img/puzzles/puzzle-second-screen-tablet.svg?react';
 import PuzzleSvgMobile from '../../assets/img/puzzles/puzzle-second-screen-mobile.svg?react';
 import PuzzleSvgMobileSm from '../../assets/img/puzzles/puzzle-second-screen-mobile-sm.svg?react';
-import Button from '../ui/Button';
-import { paragraphsByScreenSize } from './AboutMe.text';
-import { useScreenWidth } from '../../Context/ScreenWidthContext';
-import ButtonSlider from '../ui/ButtonSlider';
-import { CODE } from './codeDecor';
-import { useRefs } from '../../hooks/useRefs';
-import { useResizeObserver } from '../../hooks/useResizeObserver';
 
-function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
+import './AboutMe.scss';
+
+const DEVISES: TDevice[] = [
+  'pc',
+  'tablet',
+  'mobile',
+  'mobileSmall',
+  'mobileUltraSmall',
+];
+
+function transformResponseDataFn(data: unknown) {
+  const aboutMeData = data as TResponsedData;
+  return new ResponsedDataManager(aboutMeData.hunks).getParagraphsByScreenSize(
+    aboutMeData.paragraphsByScreenSize
+  );
+}
+
+function AboutMe({ className, ...props }: TAboutMeProps) {
+  const [{ responseData: paragraphsByScreenSize }] =
+    useFetch<TParagraphsByScreenSize>('/assets/about-me/about-me.json', {
+      transformResponseDataFn,
+    });
+
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
     useScreenWidth();
   const [slideIndex, setSlideIndex] = useState(0);
+  const [slidesRef, setSlidesRef] = useRefs<HTMLDivElement>();
 
-  const devices = Object.keys(
-    paragraphsByScreenSize
-  ) as (keyof typeof paragraphsByScreenSize)[];
   const deviceIndex =
     Number(isLessPC) +
     Number(isLessTablet) +
     Number(isLessMobile) +
     Number(isLessMobileSmall);
-  const typeDevice = devices[deviceIndex];
-  const grupedParagraphs = paragraphsByScreenSize[typeDevice];
+  const typeDevice = DEVISES[deviceIndex];
+
+  const grupedParagraphs = paragraphsByScreenSize
+    ? paragraphsByScreenSize[typeDevice]
+    : [];
   const grupedParagraphsModified = grupedParagraphs.map((item) =>
     Array.isArray(item) ? item : [item]
   );
-  const useSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
-  const [slidesRef, setSlidesRef] = useRefs<HTMLDivElement>();
-  const sizeSlides = useResizeObserver(useSlider ? slidesRef : []);
+  const isUseSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
+  const sizeSlides = useResizeObserver(isUseSlider ? slidesRef : []);
 
   const maxHeightSlide = Math.max(
     ...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0)
@@ -57,15 +89,15 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
         <h2 className="about-me__heading heading">Обо мне</h2>
         <div className="about-me__box">
           <div
-            className={`${useSlider ? 'about-me__slider' : 'about-me__content'}`}
-            style={{ height: useSlider ? `${maxHeightSlide}px` : '' }}
+            className={`${isUseSlider ? 'about-me__slider' : 'about-me__content'}`}
+            style={{ height: isUseSlider ? `${maxHeightSlide}px` : '' }}
           >
             {grupedParagraphsModified.map((paragraphs, index) => (
               <div
                 key={index}
                 ref={(node) => setSlidesRef(index, node)}
                 className={`${
-                  useSlider
+                  isUseSlider
                     ? [
                         'about-me__slide',
                         index < slideIndex && 'about-me__slide_prev',
@@ -103,7 +135,7 @@ function AboutMe({ className, ...props }: TAboutMeProps): JSX.Element {
           ))}
         </div>
       </div>
-      {useSlider && (
+      {isUseSlider && (
         <div className="about-me__slider-buttons">
           <ButtonSlider
             direction="left"
