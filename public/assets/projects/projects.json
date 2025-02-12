@@ -5,10 +5,10 @@
     "popupData": {
       "title": "Название организации",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/01.jpg",
+        "src": "/assets/img/project-screenshots/eshop-createx.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/01.webp",
+            "srcSet": "/assets/img/project-screenshots/eshop-createx.webp",
             "type": "image/webp"
           }
         ]
@@ -21,10 +21,10 @@
     "popupData": {
       "title": "Название организации",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/02.jpg",
+        "src": "/assets/img/project-screenshots/building-company-cubax.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/02.webp",
+            "srcSet": "/assets/img/project-screenshots/building-company-cubax.webp",
             "type": "image/webp"
           }
         ]
@@ -33,14 +33,14 @@
   },
   {
     "url": "http://stylish-image.alex-webdev.ru/",
-    "title": "Интернет-магазин одежды",
+    "title": "Интернет-магазин одежды «Образ»",
     "popupData": {
       "title": "Название организации",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/03.jpg",
+        "src": "/assets/img/project-screenshots/eshop-stylish-image.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/03.webp",
+            "srcSet": "/assets/img/project-screenshots/eshop-stylish-image.webp",
             "type": "image/webp"
           }
         ]
@@ -53,10 +53,10 @@
     "popupData": {
       "title": "Название организации",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/04.jpg",
+        "src": "/assets/img/project-screenshots/dashboard-wild-oasis.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/04.webp",
+            "srcSet": "/assets/img/project-screenshots/dashboard-wild-oasis.webp",
             "type": "image/webp"
           }
         ]
@@ -69,10 +69,10 @@
     "popupData": {
       "title": "Название организации",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/05.jpg",
+        "src": "/assets/img/project-screenshots/farma-consulting.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/05.webp",
+            "srcSet": "/assets/img/project-screenshots/farma-consulting.webp",
             "type": "image/webp"
           }
         ]
@@ -81,14 +81,14 @@
   },
   {
     "url": "http://sea-battle.alex-webdev.ru",
-    "title": "Игра",
+    "title": "Игра «Морская бой»",
     "popupData": {
       "title": "Название организации",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/06.jpg",
+        "src": "/assets/img/project-screenshots/sea-battle.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/06.webp",
+            "srcSet": "/assets/img/project-screenshots/sea-battle.webp",
             "type": "image/webp"
           }
         ]
