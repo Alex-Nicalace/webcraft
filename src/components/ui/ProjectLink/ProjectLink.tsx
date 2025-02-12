@@ -23,11 +23,14 @@ function ProjectLink({
         <div className="project-link__popup-wrapper">
           <figure className="project-link__popup">
             <Picture
-              className="project-link__project-img"
+              className="project-link__picture"
               {...imageUrl}
-              alt={`Скриншот проекта - ${title}`}
-              width={310}
-              height={185}
+              imgProps={{
+                className: 'project-link__img',
+                alt: `Скриншот проекта - ${title}`,
+                width: 310,
+                height: 185,
+              }}
             />
             {title && (
               <figcaption className="project-link__title text-typing">

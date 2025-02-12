@@ -22,6 +22,18 @@
 - [ErrorBoundary](./src/components/ErrorBoundary.tsx)
   - В случае ошибки во время рендера экран будет пуст
   - Этот компонет вместо пустого экрана позвояет показывать некое содержимое.
+- [Picture](./src/components/Picture/Picture.tsx)
+  - Компонент для рендера конструкции:
+    ```html
+    <picture>
+      <source media="(max-width: 400px)" srcset="img/main_photo-min.jpg" />
+      <!-- и т.д. -->
+      <img src="img/main_photo.jpg" alt="my photo" class="image" />
+    </picture>
+    ```
+  - Принимает пропсы:
+    - `src` — для тега `<img>`
+    - `sources` — массив для рендера тегов `<source>`
 
 ## Хуки
 

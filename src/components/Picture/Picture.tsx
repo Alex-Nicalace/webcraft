@@ -1,14 +1,15 @@
 import { TPictureProps } from './Picture.types';
 
-function Picture({ sources, ...props }: TPictureProps): JSX.Element {
-  if (!sources) return <img {...props} />;
-
+function Picture({
+  sources,
+  src,
+  imgProps,
+  ...props
+}: TPictureProps): JSX.Element {
   return (
-    <picture>
-      {sources.map((source) => (
-        <source key={source.srcSet} {...source} />
-      ))}
-      <img {...props} />
+    <picture {...props}>
+      {sources?.map((source) => <source key={source.srcSet} {...source} />)}
+      <img {...imgProps} src={src} />
     </picture>
   );
 }
