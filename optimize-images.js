@@ -10,10 +10,16 @@ const PNG_QUALITY = 70;
 
 // Функция для обработки изображений
 async function processImages() {
-  const imageFiles = await glob('src/assets/img/**/*.{jpg,jpeg,png}', {
-    absolute: true,
-    ignore: ['**/*.bak.{jpg,jpeg,png}'], // Исключаем файлы с .bak.jpg, .bak.jpeg, .bak.png
-  });
+  const imageFiles = await glob(
+    [
+      'src/assets/img/**/*.{jpg,jpeg,png}',
+      'public/assets/img/**/*.{jpg,jpeg,png}',
+    ],
+    {
+      absolute: true,
+      ignore: ['**/*.bak.{jpg,jpeg,png}'], // Исключаем файлы с .bak.jpg, .bak.jpeg, .bak.png
+    }
+  );
 
   for (const file of imageFiles) {
     const ext = path.extname(file);
