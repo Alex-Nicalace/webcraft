@@ -7,6 +7,7 @@ function ProjectLink({
   className,
   children,
   popupData,
+  isHover = true,
   ...props
 }: TProjectLinkProps): JSX.Element {
   const { title, imageUrl } = popupData || {};
@@ -19,7 +20,7 @@ function ProjectLink({
           <Icon name="ArrowRight" width={32} height={32} />
         </span>
       </a>
-      {popupData && (
+      {isHover && popupData && (
         <div className="project-link__popup-wrapper">
           <figure className="project-link__popup">
             <Picture

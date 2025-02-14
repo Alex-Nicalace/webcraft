@@ -6,11 +6,13 @@ import './Portfolio.scss';
 import { useFetch } from '../../hooks/useFetch';
 import Loader from '../ui/Loader';
 import ErrorMessage from '../ui/ErrorMessage';
+import { useDevice } from '../../Context/DeviceContext';
 
 function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
   const [{ responseData: projects, isLoading, errorMessage }] = useFetch<
     TProjectListProps['data']
   >('/assets/projects/projects.json');
+  const { isPointer } = useDevice();
 
   return (
     <Container
@@ -24,7 +26,11 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
         <ErrorMessage message="Проекты не загрузились" />
       )}
       {!errorMessage && !isLoading && (
-        <ProjectList className="portfolio__projects" data={projects || []} />
+        <ProjectList
+          className="portfolio__projects"
+          data={projects || []}
+          isHover={isPointer}
+        />
       )}
       <Button className="portfolio__contact-me" href="#my-contacts">
         Связаться со мной

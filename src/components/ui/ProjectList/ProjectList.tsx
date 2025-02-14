@@ -5,6 +5,7 @@ import { TProjectListProps } from './ProjectList.types';
 function ProjectList({
   className,
   data,
+  isHover = true,
   ...props
 }: TProjectListProps): JSX.Element {
   return (
@@ -19,6 +20,7 @@ function ProjectList({
           popupData={popupData}
           target="_blank"
           rel="noopener noreferrer"
+          isHover={isHover}
         >
           {title}
         </ProjectLink>

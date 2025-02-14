@@ -7,4 +7,5 @@ export type TProjectListProps = OlHTMLAttributes<HTMLOListElement> & {
     title: string;
     popupData?: TProjectLinkProps['popupData'];
   }[];
+  isHover?: boolean;
 };
