@@ -4,7 +4,7 @@ import Container from '../Container';
 import Button from '../ui/Button';
 import ButtonSlider from '../ui/ButtonSlider';
 
-import { useScreenWidth } from '../../Context/ScreenWidthContext';
+import { useDevice } from '../../Context/DeviceContext';
 import { useRefs } from '../../hooks/useRefs';
 import { useResizeObserver } from '../../hooks/useResizeObserver';
 import { useFetch } from '../../hooks/useFetch';
@@ -48,7 +48,7 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
     });
 
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
-    useScreenWidth();
+    useDevice();
   const [slideIndex, setSlideIndex] = useState(0);
   const [slidesRef, setSlidesRef] = useRefs<HTMLDivElement>();
 

@@ -8,14 +8,14 @@ import Button from '../ui/Button';
 import { CODE_ANIMATED, CODE_STATIC } from './codeDecor';
 import Dawn from '../ui/Dawn';
 import { useDarkMode } from '../../Context/DarkModeContext';
-import { useScreenWidth } from '../../Context/ScreenWidthContext';
+import { useDevice } from '../../Context/DeviceContext';
 
 const BALL_COUNT = 3;
 
 const Greeting = forwardRef<HTMLDivElement, TGreetingProps>(
   ({ className, onAnimateIntro, ...props }, ref) => {
     const { isDarkMode } = useDarkMode();
-    const { isLessPC } = useScreenWidth();
+    const { isLessPC } = useDevice();
     const [isAnimatedDecor, setIsAnimatedDecor] = useState(false);
     const [isStopedAnimatePuzzle, setIsStopedAnimatePuzzle] = useState(false);
     const [animationType, setAnimationType] = useState<'ball' | 'code'>('ball');

@@ -1,15 +1,15 @@
 import './App.scss';
 import AppLayout from './components/AppLayout';
 import DarkModeProvider from './Context/DarkModeContext';
-import ScreenWidthProvider from './Context/ScreenWidthContext';
+import DeviceProvider from './Context/DeviceContext';
 
 function App() {
   return (
-    <ScreenWidthProvider>
+    <DeviceProvider>
       <DarkModeProvider>
         <AppLayout />
       </DarkModeProvider>
-    </ScreenWidthProvider>
+    </DeviceProvider>
   );
 }
 

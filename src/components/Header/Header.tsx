@@ -5,7 +5,7 @@ import Logo from '../Logo';
 import MainMenu from '../MainMenu';
 import Button from '../ui/Button';
 import TogglerTheme from '../ui/TogglerTheme';
-import { useScreenWidth } from '../../Context/ScreenWidthContext';
+import { useDevice } from '../../Context/DeviceContext';
 import BurgerButton from '../BurgerButton';
 import { useDarkMode } from '../../Context/DarkModeContext';
 import { THeaderProps } from './Header.types';
@@ -22,7 +22,7 @@ function Header({
   ...props
 }: THeaderProps): JSX.Element {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const { isLessTablet, isLessMobileMd, isLessMobileSmall } = useScreenWidth();
+  const { isLessTablet, isLessMobileMd, isLessMobileSmall } = useDevice();
   const { isDarkMode, toggleMode } = useDarkMode();
   const isMobileMenu = isLessTablet;
 

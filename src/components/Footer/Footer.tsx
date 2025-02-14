@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import Container from '../Container';
 import ContactPuzzle, { TContactPuzzleProps } from '../ui/ContactPuzzle';
-import { useScreenWidth } from '../../Context/ScreenWidthContext';
+import { useDevice } from '../../Context/DeviceContext';
 import { DESIGN_CONTACT, MY_CONTACTS } from './Footer.config';
 import './Footer.scss';
 import { TFooterProps } from './Footer.types';
@@ -17,7 +17,7 @@ function getVariant(index: number): TContactPuzzleProps['variant'] {
 const INTERSECTION_OPTIONS = { once: true, threshold: 0.99 };
 
 function Footer({ className, ...props }: TFooterProps): JSX.Element {
-  const { isLessMobileMd } = useScreenWidth();
+  const { isLessMobileMd } = useDevice();
   const footerRef = useRef<HTMLDivElement>(null);
   const { isIntersecting: isFooterVisible } = useIntersectionObserver(
     footerRef,
