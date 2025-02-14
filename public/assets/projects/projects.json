@@ -1,9 +1,73 @@
 [
   {
+    "url": "https://boardriders-one.vercel.app/",
+    "title": "Интернет-магазин с бэкендом React TS",
+    "popupData": {
+      "title": "React, TypeScript, TanStack Query, Redux",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/eshop-boardriders.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/eshop-boardriders.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://the-wild-oasis-mocha-gamma.vercel.app",
+    "title": "Приложение бронирования отеля с бэкендом. React TS",
+    "popupData": {
+      "title": "React, TypeScript, TanStack Query",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/dashboard-wild-oasis.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/dashboard-wild-oasis.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://usepopcorn-black.vercel.app/",
+    "title": "Учет просмотренных фильмов. React TS",
+    "popupData": {
+      "title": "React, TypeScript",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/usePopcorn.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/usePopcorn.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "http://sea-battle.alex-webdev.ru",
+    "title": "Игра «Морская бой»",
+    "popupData": {
+      "title": "HTML, SCSS, JS",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/sea-battle.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/sea-battle.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
     "url": "http://commerce.alex-webdev.ru/",
     "title": "Интернет-магазин одежды",
     "popupData": {
-      "title": "Название организации",
+      "title": "Адаптивная верстка интернет-магазина",
       "imageUrl": {
         "src": "/assets/img/project-screenshots/eshop-createx.jpg",
         "sources": [
@@ -19,7 +83,7 @@
     "url": "http://build.alex-webdev.ru/",
     "title": "Сайт для строительной компании",
     "popupData": {
-      "title": "Название организации",
+      "title": "Адаптивная верстка",
       "imageUrl": {
         "src": "/assets/img/project-screenshots/building-company-cubax.jpg",
         "sources": [
@@ -35,7 +99,7 @@
     "url": "http://stylish-image.alex-webdev.ru/",
     "title": "Интернет-магазин одежды «Образ»",
     "popupData": {
-      "title": "Название организации",
+      "title": "Адаптивная верстка интернет-магазина",
       "imageUrl": {
         "src": "/assets/img/project-screenshots/eshop-stylish-image.jpg",
         "sources": [
@@ -48,26 +112,10 @@
     }
   },
   {
-    "url": "https://the-wild-oasis-mocha-gamma.vercel.app",
-    "title": "Дашборд по бронированию отеля",
-    "popupData": {
-      "title": "Название организации",
-      "imageUrl": {
-        "src": "/assets/img/project-screenshots/dashboard-wild-oasis.jpg",
-        "sources": [
-          {
-            "srcSet": "/assets/img/project-screenshots/dashboard-wild-oasis.webp",
-            "type": "image/webp"
-          }
-        ]
-      }
-    }
-  },
-  {
     "url": "http://consulting.alex-webdev.ru",
     "title": "Сайт для консалтинговой компании в сфере фармацевтики",
     "popupData": {
-      "title": "Название организации",
+      "title": "Адаптивная верстка",
       "imageUrl": {
         "src": "/assets/img/project-screenshots/farma-consulting.jpg",
         "sources": [
@@ -80,15 +128,31 @@
     }
   },
   {
-    "url": "http://sea-battle.alex-webdev.ru",
-    "title": "Игра «Морская бой»",
+    "url": "http://gericht.alex-webdev.ru",
+    "title": "Сайт ресторана",
     "popupData": {
-      "title": "Название организации",
+      "title": "Адаптивная верстка",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/sea-battle.jpg",
+        "src": "/assets/img/project-screenshots/gericht.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/sea-battle.webp",
+            "srcSet": "/assets/img/project-screenshots/gericht.webp",
+            "type": "image/webp"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://alex-nicalace.github.io/food/",
+    "title": "Лэндинг ресторана",
+    "popupData": {
+      "title": "Адаптивная верстка",
+      "imageUrl": {
+        "src": "/assets/img/project-screenshots/food-landing.jpg",
+        "sources": [
+          {
+            "srcSet": "/assets/img/project-screenshots/food-landing.webp",
             "type": "image/webp"
           }
         ]
