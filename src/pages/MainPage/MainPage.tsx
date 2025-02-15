@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AboutMe from '../../components/AboutMe';
 import Competencies from '../../components/Competencies';
 import Credo from '../../components/Credo/Credo';
@@ -19,9 +19,7 @@ function MainPage({
   const [isFirstScreenOverflow, setIsFirstScreenOverflow] = useState(false);
 
   const firstScreenRef = useRef<HTMLDivElement>(null);
-  const [firstScreenSize] = useResizeObserver(
-    useMemo(() => [firstScreenRef], [firstScreenRef])
-  );
+  const [firstScreenSize] = useResizeObserver(firstScreenRef.current);
   const { height: firstScreenHeight } = firstScreenSize || {};
   const useParallax = !isFirstScreenOverflow;
 

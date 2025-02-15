@@ -66,7 +66,7 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
     Array.isArray(item) ? item : [item]
   );
   const isUseSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
-  const sizeSlides = useResizeObserver(isUseSlider ? slidesRef : []);
+  const sizeSlides = useResizeObserver(isUseSlider ? slidesRef.current : null);
 
   const maxHeightSlide = Math.max(
     ...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0)

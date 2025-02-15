@@ -1,46 +1,47 @@
 import { useEffect, useState } from 'react';
 
-type TSize =
-  | {
-      contentWidth: number;
-      contentHeight: number;
-      scrollWidth: number;
-      scrollHeight: number;
-      width: number;
-      height: number;
-    }
-  | undefined;
+type TSize = {
+  contentWidth: number;
+  contentHeight: number;
+  scrollWidth: number;
+  scrollHeight: number;
+  width: number;
+  height: number;
+} | null;
+
+type TParam<T> = T | T[] | Map<React.Key, T> | null;
 
 /**
- * Возвращает массив HTMLElement из React-объектов ref к элементам HTMLElement
- * @param refs - Массив React-объектов ref к элементам HTMLElement или React-объект ref, содержащий Map для доступа к элементам HTMLElement
- * @return Массив HTMLElement
+ * Трансформирует аргумент в массив элементов HTMLElement
+ * @param arg - Аргумент, который нужно преобразовать в массив элементов HTMLElement
+ * @return Массив элементов HTMLElement
  */
-function getElementsFromRefs<T extends HTMLElement>(
-  refs: React.RefObject<T>[] | React.MutableRefObject<Map<React.Key, T>>
-) {
-  return Array.isArray(refs)
-    ? refs.map((ref) => ref.current)
-    : Array.from(refs.current?.values() || []);
+function transformToElements<T extends HTMLElement>(arg: TParam<T>) {
+  return arg
+    ? Array.isArray(arg)
+      ? arg
+      : arg instanceof Map
+        ? Array.from(arg.values())
+        : [arg]
+    : [];
 }
 
 /**
- * Хук React, возвращающий массив размеров для предоставленных React-объектов ref к элементам HTMLElement.
- * Результат сохраняет порядок элементов из входного массива refs
- * ! Если в качестве аргумента предается массив, то необходимо мемоизировать
- * @param refs - Массив React-объектов ref к элементам HTMLElement или React-объект ref, содержащий Map для доступа к элементам HTMLElement
- * @return Массив размеров для предоставленных ref. Если элемент не существует, возвращается undefined.
+ * Hook, который позволяет отслеживать изменения размеров элементов.
+ * Массив размеров элементов будет обновляться при изменении размеров.
+ * @param param - HTMLElement или массив HTMLElement или Map<React.Key, HTMLElement>
+ * @return Массив размеров, где каждый размер - это объект с полями contentWidth, contentHeight, scrollWidth, scrollHeight, width, height
  */
-export function useResizeObserver<T extends HTMLElement>(
-  refs: React.RefObject<T>[] | React.MutableRefObject<Map<React.Key, T>>
-) {
+export function useResizeObserver<T extends HTMLElement>(param: TParam<T>) {
   // Массив размеров
   const [sizes, setSizes] = useState<TSize[]>([]);
 
   useEffect(() => {
-    const elements = getElementsFromRefs(refs);
+    if (!param) return;
+
+    const elements = transformToElements(param);
     const elementsMap = new Map<Element | null, TSize>(
-      elements.map((element) => [element, undefined])
+      elements.map((element) => [element, null])
     );
 
     /**
@@ -92,7 +93,7 @@ export function useResizeObserver<T extends HTMLElement>(
       });
       resizeObserver.disconnect();
     };
-  }, [refs]);
+  }, [param]);
 
   return sizes;
 }
