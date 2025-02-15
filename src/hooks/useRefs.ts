@@ -14,10 +14,17 @@ import { useCallback, useRef } from 'react';
  *          (если null, то ссылка будет удалена).
  */
 export function useRefs<T extends HTMLElement>() {
-  const itemsRef = useRef<Map<React.Key, T>>(new Map());
+  const itemsRef = useRef<Map<React.Key, T> | null>(null);
+
+  function getMap() {
+    if (!itemsRef.current) {
+      itemsRef.current = new Map();
+    }
+    return itemsRef.current;
+  }
 
   const setRef = useCallback((key: React.Key, node: T | null) => {
-    const map = itemsRef.current;
+    const map = getMap();
     if (node) {
       map.set(key, node);
     } else {
