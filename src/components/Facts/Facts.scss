@@ -11,13 +11,17 @@
   }
   // .facts__explain
   &__explain {
-    display: flex;
-    gap: rem(15);
     @extend .text-explanation;
 
     &::before,
     &::after {
       content: '/';
+    }
+    &::before {
+      margin-right: rem(15);
+    }
+    &::after {
+      margin-left: rem(15);
     }
     &:not(:last-child) {
       margin-bottom: rem(60);
