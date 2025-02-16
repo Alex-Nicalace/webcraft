@@ -10,9 +10,8 @@ import ErrorMessage from '../ui/ErrorMessage';
 import Loader from '../ui/Loader';
 
 function Facts({ className, ...props }: TFactsProps): JSX.Element {
-  const [{ responseData: facts, isLoading, errorMessage }] = useFetch<TFact[]>(
-    '/assets/facts/facts.json'
-  );
+  const [{ responseData: facts, isLoading, errorMessage }] =
+    useFetch<TFact[]>('/data/facts.json');
   const [openedFact, setOpenedFact] = useState(-1);
   const quantityFacts = facts?.length ?? 0;
   const factsWithNum = (facts ?? []).map((item, index) => ({

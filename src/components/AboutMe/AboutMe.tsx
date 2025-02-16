@@ -43,7 +43,7 @@ function transformResponseDataFn(data: unknown) {
 
 function AboutMe({ className, ...props }: TAboutMeProps) {
   const [{ responseData: paragraphsByScreenSize }] =
-    useFetch<TParagraphsByScreenSize>('/assets/about-me/about-me.json', {
+    useFetch<TParagraphsByScreenSize>('/data/about-me.json', {
       transformResponseDataFn,
     });
 

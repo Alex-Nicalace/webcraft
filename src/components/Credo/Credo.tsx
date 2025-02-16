@@ -14,9 +14,8 @@ const INTERSECTION_OPTIONS = {
 };
 
 function Credo({ className, ...props }: TCredoProps): JSX.Element {
-  const [{ responseData: credoTexts, isLoading, errorMessage }] = useFetch<
-    TCredoData[]
-  >('/assets/credo/credo.json');
+  const [{ responseData: credoTexts, isLoading, errorMessage }] =
+    useFetch<TCredoData[]>('/data/credo.json');
   const [completedAnimationPuzzles, setCompletedAnimationPuzzles] = useState<
     number[]
   >([]);

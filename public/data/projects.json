@@ -5,10 +5,10 @@
     "popupData": {
       "title": "React, TypeScript, TanStack Query, Redux",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/eshop-boardriders.jpg",
+        "src": "/img/project-screenshots/eshop-boardriders.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/eshop-boardriders.webp",
+            "srcSet": "/img/project-screenshots/eshop-boardriders.webp",
             "type": "image/webp"
           }
         ]
@@ -21,10 +21,10 @@
     "popupData": {
       "title": "React, TypeScript, TanStack Query",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/dashboard-wild-oasis.jpg",
+        "src": "/img/project-screenshots/dashboard-wild-oasis.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/dashboard-wild-oasis.webp",
+            "srcSet": "/img/project-screenshots/dashboard-wild-oasis.webp",
             "type": "image/webp"
           }
         ]
@@ -37,10 +37,10 @@
     "popupData": {
       "title": "React, TypeScript",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/usePopcorn.jpg",
+        "src": "/img/project-screenshots/usePopcorn.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/usePopcorn.webp",
+            "srcSet": "/img/project-screenshots/usePopcorn.webp",
             "type": "image/webp"
           }
         ]
@@ -53,10 +53,10 @@
     "popupData": {
       "title": "HTML, SCSS, JS",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/sea-battle.jpg",
+        "src": "/img/project-screenshots/sea-battle.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/sea-battle.webp",
+            "srcSet": "/img/project-screenshots/sea-battle.webp",
             "type": "image/webp"
           }
         ]
@@ -69,10 +69,10 @@
     "popupData": {
       "title": "Адаптивная верстка интернет-магазина",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/eshop-createx.jpg",
+        "src": "/img/project-screenshots/eshop-createx.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/eshop-createx.webp",
+            "srcSet": "/img/project-screenshots/eshop-createx.webp",
             "type": "image/webp"
           }
         ]
@@ -85,10 +85,10 @@
     "popupData": {
       "title": "Адаптивная верстка",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/building-company-cubax.jpg",
+        "src": "/img/project-screenshots/building-company-cubax.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/building-company-cubax.webp",
+            "srcSet": "/img/project-screenshots/building-company-cubax.webp",
             "type": "image/webp"
           }
         ]
@@ -101,10 +101,10 @@
     "popupData": {
       "title": "Адаптивная верстка интернет-магазина",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/eshop-stylish-image.jpg",
+        "src": "/img/project-screenshots/eshop-stylish-image.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/eshop-stylish-image.webp",
+            "srcSet": "/img/project-screenshots/eshop-stylish-image.webp",
             "type": "image/webp"
           }
         ]
@@ -117,10 +117,10 @@
     "popupData": {
       "title": "Адаптивная верстка",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/farma-consulting.jpg",
+        "src": "/img/project-screenshots/farma-consulting.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/farma-consulting.webp",
+            "srcSet": "/img/project-screenshots/farma-consulting.webp",
             "type": "image/webp"
           }
         ]
@@ -133,10 +133,10 @@
     "popupData": {
       "title": "Адаптивная верстка",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/gericht.jpg",
+        "src": "/img/project-screenshots/gericht.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/gericht.webp",
+            "srcSet": "/img/project-screenshots/gericht.webp",
             "type": "image/webp"
           }
         ]
@@ -149,10 +149,10 @@
     "popupData": {
       "title": "Адаптивная верстка",
       "imageUrl": {
-        "src": "/assets/img/project-screenshots/food-landing.jpg",
+        "src": "/img/project-screenshots/food-landing.jpg",
         "sources": [
           {
-            "srcSet": "/assets/img/project-screenshots/food-landing.webp",
+            "srcSet": "/img/project-screenshots/food-landing.webp",
             "type": "image/webp"
           }
         ]

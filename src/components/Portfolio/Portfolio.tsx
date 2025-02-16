@@ -11,7 +11,7 @@ import { useDevice } from '../../Context/DeviceContext';
 function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
   const [{ responseData: projects, isLoading, errorMessage }] = useFetch<
     TProjectListProps['data']
-  >('/assets/projects/projects.json');
+  >('/data/projects.json');
   const { isPointer } = useDevice();
 
   return (
