@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Container from '../Container';
 import Button from '../ui/Button';
 import ButtonSlider from '../ui/ButtonSlider';
+import Loader from '../ui/Loader';
+import ErrorMessage from '../ui/ErrorMessage';
 
 import { useDevice } from '../../Context/DeviceContext';
 import { useRefs } from '../../hooks/useRefs';
@@ -42,7 +44,7 @@ function transformResponseDataFn(data: unknown) {
 }
 
 function AboutMe({ className, ...props }: TAboutMeProps) {
-  const [{ responseData: paragraphsByScreenSize }] =
+  const [{ responseData: paragraphsByScreenSize, isLoading, errorMessage }] =
     useFetch<TParagraphsByScreenSize>('/data/about-me.json', {
       transformResponseDataFn,
     });
@@ -92,27 +94,33 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
             className={`${isUseSlider ? 'about-me__slider' : 'about-me__content'}`}
             style={{ height: isUseSlider ? `${maxHeightSlide}px` : '' }}
           >
-            {grupedParagraphsModified.map((paragraphs, index) => (
-              <div
-                key={index}
-                ref={(node) => setSlidesRef(index, node)}
-                className={`${
-                  isUseSlider
-                    ? [
-                        'about-me__slide',
-                        index < slideIndex && 'about-me__slide_prev',
-                        index === slideIndex && 'about-me__slide_active',
-                      ]
-                        .filter(Boolean)
-                        .join(' ')
-                    : 'about-me__item-text'
-                }`}
-              >
-                {paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
-            ))}
+            {isLoading && <Loader />}
+            {errorMessage && !isLoading && (
+              <ErrorMessage message="Текст не загрузился" />
+            )}
+            {!isLoading &&
+              !errorMessage &&
+              grupedParagraphsModified.map((paragraphs, index) => (
+                <div
+                  key={index}
+                  ref={(node) => setSlidesRef(index, node)}
+                  className={`${
+                    isUseSlider
+                      ? [
+                          'about-me__slide',
+                          index < slideIndex && 'about-me__slide_prev',
+                          index === slideIndex && 'about-me__slide_active',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')
+                      : 'about-me__item-text'
+                  }`}
+                >
+                  {paragraphs.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              ))}
           </div>
           <div className="about-me__box-button">
             <Button
