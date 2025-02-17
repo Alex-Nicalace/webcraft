@@ -1,8 +1,38 @@
 # WebCraft
 
-## IntersectionObserver
+WebCraft — это мой сайт-портфолио, разработанный на React + TypeScript, Vite. В нём представлены мои проекты, компетенции и информация обо мне.
 
-Данный АПИ использовал в компоненте Header. У хэдера меняется подложка как только появляется скролл. Можно было для этой задачи использовать window.addEventListener('scroll', ...) в колбэке отслеживал значение window.scrollY и колбэк обернул в throttle.ts Но решил попрактиковаться с IntersectionObserver
+Ссылкка — https://alex-webdev.ru/
+![WebCraft Preview](public/img/og-preview.jpg)
+
+## Установка и запуск
+
+```bash
+git clone https://github.com/Alex-Nicalace/webcraft.git
+cd webcraft
+npm install
+npm run dev
+
+```
+
+## Удаленные данные
+
+Данные загружаются с удалённых JSON-файлов, хранящихся на сервере, с помощью хука — [useFetch](src/hooks/useFetch.ts):
+
+- `/data/about-me.json` — некоторый текст обо мне;
+- `/data/competencies.json` — компетенции;
+- `/data/credo.json` — кредо;
+- `/data/facts.json` — факты обо мне.
+
+## Observers
+
+### IntersectionObserver
+
+Данный АПИ использовал в компоненте Header. У хэдера меняется подложка как только появляется скролл. Можно было для этой задачи использовать window.addEventListener('scroll', ...) в колбэке отслеживал значение window.scrollY и колбэк обернул в throttle.ts Но решил попрактиковаться с IntersectionObserver и создал кастомный хук [useIntersectionObserver](src/hooks/useIntersectionObserver.ts)
+
+### ResizeObserver
+
+Использовал для создания кастомного хука [useResizeObserver](src/hooks/useResizeObserver.ts)
 
 ## Контекст
 
@@ -60,5 +90,5 @@
 - [useRefs](src/hooks/useRefs.ts)
   - Хук из коробки `useRef` можно использовать когда нужно получить ссылку на конкретный элемент в DOM. А как быть когда нужно получить ссылки на все элементы, которые рендерется в цикле.
 - [useResizeObserver](src/hooks/useResizeObserver.ts)
-  - Хук React, возвращающий массив размеров для предоставленных React-объектов ref к элементам HTMLElement.
-  - Результат сохраняет порядок элементов из входного массива refs
+  - Хук, возвращающий массив размеров для предоставленного `HTMLElement` или массив `HTMLElement` или `Map<React.Key, HTMLElement>`.
+  - Результат сохраняет порядок элементов из входного массива
