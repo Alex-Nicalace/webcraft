@@ -73,19 +73,27 @@
     }
   }
 
-  // .project-link__text
-  &__text {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
+  // .project-link__wrap-text
+  &__wrap-text {
+    @extend .text-portfolio;
+    min-height: em(126, 70);
+    display: flex;
+    align-items: flex-end;
 
     @include adaptiveValue('max-width', 918, 609, $containerWidth, $pc, 1);
     @include adaptiveValue('font-size', 70, 40, $containerWidth, $pc, 1);
     @include mobile-d {
       @include adaptiveValue('font-size', 40, 20, $mobile);
     }
+  }
+  // .project-link__text
+  &__text {
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
   }
   // .project-link__icon
   &__icon {
