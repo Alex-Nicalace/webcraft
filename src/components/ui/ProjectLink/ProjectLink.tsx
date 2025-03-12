@@ -15,7 +15,9 @@ function ProjectLink({
   return (
     <li className={['project-link', className].filter(Boolean).join(' ')}>
       <a className="project-link__link" {...props}>
-        <span className="project-link__text text-portfolio">{children}</span>
+        <span className="project-link__wrap-text">
+          <span className="project-link__text">{children}</span>
+        </span>
         <span className="project-link__icon">
           <Icon name="ArrowRight" width={32} height={32} />
         </span>

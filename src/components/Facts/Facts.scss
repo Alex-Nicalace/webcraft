@@ -58,14 +58,10 @@
   }
   // .facts__item
   &__item {
-    display: flex;
-    align-items: center;
-    gap: inherit;
+    &_bottom {
+      align-self: flex-end;
+    }
   }
-  // .facts__puzzle
-  &__puzzle {
-  }
-  // .facts__dawn
   &__dawn {
   }
 }
