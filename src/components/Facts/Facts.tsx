@@ -1,13 +1,18 @@
-import { useState } from 'react';
-import { pluralize } from '../../utils';
-import Container from '../Container';
-import Puzzle from '../ui/Puzzle';
-import { TFact, TFactsProps } from './Facts.types';
-import './Facts.scss';
-import Dawn from '../ui/Dawn';
+import { Fragment, useState } from 'react';
+
 import { useFetch } from '../../hooks/useFetch';
+import { pluralize } from '../../utils';
+
+import Container from '../Container';
+import Dawn from '../ui/Dawn';
 import ErrorMessage from '../ui/ErrorMessage';
 import Loader from '../ui/Loader';
+import Puzzle from '../ui/Puzzle';
+
+import { TFact, TFactsProps } from './Facts.types';
+import './Facts.scss';
+
+const ALIGNED_TO_BOTTOM_IDS = new Set([9, 10]);
 
 function Facts({ className, ...props }: TFactsProps): JSX.Element {
   const [{ responseData: facts, isLoading, errorMessage }] =
@@ -54,15 +59,20 @@ function Facts({ className, ...props }: TFactsProps): JSX.Element {
         <ErrorMessage message="Факты не загрузились!" />
       )}
       {!errorMessage && !isLoading && (
-        <ul
+        <div
           className={['facts__list', openedFact !== -1 && 'facts__list_opened']
             .filter(Boolean)
             .join(' ')}
         >
           {doubledFacts.map(({ variant, text, num }, index) => (
-            <li key={index} className="facts__item">
+            <Fragment key={index}>
               <Puzzle
-                className="facts__puzzle"
+                className={[
+                  'facts__item',
+                  ALIGNED_TO_BOTTOM_IDS.has(num) && 'facts__item_bottom',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
                 variant={variant}
                 text={text}
                 isOpen={openedFact === index}
@@ -72,9 +82,9 @@ function Facts({ className, ...props }: TFactsProps): JSX.Element {
                 onLostPointerCapture={handlePointerUpPuzzle(index)}
               />
               <Dawn className="facts__dawn" stopAnimation={openedFact > -1} />
-            </li>
+            </Fragment>
           ))}
-        </ul>
+        </div>
       )}
     </Container>
   );
