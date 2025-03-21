@@ -1,6 +1,6 @@
 import ProjectLink from '../ProjectLink';
-import './ProjectList.scss';
 import { TProjectListProps } from './ProjectList.types';
+import './ProjectList.scss';
 
 function ProjectList({
   className,
@@ -13,14 +13,14 @@ function ProjectList({
       className={['project-list', className].filter(Boolean).join(' ')}
       {...props}
     >
-      {data.map(({ url, title, popupData }) => (
+      {data.map(({ url, title, ...otherProps }) => (
         <ProjectLink
           key={url}
           href={url}
-          popupData={popupData}
           target="_blank"
           rel="noopener noreferrer"
           isHover={isHover}
+          {...otherProps}
         >
           {title}
         </ProjectLink>

@@ -2,10 +2,9 @@ import { OlHTMLAttributes } from 'react';
 import { TProjectLinkProps } from '../ProjectLink';
 
 export type TProjectListProps = OlHTMLAttributes<HTMLOListElement> & {
-  data: {
+  data: (Pick<TProjectLinkProps, 'popupData' | 'stack' | 'description'> & {
     url: string;
     title: string;
-    popupData?: TProjectLinkProps['popupData'];
-  }[];
+  })[];
   isHover?: boolean;
 };
