@@ -7,16 +7,14 @@
   grid-template:
     'n l i'
     'n s .'
-    'n d .' / min-content minmax(
-      min-content,
-      var(--project-link-max-width-name)
-    )
+    'n d .' / auto
+    var(--project-link-max-width-name)
     1fr;
   column-gap: rem(20);
   color: var(--color-project-link-text);
   border-bottom: rem(1) solid var(--color-project-link-border);
-  transition: padding-left $transition;
   counter-increment: project 1;
+
   @include adaptiveValue(
     '--project-link-max-width-name',
     883,
@@ -26,11 +24,18 @@
     1
   );
 
+  @include mobile-d {
+    grid-template-columns: auto 1fr auto;
+  }
+
   &::before {
     @extend .text-menu-item;
 
     grid-area: n;
     content: counter(project, decimal-leading-zero);
+    transition:
+      color $transition,
+      transform $transition;
   }
 
   @include mobile-d {
@@ -45,7 +50,10 @@
 
   @media (pointer: fine) {
     &:hover {
-      padding-left: rem(20);
+      & > *:not(.project-link__icon),
+      &::before {
+        transform: translateX(rem(20));
+      }
       .project-link {
         &__icon {
           svg {
@@ -66,7 +74,10 @@
   }
 
   &:has(&__link:active) {
-    padding-left: rem(20);
+    & > *:not(.project-link__icon),
+    &::before {
+      transform: translateX(rem(20));
+    }
     .project-link {
       &__icon {
         svg {
@@ -79,7 +90,9 @@
   // .project-link__link
   &__link {
     grid-area: l;
-    transition: color $transition;
+    transition:
+      color $transition,
+      transform $transition;
   }
 
   // .project-link__wrap-text
@@ -104,6 +117,7 @@
   }
   // .project-link__icon
   &__icon {
+    margin-left: rem(20);
     position: relative;
     grid-area: i;
     align-self: center;
@@ -165,10 +179,16 @@
     grid-area: s;
     display: flex;
     align-items: flex-end;
-    gap: rem(20);
+    gap: rem(4) rem(20);
+    transition: transform $transition;
 
     &:not(:first-child) {
       @include adaptiveValue('margin-top', 40, 15);
+    }
+
+    @include mobile-d {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
   // .project-link__stack-title
@@ -183,10 +203,12 @@
     line-clamp: 1;
     overflow: hidden;
     -webkit-box-orient: vertical;
+    transition: color $transition;
   }
   // .project-link__description
   &__description {
     grid-area: d;
+    transition: transform $transition;
     &:not(:first-child) {
       @include adaptiveValue('margin-top', 20, 8);
     }
@@ -196,6 +218,7 @@
   }
   // .project-link__description-text
   &__description-text {
+    transition: color $transition;
   }
   &__label {
     @extend .text-typing;

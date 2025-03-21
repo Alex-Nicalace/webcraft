@@ -13,6 +13,7 @@ function ProjectLink({
   ...props
 }: TProjectLinkProps): JSX.Element {
   const { title, imageUrl } = popupData || {};
+  const stackString = stack?.join(', ');
 
   return (
     <li className={['project-link', className].filter(Boolean).join(' ')}>
@@ -49,7 +50,9 @@ function ProjectLink({
         <div className="project-link__stack-title project-link__label">
           Стек:
         </div>
-        <div className="project-link__stack-list">{stack?.join(', ')}</div>
+        <div className="project-link__stack-list" title={stackString}>
+          {stackString}
+        </div>
       </div>
       <details className="project-link__description">
         <summary className="project-link__description-title project-link__label">

@@ -12,7 +12,8 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
   const [{ responseData: projects, isLoading, errorMessage }] = useFetch<
     TProjectListProps['data']
   >('/data/projects.json');
-  const { isPointer } = useDevice();
+  const { isPointer, isLessPC } = useDevice();
+  const isHover = !isLessPC && isPointer;
 
   return (
     <Container
@@ -29,7 +30,7 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
         <ProjectList
           className="portfolio__projects"
           data={projects || []}
-          isHover={isPointer}
+          isHover={isHover}
         />
       )}
       <Button className="portfolio__contact-me" href="#my-contacts">
