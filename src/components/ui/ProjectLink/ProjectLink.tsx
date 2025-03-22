@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Icon from '../Icon';
 import Picture from '../../Picture';
 import Details from '../../../component-library/Details';
@@ -13,12 +14,22 @@ function ProjectLink({
   description,
   ...props
 }: TProjectLinkProps): JSX.Element {
+  const linkRef = useRef<HTMLAnchorElement>(null);
   const { title, imageUrl } = popupData || {};
   const stackString = stack?.join(', ');
 
+  function handleClick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+    if (e.target instanceof Element && e.target.closest('summary')) return;
+
+    linkRef.current?.click();
+  }
+
   return (
-    <li className={['project-link', className].filter(Boolean).join(' ')}>
-      <a className="project-link__link" {...props}>
+    <li
+      className={['project-link', className].filter(Boolean).join(' ')}
+      onClick={handleClick}
+    >
+      <a ref={linkRef} className="project-link__link" {...props}>
         <span className="project-link__wrap-text">
           <span className="project-link__text">{children}</span>
         </span>

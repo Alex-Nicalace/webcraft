@@ -21,6 +21,7 @@
   color: var(--color-project-link-text);
   border-bottom: rem(1) solid var(--color-project-link-border);
   counter-increment: project 1;
+  cursor: pointer;
 
   @include adaptiveValue(
     '--project-link-max-width-name',
