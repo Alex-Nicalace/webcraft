@@ -1,7 +1,14 @@
 @use '../../../styles/typography.scss' as *;
 
 .project-link {
+  --project-link-color-hover-summary: var(--white);
+  --project-link-color-disabled-summary: var(--disabled-1);
+  @include lightTheme {
+    --project-link-color-hover-summary: var(--blue);
+    --project-link-color-disabled-summary: var(--disabled-light);
+  }
   $transition: 0.6s ease-out;
+
   padding: var(--padding-block) 0;
   display: grid;
   grid-template:
@@ -212,12 +219,34 @@
     &:not(:first-child) {
       @include adaptiveValue('margin-top', 20, 8);
     }
+    &[open] {
+      summary svg {
+        transform: scaleY(-1);
+      }
+    }
+    &[data-disabled] {
+      summary {
+        color: var(--project-link-color-disabled-summary);
+      }
+    }
   }
   // .project-link__description-title
   &__description-title {
+    display: flex;
+    align-items: flex-end;
+    column-gap: rem(20);
+    list-style: none;
+    cursor: pointer;
+    @media (pointer: fine) {
+      &:hover {
+        color: var(--project-link-color-hover-summary);
+      }
+    }
   }
   // .project-link__description-text
   &__description-text {
+    @extend .text-typing;
+    padding-top: rem(10);
     transition: color $transition;
   }
   &__label {

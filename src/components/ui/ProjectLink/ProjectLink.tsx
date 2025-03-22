@@ -1,6 +1,7 @@
 import Icon from '../Icon';
-import { TProjectLinkProps } from './ProjectLink.types';
 import Picture from '../../Picture';
+import Details from '../../../component-library/Details';
+import { TProjectLinkProps } from './ProjectLink.types';
 import './ProjectLink.scss';
 
 function ProjectLink({
@@ -54,12 +55,25 @@ function ProjectLink({
           {stackString}
         </div>
       </div>
-      <details className="project-link__description">
-        <summary className="project-link__description-title project-link__label">
-          Описание
-        </summary>
-        <div className="project-link__description-text">{description}</div>
-      </details>
+      <Details
+        className="project-link__description"
+        summaryProps={{
+          className: 'project-link__description-title project-link__label',
+        }}
+        summaryNode={
+          <>
+            <span>Описание</span>
+            <Icon name="ArrowDown" />
+          </>
+        }
+        contentProps={{
+          className: 'project-link__description-text',
+        }}
+        contentNode={description}
+        unmountContentOnClose={false}
+        disabled={!description}
+        title={!description ? 'Нет описания' : undefined}
+      />
     </li>
   );
 }

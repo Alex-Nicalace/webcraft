@@ -20,6 +20,7 @@ function ProjectList({
           target="_blank"
           rel="noopener noreferrer"
           isHover={isHover}
+          title={title}
           {...otherProps}
         >
           {title}
