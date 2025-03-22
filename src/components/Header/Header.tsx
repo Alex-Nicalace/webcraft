@@ -74,7 +74,7 @@ function Header({
             onClick={() => toggleMode()}
           />
         )}
-        <Button className="header__button" href="#my-contacts">
+        <Button className="header__button" to="#my-contacts">
           {isLessMobileMd ? 'Связаться' : 'Связаться со мной'}
         </Button>
       </div>

@@ -124,7 +124,7 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
           </div>
           <div className="about-me__box-button">
             <Button
-              href="#portfolio"
+              to="#portfolio"
               className="about-me__button"
               variant="button-secondary"
             >
