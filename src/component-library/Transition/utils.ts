@@ -20,7 +20,7 @@ export function getChildMapping(
   children: TTransitionComponent[],
   mapFn?: (child: TTransitionComponent) => TTransitionComponent
 ) {
-  let mapper = (child: TTransitionComponent) =>
+  const mapper = (child: TTransitionComponent) =>
     mapFn && isValidElement(child) ? mapFn(child) : child;
 
   const result: TChildMapping = Object.create(null);
@@ -65,7 +65,7 @@ export function mergeChildMappings(
   const nextKeysPending: TNextKeysPending = Object.create(null);
 
   let pendingKeys: string[] = [];
-  for (let prevKey in prev) {
+  for (const prevKey in prev) {
     if (prevKey in next) {
       if (pendingKeys.length) {
         nextKeysPending[prevKey] = pendingKeys;
@@ -78,10 +78,10 @@ export function mergeChildMappings(
 
   let i;
   const childMapping: TChildMapping = {};
-  for (let nextKey in next) {
+  for (const nextKey in next) {
     if (nextKeysPending[nextKey]) {
       for (i = 0; i < nextKeysPending[nextKey].length; i++) {
-        let pendingNextKey = nextKeysPending[nextKey][i];
+        const pendingNextKey = nextKeysPending[nextKey][i];
         childMapping[nextKeysPending[nextKey][i]] =
           getValueForKey(pendingNextKey);
       }
@@ -118,7 +118,7 @@ export function getNextChildMapping(
   const children = mergeChildMappings(prevChildMapping, nextChildMapping);
 
   Object.keys(children).forEach((key) => {
-    let child = children[key];
+    const child = children[key];
 
     if (!isValidElement(child)) return;
 
