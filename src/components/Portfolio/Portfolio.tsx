@@ -33,8 +33,12 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
           isHover={isHover}
         />
       )}
-      <Button className="portfolio__contact-me" href="#my-contacts">
-        Связаться со мной
+      <Button
+        className="portfolio__contact-me"
+        to="/projects"
+        variant="button-secondary"
+      >
+        Смотреть все
       </Button>
     </Container>
   );
