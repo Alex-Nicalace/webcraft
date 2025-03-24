@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import MainPage, { TStateFirstSection } from '../../pages/MainPage';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { TStateFirstSection } from '../../pages/MainPage';
 import Footer from '../Footer';
 import Header from '../Header';
 import ScrollUp from '../ScrollUp';
@@ -10,10 +11,11 @@ function AppLayout(): JSX.Element {
 
   return (
     <>
+      <ScrollRestoration />
       <Header
         isUseBlurBg={['scrolled', 'invisible'].includes(stateFirstSection)}
       />
-      <MainPage onChangeStateFirstSection={onChangeStateFirstSection} />
+      <Outlet context={{ onChangeStateFirstSection }} />
       <ScrollUp isRender={stateFirstSection === 'invisible'} />
       <Footer id="my-contacts" />
     </>
