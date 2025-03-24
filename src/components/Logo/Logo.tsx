@@ -1,16 +1,17 @@
+import { Link } from 'react-router-dom';
 import { TLogoProps } from './Logo.types';
 import './Logo.scss';
 
 function Logo({ isSizeSmall, className }: TLogoProps): JSX.Element {
   return (
-    <a
+    <Link
       className={['logo', className, isSizeSmall && 'logo_small']
         .filter(Boolean)
         .join(' ')}
-      href="/"
+      to="/"
     >
       Alex
-    </a>
+    </Link>
   );
 }
 
