@@ -31,7 +31,7 @@ function ProjectsPage({ className }: TProjectsPageProps): JSX.Element {
     <main
       className={['projects-page page', className].filter(Boolean).join(' ')}
     >
-      <Portfolio className="projects-page__portfolio" />
+      <Portfolio className="projects-page__portfolio" isViewAll />
     </main>
   );
 }

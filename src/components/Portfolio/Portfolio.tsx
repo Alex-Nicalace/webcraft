@@ -1,17 +1,26 @@
-import Container from '../Container';
-import Button from '../ui/Button';
-import ProjectList, { TProjectListProps } from '../ui/ProjectList';
-import { TPortfolioProps } from './Portfolio.types';
-import './Portfolio.scss';
 import { useFetch } from '../../hooks/useFetch';
-import Loader from '../ui/Loader';
-import ErrorMessage from '../ErrorMessage';
 import { useDevice } from '../../Context/DeviceContext';
 
-function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
-  const [{ responseData: projects, isLoading, errorMessage }] = useFetch<
-    TProjectListProps['data']
-  >('/data/projects.json');
+import Button from '../ui/Button';
+import Container from '../Container';
+import ErrorMessage from '../ErrorMessage';
+import Loader from '../ui/Loader';
+import ProjectList, { TProjectListProps } from '../ui/ProjectList';
+
+import { TPortfolioProps } from './Portfolio.types';
+import './Portfolio.scss';
+
+const DATA_URL = '/data/projects.json';
+const DATA_URL_ALL = '/data/projects-all.json';
+
+function Portfolio({
+  className,
+  isViewAll,
+  ...props
+}: TPortfolioProps): JSX.Element {
+  const url = isViewAll ? DATA_URL_ALL : DATA_URL;
+  const [{ responseData: projects, isLoading, errorMessage }] =
+    useFetch<TProjectListProps['data']>(url);
   const { isPointer, isLessPC } = useDevice();
   const isHover = !isLessPC && isPointer;
 
@@ -26,6 +35,7 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
       {errorMessage && !isLoading && (
         <ErrorMessage message="Проекты не загрузились" />
       )}
+
       {!errorMessage && !isLoading && (
         <ProjectList
           className="portfolio__projects"
@@ -33,13 +43,16 @@ function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {
           isHover={isHover}
         />
       )}
-      <Button
-        className="portfolio__contact-me"
-        to="/projects"
-        variant="button-secondary"
-      >
-        Смотреть все
-      </Button>
+
+      {!isViewAll && (
+        <Button
+          className="portfolio__contact-me"
+          to="/projects"
+          variant="button-secondary"
+        >
+          Смотреть все
+        </Button>
+      )}
     </Container>
   );
 }

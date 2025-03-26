@@ -1,4 +1,6 @@
 import { HTMLAttributes } from 'react';
 export type * from './Portfolio.types';
 
-export type TPortfolioProps = HTMLAttributes<HTMLDivElement>;
+export type TPortfolioProps = HTMLAttributes<HTMLDivElement> & {
+  isViewAll?: boolean;
+};
