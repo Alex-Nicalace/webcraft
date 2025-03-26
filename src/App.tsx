@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from 'react-router-dom';
 import AppLayout from './components/AppLayout';
 import DarkModeProvider from './Context/DarkModeContext';
 import DeviceProvider from './Context/DeviceContext';
@@ -20,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: 'projects',
         element: <ProjectsPage />,
+      },
+      {
+        path: '*',
+        loader: () => redirect('/'), // Чистый редирект без рендера компонента
       },
     ],
   },
