@@ -1,7 +1,6 @@
-import { TStateFirstSection } from '../../pages/MainPage';
-
 export type OutletContextType = {
-  onChangeStateFirstSection: React.Dispatch<
-    React.SetStateAction<TStateFirstSection>
+  setWindowScrollState: React.Dispatch<
+    React.SetStateAction<TWindowScrollState>
   >;
 };
+export type TWindowScrollState = 'atTop' | 'scrolled' | 'showBackToTop';

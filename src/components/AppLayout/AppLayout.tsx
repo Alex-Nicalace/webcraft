@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
-import { TStateFirstSection } from '../../pages/MainPage';
 import Footer from '../Footer';
 import Header from '../Header';
 import ScrollUp from '../ScrollUp';
+import { TWindowScrollState } from './AppLayout.types';
 
 function AppLayout(): JSX.Element {
-  const [stateFirstSection, onChangeStateFirstSection] =
-    useState<TStateFirstSection>('normal');
+  const [windowScrollState, setWindowScrollState] =
+    useState<TWindowScrollState>('atTop');
 
   return (
     <>
       <ScrollRestoration />
       <Header
-        isUseBlurBg={['scrolled', 'invisible'].includes(stateFirstSection)}
+        isUseBlurBg={['scrolled', 'showBackToTop'].includes(windowScrollState)}
       />
-      <Outlet context={{ onChangeStateFirstSection }} />
-      <ScrollUp isRender={stateFirstSection === 'invisible'} />
+      <Outlet context={{ setWindowScrollState }} />
+      <ScrollUp isRender={windowScrollState === 'showBackToTop'} />
       <Footer id="my-contacts" />
     </>
   );

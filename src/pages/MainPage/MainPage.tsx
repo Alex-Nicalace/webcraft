@@ -14,7 +14,8 @@ import { OutletContextType } from '../../components/AppLayout';
 import './MainPage.scss';
 
 function MainPage({ className, ...props }: TMainPageProps): JSX.Element {
-  const { onChangeStateFirstSection } = useOutletContext<OutletContextType>();
+  const { setWindowScrollState: onChangeStateFirstSection } =
+    useOutletContext<OutletContextType>();
 
   const [isAnimatedFirstSection, setIsAnimatedFirstSection] = useState(false);
   const [isFirstScreenOverflow, setIsFirstScreenOverflow] = useState(false);
@@ -32,8 +33,8 @@ function MainPage({ className, ...props }: TMainPageProps): JSX.Element {
         entry.isIntersecting
           ? 'scrolled'
           : entry.boundingClientRect.top < 0
-            ? 'invisible'
-            : 'normal'
+            ? 'showBackToTop'
+            : 'atTop'
       );
     },
   });
@@ -45,7 +46,7 @@ function MainPage({ className, ...props }: TMainPageProps): JSX.Element {
       rootMargin: '-120px 0px 0px 0px',
       onIntersecting: (entry) => {
         onChangeStateFirstSection?.(
-          entry.isIntersecting ? 'normal' : 'invisible'
+          entry.isIntersecting ? 'atTop' : 'showBackToTop'
         );
       },
     }
