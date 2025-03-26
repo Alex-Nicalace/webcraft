@@ -5,7 +5,7 @@ import { TPortfolioProps } from './Portfolio.types';
 import './Portfolio.scss';
 import { useFetch } from '../../hooks/useFetch';
 import Loader from '../ui/Loader';
-import ErrorMessage from '../ui/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import { useDevice } from '../../Context/DeviceContext';
 
 function Portfolio({ className, ...props }: TPortfolioProps): JSX.Element {

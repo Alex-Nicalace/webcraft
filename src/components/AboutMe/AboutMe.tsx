@@ -4,7 +4,7 @@ import Container from '../Container';
 import Button from '../ui/Button';
 import ButtonSlider from '../ui/ButtonSlider';
 import Loader from '../ui/Loader';
-import ErrorMessage from '../ui/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 
 import { useDevice } from '../../Context/DeviceContext';
 import { useRefs } from '../../hooks/useRefs';
