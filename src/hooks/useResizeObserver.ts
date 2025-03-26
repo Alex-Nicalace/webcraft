@@ -9,14 +9,23 @@ type TSize = {
   height: number;
 } | null;
 
-type TParam<T> = T | T[] | Map<React.Key, T> | null;
+type UseResizeObserverParam =
+  | HTMLElement
+  | HTMLElement[]
+  | Map<React.Key, HTMLElement>
+  | null;
+type UseResizeObserverReturn<T> = T extends HTMLElement[]
+  ? TSize[]
+  : T extends Map<React.Key, HTMLElement>
+    ? TSize[]
+    : TSize;
 
 /**
  * Трансформирует аргумент в массив элементов HTMLElement
  * @param arg - Аргумент, который нужно преобразовать в массив элементов HTMLElement
  * @return Массив элементов HTMLElement
  */
-function transformToElements<T extends HTMLElement>(arg: TParam<T>) {
+function transformToElements(arg: UseResizeObserverParam) {
   return arg
     ? Array.isArray(arg)
       ? arg
@@ -27,14 +36,18 @@ function transformToElements<T extends HTMLElement>(arg: TParam<T>) {
 }
 
 /**
- * Hook, который позволяет отслеживать изменения размеров элементов.
- * Массив размеров элементов будет обновляться при изменении размеров.
- * @param param - HTMLElement или массив HTMLElement или Map<React.Key, HTMLElement>
- * @return Массив размеров, где каждый размер - это объект с полями contentWidth, contentHeight, scrollWidth, scrollHeight, width, height
+ * Возвращает информацию о размерах элементов.
+ * @param param - Ссылки на HTML-элементы, размеры которых нужно отслеживать.
+ *    Это может быть элемент, массив элементов, Map от ключа к элементу.
+ * @return Массив размеров, если было передано несколько элементов,
+ *         или объект размеров, если было передан только один элемент.
+ *         Если было передано null, то возвращается null.
  */
-export function useResizeObserver<T extends HTMLElement>(param: TParam<T>) {
+export function useResizeObserver<T extends UseResizeObserverParam>(
+  param: T
+): UseResizeObserverReturn<T> {
   // Массив размеров
-  const [sizes, setSizes] = useState<TSize[]>([]);
+  const [sizes, setSizes] = useState<TSize[]>([null]);
 
   useEffect(() => {
     if (!param) return;
@@ -95,5 +108,7 @@ export function useResizeObserver<T extends HTMLElement>(param: TParam<T>) {
     };
   }, [param]);
 
-  return sizes;
+  return (
+    param instanceof Map || Array.isArray(param) ? sizes : sizes[0]
+  ) as UseResizeObserverReturn<T>;
 }

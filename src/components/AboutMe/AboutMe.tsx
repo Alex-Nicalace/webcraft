@@ -70,9 +70,9 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
   const isUseSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
   const sizeSlides = useResizeObserver(isUseSlider ? slidesRef.current : null);
 
-  const maxHeightSlide = Math.max(
-    ...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0)
-  );
+  const maxHeightSlide = Array.isArray(sizeSlides)
+    ? Math.max(...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0))
+    : sizeSlides?.height;
   const quantitySlides = grupedParagraphsModified.length;
   const code = !isLessMobile ? CODE : CODE.slice(1, 4);
 

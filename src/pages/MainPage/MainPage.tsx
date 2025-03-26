@@ -20,7 +20,7 @@ function MainPage({ className, ...props }: TMainPageProps): JSX.Element {
   const [isFirstScreenOverflow, setIsFirstScreenOverflow] = useState(false);
 
   const firstScreenRef = useRef<HTMLDivElement>(null);
-  const [firstScreenSize] = useResizeObserver(firstScreenRef.current);
+  const firstScreenSize = useResizeObserver(firstScreenRef.current);
   const { height: firstScreenHeight } = firstScreenSize || {};
   const useParallax = !isFirstScreenOverflow;
 
