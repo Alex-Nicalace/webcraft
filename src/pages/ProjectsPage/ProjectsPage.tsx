@@ -1,13 +1,38 @@
+import { useOutletContext } from 'react-router-dom';
+
+import { useResizeObserver } from '../../hooks/useResizeObserver';
+import { useScroll } from '../../hooks/useScroll';
+import Portfolio from '../../components/Portfolio';
+import { OutletContextType } from '../../components/AppLayout';
+import { TProjectsPageProps } from './ProjectsPage.types';
 import './ProjectsPage.scss';
-// type TProjectsPageProps = { }
-function ProjectsPage(/*{ }: TProjectsPageProps*/): JSX.Element {
+
+function ProjectsPage({ className }: TProjectsPageProps): JSX.Element {
+  const { setWindowScrollState: onChangeStateFirstSection } =
+    useOutletContext<OutletContextType>();
+  const documentSize = useResizeObserver(document.documentElement);
+
+  useScroll(undefined, {
+    keepState: false,
+    onScroll: ({ scrollY }) => {
+      if (!documentSize?.height) return;
+
+      if (scrollY > documentSize.height) {
+        onChangeStateFirstSection('showBackToTop');
+      } else if (scrollY > 100) {
+        onChangeStateFirstSection('scrolled');
+      } else {
+        onChangeStateFirstSection('atTop');
+      }
+    },
+  });
+
   return (
-    <div>
-      {' '}
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quaerat,
-      aliquam minus voluptatum tenetur saepe facere enim ducimus eos in non quod
-      adipisci magni quae dolorem et optio voluptatibus repudiandae.
-    </div>
+    <main
+      className={['projects-page page', className].filter(Boolean).join(' ')}
+    >
+      <Portfolio className="projects-page__portfolio" />
+    </main>
   );
 }
 
