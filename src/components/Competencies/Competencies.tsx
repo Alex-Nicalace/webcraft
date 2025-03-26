@@ -2,7 +2,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { TCompetenciesProps } from './Competencies.types';
 import Container from '../Container';
 import Loader from '../ui/Loader';
-import ErrorMessage from '../ui/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import './Competencies.scss';
 
 function Competencies({

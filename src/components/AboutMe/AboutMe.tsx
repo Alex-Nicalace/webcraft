@@ -4,7 +4,7 @@ import Container from '../Container';
 import Button from '../ui/Button';
 import ButtonSlider from '../ui/ButtonSlider';
 import Loader from '../ui/Loader';
-import ErrorMessage from '../ui/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 
 import { useDevice } from '../../Context/DeviceContext';
 import { useRefs } from '../../hooks/useRefs';
@@ -70,9 +70,9 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
   const isUseSlider = ['mobileSmall', 'mobileUltraSmall'].includes(typeDevice);
   const sizeSlides = useResizeObserver(isUseSlider ? slidesRef.current : null);
 
-  const maxHeightSlide = Math.max(
-    ...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0)
-  );
+  const maxHeightSlide = Array.isArray(sizeSlides)
+    ? Math.max(...sizeSlides.map((sizeSlide) => sizeSlide?.height ?? 0))
+    : sizeSlides?.height;
   const quantitySlides = grupedParagraphsModified.length;
   const code = !isLessMobile ? CODE : CODE.slice(1, 4);
 
@@ -124,7 +124,7 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
           </div>
           <div className="about-me__box-button">
             <Button
-              href="#portfolio"
+              to="#portfolio"
               className="about-me__button"
               variant="button-secondary"
             >

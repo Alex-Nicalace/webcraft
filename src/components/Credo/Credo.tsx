@@ -5,7 +5,7 @@ import { TCredoData, TCredoProps } from './Credo.types';
 import './Credo.scss';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useFetch } from '../../hooks/useFetch';
-import ErrorMessage from '../ui/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import Loader from '../ui/Loader';
 
 const INTERSECTION_OPTIONS = {

@@ -37,7 +37,7 @@ function MainMenu({
         {items.map(({ label, href }) => (
           <li key={href} className="main-menu__item">
             <Button
-              href={href}
+              to={href}
               variant="menu-item"
               {...(isSwitchable && { onClick: closeMenu })}
             >

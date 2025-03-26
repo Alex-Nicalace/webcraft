@@ -1,25 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { useResizeObserver } from '../../hooks/useResizeObserver';
+
 import AboutMe from '../../components/AboutMe';
 import Competencies from '../../components/Competencies';
 import Credo from '../../components/Credo/Credo';
 import Facts from '../../components/Facts';
 import Greeting, { TAnimateIntroFn } from '../../components/Greeting';
 import Portfolio from '../../components/Portfolio';
-import './MainPage.scss';
 import { TMainPageProps } from './MainPage.types';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { useResizeObserver } from '../../hooks/useResizeObserver';
+import { OutletContextType } from '../../components/AppLayout';
+import './MainPage.scss';
 
-function MainPage({
-  className,
-  onChangeStateFirstSection,
-  ...props
-}: TMainPageProps): JSX.Element {
+function MainPage({ className, ...props }: TMainPageProps): JSX.Element {
+  const { setWindowScrollState: onChangeStateFirstSection } =
+    useOutletContext<OutletContextType>();
+
   const [isAnimatedFirstSection, setIsAnimatedFirstSection] = useState(false);
   const [isFirstScreenOverflow, setIsFirstScreenOverflow] = useState(false);
 
   const firstScreenRef = useRef<HTMLDivElement>(null);
-  const [firstScreenSize] = useResizeObserver(firstScreenRef.current);
+  const firstScreenSize = useResizeObserver(firstScreenRef.current);
   const { height: firstScreenHeight } = firstScreenSize || {};
   const useParallax = !isFirstScreenOverflow;
 
@@ -31,8 +33,8 @@ function MainPage({
         entry.isIntersecting
           ? 'scrolled'
           : entry.boundingClientRect.top < 0
-            ? 'invisible'
-            : 'normal'
+            ? 'showBackToTop'
+            : 'atTop'
       );
     },
   });
@@ -44,7 +46,7 @@ function MainPage({
       rootMargin: '-120px 0px 0px 0px',
       onIntersecting: (entry) => {
         onChangeStateFirstSection?.(
-          entry.isIntersecting ? 'normal' : 'invisible'
+          entry.isIntersecting ? 'atTop' : 'showBackToTop'
         );
       },
     }

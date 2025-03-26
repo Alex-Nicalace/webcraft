@@ -20,9 +20,8 @@
     }
     &__dot {
       width: percent(298, 98);
-      // height: percent(298, 19);
       transform: translate(-50%, -50%);
-      background-color: var(--color-button-bg);
+      background-color: var(--color-button-dot-hover);
     }
   }
 }
@@ -33,8 +32,10 @@ $transition: all 0.4s ease 0s;
   --color-button-bg: var(--siniy);
   --color-button-text: var(--white);
   --color-button-dot: var(--white);
+  --color-button-dot-hover: var(--sredniy-siniy);
   --color-button-secondary-bg: transparent;
   --color-button-secondary-border: var(--siniy);
+  --color-button-secondary-border-hover: var(--sredniy-siniy);
   --color-button-secondary-text: var(--siniy);
   --color-button-secondary-dot: var(--siniy);
   --color-button-secondary-text-hover: var(--white);
@@ -144,6 +145,7 @@ $transition: all 0.4s ease 0s;
     @mixin button-hover-active {
       padding-inline: rem(29);
       color: var(--color-button-secondary-text-hover);
+      border-color: var(--color-button-secondary-border-hover);
 
       @include mobileSmall {
         padding-inline: rem(21.5);

@@ -32,6 +32,14 @@
     @include mobile-d {
       font-size: rem(18);
     }
+
+    &-liquid {
+      font-weight: 600;
+      line-height: 1.2;
+      text-transform: uppercase;
+
+      @include adaptiveValue('font-size', 20, 18, $containerWidth, $mobile, 1);
+    }
   }
 
   &-credo {

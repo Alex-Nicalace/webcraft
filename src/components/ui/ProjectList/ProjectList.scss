@@ -1,14 +1,28 @@
 .project-list {
   --color-project-list-hover-text: var(--sero-siniy);
+  --color-project-link: var(--white);
+  --color-project-link-border: var(--sero-siniy);
+  --color-project-bg-popup: var(--bg-proekta);
+  --color-project-link-label: var(--zagolovki-h2);
   @include lightTheme {
     --color-project-list-hover-text: var(--vspomogatelnyy-1-light);
+    --color-project-link: var(--blue);
+    --color-project-link-border: var(--vspomogatelnyy-1-light);
+    --color-project-bg-popup: var(--bg-proekta-light);
   }
+  --color-project-link-text: var(--color-project-link);
   list-style-type: none;
   counter-reset: project 0;
 
   @media (pointer: fine) {
-    &:hover > li {
-      color: var(--color-project-list-hover-text);
+    &:hover {
+      --color-project-link-text: var(--color-project-list-hover-text);
+      --color-project-link-label: var(--color-project-list-hover-text);
+    }
+
+    & > li:hover {
+      --color-project-link-text: var(--color-project-link);
+      --color-project-link-label: var(--zagolovki-h2);
     }
   }
 }

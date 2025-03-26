@@ -7,4 +7,6 @@ export type TProjectLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
     imageUrl: Pick<TPictureProps, 'src' | 'sources'>;
   };
   isHover?: boolean;
+  stack?: string[];
+  description?: string;
 };

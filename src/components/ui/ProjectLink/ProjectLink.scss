@@ -1,76 +1,106 @@
 @use '../../../styles/typography.scss' as *;
 
-@mixin hover-active {
-  color: var(--color-project-link-text);
-  &::before {
-    padding-left: rem(20);
-  }
-  .project-link {
-    &__icon {
-      svg {
-        transform: rotate(-45deg);
-      }
-    }
-  }
-}
-
 .project-link {
-  --color-project-link-text: var(--white);
-  --color-project-link-border: var(--sero-siniy);
-  --color-project-bg-popup: var(--bg-proekta);
-
+  --project-link-color-hover-summary: var(--white);
+  --project-link-color-disabled-summary: var(--disabled-1);
   @include lightTheme {
-    --color-project-link-text: var(--blue);
-    --color-project-link-border: var(--vspomogatelnyy-1-light);
-    --color-project-bg-popup: var(--bg-proekta-light);
+    --project-link-color-hover-summary: var(--blue);
+    --project-link-color-disabled-summary: var(--disabled-light);
+  }
+  $transition: 0.6s ease-out;
+
+  padding: var(--padding-block) 0;
+  display: grid;
+  grid-template:
+    'n l i'
+    'n s .'
+    'n d .' / auto
+    var(--project-link-max-width-name)
+    1fr;
+  column-gap: rem(20);
+  color: var(--color-project-link-text);
+  border-bottom: rem(1) solid var(--color-project-link-border);
+  counter-increment: project 1;
+  cursor: pointer;
+
+  @include adaptiveValue(
+    '--project-link-max-width-name',
+    883,
+    575,
+    $containerWidth,
+    $pc,
+    1
+  );
+
+  @include mobile-d {
+    grid-template-columns: auto 1fr auto;
   }
 
-  $transition: 0.6s ease-out;
-  position: relative;
-  color: var(--color-project-link-text);
+  &::before {
+    @extend .text-menu-item;
 
-  &__link {
-    padding: var(--padding-block) 0;
-    display: flex;
-    align-items: center;
-    column-gap: rem(20);
-    border-bottom: rem(1) solid var(--color-project-link-border);
-    counter-increment: project 1;
-    transition: color $transition;
+    grid-area: n;
+    content: counter(project, decimal-leading-zero);
+    transition:
+      color $transition,
+      transform $transition;
+  }
 
-    @include adaptiveValue('--padding-block', 40, 30, $containerWidth, $pc, 1);
+  @include mobile-d {
+    column-gap: rem(10);
+  }
 
-    @include mobile-d {
-      column-gap: rem(10);
-      @include adaptiveValue('--padding-block', 30, 15, $mobile);
-    }
+  @include adaptiveValue('--padding-block', 40, 30, $containerWidth, $pc, 1);
 
-    &::before {
-      @extend .text-menu-item;
+  @include mobile-d {
+    @include adaptiveValue('--padding-block', 30, 15, $mobile);
+  }
 
-      content: counter(project, decimal-leading-zero);
-      align-self: flex-start;
-      transition: padding-left $transition;
-    }
-
-    @media (pointer: fine) {
-      &:hover {
-        & + .project-link__popup-wrapper {
-          opacity: 1;
-          visibility: visible;
-
-          .project-link__title {
-            color: var(--color-project-link-text);
+  @media (pointer: fine) {
+    &:hover {
+      & > *:not(.project-link__icon),
+      &::before {
+        transform: translateX(rem(20));
+      }
+      .project-link {
+        &__icon {
+          svg {
+            transform: rotate(-45deg);
           }
         }
+        // влияние на попап
+        &__popup-wrapper {
+          opacity: 1;
+          visibility: visible;
+        }
 
-        @include hover-active;
+        &__img {
+          transform: scale(1);
+        }
       }
     }
+  }
 
-    &:active {
-      @include hover-active;
+  &:has(&__link:active) {
+    & > *:not(.project-link__icon),
+    &::before {
+      transform: translateX(rem(20));
     }
+    .project-link {
+      &__icon {
+        svg {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  // .project-link__link
+  &__link {
+    grid-area: l;
+    transition:
+      color $transition,
+      transform $transition;
   }
 
   // .project-link__wrap-text
@@ -80,7 +110,6 @@
     display: flex;
     align-items: flex-end;
 
-    @include adaptiveValue('max-width', 918, 609, $containerWidth, $pc, 1);
     @include adaptiveValue('font-size', 70, 40, $containerWidth, $pc, 1);
     @include mobile-d {
       @include adaptiveValue('font-size', 40, 20, $mobile);
@@ -89,7 +118,6 @@
   // .project-link__text
   &__text {
     display: -webkit-box;
-
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
@@ -97,17 +125,21 @@
   }
   // .project-link__icon
   &__icon {
-    flex-grow: 1;
+    margin-left: rem(20);
+    position: relative;
+    grid-area: i;
+    align-self: center;
     text-align: right;
 
     svg {
       transition: transform $transition;
     }
   }
+  // .project-link__popup-wrapper
   &__popup-wrapper {
     position: absolute;
     aspect-ratio: 570 / 449;
-    right: percent(82, 1800);
+    right: percent(82, 827);
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
@@ -140,6 +172,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.0465);
+    transition: transform $transition;
   }
   // .project-link__title
   &__title {
@@ -147,5 +181,78 @@
     &:not(:first-child) {
       margin-top: percent(30, 430);
     }
+  }
+  // .project-link__stack
+  &__stack {
+    grid-area: s;
+    display: flex;
+    align-items: flex-end;
+    gap: rem(4) rem(20);
+    transition: transform $transition;
+
+    &:not(:first-child) {
+      @include adaptiveValue('margin-top', 40, 15);
+    }
+
+    @include mobile-d {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  // .project-link__stack-title
+  &__stack-title {
+  }
+  // .project-link__stack-list
+  &__stack-list {
+    @extend .text-competencies-liquid;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    transition: color $transition;
+  }
+  // .project-link__description
+  &__description {
+    grid-area: d;
+    transition: transform $transition;
+    &:not(:first-child) {
+      @include adaptiveValue('margin-top', 20, 8);
+    }
+    &[open] {
+      summary svg {
+        transform: scaleY(-1);
+      }
+    }
+    &[data-disabled] {
+      summary {
+        color: var(--project-link-color-disabled-summary);
+      }
+    }
+  }
+  // .project-link__description-title
+  &__description-title {
+    display: flex;
+    align-items: flex-end;
+    column-gap: rem(20);
+    list-style: none;
+    cursor: pointer;
+    @media (pointer: fine) {
+      &:hover {
+        color: var(--project-link-color-hover-summary);
+      }
+    }
+  }
+  // .project-link__description-text
+  &__description-text {
+    @extend .text-typing;
+    padding-top: rem(10);
+    transition: color $transition;
+  }
+  &__label {
+    @extend .text-typing;
+    color: var(--color-project-link-label);
+    transition: color $transition;
   }
 }

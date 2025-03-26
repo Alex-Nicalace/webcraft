@@ -1,6 +1,7 @@
-import { ButtonHTMLAttributes, LinkHTMLAttributes } from 'react';
+import { LinkProps } from 'react-router-dom';
+import { ButtonHTMLAttributes } from 'react';
 
 export type TButtonProps = { variant?: 'menu-item' | 'button-secondary' } & (
-  | (ButtonHTMLAttributes<HTMLButtonElement> & { href?: never })
-  | (LinkHTMLAttributes<HTMLAnchorElement> & { href: string })
+  | (ButtonHTMLAttributes<HTMLButtonElement> & { to?: never })
+  | LinkProps
 );

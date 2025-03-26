@@ -5,7 +5,7 @@ import { pluralize } from '../../utils';
 
 import Container from '../Container';
 import Dawn from '../ui/Dawn';
-import ErrorMessage from '../ui/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import Loader from '../ui/Loader';
 import Puzzle from '../ui/Puzzle';
 

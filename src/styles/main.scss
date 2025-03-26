@@ -86,3 +86,20 @@ html {
   width: 0;
   height: 0;
 }
+
+.page {
+  padding-top: rem(200);
+
+  @include mdQuery(0, $pc) {
+    padding-top: rem(160);
+  }
+
+  @include mobileSmall {
+    padding-top: rem(130);
+  }
+
+  // это же правило дублируется в .main-page
+  &:not(:last-child) {
+    @include adaptiveValue('margin-bottom', 200, 90);
+  }
+}

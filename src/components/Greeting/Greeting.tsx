@@ -125,7 +125,7 @@ const Greeting = forwardRef<HTMLDivElement, TGreetingProps>(
           )}
         </div>
         <Button
-          href="#portfolio"
+          to="#portfolio"
           className="greeting__button"
           variant="button-secondary"
         >

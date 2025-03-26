@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { TButtonProps } from './Button.types';
 import Icon from '../Icon';
 import './Button.scss';
@@ -27,11 +28,11 @@ function Button({ className, variant, ...props }: TButtonProps): JSX.Element {
     props.children
   );
 
-  if (props.href !== undefined) {
+  if (props.to !== undefined) {
     return (
-      <a className={classes} {...props}>
+      <Link className={classes} {...props}>
         {children}
-      </a>
+      </Link>
     );
   }
 

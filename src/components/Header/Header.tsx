@@ -11,9 +11,9 @@ import { useDarkMode } from '../../Context/DarkModeContext';
 import { THeaderProps } from './Header.types';
 
 const MENU_ITEMS = [
-  { label: 'Обо мне', href: '#about-me' },
-  { label: 'Портфолио', href: '#portfolio' },
-  { label: '10 фактов', href: '#facts' },
+  { label: 'Обо мне', href: '/#about-me' },
+  { label: 'Портфолио', href: '/#portfolio' },
+  { label: '10 фактов', href: '/#facts' },
 ];
 
 function Header({
@@ -74,7 +74,7 @@ function Header({
             onClick={() => toggleMode()}
           />
         )}
-        <Button className="header__button" href="#my-contacts">
+        <Button className="header__button" to="#my-contacts">
           {isLessMobileMd ? 'Связаться' : 'Связаться со мной'}
         </Button>
       </div>
