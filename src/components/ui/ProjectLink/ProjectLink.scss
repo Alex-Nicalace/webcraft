@@ -9,6 +9,7 @@
   }
   $transition: 0.6s ease-out;
 
+  position: relative;
   padding: var(--padding-block) 0;
   display: grid;
   grid-template:
@@ -58,7 +59,7 @@
 
   @media (pointer: fine) {
     &:hover {
-      & > *:not(.project-link__icon),
+      & > *:not(.project-link__icon):not(.project-link__popup-wrapper),
       &::before {
         transform: translateX(rem(20));
       }
@@ -81,7 +82,7 @@
     }
   }
 
-  &:has(&__link:active) {
+  &:has(&__link:active):not(.project-link__popup-wrapper) {
     & > *:not(.project-link__icon),
     &::before {
       transform: translateX(rem(20));
@@ -126,7 +127,6 @@
   // .project-link__icon
   &__icon {
     margin-left: rem(20);
-    position: relative;
     grid-area: i;
     align-self: center;
     text-align: right;
@@ -139,9 +139,7 @@
   &__popup-wrapper {
     position: absolute;
     aspect-ratio: 570 / 449;
-    right: percent(82, 827);
-    top: 50%;
-    transform: translateY(-50%);
+    right: percent(82, 1785);
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
@@ -149,6 +147,7 @@
       opacity $transition,
       visibility $transition;
 
+    @include adaptiveValue('top', -70, -52, $containerWidth, $pc);
     @include adaptiveValue('width', 570, 410, $containerWidth, $pc);
 
     @include mdQuery(0, $pc) {

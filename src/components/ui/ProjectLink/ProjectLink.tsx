@@ -37,27 +37,6 @@ function ProjectLink({
       </a>
       <div className="project-link__icon">
         <Icon name="ArrowRight" width={32} height={32} />
-        {isHover && popupData && (
-          <div className="project-link__popup-wrapper">
-            <figure className="project-link__popup">
-              <Picture
-                className="project-link__picture"
-                {...imageUrl}
-                imgProps={{
-                  className: 'project-link__img',
-                  alt: `Скриншот проекта - ${title}`,
-                  width: 310,
-                  height: 185,
-                }}
-              />
-              {title && (
-                <figcaption className="project-link__title text-typing">
-                  {title}
-                </figcaption>
-              )}
-            </figure>
-          </div>
-        )}
       </div>
       <div className="project-link__stack">
         <div className="project-link__stack-title project-link__label">
@@ -90,6 +69,27 @@ function ProjectLink({
         disabled={!description}
         title={!description ? 'Нет описания' : undefined}
       />
+      {isHover && popupData && (
+        <div className="project-link__popup-wrapper">
+          <figure className="project-link__popup">
+            <Picture
+              className="project-link__picture"
+              {...imageUrl}
+              imgProps={{
+                className: 'project-link__img',
+                alt: `Скриншот проекта - ${title}`,
+                width: 310,
+                height: 185,
+              }}
+            />
+            {title && (
+              <figcaption className="project-link__title text-typing">
+                {title}
+              </figcaption>
+            )}
+          </figure>
+        </div>
+      )}
     </li>
   );
 }
