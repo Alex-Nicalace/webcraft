@@ -12,7 +12,7 @@ function Details({
   closeOnOutsideClick = false,
   unmountContentOnClose = true,
   summaryProps = {},
-  contentProps = {},
+  contentProps: { ref: contentPropRef, ...contentProps } = {},
   open,
   onChange, // можно этот проп задействовать для изменения внешнего состояния, но можно summaryProps.onClick. Лучше использовать onChange
   defaultOpen = false,
@@ -131,7 +131,21 @@ function Details({
           {(state !== 'exited' || getIsOpen() || !unmountContentOnClose) && (
             <DetailsContent
               {...contentProps}
-              refProp={contentRef}
+              // refProp={contentRef}
+              refProp={(node) => {
+                // @ts-expect-error: we know it's a mutable ref
+                contentRef.current = node;
+                if (typeof contentPropRef === 'function') {
+                  contentPropRef(node);
+                } else if (
+                  contentPropRef &&
+                  typeof contentPropRef === 'object' &&
+                  'current' in contentPropRef
+                ) {
+                  // @ts-expect-error: we know it's a mutable ref
+                  contentPropRef.current = node;
+                }
+              }}
               onOutsideClick={onOutsideClick}
               closeOnOutsideClick={closeOnOutsideClick}
             >
