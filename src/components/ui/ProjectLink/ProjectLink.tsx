@@ -17,9 +17,10 @@ function ProjectLink({
   const linkRef = useRef<HTMLAnchorElement>(null);
   const { title, imageUrl } = popupData || {};
   const stackString = stack?.join(', ');
+  const summaryRef = useRef<HTMLDivElement | null>(null);
 
   function handleClick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
-    if (e.target instanceof Element && e.target.closest('summary')) return;
+    if (e.target instanceof Element && e.target.closest('details')) return;
 
     linkRef.current?.click();
   }
@@ -70,6 +71,7 @@ function ProjectLink({
         className="project-link__description"
         summaryProps={{
           className: 'project-link__description-title project-link__label',
+          ref: summaryRef,
         }}
         summaryNode={
           <>
@@ -79,6 +81,9 @@ function ProjectLink({
         }
         contentProps={{
           className: 'project-link__description-text',
+          onClick: () => {
+            summaryRef?.current?.click();
+          },
         }}
         contentNode={description}
         unmountContentOnClose={false}
