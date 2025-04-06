@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { Transition } from '../Transition';
 import { TDetailsProps } from './Details.types';
@@ -21,7 +21,7 @@ function Details({
   const { duration = 300, timingFunction = 'ease-out' } = animationOptions;
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const detailsRef = useRef<HTMLDetailsElement>(null);
-  const summaryRef = useRef<HTMLElement>(null);
+  const summaryRef = useRef<HTMLElement | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   function onOutsideClick(e: MouseEvent) {
@@ -44,7 +44,7 @@ function Details({
     onChange?.(value);
   }
 
-  function onSummaryClick(e: React.MouseEvent<HTMLElement, MouseEvent>) {
+  function onSummaryClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     summaryProps.onClick?.(e);
     e.preventDefault(); // отменить поведение по умолчанию
     if (disabled) return;
@@ -110,7 +110,20 @@ function Details({
           {...(disabled && { 'data-disabled': '' })}
           open={state !== 'exited'}
         >
-          <summary {...summaryProps} ref={summaryRef} onClick={onSummaryClick}>
+          <summary
+            {...summaryProps}
+            ref={(node) => {
+              summaryRef.current = node;
+              const ref = summaryProps?.ref;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref && typeof ref === 'object' && 'current' in ref) {
+                // @ts-expect-error: we know it's a mutable ref
+                ref.current = node;
+              }
+            }}
+            onClick={onSummaryClick}
+          >
             {typeof summaryNode === 'function'
               ? summaryNode(getIsOpen())
               : summaryNode}
@@ -118,7 +131,7 @@ function Details({
           {(state !== 'exited' || getIsOpen() || !unmountContentOnClose) && (
             <DetailsContent
               {...contentProps}
-              ref={contentRef}
+              refProp={contentRef}
               onOutsideClick={onOutsideClick}
               closeOnOutsideClick={closeOnOutsideClick}
             >
@@ -136,29 +149,36 @@ function Details({
 // ========================= DetailsContent =========================
 // выделил в отдельную компоненту из-за хука useOutsideClick т.е. чтобы прослушиватель клика
 // вне компонента активировался только при открытом состоянии. Чтобы типа даром не висел когда нет необходимости
-const DetailsContent = forwardRef<HTMLDivElement, TDetailsContentProps>(
-  ({ children, onOutsideClick, closeOnOutsideClick, ...props }, ref) => {
-    const contentRef: React.MutableRefObject<HTMLDivElement | null> =
-      useOutsideClick<HTMLDivElement>(onOutsideClick, !closeOnOutsideClick);
-    return (
-      <div
-        {...props}
-        ref={(node) => {
-          contentRef.current = node;
+const DetailsContent = ({
+  children,
+  onOutsideClick,
+  closeOnOutsideClick,
+  refProp,
+  ...props
+}: TDetailsContentProps) => {
+  const contentRef: React.MutableRefObject<HTMLDivElement | null> =
+    useOutsideClick<HTMLDivElement>(onOutsideClick, !closeOnOutsideClick);
+  return (
+    <div
+      {...props}
+      ref={(node) => {
+        contentRef.current = node;
 
-          if (typeof ref === 'function') {
-            ref(node);
-          } else if (ref) {
-            ref.current = node;
-          }
-        }}
-      >
-        {children}
-      </div>
-    );
-  }
-);
-
-DetailsContent.displayName = 'DetailsContent';
+        if (typeof refProp === 'function') {
+          refProp(node);
+        } else if (
+          refProp &&
+          typeof refProp === 'object' &&
+          'current' in refProp
+        ) {
+          // @ts-expect-error: we know it's a mutable ref
+          refProp.current = node;
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default Details;
