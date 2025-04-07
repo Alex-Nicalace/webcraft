@@ -1,6 +1,7 @@
 .main-menu {
   // .main-menu__list
   &__list {
+    padding-left: rem(40);
     display: flex;
     justify-content: space-between;
   }

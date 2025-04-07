@@ -185,7 +185,7 @@ $animStep-4-2: $durationAnimStep-4-2 steps(40) $delayAnimStep-4-2 backwards
   // .greeting__button
   &__button {
     position: absolute;
-    right: percent(1144, 1800);
+    right: percent(1144, 1920);
     top: percent(735, 860);
     animation: fadeIn $animStep-2;
 
