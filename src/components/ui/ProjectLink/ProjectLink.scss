@@ -254,6 +254,7 @@
     @extend .text-typing;
     padding-top: rem(10);
     transition: color $transition;
+    white-space: pre-wrap;
   }
   &__label {
     @extend .text-typing;
