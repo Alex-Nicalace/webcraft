@@ -14,6 +14,7 @@
     ],
     "description": "Клиент-серверное приложение интернет-магазин с бекэндом на Supabase.\nКлючевые функции:\n- Адаптивный UI без сторонних UI-библиотек, с учетом удобства на мобильных устройствах\n- Фильтрация и сортировка товаров по категориям (мужчинам, женщинам, детям)\n- Корзина и избранное:\n\t- Неавторизованные пользователи — хранение в localStorage\n\t- Авторизованные пользователи — хранение в базе данных Supabase\n- Уведомления: всплывающие тосты при добавлении товара в корзину\n- Оформление заказа:\n\t- Выбор города, способа доставки, адреса, варианта оплаты\n\t- Возможность оставить комментарий к заказу\n- Отображение заказов в личном кабинете (со статусом pending)\n- Защита роутов: скрытие личного кабинета и других страниц для неавторизованных пользователей",
     "popupData": {
+      "title": "Интернет-магазин",
       "imageUrl": {
         "src": "/img/project-screenshots/eshop-boardriders.jpg",
         "sources": [
@@ -41,6 +42,7 @@
     ],
     "description": "Ключевые особенности:\n- Система управления отелем с бронированиями, гостями и аналитикой\n- Ролевая модель: админ (`full access`) vs сотрудник (`limited`)\n- Календарь бронирований + фильтрация по статусам (`checked-in/unconfirmed`)\n- Дашборд с графиками загрузки номеров и продаж",
     "popupData": {
+      "title": "Система управления отелем",
       "imageUrl": {
         "src": "/img/project-screenshots/dashboard-wild-oasis.jpg",
         "sources": [
@@ -58,6 +60,7 @@
     "stack": ["React + TypeScript"],
     "description": "Приложение для поиска фильмов с возможностью оценки и добавления в списки:\n- Поиск фильмов через OMDB API\n- Добавление фильмов в списки 'Просмотрено'/'Буду смотреть'\n- Пользовательские рейтинги и комментарии\n- Анализ просмотренных фильмов (статистика по рейтингам)",
     "popupData": {
+      "title": "Учет просмотренных фильмов",
       "imageUrl": {
         "src": "/img/project-screenshots/usePopcorn.jpg",
         "sources": [
@@ -75,6 +78,7 @@
     "stack": ["JavaScript", "HTML5/CSS3", "Gulp"],
     "description": "Классическая игра «Морской бой», реализованная исключительно на нативном JavaScript:\n- Полностью кастомный движок без библиотек\n- Чистая работа с DOM (генерация поля, обработка кликов)\n- Алгоритмы расстановки кораблей (рандом + валидация)\n- Логика ИИ для одиночного режима\n\n- Нативные DOM-API (createElement, event listeners),\n- CSS Grid для игрового поля,\n- Кастомная анимация попаданий,\n- Локальное сохранение статистики.",
     "popupData": {
+      "title": "Игра «Морская бой»",
       "imageUrl": {
         "src": "/img/project-screenshots/sea-battle.jpg",
         "sources": [
@@ -92,6 +96,7 @@
     "stack": ["HTML5/CSS3", "JavaScript", "Gulp"],
     "description": "Адаптивный верстка интернет-магазина модной одежды:\n- Вёрстка по макету с пиксельной точностью\n- Интерактивные элементы: выпадающее меню, слайдер товаров\n- Оптимизированная загрузка изображений (lazy loading)\n- Анимации на CSS (hover-эффекты, плавные переходы)",
     "popupData": {
+      "title": "Интернет-магазин одежды",
       "imageUrl": {
         "src": "/img/project-screenshots/eshop-createx.jpg",
         "sources": [
@@ -109,6 +114,7 @@
     "stack": ["HTML5/CSS3", "JavaScript", "Gulp"],
     "description": "Адаптивный верстка лендинга компании:\n- Вёрстка по макету с пиксельной точностью\n- Интерактивные элементы: выпадающее меню, всплывающие окна\n- Оптимизированная загрузка изображений (lazy loading)\n- Анимации на CSS (hover-эффекты, плавные переходы)",
     "popupData": {
+      "title": "Сайт строительной компании",
       "imageUrl": {
         "src": "/img/project-screenshots/building-company-cubax.jpg",
         "sources": [
@@ -122,10 +128,11 @@
   },
   {
     "url": "http://stylish-image.alex-webdev.ru/",
-    "title": "Интернет-магазин одежды «Образ»",
+    "title": "Интернет-магазин «Образ»",
     "stack": ["HTML5/CSS3", "JavaScript", "Gulp"],
     "description": "Адаптивный лендинг интернет-магазина модной одежды:\n- Точная вёрстка по макету (pixel perfect)\n- Интерактивные элементы: галерея товаров, фильтры категорий\n- Адаптивный дизайн для всех устройств\n- Оптимизированная загрузка изображений\n- Анимации и hover-эффекты\n\nТехнологии: HTML5, CSS3, JavaScript, Flexbox/Grid, БЭМ",
     "popupData": {
+      "title": "Интернет-магазин «Образ»",
       "imageUrl": {
         "src": "/img/project-screenshots/eshop-stylish-image.jpg",
         "sources": [
@@ -143,6 +150,7 @@
     "stack": ["HTML5/CSS3", "JavaScript", "Gulp"],
     "description": "",
     "popupData": {
+      "title": "Sipe Consulting",
       "imageUrl": {
         "src": "/img/project-screenshots/farma-consulting.jpg",
         "sources": [
@@ -160,6 +168,7 @@
     "stack": ["HTML5/CSS3", "JavaScript", "Gulp"],
     "description": "",
     "popupData": {
+      "title": "Сайт ресторана",
       "imageUrl": {
         "src": "/img/project-screenshots/gericht.jpg",
         "sources": [
@@ -177,6 +186,7 @@
     "stack": ["HTML5/CSS3", "JavaScript", "Gulp"],
     "description": "",
     "popupData": {
+      "title": "Лэндинг ресторана",
       "imageUrl": {
         "src": "/img/project-screenshots/food-landing.jpg",
         "sources": [
