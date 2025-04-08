@@ -176,7 +176,12 @@
   }
   // .project-link__title
   &__title {
+    @extend .text-typing;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
     &:not(:first-child) {
       margin-top: percent(30, 430);
     }

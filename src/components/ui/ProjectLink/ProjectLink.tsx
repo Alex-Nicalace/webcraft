@@ -83,9 +83,7 @@ function ProjectLink({
               }}
             />
             {title && (
-              <figcaption className="project-link__title text-typing">
-                {title}
-              </figcaption>
+              <figcaption className="project-link__title">{title}</figcaption>
             )}
           </figure>
         </div>
