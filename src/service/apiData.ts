@@ -45,14 +45,18 @@ export async function getAboutMe() {
 }
 
 export async function sendTrack() {
-  fetch('/api/track.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      path: window.location.pathname,
-      referrer: document.referrer,
-    }),
-  });
+  try {
+    fetch('/api/track.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        path: window.location.pathname,
+        referrer: document.referrer,
+      }),
+    });
+  } catch (e) {
+    console.error('Tracking error:', e);
+  }
 }

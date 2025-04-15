@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { sendTrack } from '../../service';
 import Footer from '../Footer';
 import Header from '../Header';
 import ScrollUp from '../ScrollUp';
@@ -8,6 +9,10 @@ import { TWindowScrollState } from './AppLayout.types';
 function AppLayout(): JSX.Element {
   const [windowScrollState, setWindowScrollState] =
     useState<TWindowScrollState>('atTop');
+
+  useEffect(() => {
+    sendTrack();
+  }, []);
 
   return (
     <>

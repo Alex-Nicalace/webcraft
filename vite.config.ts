@@ -29,4 +29,13 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://alex-webdev.ru',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
