@@ -1,12 +1,15 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { useApi } from '../../hooks/useApi';
+import { getCredo } from '../../service';
+
 import Container from '../Container';
 import Puzzle from '../ui/Puzzle';
-import { TCredoData, TCredoProps } from './Credo.types';
-import './Credo.scss';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { useFetch } from '../../hooks/useFetch';
 import ErrorMessage from '../ErrorMessage';
 import Loader from '../ui/Loader';
+
+import { TCredoProps } from './Credo.types';
+import './Credo.scss';
 
 const INTERSECTION_OPTIONS = {
   rootMargin: '0px 0px -60% 0px',
@@ -14,8 +17,8 @@ const INTERSECTION_OPTIONS = {
 };
 
 function Credo({ className, ...props }: TCredoProps): JSX.Element {
-  const [{ responseData: credoTexts, isLoading, errorMessage }] =
-    useFetch<TCredoData[]>('/data/credo.json');
+  const [{ data: credoTexts, isLoading, errorMessage }, fetchData] =
+    useApi(getCredo);
   const [completedAnimationPuzzles, setCompletedAnimationPuzzles] = useState<
     number[]
   >([]);
@@ -25,6 +28,15 @@ function Credo({ className, ...props }: TCredoProps): JSX.Element {
     initialPosition: initialPositionWrapper,
   } = useIntersectionObserver(wrapperRef, INTERSECTION_OPTIONS);
   const isNeedAnimation = initialPositionWrapper !== 'above';
+
+  useEffect(
+    function load() {
+      const controller = new AbortController();
+      fetchData()({ signal: controller.signal });
+      return () => controller.abort();
+    },
+    [fetchData]
+  );
 
   const hundleAnimationEnd = (index: number) => () => {
     setCompletedAnimationPuzzles((prev) => [...prev, index]);

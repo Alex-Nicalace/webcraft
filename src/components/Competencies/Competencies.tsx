@@ -1,17 +1,27 @@
-import { useFetch } from '../../hooks/useFetch';
-import { TCompetenciesProps } from './Competencies.types';
+import { useEffect } from 'react';
+import { useApi } from '../../hooks/useApi';
+import { getCompetencies } from '../../service';
 import Container from '../Container';
 import Loader from '../ui/Loader';
 import ErrorMessage from '../ErrorMessage';
+import { TCompetenciesProps } from './Competencies.types';
 import './Competencies.scss';
 
 function Competencies({
   className,
   ...props
 }: TCompetenciesProps): JSX.Element {
-  const [{ responseData: competencies, isLoading, errorMessage }] = useFetch<
-    string[]
-  >('/data/competencies.json');
+  const [{ data: competencies, isLoading, errorMessage }, fetchData] =
+    useApi(getCompetencies);
+
+  useEffect(
+    function load() {
+      const controller = new AbortController();
+      fetchData()({ signal: controller.signal });
+      return () => controller.abort();
+    },
+    [fetchData]
+  );
 
   return (
     <Container

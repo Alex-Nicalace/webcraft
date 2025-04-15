@@ -1,28 +1,35 @@
-import { useFetch } from '../../hooks/useFetch';
+import { useEffect } from 'react';
 import { useDevice } from '../../Context/DeviceContext';
+import { useApi } from '../../hooks/useApi';
+import { getProjects } from '../../service';
 
 import Button from '../ui/Button';
 import Container from '../Container';
 import ErrorMessage from '../ErrorMessage';
 import Loader from '../ui/Loader';
-import ProjectList, { TProjectListProps } from '../ui/ProjectList';
+import ProjectList from '../ui/ProjectList';
 
 import { TPortfolioProps } from './Portfolio.types';
 import './Portfolio.scss';
-
-const DATA_URL = '/data/projects.json';
-const DATA_URL_ALL = '/data/projects-all.json';
 
 function Portfolio({
   className,
   isViewAll,
   ...props
 }: TPortfolioProps): JSX.Element {
-  const url = isViewAll ? DATA_URL_ALL : DATA_URL;
-  const [{ responseData: projects, isLoading, errorMessage }] =
-    useFetch<TProjectListProps['data']>(url);
+  const [{ data: projects, isLoading, errorMessage }, fetchData] =
+    useApi(getProjects);
   const { isPointer, isLessPC } = useDevice();
   const isHover = !isLessPC && isPointer;
+
+  useEffect(
+    function load() {
+      const controller = new AbortController();
+      fetchData(isViewAll || false)({ signal: controller.signal });
+      return () => controller.abort();
+    },
+    [fetchData, isViewAll]
+  );
 
   return (
     <Container

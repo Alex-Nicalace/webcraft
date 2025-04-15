@@ -1,11 +1,11 @@
 import {
-  TParagraphsByScreenSizeScheme,
-  TParagraphsByScreenSize,
-  TRangeOptionsSet,
   TParagraphs,
-} from './AboutMe.types';
+  TParagraphsByScreenSize,
+  TParagraphsByScreenSizeScheme,
+  TRangeOptionsSet,
+} from './apiData.types';
 
-export class ResponsedDataManager {
+export class AboutMeDataManager {
   constructor(public hunks: string[]) {}
   get({
     from,

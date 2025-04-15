@@ -1,7 +1,8 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
-import { useFetch } from '../../hooks/useFetch';
+import { useApi } from '../../hooks/useApi';
 import { pluralize } from '../../utils';
+import { getFacts } from '../../service';
 
 import Container from '../Container';
 import Dawn from '../ui/Dawn';
@@ -9,14 +10,14 @@ import ErrorMessage from '../ErrorMessage';
 import Loader from '../ui/Loader';
 import Puzzle from '../ui/Puzzle';
 
-import { TFact, TFactsProps } from './Facts.types';
+import { TFactsProps } from './Facts.types';
 import './Facts.scss';
 
 const ALIGNED_TO_BOTTOM_IDS = new Set([9, 10]);
 
 function Facts({ className, ...props }: TFactsProps): JSX.Element {
-  const [{ responseData: facts, isLoading, errorMessage }] =
-    useFetch<TFact[]>('/data/facts.json');
+  const [{ data: facts, isLoading, errorMessage }, fetchData] =
+    useApi(getFacts);
   const [openedFact, setOpenedFact] = useState(-1);
   const quantityFacts = facts?.length ?? 0;
   const factsWithNum = (facts ?? []).map((item, index) => ({
@@ -24,6 +25,15 @@ function Facts({ className, ...props }: TFactsProps): JSX.Element {
     num: ++index,
   }));
   const doubledFacts = factsWithNum.concat(factsWithNum);
+
+  useEffect(
+    function load() {
+      const controller = new AbortController();
+      fetchData()({ signal: controller.signal });
+      return () => controller.abort();
+    },
+    [fetchData]
+  );
 
   function handlePointerDownPuzzle(indexPuzzle: number) {
     return function (e: React.PointerEvent<HTMLDivElement>) {

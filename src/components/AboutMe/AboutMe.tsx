@@ -1,4 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useApi } from '../../hooks/useApi';
+import { useDevice } from '../../Context/DeviceContext';
+import { useRefs } from '../../hooks/useRefs';
+import { useResizeObserver } from '../../hooks/useResizeObserver';
+import { getAboutMe, TDevice } from '../../service';
 
 import Container from '../Container';
 import Button from '../ui/Button';
@@ -6,26 +12,13 @@ import ButtonSlider from '../ui/ButtonSlider';
 import Loader from '../ui/Loader';
 import ErrorMessage from '../ErrorMessage';
 
-import { useDevice } from '../../Context/DeviceContext';
-import { useRefs } from '../../hooks/useRefs';
-import { useResizeObserver } from '../../hooks/useResizeObserver';
-import { useFetch } from '../../hooks/useFetch';
-
-import { TAboutMeProps } from './AboutMe.types';
-import {
-  TResponsedData,
-  TParagraphsByScreenSize,
-  TDevice,
-} from './AboutMe.types';
-
 import { CODE } from './codeDecor';
-import { ResponsedDataManager } from './ResponsedDataManager';
-
 import PuzzleSvgPC from '../../assets/img/puzzles/puzzle-second-screen.svg?react';
 import PuzzleSvgTablet from '../../assets/img/puzzles/puzzle-second-screen-tablet.svg?react';
 import PuzzleSvgMobile from '../../assets/img/puzzles/puzzle-second-screen-mobile.svg?react';
 import PuzzleSvgMobileSm from '../../assets/img/puzzles/puzzle-second-screen-mobile-sm.svg?react';
 
+import { TAboutMeProps } from './AboutMe.types';
 import './AboutMe.scss';
 
 const DEVISES: TDevice[] = [
@@ -36,19 +29,9 @@ const DEVISES: TDevice[] = [
   'mobileUltraSmall',
 ];
 
-function transformResponseDataFn(data: unknown) {
-  const aboutMeData = data as TResponsedData;
-  return new ResponsedDataManager(aboutMeData.hunks).getParagraphsByScreenSize(
-    aboutMeData.paragraphsByScreenSize
-  );
-}
-
 function AboutMe({ className, ...props }: TAboutMeProps) {
-  const [{ responseData: paragraphsByScreenSize, isLoading, errorMessage }] =
-    useFetch<TParagraphsByScreenSize>('/data/about-me.json', {
-      transformResponseDataFn,
-    });
-
+  const [{ data: paragraphsByScreenSize, isLoading, errorMessage }, fetchData] =
+    useApi(getAboutMe);
   const { isLessPC, isLessTablet, isLessMobile, isLessMobileSmall } =
     useDevice();
   const [slideIndex, setSlideIndex] = useState(0);
@@ -75,6 +58,15 @@ function AboutMe({ className, ...props }: TAboutMeProps) {
     : sizeSlides?.height;
   const quantitySlides = grupedParagraphsModified.length;
   const code = !isLessMobile ? CODE : CODE.slice(1, 4);
+
+  useEffect(
+    function load() {
+      const controller = new AbortController();
+      fetchData()({ signal: controller.signal });
+      return () => controller.abort();
+    },
+    [fetchData]
+  );
 
   function handleChangeSlide(index: number) {
     if (index < 0 || index > quantitySlides - 1) return;
